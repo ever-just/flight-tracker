@@ -246,4 +246,4 @@ For support, email support@flighttracker.com or open an issue on GitHub.
 
 ---
 
-Built with ❤️ by the Flight Tracker Team
+Built with ❤️ by the Flight Tracker Team# Force rebuild - Sat Oct 11 14:53:06 CDT 2025

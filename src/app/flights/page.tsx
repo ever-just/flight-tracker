@@ -108,11 +108,14 @@ export default function FlightsPage() {
   const [filterStatus, setFilterStatus] = useState<string>('all')
   const [filterType, setFilterType] = useState<string>('all')
 
-  const { data: flights = [], isLoading } = useQuery({
+  const { data: flightsData, isLoading } = useQuery({
     queryKey: ['recent-flights'],
     queryFn: fetchRecentFlights,
     refetchInterval: 30000, // Refresh every 30 seconds
   })
+
+  // Handle both response formats: direct array or {flights: [...]}
+  const flights = Array.isArray(flightsData) ? flightsData : (flightsData?.flights || [])
 
   const filteredFlights = flights.filter((flight: Flight) => {
     const matchesSearch = searchTerm === '' ||

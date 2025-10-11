@@ -74,6 +74,7 @@ export async function GET(request: NextRequest) {
       trends: {
         daily: aggregatedData.trends.daily
       },
+      topIssues: aggregatedData.recentDelays,  // Top 30 delays & cancellations
       lastUpdated: new Date().toISOString(),
       dataFreshness: aggregatedData.dataFreshness,
       limitations: aggregatedData.limitations

@@ -330,7 +330,7 @@ export default function DashboardPageEnhanced() {
 
         {/* Active Delays - Sidebar */}
         <div className="col-span-12 xl:col-span-4">
-          <ActiveDelaysPanel delays={dashboardData.recentDelays} />
+          <TopIssuesPanel issues={dashboardData.topIssues} />
         </div>
 
         {/* Top Airports Grid */}
@@ -441,27 +441,25 @@ export default function DashboardPageEnhanced() {
   )
 }
 
-function ActiveDelaysPanel({ delays }: { delays: any }) {
+function TopIssuesPanel({ issues }: { issues: any }) {
   const [view, setView] = useState<'delays' | 'cancellations'>('delays')
   
-  const delaysList = delays?.byDelay || []
-  const cancellationsList = delays?.byCancellations || []
+  const delaysList = issues?.byDelay || []
+  const cancellationsList = issues?.byCancellations || []
   const currentList = view === 'delays' ? delaysList : cancellationsList
   
   return (
     <Card className="glass-card h-full">
       <CardHeader>
-        <div className="flex items-center justify-between">
-          <div>
-            <CardTitle>Airport Performance Issues</CardTitle>
-            <CardDescription>
-              {view === 'delays' ? 'Top 30 airports by average delay' : 'Top 30 airports by cancellation rate'}
-            </CardDescription>
-          </div>
+        <div className="flex items-center justify-between mb-2">
+          <CardTitle>Top Issues</CardTitle>
           <Link href="/delays" className="text-muted-foreground hover:text-white">
             <ExternalLink className="w-4 h-4" />
           </Link>
         </div>
+        <CardDescription>
+          {view === 'delays' ? 'Airports with highest avg delays' : 'Airports with most cancellations'}
+        </CardDescription>
         
         {/* Toggle Tabs */}
         <div className="flex space-x-2 mt-3">
@@ -474,7 +472,7 @@ function ActiveDelaysPanel({ delays }: { delays: any }) {
                 : "bg-white/5 text-muted-foreground hover:bg-white/10"
             )}
           >
-            By Delays
+            Delays
           </button>
           <button
             onClick={() => setView('cancellations')}
@@ -485,7 +483,7 @@ function ActiveDelaysPanel({ delays }: { delays: any }) {
                 : "bg-white/5 text-muted-foreground hover:bg-white/10"
             )}
           >
-            By Cancellations
+            Cancellations
           </button>
         </div>
       </CardHeader>
@@ -494,7 +492,7 @@ function ActiveDelaysPanel({ delays }: { delays: any }) {
         <div className="space-y-2 max-h-[600px] overflow-y-auto">
           {currentList.length === 0 ? (
             <p className="text-center text-muted-foreground text-sm py-4">
-              Loading airport performance data...
+              Loading top {view === 'delays' ? 'delayed' : 'cancelled'} airports...
             </p>
           ) : (
             currentList.slice(0, 30).map((item: any, index: number) => (
@@ -513,7 +511,7 @@ function ActiveDelaysPanel({ delays }: { delays: any }) {
                     <AlertCircle className="w-4 h-4 text-red-500" />
                   )}
                   <div>
-                    <p className="font-medium">{item.airport}</p>
+                    <p className="font-medium text-white">{item.airport}</p>
                     <p className="text-xs text-muted-foreground">{item.reason}</p>
                   </div>
                 </div>

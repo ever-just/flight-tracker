@@ -30,18 +30,25 @@ function generateDashboardData(period: string = 'today') {
   const multiplier = periodMultipliers[period as keyof typeof periodMultipliers] || 1
   const baseFlights = dailyFlights * multiplier
   
-  // Add realistic incremental changes if we have previous data
+  // Period-based realistic incremental changes
   let totalFlights = baseFlights
-  if (lastData && lastData.summary) {
-    // Small incremental changes based on time elapsed
-    const maxChange = Math.floor(50 * updateFactor * multiplier)
-    const flightChange = Math.floor(Math.random() * maxChange - maxChange/2)
+  if (lastData && lastData.summary && lastData.period === period) {
+    // Scale changes based on period - longer periods change more slowly
+    const periodFactors = {
+      'today': 50,      // ±50 flights per update (10 sec updates)
+      'week': 10,       // ±10 flights per update (60 sec updates)
+      'month': 5,       // ±5 flights per update (2 min updates)
+      'quarter': 2      // ±2 flights per update (5 min updates)
+    }
+    const maxChange = periodFactors[period as keyof typeof periodFactors] || 50
+    const flightChange = Math.floor(Math.random() * maxChange * 2 - maxChange)
     totalFlights = lastData.summary.totalFlights + flightChange
     
-    // Keep within reasonable bounds
-    totalFlights = Math.max(baseFlights * 0.9, Math.min(baseFlights * 1.1, totalFlights))
+    // Keep within reasonable bounds (±2% of base)
+    totalFlights = Math.max(baseFlights * 0.98, Math.min(baseFlights * 1.02, totalFlights))
   } else {
-    totalFlights = baseFlights + Math.floor(Math.random() * 2000 * multiplier - 1000 * multiplier)
+    // First load or period change - use base with small variation
+    totalFlights = baseFlights + Math.floor(Math.random() * 200 * multiplier - 100 * multiplier)
   }
   
   // Dynamic delay and cancellation rates based on time of day
@@ -55,6 +62,7 @@ function generateDashboardData(period: string = 'today') {
   const onTimePercentage = parseFloat(((1 - delayRate) * 100).toFixed(1))
   
   const data = {
+    period, // Store the period to validate incremental updates
     summary: {
       totalFlights,
       totalDelays,

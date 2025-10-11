@@ -179,6 +179,17 @@ export default function DashboardPageEnhanced() {
   const [currentTime, setCurrentTime] = useState<string>('')
   const router = useRouter()
   
+  // Period-based refresh intervals - match real-world data update speeds
+  const getRefetchInterval = (period: string) => {
+    switch(period) {
+      case 'today': return 10000 // 10 seconds - real-time makes sense
+      case 'week': return 60000  // 1 minute - weekly totals don't change rapidly
+      case 'month': return 120000 // 2 minutes - monthly data is more stable
+      case 'quarter': return 300000 // 5 minutes - quarterly is historical
+      default: return 10000
+    }
+  }
+  
   useEffect(() => {
     setCurrentTime(new Date().toLocaleTimeString())
     const timer = setInterval(() => {
@@ -190,8 +201,8 @@ export default function DashboardPageEnhanced() {
   const { data, isLoading, error, dataUpdatedAt } = useQuery({
     queryKey: ['dashboard', selectedPeriod],
     queryFn: () => fetchDashboardData(selectedPeriod),
-    refetchInterval: 5000, // Refetch every 5 seconds for real-time updates
-    refetchIntervalInBackground: true, // Keep updating even when tab is not active
+    refetchInterval: getRefetchInterval(selectedPeriod),
+    refetchIntervalInBackground: true,
   })
 
   const dashboardData = data || mockDashboardData
@@ -219,9 +230,12 @@ export default function DashboardPageEnhanced() {
             <option value="month">This Month</option>
             <option value="quarter">This Quarter</option>
           </select>
-          <LiveIndicator />
+          {selectedPeriod === 'today' && <LiveIndicator />}
           <span className="text-sm text-muted-foreground">
-            Last updated: {dataUpdatedAt ? new Date(dataUpdatedAt).toLocaleTimeString() : currentTime}
+            {selectedPeriod === 'today' 
+              ? `Last updated: ${dataUpdatedAt ? new Date(dataUpdatedAt).toLocaleTimeString() : currentTime}`
+              : `Updates every ${selectedPeriod === 'week' ? '60 sec' : selectedPeriod === 'month' ? '2 min' : '5 min'}`
+            }
           </span>
         </div>
       </div>

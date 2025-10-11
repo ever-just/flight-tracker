@@ -50,11 +50,24 @@ interface AggregatedDashboardData {
     avgDelay: number
     onTimeRate: number
   }>
-  recentDelays: Array<{
-    airport: string
-    reason: string
-    avgDelay: number
-  }>
+  recentDelays: {
+    byDelay: Array<{
+      airport: string
+      type: 'delay'
+      reason: string
+      avgDelay: number
+      cancellations: number
+      cancellationRate: number
+    }>
+    byCancellations: Array<{
+      airport: string
+      type: 'cancellation'
+      reason: string
+      avgDelay: number
+      cancellations: number
+      cancellationRate: number
+    }>
+  }
   limitations: string[]
   dataFreshness: {
     realTime: string
@@ -206,27 +219,60 @@ export class RealDataAggregator {
   }
   
   /**
-   * Get active delays from most delayed airports
+   * Get top 30 airports by delays and cancellations
    */
   private async getActiveDelays() {
     try {
-      const topAirports = await btsDataService.getTopAirports(20)
+      const allAirports = await btsDataService.getTopAirports(100)
       
-      // Get airports with significant delays (>15 min avg)
-      const delayedAirports = topAirports
-        .filter(a => a.avgArrivalDelay > 15)
+      // Top 30 by highest average delay
+      const topByDelay = allAirports
         .sort((a, b) => b.avgArrivalDelay - a.avgArrivalDelay)
-        .slice(0, 5)
+        .slice(0, 30)
+        .map(airport => ({
+          airport: airport.code,
+          type: 'delay' as const,
+          reason: this.inferDelayReason(airport.avgArrivalDelay),
+          avgDelay: Math.round(airport.avgArrivalDelay * 10) / 10,
+          cancellations: Math.round(airport.totalFlights * (airport.cancellationRate / 100)),
+          cancellationRate: Math.round(airport.cancellationRate * 100) / 100
+        }))
       
-      return delayedAirports.map(airport => ({
-        airport: airport.code,
-        reason: this.inferDelayReason(airport.avgArrivalDelay),
-        avgDelay: Math.round(airport.avgArrivalDelay)
-      }))
+      // Top 30 by highest cancellation rate
+      const topByCancellations = allAirports
+        .sort((a, b) => b.cancellationRate - a.cancellationRate)
+        .slice(0, 30)
+        .map(airport => ({
+          airport: airport.code,
+          type: 'cancellation' as const,
+          reason: this.inferCancellationReason(airport.cancellationRate),
+          avgDelay: Math.round(airport.avgArrivalDelay * 10) / 10,
+          cancellations: Math.round(airport.totalFlights * (airport.cancellationRate / 100)),
+          cancellationRate: Math.round(airport.cancellationRate * 100) / 100
+        }))
+      
+      return {
+        byDelay: topByDelay,
+        byCancellations: topByCancellations
+      }
     } catch (error) {
       console.error('[DATA AGGREGATOR] Active delays fetch failed:', error)
-      return []
+      return {
+        byDelay: [],
+        byCancellations: []
+      }
     }
+  }
+  
+  /**
+   * Infer likely cancellation reason based on rate
+   */
+  private inferCancellationReason(rate: number): string {
+    if (rate > 5) return 'Weather - Severe Impact'
+    if (rate > 3) return 'Operations Issues'
+    if (rate > 2) return 'Weather - Moderate'
+    if (rate > 1) return 'Volume Related'
+    return 'Normal Operations'
   }
   
   /**

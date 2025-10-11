@@ -330,42 +330,7 @@ export default function DashboardPageEnhanced() {
 
         {/* Active Delays - Sidebar */}
         <div className="col-span-12 xl:col-span-4">
-          <Card className="glass-card h-full">
-            <CardHeader className="flex flex-row items-center justify-between">
-              <div>
-                <CardTitle>Active Delays</CardTitle>
-                <CardDescription>Airports experiencing delays</CardDescription>
-              </div>
-              <Link href="/delays" className="text-muted-foreground hover:text-white">
-                <ExternalLink className="w-4 h-4" />
-              </Link>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-3">
-                {(dashboardData.recentDelays || []).map((delay: any, index: number) => (
-                  <Link 
-                    key={index} 
-                    href={`/airports/${delay.airport}`}
-                    className="flex items-center justify-between p-2 hover:bg-white/5 rounded-lg transition-colors"
-                  >
-                    <div className="flex items-center space-x-3">
-                      <MapPin className="w-4 h-4 text-amber-500" />
-                      <div>
-                        <p className="font-medium">{delay.airport}</p>
-                        <p className="text-xs text-muted-foreground">{delay.reason}</p>
-                      </div>
-                    </div>
-                    <div className="text-right">
-                      <span className="text-sm font-semibold text-amber-500">
-                        {delay.avgDelay} min
-                      </span>
-                      <ChevronRight className="w-4 h-4 text-muted-foreground inline-block ml-1" />
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
+          <ActiveDelaysPanel delays={dashboardData.recentDelays} />
         </div>
 
         {/* Top Airports Grid */}
@@ -473,6 +438,103 @@ export default function DashboardPageEnhanced() {
         </div>
       </div>
     </div>
+  )
+}
+
+function ActiveDelaysPanel({ delays }: { delays: any }) {
+  const [view, setView] = useState<'delays' | 'cancellations'>('delays')
+  
+  const delaysList = delays?.byDelay || []
+  const cancellationsList = delays?.byCancellations || []
+  const currentList = view === 'delays' ? delaysList : cancellationsList
+  
+  return (
+    <Card className="glass-card h-full">
+      <CardHeader>
+        <div className="flex items-center justify-between">
+          <div>
+            <CardTitle>Airport Performance Issues</CardTitle>
+            <CardDescription>
+              {view === 'delays' ? 'Top 30 airports by average delay' : 'Top 30 airports by cancellation rate'}
+            </CardDescription>
+          </div>
+          <Link href="/delays" className="text-muted-foreground hover:text-white">
+            <ExternalLink className="w-4 h-4" />
+          </Link>
+        </div>
+        
+        {/* Toggle Tabs */}
+        <div className="flex space-x-2 mt-3">
+          <button
+            onClick={() => setView('delays')}
+            className={cn(
+              "px-3 py-1 rounded-lg text-xs font-medium transition-colors",
+              view === 'delays' 
+                ? "bg-amber-500 text-white" 
+                : "bg-white/5 text-muted-foreground hover:bg-white/10"
+            )}
+          >
+            By Delays
+          </button>
+          <button
+            onClick={() => setView('cancellations')}
+            className={cn(
+              "px-3 py-1 rounded-lg text-xs font-medium transition-colors",
+              view === 'cancellations' 
+                ? "bg-red-500 text-white" 
+                : "bg-white/5 text-muted-foreground hover:bg-white/10"
+            )}
+          >
+            By Cancellations
+          </button>
+        </div>
+      </CardHeader>
+      
+      <CardContent>
+        <div className="space-y-2 max-h-[600px] overflow-y-auto">
+          {currentList.length === 0 ? (
+            <p className="text-center text-muted-foreground text-sm py-4">
+              Loading airport performance data...
+            </p>
+          ) : (
+            currentList.slice(0, 30).map((item: any, index: number) => (
+              <Link 
+                key={index} 
+                href={`/airports/${item.airport}`}
+                className="flex items-center justify-between p-2 hover:bg-white/5 rounded-lg transition-colors"
+              >
+                <div className="flex items-center space-x-3">
+                  <div className="flex items-center justify-center w-6 h-6 rounded-full bg-white/10 text-xs font-bold">
+                    {index + 1}
+                  </div>
+                  {view === 'delays' ? (
+                    <Clock className="w-4 h-4 text-amber-500" />
+                  ) : (
+                    <AlertCircle className="w-4 h-4 text-red-500" />
+                  )}
+                  <div>
+                    <p className="font-medium">{item.airport}</p>
+                    <p className="text-xs text-muted-foreground">{item.reason}</p>
+                  </div>
+                </div>
+                <div className="text-right">
+                  {view === 'delays' ? (
+                    <span className="text-sm font-semibold text-amber-500">
+                      {item.avgDelay} min
+                    </span>
+                  ) : (
+                    <span className="text-sm font-semibold text-red-500">
+                      {item.cancellationRate}%
+                    </span>
+                  )}
+                  <ChevronRight className="w-4 h-4 text-muted-foreground inline-block ml-1" />
+                </div>
+              </Link>
+            ))
+          )}
+        </div>
+      </CardContent>
+    </Card>
   )
 }
 

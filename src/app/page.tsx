@@ -64,23 +64,27 @@ const mockDashboardData = {
     { airport: 'LAX', reason: 'Runway Maintenance', avgDelay: 22 },
     { airport: 'ATL', reason: 'Gate Availability', avgDelay: 18 }
   ],
-  hourlyTrends: Array(24).fill(null).map((_, i) => ({
-    hour: i,
-    flights: Math.floor(Math.random() * 1500 + 800),
-    delays: Math.floor(Math.random() * 150 + 50)
-  })),
-  dailyTrends: Array(7).fill(null).map((_, i) => ({
-    day: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'][i],
-    flights: Math.floor(Math.random() * 30000 + 25000),
-    delays: Math.floor(Math.random() * 3000 + 1500),
-    onTimePercentage: Math.floor(Math.random() * 20 + 75)
-  }))
+  // Match API response structure: use 'trends' instead of separate hourlyTrends/dailyTrends
+  trends: {
+    hourly: Array(24).fill(null).map((_, i) => ({
+      hour: i,
+      flights: Math.floor(Math.random() * 1500 + 800),
+      delays: Math.floor(Math.random() * 150 + 50)
+    })),
+    daily: Array(7).fill(null).map((_, i) => ({
+      day: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'][i],
+      flights: Math.floor(Math.random() * 30000 + 25000),
+      delays: Math.floor(Math.random() * 3000 + 1500),
+      onTimePercentage: Math.floor(Math.random() * 20 + 75)
+    }))
+  },
+  lastUpdated: new Date().toISOString()
 }
 
 async function fetchDashboardData(period: string = 'today') {
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'
-    const response = await fetch(`${baseUrl}/api/dashboard/summary?period=${period}`)
+    // Use relative URL to work in both local and production
+    const response = await fetch(`/api/dashboard/summary?period=${period}`)
     if (!response.ok) {
       throw new Error('Network response was not ok')
     }
@@ -274,7 +278,7 @@ export default function DashboardPageEnhanced() {
             offset={trendsOffset}
             onPeriodChange={setTrendsPeriod}
             onOffsetChange={setTrendsOffset}
-            data={dashboardData.dailyTrends}
+            data={dashboardData.trends?.daily || []}
           />
         </div>
 

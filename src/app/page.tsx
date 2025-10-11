@@ -244,9 +244,9 @@ export default function DashboardPageEnhanced() {
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
         <PerformanceCard
           title="Total Flights"
-          value={dashboardData.summary.totalFlights}
-          change={dashboardData.summary.changeFromYesterday.flights}
-          changeValue={Math.floor(dashboardData.summary.totalFlights * dashboardData.summary.changeFromYesterday.flights / 100)}
+          value={dashboardData.summary.historicalFlights || dashboardData.summary.totalFlights || 0}
+          change={dashboardData.summary.changeFromYesterday?.flights || 0}
+          changeValue={Math.floor((dashboardData.summary.historicalFlights || 0) * (dashboardData.summary.changeFromYesterday?.flights || 0) / 100)}
           icon={Plane}
           link="/flights"
           trigger={dataUpdatedAt}
@@ -254,9 +254,9 @@ export default function DashboardPageEnhanced() {
         
         <PerformanceCard
           title="Delays"
-          value={dashboardData.summary.totalDelays}
-          change={dashboardData.summary.changeFromYesterday.delays}
-          changeValue={Math.floor(dashboardData.summary.totalDelays * dashboardData.summary.changeFromYesterday.delays / 100)}
+          value={dashboardData.summary.totalDelays || 0}
+          change={dashboardData.summary.changeFromYesterday?.delays || 0}
+          changeValue={Math.floor((dashboardData.summary.totalDelays || 0) * (dashboardData.summary.changeFromYesterday?.delays || 0) / 100)}
           icon={Clock}
           link="/analytics?view=delays"
           trigger={dataUpdatedAt}
@@ -264,9 +264,9 @@ export default function DashboardPageEnhanced() {
         
         <PerformanceCard
           title="Cancellations"
-          value={dashboardData.summary.totalCancellations}
-          change={dashboardData.summary.changeFromYesterday.cancellations}
-          changeValue={Math.floor(dashboardData.summary.totalCancellations * dashboardData.summary.changeFromYesterday.cancellations / 100)}
+          value={dashboardData.summary.totalCancellations || 0}
+          change={dashboardData.summary.changeFromYesterday?.cancellations || 0}
+          changeValue={Math.floor((dashboardData.summary.totalCancellations || 0) * (dashboardData.summary.changeFromYesterday?.cancellations || 0) / 100)}
           icon={AlertCircle}
           link="/analytics?view=cancellations"
           trigger={dataUpdatedAt}
@@ -274,7 +274,7 @@ export default function DashboardPageEnhanced() {
         
         <PerformanceCard
           title="On-Time Rate"
-          value={`${dashboardData.summary.onTimePercentage}%`}
+          value={`${dashboardData.summary.onTimePercentage || 0}%`}
           change={2.1}
           icon={TrendingUp}
           link="/analytics?view=performance"

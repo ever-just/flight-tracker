@@ -1,0 +1,5843 @@
+{
+  "metadata": {
+    "generatedAt": "2025-10-11T21:32:32.450Z",
+    "source": "Bureau of Transportation Statistics (BTS)",
+    "dataRange": {
+      "start": "2025-06",
+      "end": "2025-06"
+    },
+    "totalFlights": 674179,
+    "totalAirports": 360
+  },
+  "airports": [
+    {
+      "code": "ORD",
+      "totalFlights": 63446,
+      "departures": 31730,
+      "arrivals": 31716,
+      "avgDepartureDelay": 23.3,
+      "avgArrivalDelay": 25.1,
+      "cancellationRate": 0.96,
+      "onTimeRate": 0,
+      "avgDistance": 726,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 63446,
+          "delays": 1535040,
+          "cancelled": 609,
+          "avgDelay": 24.19443306118589
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 63446,
+          "delays": 1535040,
+          "cancelled": 609,
+          "avgDelay": 24.19443306118589
+        }
+      ]
+    },
+    {
+      "code": "ATL",
+      "totalFlights": 61017,
+      "departures": 30509,
+      "arrivals": 30508,
+      "avgDepartureDelay": 24.6,
+      "avgArrivalDelay": 24.9,
+      "cancellationRate": 2.62,
+      "onTimeRate": 0,
+      "avgDistance": 685,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 61017,
+          "delays": 1509377.5,
+          "cancelled": 1596,
+          "avgDelay": 24.73699952472262
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 61017,
+          "delays": 1509377.5,
+          "cancelled": 1596,
+          "avgDelay": 24.73699952472262
+        }
+      ]
+    },
+    {
+      "code": "DFW",
+      "totalFlights": 56589,
+      "departures": 28296,
+      "arrivals": 28293,
+      "avgDepartureDelay": 27.2,
+      "avgArrivalDelay": 28.2,
+      "cancellationRate": 2.89,
+      "onTimeRate": 0,
+      "avgDistance": 815,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 56589,
+          "delays": 1566071.5,
+          "cancelled": 1633,
+          "avgDelay": 27.67448620756684
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 56589,
+          "delays": 1566071.5,
+          "cancelled": 1633,
+          "avgDelay": 27.67448620756684
+        }
+      ]
+    },
+    {
+      "code": "DEN",
+      "totalFlights": 56343,
+      "departures": 28175,
+      "arrivals": 28168,
+      "avgDepartureDelay": 26.5,
+      "avgArrivalDelay": 27.2,
+      "cancellationRate": 0.75,
+      "onTimeRate": 0,
+      "avgDistance": 861,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 56343,
+          "delays": 1511825,
+          "cancelled": 424,
+          "avgDelay": 26.83252577959995
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 56343,
+          "delays": 1511825,
+          "cancelled": 424,
+          "avgDelay": 26.83252577959995
+        }
+      ]
+    },
+    {
+      "code": "CLT",
+      "totalFlights": 41473,
+      "departures": 20739,
+      "arrivals": 20734,
+      "avgDepartureDelay": 26.1,
+      "avgArrivalDelay": 27.2,
+      "cancellationRate": 3.03,
+      "onTimeRate": 0,
+      "avgDistance": 574,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 41473,
+          "delays": 1103925,
+          "cancelled": 1255,
+          "avgDelay": 26.61792009259036
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 41473,
+          "delays": 1103925,
+          "cancelled": 1255,
+          "avgDelay": 26.61792009259036
+        }
+      ]
+    },
+    {
+      "code": "SEA",
+      "totalFlights": 34750,
+      "departures": 17376,
+      "arrivals": 17374,
+      "avgDepartureDelay": 15.7,
+      "avgArrivalDelay": 16.4,
+      "cancellationRate": 0.67,
+      "onTimeRate": 0,
+      "avgDistance": 1190,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 34750,
+          "delays": 558015.5,
+          "cancelled": 234,
+          "avgDelay": 16.058
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 34750,
+          "delays": 558015.5,
+          "cancelled": 234,
+          "avgDelay": 16.058
+        }
+      ]
+    },
+    {
+      "code": "LAX",
+      "totalFlights": 34297,
+      "departures": 17149,
+      "arrivals": 17148,
+      "avgDepartureDelay": 17.1,
+      "avgArrivalDelay": 16.3,
+      "cancellationRate": 0.62,
+      "onTimeRate": 0,
+      "avgDistance": 1322,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 34297,
+          "delays": 572680.5,
+          "cancelled": 213,
+          "avgDelay": 16.697684928710967
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 34297,
+          "delays": 572680.5,
+          "cancelled": 213,
+          "avgDelay": 16.697684928710967
+        }
+      ]
+    },
+    {
+      "code": "LAS",
+      "totalFlights": 31929,
+      "departures": 15963,
+      "arrivals": 15966,
+      "avgDepartureDelay": 18.3,
+      "avgArrivalDelay": 17,
+      "cancellationRate": 0.82,
+      "onTimeRate": 0,
+      "avgDistance": 999,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 31929,
+          "delays": 563756.5,
+          "cancelled": 262,
+          "avgDelay": 17.656566131103386
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 31929,
+          "delays": 563756.5,
+          "cancelled": 262,
+          "avgDelay": 17.656566131103386
+        }
+      ]
+    },
+    {
+      "code": "PHX",
+      "totalFlights": 31259,
+      "departures": 15634,
+      "arrivals": 15625,
+      "avgDepartureDelay": 18.7,
+      "avgArrivalDelay": 17.5,
+      "cancellationRate": 0.63,
+      "onTimeRate": 0,
+      "avgDistance": 961,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 31259,
+          "delays": 565724,
+          "cancelled": 198,
+          "avgDelay": 18.097955788732843
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 31259,
+          "delays": 565724,
+          "cancelled": 198,
+          "avgDelay": 18.097955788732843
+        }
+      ]
+    },
+    {
+      "code": "IAH",
+      "totalFlights": 29134,
+      "departures": 14570,
+      "arrivals": 14564,
+      "avgDepartureDelay": 31.3,
+      "avgArrivalDelay": 32.2,
+      "cancellationRate": 2.96,
+      "onTimeRate": 0,
+      "avgDistance": 834,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 29134,
+          "delays": 925128,
+          "cancelled": 862,
+          "avgDelay": 31.75423903343173
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 29134,
+          "delays": 925128,
+          "cancelled": 862,
+          "avgDelay": 31.75423903343173
+        }
+      ]
+    },
+    {
+      "code": "LGA",
+      "totalFlights": 27871,
+      "departures": 13935,
+      "arrivals": 13936,
+      "avgDepartureDelay": 28.1,
+      "avgArrivalDelay": 30.1,
+      "cancellationRate": 5.08,
+      "onTimeRate": 0,
+      "avgDistance": 739,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 27871,
+          "delays": 811231.5,
+          "cancelled": 1417,
+          "avgDelay": 29.106652075634173
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 27871,
+          "delays": 811231.5,
+          "cancelled": 1417,
+          "avgDelay": 29.106652075634173
+        }
+      ]
+    },
+    {
+      "code": "MCO",
+      "totalFlights": 26480,
+      "departures": 13237,
+      "arrivals": 13243,
+      "avgDepartureDelay": 23.7,
+      "avgArrivalDelay": 24.2,
+      "cancellationRate": 1,
+      "onTimeRate": 0,
+      "avgDistance": 978,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 26480,
+          "delays": 634929,
+          "cancelled": 266,
+          "avgDelay": 23.977681268882176
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 26480,
+          "delays": 634929,
+          "cancelled": 266,
+          "avgDelay": 23.977681268882176
+        }
+      ]
+    },
+    {
+      "code": "SFO",
+      "totalFlights": 25768,
+      "departures": 12885,
+      "arrivals": 12883,
+      "avgDepartureDelay": 14.9,
+      "avgArrivalDelay": 15.4,
+      "cancellationRate": 0.68,
+      "onTimeRate": 0.5,
+      "avgDistance": 1258,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 25768,
+          "delays": 390521.5,
+          "cancelled": 175,
+          "avgDelay": 15.155289506364483
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 25768,
+          "delays": 390521.5,
+          "cancelled": 175,
+          "avgDelay": 15.155289506364483
+        }
+      ]
+    },
+    {
+      "code": "DTW",
+      "totalFlights": 25393,
+      "departures": 12698,
+      "arrivals": 12695,
+      "avgDepartureDelay": 20.6,
+      "avgArrivalDelay": 20.5,
+      "cancellationRate": 1.39,
+      "onTimeRate": 0,
+      "avgDistance": 703,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 25393,
+          "delays": 522065.5,
+          "cancelled": 352,
+          "avgDelay": 20.559425826015044
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 25393,
+          "delays": 522065.5,
+          "cancelled": 352,
+          "avgDelay": 20.559425826015044
+        }
+      ]
+    },
+    {
+      "code": "BOS",
+      "totalFlights": 24976,
+      "departures": 12490,
+      "arrivals": 12486,
+      "avgDepartureDelay": 21.5,
+      "avgArrivalDelay": 21.2,
+      "cancellationRate": 1.27,
+      "onTimeRate": 0,
+      "avgDistance": 1065,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 24976,
+          "delays": 532387,
+          "cancelled": 316,
+          "avgDelay": 21.31594330557335
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 24976,
+          "delays": 532387,
+          "cancelled": 316,
+          "avgDelay": 21.31594330557335
+        }
+      ]
+    },
+    {
+      "code": "DCA",
+      "totalFlights": 24450,
+      "departures": 12227,
+      "arrivals": 12223,
+      "avgDepartureDelay": 29,
+      "avgArrivalDelay": 30.7,
+      "cancellationRate": 5.77,
+      "onTimeRate": 0,
+      "avgDistance": 654,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 24450,
+          "delays": 730470,
+          "cancelled": 1410,
+          "avgDelay": 29.876073619631903
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 24450,
+          "delays": 730470,
+          "cancelled": 1410,
+          "avgDelay": 29.876073619631903
+        }
+      ]
+    },
+    {
+      "code": "MSP",
+      "totalFlights": 22893,
+      "departures": 11445,
+      "arrivals": 11448,
+      "avgDepartureDelay": 17.3,
+      "avgArrivalDelay": 17,
+      "cancellationRate": 0.92,
+      "onTimeRate": 0,
+      "avgDistance": 819,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 22893,
+          "delays": 392450,
+          "cancelled": 211,
+          "avgDelay": 17.142794740750446
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 22893,
+          "delays": 392450,
+          "cancelled": 211,
+          "avgDelay": 17.142794740750446
+        }
+      ]
+    },
+    {
+      "code": "PHL",
+      "totalFlights": 22373,
+      "departures": 11190,
+      "arrivals": 11183,
+      "avgDepartureDelay": 27.2,
+      "avgArrivalDelay": 29.3,
+      "cancellationRate": 3.17,
+      "onTimeRate": 0,
+      "avgDistance": 804,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 22373,
+          "delays": 632727,
+          "cancelled": 710,
+          "avgDelay": 28.280829571358332
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 22373,
+          "delays": 632727,
+          "cancelled": 710,
+          "avgDelay": 28.280829571358332
+        }
+      ]
+    },
+    {
+      "code": "JFK",
+      "totalFlights": 21411,
+      "departures": 10709,
+      "arrivals": 10702,
+      "avgDepartureDelay": 25.5,
+      "avgArrivalDelay": 27,
+      "cancellationRate": 3.54,
+      "onTimeRate": 0,
+      "avgDistance": 1220,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 21411,
+          "delays": 562015,
+          "cancelled": 758,
+          "avgDelay": 26.24889075708748
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 21411,
+          "delays": 562015,
+          "cancelled": 758,
+          "avgDelay": 26.24889075708748
+        }
+      ]
+    },
+    {
+      "code": "SLC",
+      "totalFlights": 20017,
+      "departures": 10022,
+      "arrivals": 9995,
+      "avgDepartureDelay": 13.8,
+      "avgArrivalDelay": 13.4,
+      "cancellationRate": 0.48,
+      "onTimeRate": 8,
+      "avgDistance": 829,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 20017,
+          "delays": 272552.5,
+          "cancelled": 96,
+          "avgDelay": 13.616051356347105
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 20017,
+          "delays": 272552.5,
+          "cancelled": 96,
+          "avgDelay": 13.616051356347105
+        }
+      ]
+    },
+    {
+      "code": "EWR",
+      "totalFlights": 19539,
+      "departures": 9765,
+      "arrivals": 9774,
+      "avgDepartureDelay": 26,
+      "avgArrivalDelay": 27.2,
+      "cancellationRate": 2.56,
+      "onTimeRate": 0,
+      "avgDistance": 1101,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 19539,
+          "delays": 519631.5,
+          "cancelled": 501,
+          "avgDelay": 26.594580070627973
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 19539,
+          "delays": 519631.5,
+          "cancelled": 501,
+          "avgDelay": 26.594580070627973
+        }
+      ]
+    },
+    {
+      "code": "BNA",
+      "totalFlights": 19373,
+      "departures": 9685,
+      "arrivals": 9688,
+      "avgDepartureDelay": 21.7,
+      "avgArrivalDelay": 21.8,
+      "cancellationRate": 1.39,
+      "onTimeRate": 0,
+      "avgDistance": 738,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 19373,
+          "delays": 420911.5,
+          "cancelled": 270,
+          "avgDelay": 21.726707273008827
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 19373,
+          "delays": 420911.5,
+          "cancelled": 270,
+          "avgDelay": 21.726707273008827
+        }
+      ]
+    },
+    {
+      "code": "MIA",
+      "totalFlights": 17666,
+      "departures": 8831,
+      "arrivals": 8835,
+      "avgDepartureDelay": 24.6,
+      "avgArrivalDelay": 25,
+      "cancellationRate": 1.69,
+      "onTimeRate": 0,
+      "avgDistance": 1049,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 17666,
+          "delays": 438214,
+          "cancelled": 299,
+          "avgDelay": 24.805502094418657
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 17666,
+          "delays": 438214,
+          "cancelled": 299,
+          "avgDelay": 24.805502094418657
+        }
+      ]
+    },
+    {
+      "code": "BWI",
+      "totalFlights": 17357,
+      "departures": 8677,
+      "arrivals": 8680,
+      "avgDepartureDelay": 23.1,
+      "avgArrivalDelay": 22.4,
+      "cancellationRate": 1.4,
+      "onTimeRate": 0,
+      "avgDistance": 856,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 17357,
+          "delays": 395039.5,
+          "cancelled": 243,
+          "avgDelay": 22.75966468859826
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 17357,
+          "delays": 395039.5,
+          "cancelled": 243,
+          "avgDelay": 22.75966468859826
+        }
+      ]
+    },
+    {
+      "code": "SAN",
+      "totalFlights": 17274,
+      "departures": 8637,
+      "arrivals": 8637,
+      "avgDepartureDelay": 16.4,
+      "avgArrivalDelay": 17,
+      "cancellationRate": 0.79,
+      "onTimeRate": 0,
+      "avgDistance": 1058,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 17274,
+          "delays": 288442,
+          "cancelled": 136,
+          "avgDelay": 16.698043302072477
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 17274,
+          "delays": 288442,
+          "cancelled": 136,
+          "avgDelay": 16.698043302072477
+        }
+      ]
+    },
+    {
+      "code": "IAD",
+      "totalFlights": 17134,
+      "departures": 8565,
+      "arrivals": 8569,
+      "avgDepartureDelay": 28.5,
+      "avgArrivalDelay": 30.4,
+      "cancellationRate": 1.65,
+      "onTimeRate": 0,
+      "avgDistance": 785,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 17134,
+          "delays": 505197.5,
+          "cancelled": 282,
+          "avgDelay": 29.485088128866582
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 17134,
+          "delays": 505197.5,
+          "cancelled": 282,
+          "avgDelay": 29.485088128866582
+        }
+      ]
+    },
+    {
+      "code": "AUS",
+      "totalFlights": 15706,
+      "departures": 7854,
+      "arrivals": 7852,
+      "avgDepartureDelay": 20.6,
+      "avgArrivalDelay": 21.2,
+      "cancellationRate": 0.95,
+      "onTimeRate": 0,
+      "avgDistance": 930,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 15706,
+          "delays": 328045.5,
+          "cancelled": 149,
+          "avgDelay": 20.886635680631606
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 15706,
+          "delays": 328045.5,
+          "cancelled": 149,
+          "avgDelay": 20.886635680631606
+        }
+      ]
+    },
+    {
+      "code": "MDW",
+      "totalFlights": 14421,
+      "departures": 7212,
+      "arrivals": 7209,
+      "avgDepartureDelay": 19.4,
+      "avgArrivalDelay": 17.6,
+      "cancellationRate": 0.65,
+      "onTimeRate": 0,
+      "avgDistance": 842,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 14421,
+          "delays": 266726,
+          "cancelled": 94,
+          "avgDelay": 18.495666042576797
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 14421,
+          "delays": 266726,
+          "cancelled": 94,
+          "avgDelay": 18.495666042576797
+        }
+      ]
+    },
+    {
+      "code": "PDX",
+      "totalFlights": 14016,
+      "departures": 7006,
+      "arrivals": 7010,
+      "avgDepartureDelay": 13.8,
+      "avgArrivalDelay": 14.1,
+      "cancellationRate": 0.54,
+      "onTimeRate": 7.7,
+      "avgDistance": 1009,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 14016,
+          "delays": 195972,
+          "cancelled": 75,
+          "avgDelay": 13.982020547945206
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 14016,
+          "delays": 195972,
+          "cancelled": 75,
+          "avgDelay": 13.982020547945206
+        }
+      ]
+    },
+    {
+      "code": "TPA",
+      "totalFlights": 13133,
+      "departures": 6567,
+      "arrivals": 6566,
+      "avgDepartureDelay": 23.6,
+      "avgArrivalDelay": 24,
+      "cancellationRate": 1.32,
+      "onTimeRate": 0,
+      "avgDistance": 945,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 13133,
+          "delays": 312695.5,
+          "cancelled": 173,
+          "avgDelay": 23.809906342800577
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 13133,
+          "delays": 312695.5,
+          "cancelled": 173,
+          "avgDelay": 23.809906342800577
+        }
+      ]
+    },
+    {
+      "code": "FLL",
+      "totalFlights": 13120,
+      "departures": 6558,
+      "arrivals": 6562,
+      "avgDepartureDelay": 21.9,
+      "avgArrivalDelay": 21.9,
+      "cancellationRate": 1.04,
+      "onTimeRate": 0,
+      "avgDistance": 1042,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 13120,
+          "delays": 287321.5,
+          "cancelled": 137,
+          "avgDelay": 21.89950457317073
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 13120,
+          "delays": 287321.5,
+          "cancelled": 137,
+          "avgDelay": 21.89950457317073
+        }
+      ]
+    },
+    {
+      "code": "DAL",
+      "totalFlights": 12411,
+      "departures": 6205,
+      "arrivals": 6206,
+      "avgDepartureDelay": 20.6,
+      "avgArrivalDelay": 19.6,
+      "cancellationRate": 1.03,
+      "onTimeRate": 0,
+      "avgDistance": 756,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 12411,
+          "delays": 249538,
+          "cancelled": 128,
+          "avgDelay": 20.1061961163484
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 12411,
+          "delays": 249538,
+          "cancelled": 128,
+          "avgDelay": 20.1061961163484
+        }
+      ]
+    },
+    {
+      "code": "STL",
+      "totalFlights": 12285,
+      "departures": 6143,
+      "arrivals": 6142,
+      "avgDepartureDelay": 21.3,
+      "avgArrivalDelay": 20.1,
+      "cancellationRate": 1.11,
+      "onTimeRate": 0,
+      "avgDistance": 732,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 12285,
+          "delays": 254064.5,
+          "cancelled": 136,
+          "avgDelay": 20.68087098087098
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 12285,
+          "delays": 254064.5,
+          "cancelled": 136,
+          "avgDelay": 20.68087098087098
+        }
+      ]
+    },
+    {
+      "code": "RDU",
+      "totalFlights": 11099,
+      "departures": 5551,
+      "arrivals": 5548,
+      "avgDepartureDelay": 22,
+      "avgArrivalDelay": 22.9,
+      "cancellationRate": 2.51,
+      "onTimeRate": 0,
+      "avgDistance": 683,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 11099,
+          "delays": 249115.5,
+          "cancelled": 279,
+          "avgDelay": 22.444859897288044
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 11099,
+          "delays": 249115.5,
+          "cancelled": 279,
+          "avgDelay": 22.444859897288044
+        }
+      ]
+    },
+    {
+      "code": "SMF",
+      "totalFlights": 10827,
+      "departures": 5413,
+      "arrivals": 5414,
+      "avgDepartureDelay": 15.4,
+      "avgArrivalDelay": 14.4,
+      "cancellationRate": 0.54,
+      "onTimeRate": 0,
+      "avgDistance": 833,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 10827,
+          "delays": 161254.5,
+          "cancelled": 59,
+          "avgDelay": 14.893737877528402
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 10827,
+          "delays": 161254.5,
+          "cancelled": 59,
+          "avgDelay": 14.893737877528402
+        }
+      ]
+    },
+    {
+      "code": "HNL",
+      "totalFlights": 9941,
+      "departures": 4970,
+      "arrivals": 4971,
+      "avgDepartureDelay": 10,
+      "avgArrivalDelay": 9.7,
+      "cancellationRate": 0.31,
+      "onTimeRate": 33.2,
+      "avgDistance": 1382,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 9941,
+          "delays": 98155,
+          "cancelled": 31,
+          "avgDelay": 9.87375515541696
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 9941,
+          "delays": 98155,
+          "cancelled": 31,
+          "avgDelay": 9.87375515541696
+        }
+      ]
+    },
+    {
+      "code": "HOU",
+      "totalFlights": 9864,
+      "departures": 4932,
+      "arrivals": 4932,
+      "avgDepartureDelay": 19.5,
+      "avgArrivalDelay": 18.9,
+      "cancellationRate": 1.45,
+      "onTimeRate": 0,
+      "avgDistance": 751,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 9864,
+          "delays": 189381.5,
+          "cancelled": 143,
+          "avgDelay": 19.1992599351176
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 9864,
+          "delays": 189381.5,
+          "cancelled": 143,
+          "avgDelay": 19.1992599351176
+        }
+      ]
+    },
+    {
+      "code": "MCI",
+      "totalFlights": 9305,
+      "departures": 4653,
+      "arrivals": 4652,
+      "avgDepartureDelay": 22,
+      "avgArrivalDelay": 22.8,
+      "cancellationRate": 1.4,
+      "onTimeRate": 0,
+      "avgDistance": 784,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 9305,
+          "delays": 208419,
+          "cancelled": 130,
+          "avgDelay": 22.39860290166577
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 9305,
+          "delays": 208419,
+          "cancelled": 130,
+          "avgDelay": 22.39860290166577
+        }
+      ]
+    },
+    {
+      "code": "IND",
+      "totalFlights": 9091,
+      "departures": 4546,
+      "arrivals": 4545,
+      "avgDepartureDelay": 20.5,
+      "avgArrivalDelay": 21.1,
+      "cancellationRate": 2.1,
+      "onTimeRate": 0,
+      "avgDistance": 728,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 9091,
+          "delays": 189140,
+          "cancelled": 191,
+          "avgDelay": 20.80519194808052
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 9091,
+          "delays": 189140,
+          "cancelled": 191,
+          "avgDelay": 20.80519194808052
+        }
+      ]
+    },
+    {
+      "code": "SJC",
+      "totalFlights": 8419,
+      "departures": 4209,
+      "arrivals": 4210,
+      "avgDepartureDelay": 14.6,
+      "avgArrivalDelay": 13.4,
+      "cancellationRate": 0.63,
+      "onTimeRate": 2.6,
+      "avgDistance": 752,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 8419,
+          "delays": 117803.5,
+          "cancelled": 53,
+          "avgDelay": 13.992576315476898
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 8419,
+          "delays": 117803.5,
+          "cancelled": 53,
+          "avgDelay": 13.992576315476898
+        }
+      ]
+    },
+    {
+      "code": "CMH",
+      "totalFlights": 8229,
+      "departures": 4114,
+      "arrivals": 4115,
+      "avgDepartureDelay": 21.2,
+      "avgArrivalDelay": 22.5,
+      "cancellationRate": 2.28,
+      "onTimeRate": 0,
+      "avgDistance": 651,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 8229,
+          "delays": 179492.5,
+          "cancelled": 188,
+          "avgDelay": 21.812188601288128
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 8229,
+          "delays": 179492.5,
+          "cancelled": 188,
+          "avgDelay": 21.812188601288128
+        }
+      ]
+    },
+    {
+      "code": "PIT",
+      "totalFlights": 8196,
+      "departures": 4098,
+      "arrivals": 4098,
+      "avgDepartureDelay": 21.4,
+      "avgArrivalDelay": 22.4,
+      "cancellationRate": 1.84,
+      "onTimeRate": 0,
+      "avgDistance": 671,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 8196,
+          "delays": 179660,
+          "cancelled": 151,
+          "avgDelay": 21.920448999511958
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 8196,
+          "delays": 179660,
+          "cancelled": 151,
+          "avgDelay": 21.920448999511958
+        }
+      ]
+    },
+    {
+      "code": "MSY",
+      "totalFlights": 8174,
+      "departures": 4088,
+      "arrivals": 4086,
+      "avgDepartureDelay": 25,
+      "avgArrivalDelay": 24.9,
+      "cancellationRate": 1.77,
+      "onTimeRate": 0,
+      "avgDistance": 779,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 8174,
+          "delays": 203999.5,
+          "cancelled": 145,
+          "avgDelay": 24.957120137019817
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 8174,
+          "delays": 203999.5,
+          "cancelled": 145,
+          "avgDelay": 24.957120137019817
+        }
+      ]
+    },
+    {
+      "code": "SNA",
+      "totalFlights": 8012,
+      "departures": 4005,
+      "arrivals": 4007,
+      "avgDepartureDelay": 15.6,
+      "avgArrivalDelay": 15,
+      "cancellationRate": 1,
+      "onTimeRate": 0,
+      "avgDistance": 794,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 8012,
+          "delays": 122916,
+          "cancelled": 80,
+          "avgDelay": 15.341487768347479
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 8012,
+          "delays": 122916,
+          "cancelled": 80,
+          "avgDelay": 15.341487768347479
+        }
+      ]
+    },
+    {
+      "code": "CLE",
+      "totalFlights": 7858,
+      "departures": 3918,
+      "arrivals": 3940,
+      "avgDepartureDelay": 23.8,
+      "avgArrivalDelay": 24.3,
+      "cancellationRate": 2.7,
+      "onTimeRate": 0,
+      "avgDistance": 678,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 7858,
+          "delays": 188841.5,
+          "cancelled": 212,
+          "avgDelay": 24.03175108170018
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 7858,
+          "delays": 188841.5,
+          "cancelled": 212,
+          "avgDelay": 24.03175108170018
+        }
+      ]
+    },
+    {
+      "code": "CVG",
+      "totalFlights": 7654,
+      "departures": 3826,
+      "arrivals": 3828,
+      "avgDepartureDelay": 24.2,
+      "avgArrivalDelay": 25,
+      "cancellationRate": 2.1,
+      "onTimeRate": 0,
+      "avgDistance": 661,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 7654,
+          "delays": 188427.5,
+          "cancelled": 161,
+          "avgDelay": 24.61817350405017
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 7654,
+          "delays": 188427.5,
+          "cancelled": 161,
+          "avgDelay": 24.61817350405017
+        }
+      ]
+    },
+    {
+      "code": "SAT",
+      "totalFlights": 7398,
+      "departures": 3699,
+      "arrivals": 3699,
+      "avgDepartureDelay": 22,
+      "avgArrivalDelay": 21.7,
+      "cancellationRate": 1.47,
+      "onTimeRate": 0,
+      "avgDistance": 828,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 7398,
+          "delays": 161960.5,
+          "cancelled": 109,
+          "avgDelay": 21.892470938091375
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 7398,
+          "delays": 161960.5,
+          "cancelled": 109,
+          "avgDelay": 21.892470938091375
+        }
+      ]
+    },
+    {
+      "code": "SJU",
+      "totalFlights": 6376,
+      "departures": 3187,
+      "arrivals": 3189,
+      "avgDepartureDelay": 18.5,
+      "avgArrivalDelay": 17.8,
+      "cancellationRate": 0.88,
+      "onTimeRate": 0,
+      "avgDistance": 1476,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 6376,
+          "delays": 115633,
+          "cancelled": 56,
+          "avgDelay": 18.135664993726476
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 6376,
+          "delays": 115633,
+          "cancelled": 56,
+          "avgDelay": 18.135664993726476
+        }
+      ]
+    },
+    {
+      "code": "OAK",
+      "totalFlights": 6332,
+      "departures": 3167,
+      "arrivals": 3165,
+      "avgDepartureDelay": 15.2,
+      "avgArrivalDelay": 13.5,
+      "cancellationRate": 0.63,
+      "onTimeRate": 0,
+      "avgDistance": 665,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 6332,
+          "delays": 90978,
+          "cancelled": 40,
+          "avgDelay": 14.367972204674668
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 6332,
+          "delays": 90978,
+          "cancelled": 40,
+          "avgDelay": 14.367972204674668
+        }
+      ]
+    },
+    {
+      "code": "MKE",
+      "totalFlights": 5415,
+      "departures": 2707,
+      "arrivals": 2708,
+      "avgDepartureDelay": 22.4,
+      "avgArrivalDelay": 22.2,
+      "cancellationRate": 1.85,
+      "onTimeRate": 0,
+      "avgDistance": 701,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 5415,
+          "delays": 120577.5,
+          "cancelled": 100,
+          "avgDelay": 22.26731301939058
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 5415,
+          "delays": 120577.5,
+          "cancelled": 100,
+          "avgDelay": 22.26731301939058
+        }
+      ]
+    },
+    {
+      "code": "BUR",
+      "totalFlights": 5409,
+      "departures": 2705,
+      "arrivals": 2704,
+      "avgDepartureDelay": 15.5,
+      "avgArrivalDelay": 14.6,
+      "cancellationRate": 1.11,
+      "onTimeRate": 0,
+      "avgDistance": 588,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 5409,
+          "delays": 81404,
+          "cancelled": 60,
+          "avgDelay": 15.049731928267702
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 5409,
+          "delays": 81404,
+          "cancelled": 60,
+          "avgDelay": 15.049731928267702
+        }
+      ]
+    },
+    {
+      "code": "JAX",
+      "totalFlights": 5396,
+      "departures": 2698,
+      "arrivals": 2698,
+      "avgDepartureDelay": 24.3,
+      "avgArrivalDelay": 26,
+      "cancellationRate": 2.56,
+      "onTimeRate": 0,
+      "avgDistance": 697,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 5396,
+          "delays": 135835.5,
+          "cancelled": 138,
+          "avgDelay": 25.173369162342475
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 5396,
+          "delays": 135835.5,
+          "cancelled": 138,
+          "avgDelay": 25.173369162342475
+        }
+      ]
+    },
+    {
+      "code": "BOI",
+      "totalFlights": 5025,
+      "departures": 2513,
+      "arrivals": 2512,
+      "avgDepartureDelay": 13,
+      "avgArrivalDelay": 12.7,
+      "cancellationRate": 0.48,
+      "onTimeRate": 13.4,
+      "avgDistance": 624,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 5025,
+          "delays": 64680.5,
+          "cancelled": 24,
+          "avgDelay": 12.871741293532338
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 5025,
+          "delays": 64680.5,
+          "cancelled": 24,
+          "avgDelay": 12.871741293532338
+        }
+      ]
+    },
+    {
+      "code": "CHS",
+      "totalFlights": 5018,
+      "departures": 2507,
+      "arrivals": 2511,
+      "avgDepartureDelay": 21.6,
+      "avgArrivalDelay": 22.1,
+      "cancellationRate": 2.17,
+      "onTimeRate": 0,
+      "avgDistance": 603,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 5018,
+          "delays": 109768.5,
+          "cancelled": 109,
+          "avgDelay": 21.874950179354325
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 5018,
+          "delays": 109768.5,
+          "cancelled": 109,
+          "avgDelay": 21.874950179354325
+        }
+      ]
+    },
+    {
+      "code": "ANC",
+      "totalFlights": 4966,
+      "departures": 2482,
+      "arrivals": 2484,
+      "avgDepartureDelay": 13.7,
+      "avgArrivalDelay": 13.6,
+      "cancellationRate": 0.68,
+      "onTimeRate": 8.8,
+      "avgDistance": 1485,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 4966,
+          "delays": 67751,
+          "cancelled": 34,
+          "avgDelay": 13.642972211035039
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 4966,
+          "delays": 67751,
+          "cancelled": 34,
+          "avgDelay": 13.642972211035039
+        }
+      ]
+    },
+    {
+      "code": "SDF",
+      "totalFlights": 4871,
+      "departures": 2435,
+      "arrivals": 2436,
+      "avgDepartureDelay": 23.4,
+      "avgArrivalDelay": 24.1,
+      "cancellationRate": 2.57,
+      "onTimeRate": 0,
+      "avgDistance": 574,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 4871,
+          "delays": 115522,
+          "cancelled": 125,
+          "avgDelay": 23.716280024635598
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 4871,
+          "delays": 115522,
+          "cancelled": 125,
+          "avgDelay": 23.716280024635598
+        }
+      ]
+    },
+    {
+      "code": "ABQ",
+      "totalFlights": 4827,
+      "departures": 2413,
+      "arrivals": 2414,
+      "avgDepartureDelay": 18.8,
+      "avgArrivalDelay": 18.3,
+      "cancellationRate": 0.99,
+      "onTimeRate": 0,
+      "avgDistance": 700,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 4827,
+          "delays": 89481.5,
+          "cancelled": 48,
+          "avgDelay": 18.53770457841309
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 4827,
+          "delays": 89481.5,
+          "cancelled": 48,
+          "avgDelay": 18.53770457841309
+        }
+      ]
+    },
+    {
+      "code": "ONT",
+      "totalFlights": 4796,
+      "departures": 2397,
+      "arrivals": 2399,
+      "avgDepartureDelay": 18.9,
+      "avgArrivalDelay": 18,
+      "cancellationRate": 0.9,
+      "onTimeRate": 0,
+      "avgDistance": 819,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 4796,
+          "delays": 88353,
+          "cancelled": 43,
+          "avgDelay": 18.422226855713095
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 4796,
+          "delays": 88353,
+          "cancelled": 43,
+          "avgDelay": 18.422226855713095
+        }
+      ]
+    },
+    {
+      "code": "MEM",
+      "totalFlights": 4757,
+      "departures": 2378,
+      "arrivals": 2379,
+      "avgDepartureDelay": 22.7,
+      "avgArrivalDelay": 23.3,
+      "cancellationRate": 2.99,
+      "onTimeRate": 0,
+      "avgDistance": 646,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 4757,
+          "delays": 109346,
+          "cancelled": 142,
+          "avgDelay": 22.986335926003783
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 4757,
+          "delays": 109346,
+          "cancelled": 142,
+          "avgDelay": 22.986335926003783
+        }
+      ]
+    },
+    {
+      "code": "OMA",
+      "totalFlights": 4735,
+      "departures": 2366,
+      "arrivals": 2369,
+      "avgDepartureDelay": 21.6,
+      "avgArrivalDelay": 22.1,
+      "cancellationRate": 1.41,
+      "onTimeRate": 0,
+      "avgDistance": 733,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 4735,
+          "delays": 103424,
+          "cancelled": 67,
+          "avgDelay": 21.84244984160507
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 4735,
+          "delays": 103424,
+          "cancelled": 67,
+          "avgDelay": 21.84244984160507
+        }
+      ]
+    },
+    {
+      "code": "BUF",
+      "totalFlights": 4644,
+      "departures": 2322,
+      "arrivals": 2322,
+      "avgDepartureDelay": 24,
+      "avgArrivalDelay": 24,
+      "cancellationRate": 3.64,
+      "onTimeRate": 0,
+      "avgDistance": 564,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 4644,
+          "delays": 111439,
+          "cancelled": 169,
+          "avgDelay": 23.996339362618432
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 4644,
+          "delays": 111439,
+          "cancelled": 169,
+          "avgDelay": 23.996339362618432
+        }
+      ]
+    },
+    {
+      "code": "OKC",
+      "totalFlights": 4563,
+      "departures": 2283,
+      "arrivals": 2280,
+      "avgDepartureDelay": 25.6,
+      "avgArrivalDelay": 26.5,
+      "cancellationRate": 1.51,
+      "onTimeRate": 0,
+      "avgDistance": 662,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 4563,
+          "delays": 118897.5,
+          "cancelled": 69,
+          "avgDelay": 26.056870479947403
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 4563,
+          "delays": 118897.5,
+          "cancelled": 69,
+          "avgDelay": 26.056870479947403
+        }
+      ]
+    },
+    {
+      "code": "RIC",
+      "totalFlights": 4562,
+      "departures": 2281,
+      "arrivals": 2281,
+      "avgDepartureDelay": 25.8,
+      "avgArrivalDelay": 26.9,
+      "cancellationRate": 3.53,
+      "onTimeRate": 0,
+      "avgDistance": 494,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 4562,
+          "delays": 120161.5,
+          "cancelled": 161,
+          "avgDelay": 26.339653660675143
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 4562,
+          "delays": 120161.5,
+          "cancelled": 161,
+          "avgDelay": 26.339653660675143
+        }
+      ]
+    },
+    {
+      "code": "ORF",
+      "totalFlights": 4560,
+      "departures": 2281,
+      "arrivals": 2279,
+      "avgDepartureDelay": 25.4,
+      "avgArrivalDelay": 26.7,
+      "cancellationRate": 2.74,
+      "onTimeRate": 0,
+      "avgDistance": 485,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 4560,
+          "delays": 118926.5,
+          "cancelled": 125,
+          "avgDelay": 26.080372807017543
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 4560,
+          "delays": 118926.5,
+          "cancelled": 125,
+          "avgDelay": 26.080372807017543
+        }
+      ]
+    },
+    {
+      "code": "RSW",
+      "totalFlights": 4539,
+      "departures": 2271,
+      "arrivals": 2268,
+      "avgDepartureDelay": 18.5,
+      "avgArrivalDelay": 19.5,
+      "cancellationRate": 1.52,
+      "onTimeRate": 0,
+      "avgDistance": 987,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 4539,
+          "delays": 86441.5,
+          "cancelled": 69,
+          "avgDelay": 19.044172725269885
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 4539,
+          "delays": 86441.5,
+          "cancelled": 69,
+          "avgDelay": 19.044172725269885
+        }
+      ]
+    },
+    {
+      "code": "BDL",
+      "totalFlights": 4328,
+      "departures": 2164,
+      "arrivals": 2164,
+      "avgDepartureDelay": 20.4,
+      "avgArrivalDelay": 20.7,
+      "cancellationRate": 2.06,
+      "onTimeRate": 0,
+      "avgDistance": 781,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 4328,
+          "delays": 88907.5,
+          "cancelled": 89,
+          "avgDelay": 20.54239833641405
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 4328,
+          "delays": 88907.5,
+          "cancelled": 89,
+          "avgDelay": 20.54239833641405
+        }
+      ]
+    },
+    {
+      "code": "OGG",
+      "totalFlights": 4252,
+      "departures": 2126,
+      "arrivals": 2126,
+      "avgDepartureDelay": 8.6,
+      "avgArrivalDelay": 8.2,
+      "cancellationRate": 0.31,
+      "onTimeRate": 43,
+      "avgDistance": 1262,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 4252,
+          "delays": 35655,
+          "cancelled": 13,
+          "avgDelay": 8.38546566321731
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 4252,
+          "delays": 35655,
+          "cancelled": 13,
+          "avgDelay": 8.38546566321731
+        }
+      ]
+    },
+    {
+      "code": "SAV",
+      "totalFlights": 4183,
+      "departures": 2091,
+      "arrivals": 2092,
+      "avgDepartureDelay": 25.4,
+      "avgArrivalDelay": 26.3,
+      "cancellationRate": 2.41,
+      "onTimeRate": 0,
+      "avgDistance": 601,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 4183,
+          "delays": 108109.5,
+          "cancelled": 101,
+          "avgDelay": 25.844967726512074
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 4183,
+          "delays": 108109.5,
+          "cancelled": 101,
+          "avgDelay": 25.844967726512074
+        }
+      ]
+    },
+    {
+      "code": "PBI",
+      "totalFlights": 4085,
+      "departures": 2043,
+      "arrivals": 2042,
+      "avgDepartureDelay": 29.5,
+      "avgArrivalDelay": 30.2,
+      "cancellationRate": 1.4,
+      "onTimeRate": 0,
+      "avgDistance": 912,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 4085,
+          "delays": 122011.5,
+          "cancelled": 57,
+          "avgDelay": 29.86817625458996
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 4085,
+          "delays": 122011.5,
+          "cancelled": 57,
+          "avgDelay": 29.86817625458996
+        }
+      ]
+    },
+    {
+      "code": "GEG",
+      "totalFlights": 4080,
+      "departures": 2039,
+      "arrivals": 2041,
+      "avgDepartureDelay": 11.8,
+      "avgArrivalDelay": 12,
+      "cancellationRate": 0.29,
+      "onTimeRate": 21.6,
+      "avgDistance": 677,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 4080,
+          "delays": 48510.5,
+          "cancelled": 12,
+          "avgDelay": 11.88982843137255
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 4080,
+          "delays": 48510.5,
+          "cancelled": 12,
+          "avgDelay": 11.88982843137255
+        }
+      ]
+    },
+    {
+      "code": "RNO",
+      "totalFlights": 4052,
+      "departures": 2026,
+      "arrivals": 2026,
+      "avgDepartureDelay": 14.9,
+      "avgArrivalDelay": 14.3,
+      "cancellationRate": 0.32,
+      "onTimeRate": 0.5,
+      "avgDistance": 620,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 4052,
+          "delays": 59123,
+          "cancelled": 13,
+          "avgDelay": 14.59106614017769
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 4052,
+          "delays": 59123,
+          "cancelled": 13,
+          "avgDelay": 14.59106614017769
+        }
+      ]
+    },
+    {
+      "code": "TYS",
+      "totalFlights": 4030,
+      "departures": 2015,
+      "arrivals": 2015,
+      "avgDepartureDelay": 30.8,
+      "avgArrivalDelay": 32.6,
+      "cancellationRate": 2.75,
+      "onTimeRate": 0,
+      "avgDistance": 522,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 4030,
+          "delays": 127638.5,
+          "cancelled": 111,
+          "avgDelay": 31.672084367245656
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 4030,
+          "delays": 127638.5,
+          "cancelled": 111,
+          "avgDelay": 31.672084367245656
+        }
+      ]
+    },
+    {
+      "code": "GRR",
+      "totalFlights": 3819,
+      "departures": 1909,
+      "arrivals": 1910,
+      "avgDepartureDelay": 22.6,
+      "avgArrivalDelay": 23.1,
+      "cancellationRate": 1.68,
+      "onTimeRate": 0,
+      "avgDistance": 558,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 3819,
+          "delays": 87187,
+          "cancelled": 64,
+          "avgDelay": 22.82979837653836
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 3819,
+          "delays": 87187,
+          "cancelled": 64,
+          "avgDelay": 22.82979837653836
+        }
+      ]
+    },
+    {
+      "code": "TUL",
+      "totalFlights": 3780,
+      "departures": 1888,
+      "arrivals": 1892,
+      "avgDepartureDelay": 23.9,
+      "avgArrivalDelay": 24.3,
+      "cancellationRate": 2.17,
+      "onTimeRate": 0,
+      "avgDistance": 601,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 3780,
+          "delays": 91113,
+          "cancelled": 82,
+          "avgDelay": 24.103968253968254
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 3780,
+          "delays": 91113,
+          "cancelled": 82,
+          "avgDelay": 24.103968253968254
+        }
+      ]
+    },
+    {
+      "code": "BHM",
+      "totalFlights": 3743,
+      "departures": 1871,
+      "arrivals": 1872,
+      "avgDepartureDelay": 25.3,
+      "avgArrivalDelay": 25.6,
+      "cancellationRate": 3.18,
+      "onTimeRate": 0,
+      "avgDistance": 569,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 3743,
+          "delays": 95228.5,
+          "cancelled": 119,
+          "avgDelay": 25.44175794816992
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 3743,
+          "delays": 95228.5,
+          "cancelled": 119,
+          "avgDelay": 25.44175794816992
+        }
+      ]
+    },
+    {
+      "code": "MYR",
+      "totalFlights": 3611,
+      "departures": 1805,
+      "arrivals": 1806,
+      "avgDepartureDelay": 24.6,
+      "avgArrivalDelay": 26.2,
+      "cancellationRate": 2.22,
+      "onTimeRate": 0,
+      "avgDistance": 530,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 3611,
+          "delays": 91797,
+          "cancelled": 80,
+          "avgDelay": 25.42148989199668
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 3611,
+          "delays": 91797,
+          "cancelled": 80,
+          "avgDelay": 25.42148989199668
+        }
+      ]
+    },
+    {
+      "code": "GSP",
+      "totalFlights": 3465,
+      "departures": 1733,
+      "arrivals": 1732,
+      "avgDepartureDelay": 25.3,
+      "avgArrivalDelay": 26.7,
+      "cancellationRate": 3.64,
+      "onTimeRate": 0,
+      "avgDistance": 455,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 3465,
+          "delays": 89991.5,
+          "cancelled": 126,
+          "avgDelay": 25.97157287157287
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 3465,
+          "delays": 89991.5,
+          "cancelled": 126,
+          "avgDelay": 25.97157287157287
+        }
+      ]
+    },
+    {
+      "code": "XNA",
+      "totalFlights": 3280,
+      "departures": 1640,
+      "arrivals": 1640,
+      "avgDepartureDelay": 27,
+      "avgArrivalDelay": 28,
+      "cancellationRate": 2.74,
+      "onTimeRate": 0,
+      "avgDistance": 648,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 3280,
+          "delays": 90081.5,
+          "cancelled": 90,
+          "avgDelay": 27.463871951219513
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 3280,
+          "delays": 90081.5,
+          "cancelled": 90,
+          "avgDelay": 27.463871951219513
+        }
+      ]
+    },
+    {
+      "code": "DSM",
+      "totalFlights": 3257,
+      "departures": 1626,
+      "arrivals": 1631,
+      "avgDepartureDelay": 21.6,
+      "avgArrivalDelay": 21.9,
+      "cancellationRate": 1.93,
+      "onTimeRate": 0,
+      "avgDistance": 676,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 3257,
+          "delays": 70863,
+          "cancelled": 63,
+          "avgDelay": 21.75713847098557
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 3257,
+          "delays": 70863,
+          "cancelled": 63,
+          "avgDelay": 21.75713847098557
+        }
+      ]
+    },
+    {
+      "code": "ELP",
+      "totalFlights": 3234,
+      "departures": 1618,
+      "arrivals": 1616,
+      "avgDepartureDelay": 22.4,
+      "avgArrivalDelay": 21.6,
+      "cancellationRate": 0.93,
+      "onTimeRate": 0,
+      "avgDistance": 653,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 3234,
+          "delays": 71120.5,
+          "cancelled": 30,
+          "avgDelay": 21.991496598639454
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 3234,
+          "delays": 71120.5,
+          "cancelled": 30,
+          "avgDelay": 21.991496598639454
+        }
+      ]
+    },
+    {
+      "code": "PNS",
+      "totalFlights": 3090,
+      "departures": 1545,
+      "arrivals": 1545,
+      "avgDepartureDelay": 21.8,
+      "avgArrivalDelay": 23.2,
+      "cancellationRate": 2.62,
+      "onTimeRate": 0,
+      "avgDistance": 569,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 3090,
+          "delays": 69577.5,
+          "cancelled": 81,
+          "avgDelay": 22.516990291262136
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 3090,
+          "delays": 69577.5,
+          "cancelled": 81,
+          "avgDelay": 22.516990291262136
+        }
+      ]
+    },
+    {
+      "code": "TUS",
+      "totalFlights": 3079,
+      "departures": 1541,
+      "arrivals": 1538,
+      "avgDepartureDelay": 19.5,
+      "avgArrivalDelay": 19,
+      "cancellationRate": 1.1,
+      "onTimeRate": 0,
+      "avgDistance": 670,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 3079,
+          "delays": 59301,
+          "cancelled": 34,
+          "avgDelay": 19.25982461838259
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 3079,
+          "delays": 59301,
+          "cancelled": 34,
+          "avgDelay": 19.25982461838259
+        }
+      ]
+    },
+    {
+      "code": "PVD",
+      "totalFlights": 3038,
+      "departures": 1520,
+      "arrivals": 1518,
+      "avgDepartureDelay": 21.4,
+      "avgArrivalDelay": 22.1,
+      "cancellationRate": 2.86,
+      "onTimeRate": 0,
+      "avgDistance": 680,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 3038,
+          "delays": 66072,
+          "cancelled": 87,
+          "avgDelay": 21.748518762343647
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 3038,
+          "delays": 66072,
+          "cancelled": 87,
+          "avgDelay": 21.748518762343647
+        }
+      ]
+    },
+    {
+      "code": "ALB",
+      "totalFlights": 2886,
+      "departures": 1443,
+      "arrivals": 1443,
+      "avgDepartureDelay": 28.9,
+      "avgArrivalDelay": 29.6,
+      "cancellationRate": 2.22,
+      "onTimeRate": 0,
+      "avgDistance": 637,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 2886,
+          "delays": 84313.5,
+          "cancelled": 64,
+          "avgDelay": 29.214656964656964
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 2886,
+          "delays": 84313.5,
+          "cancelled": 64,
+          "avgDelay": 29.214656964656964
+        }
+      ]
+    },
+    {
+      "code": "LGB",
+      "totalFlights": 2860,
+      "departures": 1430,
+      "arrivals": 1430,
+      "avgDepartureDelay": 11.3,
+      "avgArrivalDelay": 9.5,
+      "cancellationRate": 0.45,
+      "onTimeRate": 24.8,
+      "avgDistance": 773,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 2860,
+          "delays": 29749,
+          "cancelled": 13,
+          "avgDelay": 10.401748251748252
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 2860,
+          "delays": 29749,
+          "cancelled": 13,
+          "avgDelay": 10.401748251748252
+        }
+      ]
+    },
+    {
+      "code": "ROC",
+      "totalFlights": 2800,
+      "departures": 1399,
+      "arrivals": 1401,
+      "avgDepartureDelay": 23.9,
+      "avgArrivalDelay": 24.3,
+      "cancellationRate": 3.96,
+      "onTimeRate": 0,
+      "avgDistance": 446,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 2800,
+          "delays": 67477,
+          "cancelled": 111,
+          "avgDelay": 24.098928571428573
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 2800,
+          "delays": 67477,
+          "cancelled": 111,
+          "avgDelay": 24.098928571428573
+        }
+      ]
+    },
+    {
+      "code": "GSO",
+      "totalFlights": 2736,
+      "departures": 1368,
+      "arrivals": 1368,
+      "avgDepartureDelay": 24.3,
+      "avgArrivalDelay": 24.7,
+      "cancellationRate": 3.25,
+      "onTimeRate": 0,
+      "avgDistance": 402,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 2736,
+          "delays": 67040,
+          "cancelled": 89,
+          "avgDelay": 24.502923976608187
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 2736,
+          "delays": 67040,
+          "cancelled": 89,
+          "avgDelay": 24.502923976608187
+        }
+      ]
+    },
+    {
+      "code": "SYR",
+      "totalFlights": 2706,
+      "departures": 1353,
+      "arrivals": 1353,
+      "avgDepartureDelay": 25.4,
+      "avgArrivalDelay": 26.8,
+      "cancellationRate": 3.4,
+      "onTimeRate": 0,
+      "avgDistance": 510,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 2706,
+          "delays": 70640.5,
+          "cancelled": 92,
+          "avgDelay": 26.105136733185514
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 2706,
+          "delays": 70640.5,
+          "cancelled": 92,
+          "avgDelay": 26.105136733185514
+        }
+      ]
+    },
+    {
+      "code": "LIH",
+      "totalFlights": 2687,
+      "departures": 1344,
+      "arrivals": 1343,
+      "avgDepartureDelay": 7.8,
+      "avgArrivalDelay": 7.6,
+      "cancellationRate": 0.19,
+      "onTimeRate": 47.8,
+      "avgDistance": 1100,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 2687,
+          "delays": 20779,
+          "cancelled": 5,
+          "avgDelay": 7.733159657610718
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 2687,
+          "delays": 20779,
+          "cancelled": 5,
+          "avgDelay": 7.733159657610718
+        }
+      ]
+    },
+    {
+      "code": "PWM",
+      "totalFlights": 2671,
+      "departures": 1334,
+      "arrivals": 1337,
+      "avgDepartureDelay": 23.6,
+      "avgArrivalDelay": 24.3,
+      "cancellationRate": 2.47,
+      "onTimeRate": 0,
+      "avgDistance": 605,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 2671,
+          "delays": 64022.5,
+          "cancelled": 66,
+          "avgDelay": 23.96948708348933
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 2671,
+          "delays": 64022.5,
+          "cancelled": 66,
+          "avgDelay": 23.96948708348933
+        }
+      ]
+    },
+    {
+      "code": "KOA",
+      "totalFlights": 2660,
+      "departures": 1330,
+      "arrivals": 1330,
+      "avgDepartureDelay": 10.5,
+      "avgArrivalDelay": 10.6,
+      "cancellationRate": 0.34,
+      "onTimeRate": 29.7,
+      "avgDistance": 1175,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 2660,
+          "delays": 28135,
+          "cancelled": 9,
+          "avgDelay": 10.577067669172932
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 2660,
+          "delays": 28135,
+          "cancelled": 9,
+          "avgDelay": 10.577067669172932
+        }
+      ]
+    },
+    {
+      "code": "LIT",
+      "totalFlights": 2609,
+      "departures": 1305,
+      "arrivals": 1304,
+      "avgDepartureDelay": 26.6,
+      "avgArrivalDelay": 28.1,
+      "cancellationRate": 2.15,
+      "onTimeRate": 0,
+      "avgDistance": 531,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 2609,
+          "delays": 71296,
+          "cancelled": 56,
+          "avgDelay": 27.326945189727866
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 2609,
+          "delays": 71296,
+          "cancelled": 56,
+          "avgDelay": 27.326945189727866
+        }
+      ]
+    },
+    {
+      "code": "VPS",
+      "totalFlights": 2568,
+      "departures": 1284,
+      "arrivals": 1284,
+      "avgDepartureDelay": 22.9,
+      "avgArrivalDelay": 24,
+      "cancellationRate": 1.64,
+      "onTimeRate": 0,
+      "avgDistance": 576,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 2568,
+          "delays": 60245,
+          "cancelled": 42,
+          "avgDelay": 23.459890965732086
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 2568,
+          "delays": 60245,
+          "cancelled": 42,
+          "avgDelay": 23.459890965732086
+        }
+      ]
+    },
+    {
+      "code": "AVL",
+      "totalFlights": 2555,
+      "departures": 1277,
+      "arrivals": 1278,
+      "avgDepartureDelay": 23.1,
+      "avgArrivalDelay": 24.4,
+      "cancellationRate": 2.86,
+      "onTimeRate": 0,
+      "avgDistance": 492,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 2555,
+          "delays": 60675,
+          "cancelled": 73,
+          "avgDelay": 23.747553816046967
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 2555,
+          "delays": 60675,
+          "cancelled": 73,
+          "avgDelay": 23.747553816046967
+        }
+      ]
+    },
+    {
+      "code": "BZN",
+      "totalFlights": 2537,
+      "departures": 1268,
+      "arrivals": 1269,
+      "avgDepartureDelay": 16.9,
+      "avgArrivalDelay": 17.2,
+      "cancellationRate": 0.32,
+      "onTimeRate": 0,
+      "avgDistance": 886,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 2537,
+          "delays": 43204.5,
+          "cancelled": 8,
+          "avgDelay": 17.0297595585337
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 2537,
+          "delays": 43204.5,
+          "cancelled": 8,
+          "avgDelay": 17.0297595585337
+        }
+      ]
+    },
+    {
+      "code": "FAT",
+      "totalFlights": 2522,
+      "departures": 1261,
+      "arrivals": 1261,
+      "avgDepartureDelay": 13.9,
+      "avgArrivalDelay": 14.2,
+      "cancellationRate": 0.67,
+      "onTimeRate": 7.1,
+      "avgDistance": 630,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 2522,
+          "delays": 35530,
+          "cancelled": 17,
+          "avgDelay": 14.08802537668517
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 2522,
+          "delays": 35530,
+          "cancelled": 17,
+          "avgDelay": 14.08802537668517
+        }
+      ]
+    },
+    {
+      "code": "SRQ",
+      "totalFlights": 2469,
+      "departures": 1235,
+      "arrivals": 1234,
+      "avgDepartureDelay": 17.3,
+      "avgArrivalDelay": 17.8,
+      "cancellationRate": 1.22,
+      "onTimeRate": 0,
+      "avgDistance": 809,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 2469,
+          "delays": 43321.5,
+          "cancelled": 30,
+          "avgDelay": 17.54617253948967
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 2469,
+          "delays": 43321.5,
+          "cancelled": 30,
+          "avgDelay": 17.54617253948967
+        }
+      ]
+    },
+    {
+      "code": "MSN",
+      "totalFlights": 2468,
+      "departures": 1234,
+      "arrivals": 1234,
+      "avgDepartureDelay": 23.1,
+      "avgArrivalDelay": 24,
+      "cancellationRate": 2.11,
+      "onTimeRate": 0,
+      "avgDistance": 497,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 2468,
+          "delays": 58111,
+          "cancelled": 52,
+          "avgDelay": 23.54578606158833
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 2468,
+          "delays": 58111,
+          "cancelled": 52,
+          "avgDelay": 23.54578606158833
+        }
+      ]
+    },
+    {
+      "code": "COS",
+      "totalFlights": 2457,
+      "departures": 1228,
+      "arrivals": 1229,
+      "avgDepartureDelay": 27.1,
+      "avgArrivalDelay": 27.4,
+      "cancellationRate": 1.34,
+      "onTimeRate": 0,
+      "avgDistance": 500,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 2457,
+          "delays": 66978,
+          "cancelled": 33,
+          "avgDelay": 27.26007326007326
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 2457,
+          "delays": 66978,
+          "cancelled": 33,
+          "avgDelay": 27.26007326007326
+        }
+      ]
+    },
+    {
+      "code": "HSV",
+      "totalFlights": 2444,
+      "departures": 1222,
+      "arrivals": 1222,
+      "avgDepartureDelay": 31.1,
+      "avgArrivalDelay": 30.8,
+      "cancellationRate": 3.76,
+      "onTimeRate": 0,
+      "avgDistance": 484,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 2444,
+          "delays": 75611.5,
+          "cancelled": 92,
+          "avgDelay": 30.937602291325696
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 2444,
+          "delays": 75611.5,
+          "cancelled": 92,
+          "avgDelay": 30.937602291325696
+        }
+      ]
+    },
+    {
+      "code": "ECP",
+      "totalFlights": 2425,
+      "departures": 1212,
+      "arrivals": 1213,
+      "avgDepartureDelay": 25.1,
+      "avgArrivalDelay": 26.1,
+      "cancellationRate": 3.26,
+      "onTimeRate": 0,
+      "avgDistance": 570,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 2425,
+          "delays": 62131.5,
+          "cancelled": 79,
+          "avgDelay": 25.621237113402064
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 2425,
+          "delays": 62131.5,
+          "cancelled": 79,
+          "avgDelay": 25.621237113402064
+        }
+      ]
+    },
+    {
+      "code": "ICT",
+      "totalFlights": 2339,
+      "departures": 1169,
+      "arrivals": 1170,
+      "avgDepartureDelay": 30.2,
+      "avgArrivalDelay": 31.5,
+      "cancellationRate": 3.04,
+      "onTimeRate": 0,
+      "avgDistance": 581,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 2339,
+          "delays": 72067.5,
+          "cancelled": 71,
+          "avgDelay": 30.81124412141941
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 2339,
+          "delays": 72067.5,
+          "cancelled": 71,
+          "avgDelay": 30.81124412141941
+        }
+      ]
+    },
+    {
+      "code": "ILM",
+      "totalFlights": 2127,
+      "departures": 1063,
+      "arrivals": 1064,
+      "avgDepartureDelay": 25.9,
+      "avgArrivalDelay": 26.9,
+      "cancellationRate": 4.18,
+      "onTimeRate": 0,
+      "avgDistance": 470,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 2127,
+          "delays": 56112,
+          "cancelled": 89,
+          "avgDelay": 26.380818053596617
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 2127,
+          "delays": 56112,
+          "cancelled": 89,
+          "avgDelay": 26.380818053596617
+        }
+      ]
+    },
+    {
+      "code": "SGF",
+      "totalFlights": 2111,
+      "departures": 1056,
+      "arrivals": 1055,
+      "avgDepartureDelay": 23.8,
+      "avgArrivalDelay": 25.4,
+      "cancellationRate": 2.18,
+      "onTimeRate": 0,
+      "avgDistance": 563,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 2111,
+          "delays": 51854,
+          "cancelled": 46,
+          "avgDelay": 24.563713879677877
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 2111,
+          "delays": 51854,
+          "cancelled": 46,
+          "avgDelay": 24.563713879677877
+        }
+      ]
+    },
+    {
+      "code": "LEX",
+      "totalFlights": 2090,
+      "departures": 1045,
+      "arrivals": 1045,
+      "avgDepartureDelay": 30.2,
+      "avgArrivalDelay": 31,
+      "cancellationRate": 2.54,
+      "onTimeRate": 0,
+      "avgDistance": 458,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 2090,
+          "delays": 63971,
+          "cancelled": 53,
+          "avgDelay": 30.608133971291867
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 2090,
+          "delays": 63971,
+          "cancelled": 53,
+          "avgDelay": 30.608133971291867
+        }
+      ]
+    },
+    {
+      "code": "SFB",
+      "totalFlights": 2084,
+      "departures": 1042,
+      "arrivals": 1042,
+      "avgDepartureDelay": 31.6,
+      "avgArrivalDelay": 34.7,
+      "cancellationRate": 0.53,
+      "onTimeRate": 0,
+      "avgDistance": 853,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 2084,
+          "delays": 69120,
+          "cancelled": 11,
+          "avgDelay": 33.16698656429942
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 2084,
+          "delays": 69120,
+          "cancelled": 11,
+          "avgDelay": 33.16698656429942
+        }
+      ]
+    },
+    {
+      "code": "HPN",
+      "totalFlights": 2054,
+      "departures": 1027,
+      "arrivals": 1027,
+      "avgDepartureDelay": 21.1,
+      "avgArrivalDelay": 23.1,
+      "cancellationRate": 2.68,
+      "onTimeRate": 0,
+      "avgDistance": 767,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 2054,
+          "delays": 45419,
+          "cancelled": 55,
+          "avgDelay": 22.112463485881207
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 2054,
+          "delays": 45419,
+          "cancelled": 55,
+          "avgDelay": 22.112463485881207
+        }
+      ]
+    },
+    {
+      "code": "MDT",
+      "totalFlights": 2050,
+      "departures": 1025,
+      "arrivals": 1025,
+      "avgDepartureDelay": 25.3,
+      "avgArrivalDelay": 26.3,
+      "cancellationRate": 1.32,
+      "onTimeRate": 0,
+      "avgDistance": 454,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 2050,
+          "delays": 52983.5,
+          "cancelled": 27,
+          "avgDelay": 25.84560975609756
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 2050,
+          "delays": 52983.5,
+          "cancelled": 27,
+          "avgDelay": 25.84560975609756
+        }
+      ]
+    },
+    {
+      "code": "PIE",
+      "totalFlights": 1958,
+      "departures": 979,
+      "arrivals": 979,
+      "avgDepartureDelay": 30,
+      "avgArrivalDelay": 32.9,
+      "cancellationRate": 0.26,
+      "onTimeRate": 0,
+      "avgDistance": 855,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 1958,
+          "delays": 61589,
+          "cancelled": 5,
+          "avgDelay": 31.45505617977528
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 1958,
+          "delays": 61589,
+          "cancelled": 5,
+          "avgDelay": 31.45505617977528
+        }
+      ]
+    },
+    {
+      "code": "MAF",
+      "totalFlights": 1941,
+      "departures": 970,
+      "arrivals": 971,
+      "avgDepartureDelay": 25.1,
+      "avgArrivalDelay": 26.2,
+      "cancellationRate": 1.49,
+      "onTimeRate": 0,
+      "avgDistance": 407,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 1941,
+          "delays": 49849,
+          "cancelled": 29,
+          "avgDelay": 25.682122617207625
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 1941,
+          "delays": 49849,
+          "cancelled": 29,
+          "avgDelay": 25.682122617207625
+        }
+      ]
+    },
+    {
+      "code": "CAE",
+      "totalFlights": 1919,
+      "departures": 960,
+      "arrivals": 959,
+      "avgDepartureDelay": 29.4,
+      "avgArrivalDelay": 30,
+      "cancellationRate": 4.74,
+      "onTimeRate": 0,
+      "avgDistance": 370,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 1919,
+          "delays": 57008,
+          "cancelled": 91,
+          "avgDelay": 29.707139134966127
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 1919,
+          "delays": 57008,
+          "cancelled": 91,
+          "avgDelay": 29.707139134966127
+        }
+      ]
+    },
+    {
+      "code": "CHA",
+      "totalFlights": 1840,
+      "departures": 919,
+      "arrivals": 921,
+      "avgDepartureDelay": 28.9,
+      "avgArrivalDelay": 29.6,
+      "cancellationRate": 2.83,
+      "onTimeRate": 0,
+      "avgDistance": 389,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 1840,
+          "delays": 53809.5,
+          "cancelled": 52,
+          "avgDelay": 29.244293478260868
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 1840,
+          "delays": 53809.5,
+          "cancelled": 52,
+          "avgDelay": 29.244293478260868
+        }
+      ]
+    },
+    {
+      "code": "DAY",
+      "totalFlights": 1784,
+      "departures": 891,
+      "arrivals": 893,
+      "avgDepartureDelay": 28.8,
+      "avgArrivalDelay": 30.1,
+      "cancellationRate": 3.42,
+      "onTimeRate": 0,
+      "avgDistance": 462,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 1784,
+          "delays": 52460.5,
+          "cancelled": 61,
+          "avgDelay": 29.406109865470853
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 1784,
+          "delays": 52460.5,
+          "cancelled": 61,
+          "avgDelay": 29.406109865470853
+        }
+      ]
+    },
+    {
+      "code": "EUG",
+      "totalFlights": 1738,
+      "departures": 869,
+      "arrivals": 869,
+      "avgDepartureDelay": 16.2,
+      "avgArrivalDelay": 16.3,
+      "cancellationRate": 0.06,
+      "onTimeRate": 0,
+      "avgDistance": 567,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 1738,
+          "delays": 28283.5,
+          "cancelled": 1,
+          "avgDelay": 16.273590333716918
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 1738,
+          "delays": 28283.5,
+          "cancelled": 1,
+          "avgDelay": 16.273590333716918
+        }
+      ]
+    },
+    {
+      "code": "BTV",
+      "totalFlights": 1689,
+      "departures": 845,
+      "arrivals": 844,
+      "avgDepartureDelay": 31.6,
+      "avgArrivalDelay": 33.5,
+      "cancellationRate": 5.09,
+      "onTimeRate": 0,
+      "avgDistance": 545,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 1689,
+          "delays": 54923.5,
+          "cancelled": 86,
+          "avgDelay": 32.518354055654235
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 1689,
+          "delays": 54923.5,
+          "cancelled": 86,
+          "avgDelay": 32.518354055654235
+        }
+      ]
+    },
+    {
+      "code": "CID",
+      "totalFlights": 1655,
+      "departures": 827,
+      "arrivals": 828,
+      "avgDepartureDelay": 24.7,
+      "avgArrivalDelay": 25.5,
+      "cancellationRate": 1.03,
+      "onTimeRate": 0,
+      "avgDistance": 582,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 1655,
+          "delays": 41579.5,
+          "cancelled": 17,
+          "avgDelay": 25.12356495468278
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 1655,
+          "delays": 41579.5,
+          "cancelled": 17,
+          "avgDelay": 25.12356495468278
+        }
+      ]
+    },
+    {
+      "code": "JAN",
+      "totalFlights": 1619,
+      "departures": 809,
+      "arrivals": 810,
+      "avgDepartureDelay": 26.1,
+      "avgArrivalDelay": 25.8,
+      "cancellationRate": 3.77,
+      "onTimeRate": 0,
+      "avgDistance": 426,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 1619,
+          "delays": 42011.5,
+          "cancelled": 61,
+          "avgDelay": 25.949042618900556
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 1619,
+          "delays": 42011.5,
+          "cancelled": 61,
+          "avgDelay": 25.949042618900556
+        }
+      ]
+    },
+    {
+      "code": "TVC",
+      "totalFlights": 1554,
+      "departures": 776,
+      "arrivals": 778,
+      "avgDepartureDelay": 26.4,
+      "avgArrivalDelay": 27.8,
+      "cancellationRate": 1.67,
+      "onTimeRate": 0,
+      "avgDistance": 481,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 1554,
+          "delays": 42107,
+          "cancelled": 26,
+          "avgDelay": 27.095881595881597
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 1554,
+          "delays": 42107,
+          "cancelled": 26,
+          "avgDelay": 27.095881595881597
+        }
+      ]
+    },
+    {
+      "code": "RDM",
+      "totalFlights": 1535,
+      "departures": 768,
+      "arrivals": 767,
+      "avgDepartureDelay": 12.1,
+      "avgArrivalDelay": 12.3,
+      "cancellationRate": 0.52,
+      "onTimeRate": 19.3,
+      "avgDistance": 495,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 1535,
+          "delays": 18746,
+          "cancelled": 8,
+          "avgDelay": 12.212377850162866
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 1535,
+          "delays": 18746,
+          "cancelled": 8,
+          "avgDelay": 12.212377850162866
+        }
+      ]
+    },
+    {
+      "code": "SBA",
+      "totalFlights": 1534,
+      "departures": 767,
+      "arrivals": 767,
+      "avgDepartureDelay": 17.8,
+      "avgArrivalDelay": 18.4,
+      "cancellationRate": 0.72,
+      "onTimeRate": 0,
+      "avgDistance": 596,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 1534,
+          "delays": 27761.5,
+          "cancelled": 11,
+          "avgDelay": 18.097457627118644
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 1534,
+          "delays": 27761.5,
+          "cancelled": 11,
+          "avgDelay": 18.097457627118644
+        }
+      ]
+    },
+    {
+      "code": "PSP",
+      "totalFlights": 1499,
+      "departures": 750,
+      "arrivals": 749,
+      "avgDepartureDelay": 16.3,
+      "avgArrivalDelay": 16.4,
+      "cancellationRate": 0.07,
+      "onTimeRate": 0,
+      "avgDistance": 578,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 1499,
+          "delays": 24447,
+          "cancelled": 1,
+          "avgDelay": 16.308872581721147
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 1499,
+          "delays": 24447,
+          "cancelled": 1,
+          "avgDelay": 16.308872581721147
+        }
+      ]
+    },
+    {
+      "code": "FSD",
+      "totalFlights": 1498,
+      "departures": 749,
+      "arrivals": 749,
+      "avgDepartureDelay": 26.3,
+      "avgArrivalDelay": 27.9,
+      "cancellationRate": 0.8,
+      "onTimeRate": 0,
+      "avgDistance": 566,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 1498,
+          "delays": 40580.5,
+          "cancelled": 12,
+          "avgDelay": 27.08978638184246
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 1498,
+          "delays": 40580.5,
+          "cancelled": 12,
+          "avgDelay": 27.08978638184246
+        }
+      ]
+    },
+    {
+      "code": "MHT",
+      "totalFlights": 1481,
+      "departures": 739,
+      "arrivals": 742,
+      "avgDepartureDelay": 23.3,
+      "avgArrivalDelay": 24.2,
+      "cancellationRate": 2.77,
+      "onTimeRate": 0,
+      "avgDistance": 574,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 1481,
+          "delays": 35166,
+          "cancelled": 41,
+          "avgDelay": 23.74476704929102
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 1481,
+          "delays": 35166,
+          "cancelled": 41,
+          "avgDelay": 23.74476704929102
+        }
+      ]
+    },
+    {
+      "code": "JAC",
+      "totalFlights": 1432,
+      "departures": 715,
+      "arrivals": 717,
+      "avgDepartureDelay": 19,
+      "avgArrivalDelay": 19.7,
+      "cancellationRate": 1.12,
+      "onTimeRate": 0,
+      "avgDistance": 805,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 1432,
+          "delays": 27761,
+          "cancelled": 16,
+          "avgDelay": 19.386173184357542
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 1432,
+          "delays": 27761,
+          "cancelled": 16,
+          "avgDelay": 19.386173184357542
+        }
+      ]
+    },
+    {
+      "code": "ATW",
+      "totalFlights": 1387,
+      "departures": 694,
+      "arrivals": 693,
+      "avgDepartureDelay": 22.3,
+      "avgArrivalDelay": 23.2,
+      "cancellationRate": 0.58,
+      "onTimeRate": 0,
+      "avgDistance": 488,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 1387,
+          "delays": 31574.5,
+          "cancelled": 8,
+          "avgDelay": 22.764599855803894
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 1387,
+          "delays": 31574.5,
+          "cancelled": 8,
+          "avgDelay": 22.764599855803894
+        }
+      ]
+    },
+    {
+      "code": "ROA",
+      "totalFlights": 1352,
+      "departures": 676,
+      "arrivals": 676,
+      "avgDepartureDelay": 34.6,
+      "avgArrivalDelay": 35.9,
+      "cancellationRate": 3.62,
+      "onTimeRate": 0,
+      "avgDistance": 292,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 1352,
+          "delays": 47646.5,
+          "cancelled": 49,
+          "avgDelay": 35.241494082840234
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 1352,
+          "delays": 47646.5,
+          "cancelled": 49,
+          "avgDelay": 35.241494082840234
+        }
+      ]
+    },
+    {
+      "code": "MFR",
+      "totalFlights": 1338,
+      "departures": 669,
+      "arrivals": 669,
+      "avgDepartureDelay": 8.8,
+      "avgArrivalDelay": 9.1,
+      "cancellationRate": 0.07,
+      "onTimeRate": 41.2,
+      "avgDistance": 510,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 1338,
+          "delays": 11969,
+          "cancelled": 1,
+          "avgDelay": 8.94544095665172
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 1338,
+          "delays": 11969,
+          "cancelled": 1,
+          "avgDelay": 8.94544095665172
+        }
+      ]
+    },
+    {
+      "code": "LBB",
+      "totalFlights": 1331,
+      "departures": 666,
+      "arrivals": 665,
+      "avgDepartureDelay": 27.8,
+      "avgArrivalDelay": 27,
+      "cancellationRate": 2.48,
+      "onTimeRate": 0,
+      "avgDistance": 379,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 1331,
+          "delays": 36453.5,
+          "cancelled": 33,
+          "avgDelay": 27.388054094665666
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 1331,
+          "delays": 36453.5,
+          "cancelled": 33,
+          "avgDelay": 27.388054094665666
+        }
+      ]
+    },
+    {
+      "code": "FCA",
+      "totalFlights": 1320,
+      "departures": 659,
+      "arrivals": 661,
+      "avgDepartureDelay": 18,
+      "avgArrivalDelay": 18.6,
+      "cancellationRate": 0.68,
+      "onTimeRate": 0,
+      "avgDistance": 847,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 1320,
+          "delays": 24121.5,
+          "cancelled": 9,
+          "avgDelay": 18.273863636363636
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 1320,
+          "delays": 24121.5,
+          "cancelled": 9,
+          "avgDelay": 18.273863636363636
+        }
+      ]
+    },
+    {
+      "code": "SBN",
+      "totalFlights": 1318,
+      "departures": 659,
+      "arrivals": 659,
+      "avgDepartureDelay": 28,
+      "avgArrivalDelay": 28.9,
+      "cancellationRate": 1.21,
+      "onTimeRate": 0,
+      "avgDistance": 500,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 1318,
+          "delays": 37535,
+          "cancelled": 16,
+          "avgDelay": 28.47875569044006
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 1318,
+          "delays": 37535,
+          "cancelled": 16,
+          "avgDelay": 28.47875569044006
+        }
+      ]
+    },
+    {
+      "code": "MSO",
+      "totalFlights": 1316,
+      "departures": 657,
+      "arrivals": 659,
+      "avgDepartureDelay": 19.9,
+      "avgArrivalDelay": 20.5,
+      "cancellationRate": 0.15,
+      "onTimeRate": 0,
+      "avgDistance": 756,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 1316,
+          "delays": 26596.5,
+          "cancelled": 2,
+          "avgDelay": 20.210106382978722
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 1316,
+          "delays": 26596.5,
+          "cancelled": 2,
+          "avgDelay": 20.210106382978722
+        }
+      ]
+    },
+    {
+      "code": "RAP",
+      "totalFlights": 1316,
+      "departures": 658,
+      "arrivals": 658,
+      "avgDepartureDelay": 21.8,
+      "avgArrivalDelay": 22.6,
+      "cancellationRate": 0.84,
+      "onTimeRate": 0,
+      "avgDistance": 591,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 1316,
+          "delays": 29215.5,
+          "cancelled": 11,
+          "avgDelay": 22.200227963525837
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 1316,
+          "delays": 29215.5,
+          "cancelled": 11,
+          "avgDelay": 22.200227963525837
+        }
+      ]
+    },
+    {
+      "code": "FWA",
+      "totalFlights": 1290,
+      "departures": 645,
+      "arrivals": 645,
+      "avgDepartureDelay": 26.7,
+      "avgArrivalDelay": 28.5,
+      "cancellationRate": 0.93,
+      "onTimeRate": 0,
+      "avgDistance": 472,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 1290,
+          "delays": 35632.5,
+          "cancelled": 12,
+          "avgDelay": 27.622093023255815
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 1290,
+          "delays": 35632.5,
+          "cancelled": 12,
+          "avgDelay": 27.622093023255815
+        }
+      ]
+    },
+    {
+      "code": "SHV",
+      "totalFlights": 1289,
+      "departures": 645,
+      "arrivals": 644,
+      "avgDepartureDelay": 26.1,
+      "avgArrivalDelay": 27.1,
+      "cancellationRate": 3.49,
+      "onTimeRate": 0,
+      "avgDistance": 384,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 1289,
+          "delays": 34253.5,
+          "cancelled": 45,
+          "avgDelay": 26.57370054305663
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 1289,
+          "delays": 34253.5,
+          "cancelled": 45,
+          "avgDelay": 26.57370054305663
+        }
+      ]
+    },
+    {
+      "code": "PSC",
+      "totalFlights": 1270,
+      "departures": 635,
+      "arrivals": 635,
+      "avgDepartureDelay": 11,
+      "avgArrivalDelay": 11.2,
+      "cancellationRate": 0.16,
+      "onTimeRate": 26.8,
+      "avgDistance": 535,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 1270,
+          "delays": 14066.5,
+          "cancelled": 2,
+          "avgDelay": 11.075984251968505
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 1270,
+          "delays": 14066.5,
+          "cancelled": 2,
+          "avgDelay": 11.075984251968505
+        }
+      ]
+    },
+    {
+      "code": "FAR",
+      "totalFlights": 1250,
+      "departures": 625,
+      "arrivals": 625,
+      "avgDepartureDelay": 21.3,
+      "avgArrivalDelay": 22.3,
+      "cancellationRate": 0.4,
+      "onTimeRate": 0,
+      "avgDistance": 611,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 1250,
+          "delays": 27253,
+          "cancelled": 5,
+          "avgDelay": 21.8024
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 1250,
+          "delays": 27253,
+          "cancelled": 5,
+          "avgDelay": 21.8024
+        }
+      ]
+    },
+    {
+      "code": "CHO",
+      "totalFlights": 1205,
+      "departures": 602,
+      "arrivals": 603,
+      "avgDepartureDelay": 32.9,
+      "avgArrivalDelay": 33.3,
+      "cancellationRate": 4.07,
+      "onTimeRate": 0,
+      "avgDistance": 303,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 1205,
+          "delays": 39874.5,
+          "cancelled": 49,
+          "avgDelay": 33.090871369294604
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 1205,
+          "delays": 39874.5,
+          "cancelled": 49,
+          "avgDelay": 33.090871369294604
+        }
+      ]
+    },
+    {
+      "code": "ASE",
+      "totalFlights": 1199,
+      "departures": 596,
+      "arrivals": 603,
+      "avgDepartureDelay": 48.3,
+      "avgArrivalDelay": 49.2,
+      "cancellationRate": 4.42,
+      "onTimeRate": 0,
+      "avgDistance": 565,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 1199,
+          "delays": 58404,
+          "cancelled": 53,
+          "avgDelay": 48.710592160133444
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 1199,
+          "delays": 58404,
+          "cancelled": 53,
+          "avgDelay": 48.710592160133444
+        }
+      ]
+    },
+    {
+      "code": "BTR",
+      "totalFlights": 1190,
+      "departures": 595,
+      "arrivals": 595,
+      "avgDepartureDelay": 33.1,
+      "avgArrivalDelay": 32.7,
+      "cancellationRate": 5.04,
+      "onTimeRate": 0,
+      "avgDistance": 417,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 1190,
+          "delays": 39188,
+          "cancelled": 60,
+          "avgDelay": 32.93109243697479
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 1190,
+          "delays": 39188,
+          "cancelled": 60,
+          "avgDelay": 32.93109243697479
+        }
+      ]
+    },
+    {
+      "code": "PGD",
+      "totalFlights": 1178,
+      "departures": 589,
+      "arrivals": 589,
+      "avgDepartureDelay": 20,
+      "avgArrivalDelay": 21.7,
+      "cancellationRate": 0,
+      "onTimeRate": 0,
+      "avgDistance": 975,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 1178,
+          "delays": 24575,
+          "cancelled": 0,
+          "avgDelay": 20.8616298811545
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 1178,
+          "delays": 24575,
+          "cancelled": 0,
+          "avgDelay": 20.8616298811545
+        }
+      ]
+    },
+    {
+      "code": "BIL",
+      "totalFlights": 1175,
+      "departures": 587,
+      "arrivals": 588,
+      "avgDepartureDelay": 18.8,
+      "avgArrivalDelay": 19.8,
+      "cancellationRate": 0.34,
+      "onTimeRate": 0,
+      "avgDistance": 667,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 1175,
+          "delays": 22658,
+          "cancelled": 4,
+          "avgDelay": 19.283404255319148
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 1175,
+          "delays": 22658,
+          "cancelled": 4,
+          "avgDelay": 19.283404255319148
+        }
+      ]
+    },
+    {
+      "code": "FAI",
+      "totalFlights": 1166,
+      "departures": 582,
+      "arrivals": 584,
+      "avgDepartureDelay": 10.9,
+      "avgArrivalDelay": 10.8,
+      "cancellationRate": 0.51,
+      "onTimeRate": 27.3,
+      "avgDistance": 1220,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 1166,
+          "delays": 12637,
+          "cancelled": 6,
+          "avgDelay": 10.837907375643224
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 1166,
+          "delays": 12637,
+          "cancelled": 6,
+          "avgDelay": 10.837907375643224
+        }
+      ]
+    },
+    {
+      "code": "MFE",
+      "totalFlights": 1131,
+      "departures": 566,
+      "arrivals": 565,
+      "avgDepartureDelay": 27.5,
+      "avgArrivalDelay": 28.3,
+      "cancellationRate": 2.21,
+      "onTimeRate": 0,
+      "avgDistance": 485,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 1131,
+          "delays": 31569,
+          "cancelled": 25,
+          "avgDelay": 27.912466843501328
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 1131,
+          "delays": 31569,
+          "cancelled": 25,
+          "avgDelay": 27.912466843501328
+        }
+      ]
+    },
+    {
+      "code": "ITO",
+      "totalFlights": 1095,
+      "departures": 547,
+      "arrivals": 548,
+      "avgDepartureDelay": 5.3,
+      "avgArrivalDelay": 5.7,
+      "cancellationRate": 0,
+      "onTimeRate": 64.6,
+      "avgDistance": 212,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 1095,
+          "delays": 6053.5,
+          "cancelled": 0,
+          "avgDelay": 5.528310502283105
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 1095,
+          "delays": 6053.5,
+          "cancelled": 0,
+          "avgDelay": 5.528310502283105
+        }
+      ]
+    },
+    {
+      "code": "AMA",
+      "totalFlights": 1075,
+      "departures": 538,
+      "arrivals": 537,
+      "avgDepartureDelay": 24.2,
+      "avgArrivalDelay": 24.4,
+      "cancellationRate": 1.95,
+      "onTimeRate": 0,
+      "avgDistance": 381,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 1075,
+          "delays": 26107,
+          "cancelled": 21,
+          "avgDelay": 24.28558139534884
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 1075,
+          "delays": 26107,
+          "cancelled": 21,
+          "avgDelay": 24.28558139534884
+        }
+      ]
+    },
+    {
+      "code": "AZA",
+      "totalFlights": 1056,
+      "departures": 528,
+      "arrivals": 528,
+      "avgDepartureDelay": 16.5,
+      "avgArrivalDelay": 16.9,
+      "cancellationRate": 0,
+      "onTimeRate": 0,
+      "avgDistance": 1048,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 1056,
+          "delays": 17640.5,
+          "cancelled": 0,
+          "avgDelay": 16.705018939393938
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 1056,
+          "delays": 17640.5,
+          "cancelled": 0,
+          "avgDelay": 16.705018939393938
+        }
+      ]
+    },
+    {
+      "code": "TLH",
+      "totalFlights": 1046,
+      "departures": 523,
+      "arrivals": 523,
+      "avgDepartureDelay": 26.5,
+      "avgArrivalDelay": 26.4,
+      "cancellationRate": 3.73,
+      "onTimeRate": 0,
+      "avgDistance": 413,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 1046,
+          "delays": 27691,
+          "cancelled": 39,
+          "avgDelay": 26.47323135755258
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 1046,
+          "delays": 27691,
+          "cancelled": 39,
+          "avgDelay": 26.47323135755258
+        }
+      ]
+    },
+    {
+      "code": "MOB",
+      "totalFlights": 1036,
+      "departures": 518,
+      "arrivals": 518,
+      "avgDepartureDelay": 34.9,
+      "avgArrivalDelay": 35.9,
+      "cancellationRate": 3.86,
+      "onTimeRate": 0,
+      "avgDistance": 471,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 1036,
+          "delays": 36703.5,
+          "cancelled": 40,
+          "avgDelay": 35.428088803088805
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 1036,
+          "delays": 36703.5,
+          "cancelled": 40,
+          "avgDelay": 35.428088803088805
+        }
+      ]
+    },
+    {
+      "code": "PIA",
+      "totalFlights": 1024,
+      "departures": 512,
+      "arrivals": 512,
+      "avgDepartureDelay": 26.2,
+      "avgArrivalDelay": 28.1,
+      "cancellationRate": 1.46,
+      "onTimeRate": 0,
+      "avgDistance": 524,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 1024,
+          "delays": 27834.5,
+          "cancelled": 15,
+          "avgDelay": 27.18212890625
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 1024,
+          "delays": 27834.5,
+          "cancelled": 15,
+          "avgDelay": 27.18212890625
+        }
+      ]
+    },
+    {
+      "code": "EYW",
+      "totalFlights": 1008,
+      "departures": 504,
+      "arrivals": 504,
+      "avgDepartureDelay": 20.4,
+      "avgArrivalDelay": 21.6,
+      "cancellationRate": 1.09,
+      "onTimeRate": 0,
+      "avgDistance": 689,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 1008,
+          "delays": 21142,
+          "cancelled": 11,
+          "avgDelay": 20.974206349206348
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 1008,
+          "delays": 21142,
+          "cancelled": 11,
+          "avgDelay": 20.974206349206348
+        }
+      ]
+    },
+    {
+      "code": "GRB",
+      "totalFlights": 1006,
+      "departures": 503,
+      "arrivals": 503,
+      "avgDepartureDelay": 16.7,
+      "avgArrivalDelay": 18,
+      "cancellationRate": 0.6,
+      "onTimeRate": 0,
+      "avgDistance": 256,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 1006,
+          "delays": 17455.5,
+          "cancelled": 6,
+          "avgDelay": 17.351391650099405
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 1006,
+          "delays": 17455.5,
+          "cancelled": 6,
+          "avgDelay": 17.351391650099405
+        }
+      ]
+    },
+    {
+      "code": "CRP",
+      "totalFlights": 986,
+      "departures": 493,
+      "arrivals": 493,
+      "avgDepartureDelay": 31.2,
+      "avgArrivalDelay": 31,
+      "cancellationRate": 3.65,
+      "onTimeRate": 0,
+      "avgDistance": 261,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 986,
+          "delays": 30691,
+          "cancelled": 36,
+          "avgDelay": 31.126774847870184
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 986,
+          "delays": 30691,
+          "cancelled": 36,
+          "avgDelay": 31.126774847870184
+        }
+      ]
+    },
+    {
+      "code": "JNU",
+      "totalFlights": 970,
+      "departures": 484,
+      "arrivals": 486,
+      "avgDepartureDelay": 9.5,
+      "avgArrivalDelay": 10,
+      "cancellationRate": 0.82,
+      "onTimeRate": 36.7,
+      "avgDistance": 547,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 970,
+          "delays": 9467.5,
+          "cancelled": 8,
+          "avgDelay": 9.760309278350515
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 970,
+          "delays": 9467.5,
+          "cancelled": 8,
+          "avgDelay": 9.760309278350515
+        }
+      ]
+    },
+    {
+      "code": "STT",
+      "totalFlights": 958,
+      "departures": 479,
+      "arrivals": 479,
+      "avgDepartureDelay": 9.8,
+      "avgArrivalDelay": 10.2,
+      "cancellationRate": 0.21,
+      "onTimeRate": 34.4,
+      "avgDistance": 1422,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 958,
+          "delays": 9586,
+          "cancelled": 2,
+          "avgDelay": 10.006263048016702
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 958,
+          "delays": 9586,
+          "cancelled": 2,
+          "avgDelay": 10.006263048016702
+        }
+      ]
+    },
+    {
+      "code": "BGR",
+      "totalFlights": 934,
+      "departures": 467,
+      "arrivals": 467,
+      "avgDepartureDelay": 21.6,
+      "avgArrivalDelay": 24.8,
+      "cancellationRate": 6.1,
+      "onTimeRate": 0,
+      "avgDistance": 650,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 934,
+          "delays": 21671,
+          "cancelled": 57,
+          "avgDelay": 23.20235546038544
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 934,
+          "delays": 21671,
+          "cancelled": 57,
+          "avgDelay": 23.20235546038544
+        }
+      ]
+    },
+    {
+      "code": "MLI",
+      "totalFlights": 931,
+      "departures": 466,
+      "arrivals": 465,
+      "avgDepartureDelay": 17.5,
+      "avgArrivalDelay": 18.9,
+      "cancellationRate": 1.4,
+      "onTimeRate": 0,
+      "avgDistance": 468,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 931,
+          "delays": 16967,
+          "cancelled": 13,
+          "avgDelay": 18.224489795918366
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 931,
+          "delays": 16967,
+          "cancelled": 13,
+          "avgDelay": 18.224489795918366
+        }
+      ]
+    },
+    {
+      "code": "AGS",
+      "totalFlights": 928,
+      "departures": 464,
+      "arrivals": 464,
+      "avgDepartureDelay": 22,
+      "avgArrivalDelay": 22,
+      "cancellationRate": 4.2,
+      "onTimeRate": 0,
+      "avgDistance": 210,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 928,
+          "delays": 20434.5,
+          "cancelled": 39,
+          "avgDelay": 22.019935344827587
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 928,
+          "delays": 20434.5,
+          "cancelled": 39,
+          "avgDelay": 22.019935344827587
+        }
+      ]
+    },
+    {
+      "code": "LFT",
+      "totalFlights": 923,
+      "departures": 461,
+      "arrivals": 462,
+      "avgDepartureDelay": 30.5,
+      "avgArrivalDelay": 32.4,
+      "cancellationRate": 4.33,
+      "onTimeRate": 0,
+      "avgDistance": 357,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 923,
+          "delays": 29032.5,
+          "cancelled": 40,
+          "avgDelay": 31.454496208017336
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 923,
+          "delays": 29032.5,
+          "cancelled": 40,
+          "avgDelay": 31.454496208017336
+        }
+      ]
+    },
+    {
+      "code": "STS",
+      "totalFlights": 923,
+      "departures": 461,
+      "arrivals": 462,
+      "avgDepartureDelay": 18.7,
+      "avgArrivalDelay": 19.8,
+      "cancellationRate": 0.54,
+      "onTimeRate": 0,
+      "avgDistance": 571,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 923,
+          "delays": 17762,
+          "cancelled": 5,
+          "avgDelay": 19.24377031419285
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 923,
+          "delays": 17762,
+          "cancelled": 5,
+          "avgDelay": 19.24377031419285
+        }
+      ]
+    },
+    {
+      "code": "IDA",
+      "totalFlights": 904,
+      "departures": 452,
+      "arrivals": 452,
+      "avgDepartureDelay": 17.6,
+      "avgArrivalDelay": 18,
+      "cancellationRate": 0.77,
+      "onTimeRate": 0,
+      "avgDistance": 516,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 904,
+          "delays": 16096,
+          "cancelled": 7,
+          "avgDelay": 17.805309734513273
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 904,
+          "delays": 16096,
+          "cancelled": 7,
+          "avgDelay": 17.805309734513273
+        }
+      ]
+    },
+    {
+      "code": "SBP",
+      "totalFlights": 900,
+      "departures": 450,
+      "arrivals": 450,
+      "avgDepartureDelay": 22.7,
+      "avgArrivalDelay": 22.7,
+      "cancellationRate": 0.44,
+      "onTimeRate": 0,
+      "avgDistance": 515,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 900,
+          "delays": 20464.5,
+          "cancelled": 4,
+          "avgDelay": 22.738333333333333
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 900,
+          "delays": 20464.5,
+          "cancelled": 4,
+          "avgDelay": 22.738333333333333
+        }
+      ]
+    },
+    {
+      "code": "ISP",
+      "totalFlights": 898,
+      "departures": 449,
+      "arrivals": 449,
+      "avgDepartureDelay": 28,
+      "avgArrivalDelay": 25.8,
+      "cancellationRate": 0.78,
+      "onTimeRate": 0,
+      "avgDistance": 790,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 898,
+          "delays": 24172.5,
+          "cancelled": 7,
+          "avgDelay": 26.91815144766147
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 898,
+          "delays": 24172.5,
+          "cancelled": 7,
+          "avgDelay": 26.91815144766147
+        }
+      ]
+    },
+    {
+      "code": "HRL",
+      "totalFlights": 894,
+      "departures": 447,
+      "arrivals": 447,
+      "avgDepartureDelay": 22.4,
+      "avgArrivalDelay": 22.1,
+      "cancellationRate": 2.13,
+      "onTimeRate": 0,
+      "avgDistance": 346,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 894,
+          "delays": 19887.5,
+          "cancelled": 19,
+          "avgDelay": 22.245525727069353
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 894,
+          "delays": 19887.5,
+          "cancelled": 19,
+          "avgDelay": 22.245525727069353
+        }
+      ]
+    },
+    {
+      "code": "MRY",
+      "totalFlights": 850,
+      "departures": 425,
+      "arrivals": 425,
+      "avgDepartureDelay": 19.9,
+      "avgArrivalDelay": 21,
+      "cancellationRate": 1.06,
+      "onTimeRate": 0,
+      "avgDistance": 562,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 850,
+          "delays": 17401.5,
+          "cancelled": 9,
+          "avgDelay": 20.47235294117647
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 850,
+          "delays": 17401.5,
+          "cancelled": 9,
+          "avgDelay": 20.47235294117647
+        }
+      ]
+    },
+    {
+      "code": "GJT",
+      "totalFlights": 827,
+      "departures": 414,
+      "arrivals": 413,
+      "avgDepartureDelay": 25,
+      "avgArrivalDelay": 25.9,
+      "cancellationRate": 1.45,
+      "onTimeRate": 0,
+      "avgDistance": 384,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 827,
+          "delays": 21048,
+          "cancelled": 12,
+          "avgDelay": 25.451027811366384
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 827,
+          "delays": 21048,
+          "cancelled": 12,
+          "avgDelay": 25.451027811366384
+        }
+      ]
+    },
+    {
+      "code": "ABE",
+      "totalFlights": 816,
+      "departures": 408,
+      "arrivals": 408,
+      "avgDepartureDelay": 21.8,
+      "avgArrivalDelay": 23.1,
+      "cancellationRate": 3.92,
+      "onTimeRate": 0,
+      "avgDistance": 754,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 816,
+          "delays": 18322.5,
+          "cancelled": 32,
+          "avgDelay": 22.454044117647058
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 816,
+          "delays": 18322.5,
+          "cancelled": 32,
+          "avgDelay": 22.454044117647058
+        }
+      ]
+    },
+    {
+      "code": "BIS",
+      "totalFlights": 816,
+      "departures": 408,
+      "arrivals": 408,
+      "avgDepartureDelay": 17.9,
+      "avgArrivalDelay": 18.2,
+      "cancellationRate": 0.86,
+      "onTimeRate": 0,
+      "avgDistance": 586,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 816,
+          "delays": 14737,
+          "cancelled": 7,
+          "avgDelay": 18.060049019607842
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 816,
+          "delays": 14737,
+          "cancelled": 7,
+          "avgDelay": 18.060049019607842
+        }
+      ]
+    },
+    {
+      "code": "GPT",
+      "totalFlights": 796,
+      "departures": 398,
+      "arrivals": 398,
+      "avgDepartureDelay": 28.7,
+      "avgArrivalDelay": 28.5,
+      "cancellationRate": 3.89,
+      "onTimeRate": 0,
+      "avgDistance": 440,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 796,
+          "delays": 22759,
+          "cancelled": 31,
+          "avgDelay": 28.59170854271357
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 796,
+          "delays": 22759,
+          "cancelled": 31,
+          "avgDelay": 28.59170854271357
+        }
+      ]
+    },
+    {
+      "code": "DRO",
+      "totalFlights": 796,
+      "departures": 398,
+      "arrivals": 398,
+      "avgDepartureDelay": 29.9,
+      "avgArrivalDelay": 29.8,
+      "cancellationRate": 1.38,
+      "onTimeRate": 0,
+      "avgDistance": 419,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 796,
+          "delays": 23761,
+          "cancelled": 11,
+          "avgDelay": 29.850502512562816
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 796,
+          "delays": 23761,
+          "cancelled": 11,
+          "avgDelay": 29.850502512562816
+        }
+      ]
+    },
+    {
+      "code": "TRI",
+      "totalFlights": 785,
+      "departures": 392,
+      "arrivals": 393,
+      "avgDepartureDelay": 25.8,
+      "avgArrivalDelay": 27.2,
+      "cancellationRate": 3.18,
+      "onTimeRate": 0,
+      "avgDistance": 290,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 785,
+          "delays": 20811.5,
+          "cancelled": 25,
+          "avgDelay": 26.511464968152865
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 785,
+          "delays": 20811.5,
+          "cancelled": 25,
+          "avgDelay": 26.511464968152865
+        }
+      ]
+    },
+    {
+      "code": "CAK",
+      "totalFlights": 784,
+      "departures": 392,
+      "arrivals": 392,
+      "avgDepartureDelay": 28.2,
+      "avgArrivalDelay": 31,
+      "cancellationRate": 1.28,
+      "onTimeRate": 0,
+      "avgDistance": 492,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 784,
+          "delays": 23184.5,
+          "cancelled": 10,
+          "avgDelay": 29.572066326530614
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 784,
+          "delays": 23184.5,
+          "cancelled": 10,
+          "avgDelay": 29.572066326530614
+        }
+      ]
+    },
+    {
+      "code": "EVV",
+      "totalFlights": 756,
+      "departures": 378,
+      "arrivals": 378,
+      "avgDepartureDelay": 19.2,
+      "avgArrivalDelay": 20.9,
+      "cancellationRate": 2.78,
+      "onTimeRate": 0,
+      "avgDistance": 447,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 756,
+          "delays": 15186.5,
+          "cancelled": 21,
+          "avgDelay": 20.087962962962962
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 756,
+          "delays": 15186.5,
+          "cancelled": 21,
+          "avgDelay": 20.087962962962962
+        }
+      ]
+    },
+    {
+      "code": "SGU",
+      "totalFlights": 740,
+      "departures": 370,
+      "arrivals": 370,
+      "avgDepartureDelay": 16.6,
+      "avgArrivalDelay": 17.4,
+      "cancellationRate": 0.14,
+      "onTimeRate": 0,
+      "avgDistance": 443,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 740,
+          "delays": 12553.5,
+          "cancelled": 1,
+          "avgDelay": 16.964189189189188
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 740,
+          "delays": 12553.5,
+          "cancelled": 1,
+          "avgDelay": 16.964189189189188
+        }
+      ]
+    },
+    {
+      "code": "GNV",
+      "totalFlights": 707,
+      "departures": 353,
+      "arrivals": 354,
+      "avgDepartureDelay": 16.4,
+      "avgArrivalDelay": 16.1,
+      "cancellationRate": 1.7,
+      "onTimeRate": 0,
+      "avgDistance": 425,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 707,
+          "delays": 11471.5,
+          "cancelled": 12,
+          "avgDelay": 16.225601131541726
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 707,
+          "delays": 11471.5,
+          "cancelled": 12,
+          "avgDelay": 16.225601131541726
+        }
+      ]
+    },
+    {
+      "code": "CRW",
+      "totalFlights": 661,
+      "departures": 331,
+      "arrivals": 330,
+      "avgDepartureDelay": 39.4,
+      "avgArrivalDelay": 41.5,
+      "cancellationRate": 3.03,
+      "onTimeRate": 0,
+      "avgDistance": 326,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 661,
+          "delays": 26741,
+          "cancelled": 20,
+          "avgDelay": 40.4553706505295
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 661,
+          "delays": 26741,
+          "cancelled": 20,
+          "avgDelay": 40.4553706505295
+        }
+      ]
+    },
+    {
+      "code": "MGM",
+      "totalFlights": 640,
+      "departures": 320,
+      "arrivals": 320,
+      "avgDepartureDelay": 34.2,
+      "avgArrivalDelay": 35.9,
+      "cancellationRate": 2.66,
+      "onTimeRate": 0,
+      "avgDistance": 367,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 640,
+          "delays": 22426,
+          "cancelled": 17,
+          "avgDelay": 35.040625
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 640,
+          "delays": 22426,
+          "cancelled": 17,
+          "avgDelay": 35.040625
+        }
+      ]
+    },
+    {
+      "code": "FNT",
+      "totalFlights": 638,
+      "departures": 319,
+      "arrivals": 319,
+      "avgDepartureDelay": 35.5,
+      "avgArrivalDelay": 37.3,
+      "cancellationRate": 0.31,
+      "onTimeRate": 0,
+      "avgDistance": 619,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 638,
+          "delays": 23215.5,
+          "cancelled": 2,
+          "avgDelay": 36.38793103448276
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 638,
+          "delays": 23215.5,
+          "cancelled": 2,
+          "avgDelay": 36.38793103448276
+        }
+      ]
+    },
+    {
+      "code": "ACK",
+      "totalFlights": 620,
+      "departures": 310,
+      "arrivals": 310,
+      "avgDepartureDelay": 22.5,
+      "avgArrivalDelay": 23.2,
+      "cancellationRate": 5.97,
+      "onTimeRate": 0,
+      "avgDistance": 233,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 620,
+          "delays": 14169.5,
+          "cancelled": 37,
+          "avgDelay": 22.854032258064517
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 620,
+          "delays": 14169.5,
+          "cancelled": 37,
+          "avgDelay": 22.854032258064517
+        }
+      ]
+    },
+    {
+      "code": "SAF",
+      "totalFlights": 615,
+      "departures": 307,
+      "arrivals": 308,
+      "avgDepartureDelay": 25.7,
+      "avgArrivalDelay": 27,
+      "cancellationRate": 1.3,
+      "onTimeRate": 0,
+      "avgDistance": 439,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 615,
+          "delays": 16200,
+          "cancelled": 8,
+          "avgDelay": 26.341463414634145
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 615,
+          "delays": 16200,
+          "cancelled": 8,
+          "avgDelay": 26.341463414634145
+        }
+      ]
+    },
+    {
+      "code": "PAE",
+      "totalFlights": 610,
+      "departures": 306,
+      "arrivals": 304,
+      "avgDepartureDelay": 9.2,
+      "avgArrivalDelay": 8.8,
+      "cancellationRate": 0.66,
+      "onTimeRate": 38.5,
+      "avgDistance": 962,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 610,
+          "delays": 5483,
+          "cancelled": 4,
+          "avgDelay": 8.988524590163934
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 610,
+          "delays": 5483,
+          "cancelled": 4,
+          "avgDelay": 8.988524590163934
+        }
+      ]
+    },
+    {
+      "code": "SCE",
+      "totalFlights": 597,
+      "departures": 298,
+      "arrivals": 299,
+      "avgDepartureDelay": 27.6,
+      "avgArrivalDelay": 28.8,
+      "cancellationRate": 2.85,
+      "onTimeRate": 0,
+      "avgDistance": 288,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 597,
+          "delays": 16852.5,
+          "cancelled": 17,
+          "avgDelay": 28.228643216080403
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 597,
+          "delays": 16852.5,
+          "cancelled": 17,
+          "avgDelay": 28.228643216080403
+        }
+      ]
+    },
+    {
+      "code": "FAY",
+      "totalFlights": 592,
+      "departures": 296,
+      "arrivals": 296,
+      "avgDepartureDelay": 26.8,
+      "avgArrivalDelay": 26.1,
+      "cancellationRate": 4.22,
+      "onTimeRate": 0,
+      "avgDistance": 199,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 592,
+          "delays": 15655,
+          "cancelled": 25,
+          "avgDelay": 26.444256756756758
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 592,
+          "delays": 15655,
+          "cancelled": 25,
+          "avgDelay": 26.444256756756758
+        }
+      ]
+    },
+    {
+      "code": "PVU",
+      "totalFlights": 584,
+      "departures": 292,
+      "arrivals": 292,
+      "avgDepartureDelay": 33.9,
+      "avgArrivalDelay": 34.7,
+      "cancellationRate": 0.34,
+      "onTimeRate": 0,
+      "avgDistance": 785,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 584,
+          "delays": 20049,
+          "cancelled": 2,
+          "avgDelay": 34.330479452054796
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 584,
+          "delays": 20049,
+          "cancelled": 2,
+          "avgDelay": 34.330479452054796
+        }
+      ]
+    },
+    {
+      "code": "AVP",
+      "totalFlights": 582,
+      "departures": 291,
+      "arrivals": 291,
+      "avgDepartureDelay": 34.7,
+      "avgArrivalDelay": 35.7,
+      "cancellationRate": 2.06,
+      "onTimeRate": 0,
+      "avgDistance": 470,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 582,
+          "delays": 20490.5,
+          "cancelled": 12,
+          "avgDelay": 35.20704467353952
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 582,
+          "delays": 20490.5,
+          "cancelled": 12,
+          "avgDelay": 35.20704467353952
+        }
+      ]
+    },
+    {
+      "code": "HHH",
+      "totalFlights": 568,
+      "departures": 284,
+      "arrivals": 284,
+      "avgDepartureDelay": 13.4,
+      "avgArrivalDelay": 15.5,
+      "cancellationRate": 1.76,
+      "onTimeRate": 10.7,
+      "avgDistance": 435,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 568,
+          "delays": 8203.5,
+          "cancelled": 10,
+          "avgDelay": 14.442781690140846
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 568,
+          "delays": 8203.5,
+          "cancelled": 10,
+          "avgDelay": 14.442781690140846
+        }
+      ]
+    },
+    {
+      "code": "OAJ",
+      "totalFlights": 568,
+      "departures": 284,
+      "arrivals": 284,
+      "avgDepartureDelay": 23.4,
+      "avgArrivalDelay": 23,
+      "cancellationRate": 3.17,
+      "onTimeRate": 0,
+      "avgDistance": 274,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 568,
+          "delays": 13169,
+          "cancelled": 18,
+          "avgDelay": 23.184859154929576
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 568,
+          "delays": 13169,
+          "cancelled": 18,
+          "avgDelay": 23.184859154929576
+        }
+      ]
+    },
+    {
+      "code": "MOT",
+      "totalFlights": 568,
+      "departures": 284,
+      "arrivals": 284,
+      "avgDepartureDelay": 27.9,
+      "avgArrivalDelay": 28.2,
+      "cancellationRate": 0.35,
+      "onTimeRate": 0,
+      "avgDistance": 574,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 568,
+          "delays": 15918,
+          "cancelled": 2,
+          "avgDelay": 28.024647887323944
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 568,
+          "delays": 15918,
+          "cancelled": 2,
+          "avgDelay": 28.024647887323944
+        }
+      ]
+    },
+    {
+      "code": "DAB",
+      "totalFlights": 542,
+      "departures": 271,
+      "arrivals": 271,
+      "avgDepartureDelay": 22.8,
+      "avgArrivalDelay": 20.9,
+      "cancellationRate": 2.95,
+      "onTimeRate": 0,
+      "avgDistance": 389,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 542,
+          "delays": 11823.5,
+          "cancelled": 16,
+          "avgDelay": 21.814575645756456
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 542,
+          "delays": 11823.5,
+          "cancelled": 16,
+          "avgDelay": 21.814575645756456
+        }
+      ]
+    },
+    {
+      "code": "LNK",
+      "totalFlights": 540,
+      "departures": 270,
+      "arrivals": 270,
+      "avgDepartureDelay": 32.8,
+      "avgArrivalDelay": 34.1,
+      "cancellationRate": 0.93,
+      "onTimeRate": 0,
+      "avgDistance": 442,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 540,
+          "delays": 18068.5,
+          "cancelled": 5,
+          "avgDelay": 33.46018518518518
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 540,
+          "delays": 18068.5,
+          "cancelled": 5,
+          "avgDelay": 33.46018518518518
+        }
+      ]
+    },
+    {
+      "code": "LRD",
+      "totalFlights": 530,
+      "departures": 265,
+      "arrivals": 265,
+      "avgDepartureDelay": 26.3,
+      "avgArrivalDelay": 27.1,
+      "cancellationRate": 3.21,
+      "onTimeRate": 0,
+      "avgDistance": 381,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 530,
+          "delays": 14150,
+          "cancelled": 17,
+          "avgDelay": 26.69811320754717
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 530,
+          "delays": 14150,
+          "cancelled": 17,
+          "avgDelay": 26.69811320754717
+        }
+      ]
+    },
+    {
+      "code": "BRO",
+      "totalFlights": 518,
+      "departures": 259,
+      "arrivals": 259,
+      "avgDepartureDelay": 28.7,
+      "avgArrivalDelay": 30.2,
+      "cancellationRate": 4.83,
+      "onTimeRate": 0,
+      "avgDistance": 391,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 518,
+          "delays": 15240.5,
+          "cancelled": 25,
+          "avgDelay": 29.421814671814673
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 518,
+          "delays": 15240.5,
+          "cancelled": 25,
+          "avgDelay": 29.421814671814673
+        }
+      ]
+    },
+    {
+      "code": "BFL",
+      "totalFlights": 480,
+      "departures": 240,
+      "arrivals": 240,
+      "avgDepartureDelay": 14.9,
+      "avgArrivalDelay": 15.5,
+      "cancellationRate": 0,
+      "onTimeRate": 0.4,
+      "avgDistance": 589,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 480,
+          "delays": 7306,
+          "cancelled": 0,
+          "avgDelay": 15.220833333333333
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 480,
+          "delays": 7306,
+          "cancelled": 0,
+          "avgDelay": 15.220833333333333
+        }
+      ]
+    },
+    {
+      "code": "MLB",
+      "totalFlights": 472,
+      "departures": 236,
+      "arrivals": 236,
+      "avgDepartureDelay": 18.6,
+      "avgArrivalDelay": 18.8,
+      "cancellationRate": 3.6,
+      "onTimeRate": 0,
+      "avgDistance": 507,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 472,
+          "delays": 8821.5,
+          "cancelled": 17,
+          "avgDelay": 18.689618644067796
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 472,
+          "delays": 8821.5,
+          "cancelled": 17,
+          "avgDelay": 18.689618644067796
+        }
+      ]
+    },
+    {
+      "code": "GTF",
+      "totalFlights": 464,
+      "departures": 232,
+      "arrivals": 232,
+      "avgDepartureDelay": 16.6,
+      "avgArrivalDelay": 16,
+      "cancellationRate": 0,
+      "onTimeRate": 0,
+      "avgDistance": 612,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 464,
+          "delays": 7561.5,
+          "cancelled": 0,
+          "avgDelay": 16.29633620689655
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 464,
+          "delays": 7561.5,
+          "cancelled": 0,
+          "avgDelay": 16.29633620689655
+        }
+      ]
+    },
+    {
+      "code": "KTN",
+      "totalFlights": 458,
+      "departures": 229,
+      "arrivals": 229,
+      "avgDepartureDelay": 13.9,
+      "avgArrivalDelay": 14.7,
+      "cancellationRate": 0.66,
+      "onTimeRate": 7.3,
+      "avgDistance": 478,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 458,
+          "delays": 6550.5,
+          "cancelled": 3,
+          "avgDelay": 14.302401746724891
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 458,
+          "delays": 6550.5,
+          "cancelled": 3,
+          "avgDelay": 14.302401746724891
+        }
+      ]
+    },
+    {
+      "code": "DLH",
+      "totalFlights": 451,
+      "departures": 226,
+      "arrivals": 225,
+      "avgDepartureDelay": 18.5,
+      "avgArrivalDelay": 19.9,
+      "cancellationRate": 0.44,
+      "onTimeRate": 0,
+      "avgDistance": 266,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 451,
+          "delays": 8663,
+          "cancelled": 2,
+          "avgDelay": 19.20842572062084
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 451,
+          "delays": 8663,
+          "cancelled": 2,
+          "avgDelay": 19.20842572062084
+        }
+      ]
+    },
+    {
+      "code": "SUN",
+      "totalFlights": 433,
+      "departures": 216,
+      "arrivals": 217,
+      "avgDepartureDelay": 15.7,
+      "avgArrivalDelay": 14.9,
+      "cancellationRate": 0.23,
+      "onTimeRate": 0,
+      "avgDistance": 453,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 433,
+          "delays": 6616.5,
+          "cancelled": 1,
+          "avgDelay": 15.280600461893764
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 433,
+          "delays": 6616.5,
+          "cancelled": 1,
+          "avgDelay": 15.280600461893764
+        }
+      ]
+    },
+    {
+      "code": "BLI",
+      "totalFlights": 430,
+      "departures": 215,
+      "arrivals": 215,
+      "avgDepartureDelay": 10.2,
+      "avgArrivalDelay": 11.2,
+      "cancellationRate": 0,
+      "onTimeRate": 31.7,
+      "avgDistance": 485,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 430,
+          "delays": 4610.5,
+          "cancelled": 0,
+          "avgDelay": 10.722093023255814
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 430,
+          "delays": 4610.5,
+          "cancelled": 0,
+          "avgDelay": 10.722093023255814
+        }
+      ]
+    },
+    {
+      "code": "BQN",
+      "totalFlights": 424,
+      "departures": 212,
+      "arrivals": 212,
+      "avgDepartureDelay": 15.5,
+      "avgArrivalDelay": 13.9,
+      "cancellationRate": 0.71,
+      "onTimeRate": 0,
+      "avgDistance": 1294,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 424,
+          "delays": 6239,
+          "cancelled": 3,
+          "avgDelay": 14.714622641509434
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 424,
+          "delays": 6239,
+          "cancelled": 3,
+          "avgDelay": 14.714622641509434
+        }
+      ]
+    },
+    {
+      "code": "XWA",
+      "totalFlights": 420,
+      "departures": 210,
+      "arrivals": 210,
+      "avgDepartureDelay": 31.2,
+      "avgArrivalDelay": 32.1,
+      "cancellationRate": 0.48,
+      "onTimeRate": 0,
+      "avgDistance": 574,
+      "monthly": [
+        {
+          "month": "2025-06",
+          "flights": 420,
+          "delays": 13300,
+          "cancelled": 2,
+          "avgDelay": 31.666666666666668
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2025,
+          "flights": 420,
+          "delays": 13300,
+          "cancelled": 2,
+          "avgDelay": 31.666666666666668
+        }
+      ]
+    }
+  ],
+  "trends": {
+    "monthly": [
+      {
+        "month": "2025-06",
+        "totalFlights": 674179,
+        "avgDepDelay": 22.3,
+        "avgArrDelay": 22.8,
+        "cancellationRate": 1.8
+      }
+    ],
+    "quarterly": [
+      {
+        "quarter": "2025-Q2",
+        "totalFlights": 674179,
+        "avgDepDelay": 22.3,
+        "avgArrDelay": 22.8,
+        "cancellationRate": 1.8
+      }
+    ],
+    "yearly": [
+      {
+        "year": "2025",
+        "totalFlights": 674179,
+        "avgDepDelay": 22.3,
+        "avgArrDelay": 22.8,
+        "cancellationRate": 1.8
+      }
+    ]
+  }
+}

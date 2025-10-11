@@ -27,6 +27,17 @@ yarn-error.log*
 
 # local env files
 .env*.local
+.env
+.env.production
+
+# deployment configs with secrets
+app-spec.yaml
+app.yaml
+docker-compose.yml
+data/credentials.json
+deploy-now.sh
+quick-deploy.sh
+github-deploy.sh
 
 # vercel
 .vercel

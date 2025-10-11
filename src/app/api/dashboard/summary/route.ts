@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getAllAirports, getAirportByCode } from '@/lib/airports-data'
-import { cache } from '@/lib/cache'
+// import { cache } from '@/lib/cache' // Temporarily disabled to fix error
 
 // Store for maintaining realistic incremental changes
 let lastData: any = null

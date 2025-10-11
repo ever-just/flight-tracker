@@ -19,11 +19,17 @@ import {
   Users,
   ChevronRight
 } from 'lucide-react'
+import dynamic from 'next/dynamic'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { AirportCard } from '@/components/airport-card'
-import { FlightTrendsEnhanced } from '@/components/flight-trends-enhanced'
 import { AnimatedNumber, AnimatedPercentage, LiveIndicator, UpdateFlash } from '@/components/animated-number'
 import { cn } from '@/lib/utils'
+
+// Dynamic import for better performance
+const FlightTrendsEnhanced = dynamic(() => import('@/components/flight-trends-enhanced').then(mod => ({ default: mod.FlightTrendsEnhanced })), {
+  loading: () => <div className="h-96 bg-white/5 rounded-lg animate-pulse flex items-center justify-center"><div className="text-muted-foreground">Loading chart...</div></div>,
+  ssr: false
+})
 
 // Mock data for initial development
 const mockDashboardData = {

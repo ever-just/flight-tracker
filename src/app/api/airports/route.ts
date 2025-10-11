@@ -102,13 +102,20 @@ export async function GET(request: NextRequest) {
     const endIndex = startIndex + limit
     const paginatedData = filtered.slice(startIndex, endIndex)
     
-    return NextResponse.json({
-      airports: paginatedData,
-      total: filtered.length,
-      page,
-      totalPages: Math.ceil(filtered.length / limit),
-      timestamp: new Date().toISOString()
-    })
+        const response = NextResponse.json({
+          airports: paginatedData,
+          total: filtered.length,
+          page,
+          totalPages: Math.ceil(filtered.length / limit),
+          timestamp: new Date().toISOString()
+        })
+        
+        // Add cache headers for better performance
+        response.headers.set('Cache-Control', 'public, s-maxage=60, stale-while-revalidate=120')
+        response.headers.set('CDN-Cache-Control', 'public, s-maxage=60')
+        response.headers.set('Vercel-CDN-Cache-Control', 'public, s-maxage=60')
+        
+        return response
     
   } catch (error) {
     console.error('Error fetching airports:', error)

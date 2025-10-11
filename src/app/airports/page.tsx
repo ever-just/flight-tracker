@@ -5,6 +5,7 @@ import { useQuery } from '@tanstack/react-query'
 import { Search, Filter, ChevronDown, Plane, Clock, AlertCircle } from 'lucide-react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { AirportCard } from '@/components/airport-card'
+import { AirportCardSkeleton } from '@/components/loading-skeleton'
 import { airportNames } from '@/lib/utils'
 import { cn } from '@/lib/utils'
 
@@ -65,9 +66,12 @@ function getState(code: string) {
 
 async function fetchAirports() {
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'
-    const response = await fetch(`${baseUrl}/api/airports`, {
+    // Use relative URL for client-side fetching
+    const response = await fetch('/api/airports', {
       cache: 'no-store',
+      headers: {
+        'Content-Type': 'application/json',
+      },
     })
     if (!response.ok) {
       console.error('API Error:', response.status)
@@ -278,7 +282,7 @@ export default function AirportsPage() {
       {isLoading ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           {[...Array(12)].map((_, i) => (
-            <div key={i} className="glass-card p-4 h-32 loading-pulse rounded-lg" />
+            <AirportCardSkeleton key={i} />
           ))}
         </div>
       ) : filteredAirports.length === 0 ? (

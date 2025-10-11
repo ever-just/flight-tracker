@@ -309,7 +309,9 @@ export default function DashboardPageEnhanced() {
                     name={airport.name}
                     status={airport.status as any}
                     flights={airport.flights}
-                    delays={airport.delays}
+                    avgDelay={airport.avgDelay || airport.averageDelay || 0}
+                    cancellations={airport.cancellations || 0}
+                    cancellationRate={airport.cancellationRate || 0}
                   />
                 ))}
               </div>

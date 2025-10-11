@@ -270,22 +270,26 @@ export default function AirportDetailPage({ params }: PageProps) {
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
-              {Object.entries(airportData.flightTypes).map(([type, count]) => (
-                <div key={type}>
-                  <div className="flex items-center justify-between mb-1">
-                    <span className="text-sm font-medium capitalize">{type}</span>
-                    <span className="text-sm text-muted-foreground">{count}</span>
+              {airportData.flightTypes && Object.entries(airportData.flightTypes).map(([type, count]) => {
+                const countNum = Number(count)
+                const maxCount = Math.max(...Object.values(airportData.flightTypes).map(v => Number(v)))
+                return (
+                  <div key={type}>
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-sm font-medium capitalize">{type}</span>
+                      <span className="text-sm text-muted-foreground">{countNum}</span>
+                    </div>
+                    <div className="w-full bg-white/10 rounded-full h-2">
+                      <div 
+                        className="bg-aviation-sky h-2 rounded-full transition-all duration-500"
+                        style={{ 
+                          width: `${(countNum / maxCount) * 100}%` 
+                        }}
+                      />
+                    </div>
                   </div>
-                  <div className="w-full bg-white/10 rounded-full h-2">
-                    <div 
-                      className="bg-aviation-sky h-2 rounded-full transition-all duration-500"
-                      style={{ 
-                        width: `${(count / Math.max(...Object.values(airportData.flightTypes))) * 100}%` 
-                      }}
-                    />
-                  </div>
-                </div>
-              ))}
+                )
+              })}
             </div>
           </CardContent>
         </Card>

@@ -50,31 +50,7 @@ function getState(code: string) {
   return states[code] || 'US'
 }
 
-async function fetchAirports() {
-  try {
-    // Use relative URL for client-side fetching
-    const response = await fetch('/api/airports', {
-      cache: 'no-store',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-    if (!response.ok) {
-      console.error('API Error:', response.status)
-      return generateMockAirports()
-    }
-    const data = await response.json()
-    // Add region to each airport
-    const airportsWithRegion = (data.airports || []).map((airport: any) => ({
-      ...airport,
-      region: getRegion(airport.code)
-    }))
-    return airportsWithRegion.length > 0 ? airportsWithRegion : generateMockAirports()
-  } catch (error) {
-    console.error('Fetch error:', error)
-    return generateMockAirports()
-  }
-}
+// fetchAirports already defined above (line 13) - removed duplicate
 
 export default function AirportsPage() {
   const [searchTerm, setSearchTerm] = useState('')
@@ -289,9 +265,9 @@ export default function AirportsPage() {
               state={airport.state}
               status={airport.status?.toLowerCase() || 'normal'}
               flights={airport.flights}
-              delays={airport.delays}
-              cancellations={airport.cancellations}
-              averageDelay={airport.averageDelay}
+              avgDelay={airport.averageDelay || 0}
+              cancellations={airport.cancellations || 0}
+              cancellationRate={airport.cancellationRate || (airport.cancellations && airport.flights ? (airport.cancellations / airport.flights * 100).toFixed(2) : 0)}
             />
           ))}
         </div>

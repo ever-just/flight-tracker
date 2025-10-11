@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { getAllAirports, getAirportByCode } from '@/lib/airports-data'
 import { cache } from '@/lib/cache'
 import { realDataAggregator } from '@/services/real-data-aggregator'
+import { btsDataService } from '@/services/bts-data.service'
 
 // REAL DATA ONLY - Hybrid approach: Real-time + Historical
 export async function GET(request: NextRequest) {
@@ -53,21 +54,22 @@ export async function GET(request: NextRequest) {
           cancellations: 0
         }
       },
-      topAirports: aggregatedData.topAirports.map(airport => {
+      topAirports: await Promise.all(aggregatedData.topAirports.map(async airport => {
         const airportInfo = getAirportByCode(airport.code)
+        const btsAirport = await btsDataService.getAirportStats(airport.code)
+        
         return {
           code: airport.code,
           name: airportInfo?.name || airport.code,
           city: airportInfo?.city || '',
           state: airportInfo?.state || '',
-          status: airport.status,
+          status: airport.status,  // Normal, Moderate, or Severe
           flights: airport.flights,
-          delays: Math.round(airport.flights * (airport.avgDelay / 60)),
-          cancellations: Math.round(airport.flights * 0.018), // ~1.8% avg
-          averageDelay: airport.avgDelay,
-          onTimeRate: airport.onTimeRate
+          avgDelay: Math.round(airport.avgDelay * 10) / 10,  // Round to 1 decimal
+          cancellations: btsAirport ? Math.round(btsAirport.totalFlights * (btsAirport.cancellationRate / 100)) : 0,
+          cancellationRate: btsAirport ? Math.round(btsAirport.cancellationRate * 100) / 100 : 0
         }
-      }),
+      })),
       topCountries: aggregatedData.summary.topCountries,
       trends: {
         daily: aggregatedData.trends.daily

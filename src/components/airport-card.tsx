@@ -9,11 +9,11 @@ interface AirportCardProps {
   name: string
   city?: string
   state?: string
-  status: 'normal' | 'busy' | 'severe' | 'closed'
+  status: 'normal' | 'busy' | 'severe' | 'closed' | 'moderate'
   flights: number
-  delays: number
-  cancellations?: number
-  averageDelay?: number
+  avgDelay: number
+  cancellations: number
+  cancellationRate: number
 }
 
 const statusConfig = {
@@ -22,13 +22,18 @@ const statusConfig = {
     text: 'Normal',
     icon: TrendingUp,
   },
+  moderate: {
+    color: 'bg-amber-500',
+    text: 'Moderate',
+    icon: Clock,
+  },
   busy: {
     color: 'bg-amber-500',
-    text: 'Busy',
+    text: 'Moderate',
     icon: Clock,
   },
   severe: {
-    color: 'bg-orange-500',
+    color: 'bg-red-500',
     text: 'Severe',
     icon: AlertCircle,
   },
@@ -46,15 +51,14 @@ export function AirportCard({
   state,
   status,
   flights,
-  delays,
-  cancellations = 0,
-  averageDelay = 0,
+  avgDelay,
+  cancellations,
+  cancellationRate,
 }: AirportCardProps) {
   // Ensure status is valid, fallback to normal
   const validStatus = statusConfig[status] ? status : 'normal'
   const config = statusConfig[validStatus]
   const StatusIcon = config.icon
-  const delayRate = flights > 0 ? ((delays / flights) * 100).toFixed(1) : '0'
 
   return (
     <Link
@@ -89,6 +93,13 @@ export function AirportCard({
           </div>
         </div>
 
+        {/* Status with average delay */}
+        <div className="mb-3 pb-3 border-b border-white/10">
+          <p className="text-xs text-muted-foreground">Average Delay</p>
+          <p className="text-lg font-semibold text-amber-500">{avgDelay} min</p>
+        </div>
+
+        {/* Metrics Grid */}
         <div className="grid grid-cols-2 gap-3">
           <div className="flex items-center space-x-2">
             <Plane className="w-4 h-4 text-aviation-sky" />
@@ -99,30 +110,13 @@ export function AirportCard({
           </div>
           
           <div className="flex items-center space-x-2">
-            <Clock className="w-4 h-4 text-amber-500" />
+            <AlertCircle className="w-4 h-4 text-red-500" />
             <div>
-              <p className="text-xs text-muted-foreground">Delays</p>
-              <p className="text-sm font-semibold text-white">{delays} ({delayRate}%)</p>
+              <p className="text-xs text-muted-foreground">Cancelled</p>
+              <p className="text-sm font-semibold text-white">{cancellations} ({cancellationRate}%)</p>
             </div>
           </div>
         </div>
-
-        {(averageDelay > 0 || cancellations > 0) && (
-          <div className="mt-3 pt-3 border-t border-white/10">
-            <div className="flex justify-between text-xs">
-              {averageDelay > 0 && (
-                <span className="text-muted-foreground">
-                  Avg delay: <span className="text-amber-500 font-medium">{averageDelay} min</span>
-                </span>
-              )}
-              {cancellations > 0 && (
-                <span className="text-muted-foreground">
-                  Cancelled: <span className="text-red-500 font-medium">{cancellations}</span>
-                </span>
-              )}
-            </div>
-          </div>
-        )}
       </div>
     </Link>
   )

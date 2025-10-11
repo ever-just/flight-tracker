@@ -1,33 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    /* Dark theme (default) */
+    --background: 0 0% 0%;
+    --foreground: 0 0% 95%;
+
+    --card: 0 0% 0%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 0 0% 0%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 0%;
+
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 95%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 60%;
+
+    --accent: 217 91% 60%;
+    --accent-foreground: 0 0% 0%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 95%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 217 91% 60%;
+
+    --radius: 0.5rem;
+  }
+
+  .light {
+    --background: 210 100% 98%;
+    --foreground: 0 0% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 10%;
+
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 0 0% 10%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 0 0% 45%;
+
+    --accent: 210 40% 96%;
+    --accent-foreground: 0 0% 10%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 217 91% 60%;
+
+    --radius: 0.5rem;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    min-height: 100vh;
+  }
+  
+  body.dark, body:not(.light) {
+    background: #000000;
+  }
+  
+  body.light {
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  }
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+@layer components {
+  /* Glass morphism card effect */
+  .glass-card {
+    @apply backdrop-blur-md shadow-xl;
+  }
+  
+  .dark .glass-card {
+    @apply bg-white/5 border border-white/10;
+  }
+  
+  .light .glass-card {
+    @apply bg-black/5 border border-black/10;
+  }
+
+  /* Status indicators */
+  .status-operational {
+    @apply bg-status-operational text-white;
+  }
+  
+  .status-minor-delay {
+    @apply bg-status-minor-delay text-white;
+  }
+  
+  .status-major-delay {
+    @apply bg-status-major-delay text-white;
+  }
+  
+  .status-closed {
+    @apply bg-status-closed text-white;
+  }
+
+  /* Loading animation */
+  .loading-pulse {
+    @apply animate-pulse bg-gradient-to-r from-aviation-navy via-aviation-blue to-aviation-navy bg-[length:200%_100%];
+    animation: shimmer 2s infinite;
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  /* Map styles */
+  .leaflet-container {
+    @apply rounded-lg shadow-2xl;
+    background: #000000;
+  }
+
+  /* Dashboard grid */
+  .dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  /* Metric card hover effect */
+  .metric-card {
+    @apply transition-all duration-300 hover:scale-105 hover:shadow-2xl;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-aviation-navy;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-aviation-blue rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-aviation-sky;
   }
 }

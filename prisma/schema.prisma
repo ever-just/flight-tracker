@@ -1,0 +1,201 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// Airport information
+model Airport {
+  id            String   @id @default(cuid())
+  code          String   @unique // IATA code (e.g., ATL, DFW)
+  name          String
+  city          String
+  state         String
+  country       String   @default("USA")
+  latitude      Float
+  longitude     Float
+  timezone      String
+  isActive      Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  // Relations
+  flightStats   FlightStats[]
+  dailyMetrics  DailyMetrics[]
+  currentStatus AirportStatus?
+  
+  @@index([code])
+  @@map("airports")
+}
+
+// Real-time airport status
+model AirportStatus {
+  id                String   @id @default(cuid())
+  airportId         String   @unique
+  airport           Airport  @relation(fields: [airportId], references: [id])
+  status            Status   @default(OPERATIONAL)
+  averageDelay      Int      @default(0) // in minutes
+  delayedFlights    Int      @default(0)
+  cancelledFlights  Int      @default(0)
+  totalFlights      Int      @default(0)
+  weatherCondition  String?
+  lastUpdated       DateTime @default(now())
+  
+  @@index([airportId, status])
+  @@map("airport_status")
+}
+
+enum Status {
+  OPERATIONAL
+  MINOR_DELAYS
+  MAJOR_DELAYS
+  CLOSED
+  UNKNOWN
+}
+
+// Historical flight statistics (daily aggregates)
+model FlightStats {
+  id               String   @id @default(cuid())
+  airportId        String
+  airport          Airport  @relation(fields: [airportId], references: [id])
+  date             DateTime @default(now())
+  
+  // Flight counts
+  totalArrivals    Int      @default(0)
+  totalDepartures  Int      @default(0)
+  totalFlights     Int      @default(0)
+  
+  // Flight types
+  domesticFlights  Int      @default(0)
+  internationalFlights Int  @default(0)
+  commercialFlights Int     @default(0)
+  cargoFlights     Int      @default(0)
+  
+  // Delays and cancellations
+  delayedArrivals  Int      @default(0)
+  delayedDepartures Int     @default(0)
+  cancelledFlights Int      @default(0)
+  averageDelayMinutes Float  @default(0)
+  
+  // On-time performance
+  onTimePercentage Float    @default(0)
+  
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  
+  @@unique([airportId, date])
+  @@index([airportId, date])
+  @@map("flight_stats")
+}
+
+// Aggregated daily metrics for quick dashboard access
+model DailyMetrics {
+  id               String   @id @default(cuid())
+  date             DateTime @default(now())
+  airportId        String?
+  airport          Airport? @relation(fields: [airportId], references: [id])
+  
+  // National level metrics (when airportId is null)
+  totalFlights     Int      @default(0)
+  totalDelays      Int      @default(0)
+  totalCancellations Int    @default(0)
+  averageDelayMinutes Float  @default(0)
+  
+  // Comparisons
+  momChangePercent Float?   // Month over month
+  yoyChangePercent Float?   // Year over year
+  qoqChangePercent Float?   // Quarter over quarter
+  
+  createdAt        DateTime @default(now())
+  
+  @@unique([date, airportId])
+  @@index([date, airportId])
+  @@map("daily_metrics")
+}
+
+// Live flight positions (cached from OpenSky API)
+model LiveFlight {
+  id               String   @id @default(cuid())
+  icao24           String   // Unique ICAO 24-bit address
+  callsign         String?
+  originCountry    String
+  
+  // Position data
+  longitude        Float?
+  latitude         Float?
+  altitude         Float?   // in meters
+  velocity         Float?   // in m/s
+  heading          Float?   // in degrees
+  verticalRate     Float?   // in m/s
+  
+  // Flight details
+  originAirport    String?
+  destinationAirport String?
+  onGround         Boolean  @default(false)
+  
+  timestamp        DateTime
+  lastUpdated      DateTime @default(now())
+  
+  @@index([originAirport])
+  @@index([destinationAirport])
+  @@index([timestamp])
+  @@map("live_flights")
+}
+
+// API call tracking and rate limiting
+model ApiLog {
+  id               String   @id @default(cuid())
+  apiName          String   // FAA, OpenSky, AviationStack
+  endpoint         String
+  method           String   @default("GET")
+  statusCode       Int?
+  responseTime     Int?     // in milliseconds
+  errorMessage     String?
+  rateLimitRemaining Int?
+  timestamp        DateTime @default(now())
+  
+  @@index([apiName, timestamp])
+  @@map("api_logs")
+}
+
+// Cache management
+model CacheStatus {
+  id               String   @id @default(cuid())
+  key              String   @unique
+  value            Json
+  expiresAt        DateTime
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  
+  @@index([key, expiresAt])
+  @@map("cache_status")
+}
+
+// Historical BTS data imports
+model DataImport {
+  id               String   @id @default(cuid())
+  fileName         String
+  importType       String   // BTS_T100, FAA_STATUS, etc.
+  recordsProcessed Int      @default(0)
+  status           ImportStatus @default(PENDING)
+  startedAt        DateTime?
+  completedAt      DateTime?
+  errorMessage     String?
+  createdAt        DateTime @default(now())
+  
+  @@index([status, createdAt])
+  @@map("data_imports")
+}
+
+enum ImportStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
+}

@@ -262,7 +262,7 @@ export default function DashboardPageEnhanced() {
             </CardHeader>
             <CardContent>
               <div className="space-y-3">
-                {dashboardData.recentDelays.map((delay, index) => (
+                {dashboardData.recentDelays.map((delay: any, index: number) => (
                   <Link 
                     key={index} 
                     href={`/airports/${delay.airport}`}
@@ -302,7 +302,7 @@ export default function DashboardPageEnhanced() {
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
-                {dashboardData.topAirports.slice(0, 10).map((airport) => (
+                {dashboardData.topAirports.slice(0, 10).map((airport: any) => (
                   <AirportCard
                     key={airport.code}
                     code={airport.code}

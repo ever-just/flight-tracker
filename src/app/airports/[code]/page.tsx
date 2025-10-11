@@ -49,15 +49,18 @@ function generateMockAirportData(code: string) {
         flights: Math.random() * 20 - 10,
         delays: Math.random() * 30 - 15,
         onTime: Math.random() * 10 - 5,
+        cancellations: Math.random() * 5 - 2.5,
       },
       monthly: {
         flights: Math.random() * 15 - 7.5,
         delays: Math.random() * 25 - 12.5,
         onTime: Math.random() * 8 - 4,
+        cancellations: Math.random() * 4 - 2,
       },
       yearly: {
         flights: Math.random() * 10 - 5,
         delays: Math.random() * 20 - 10,
+        cancellations: Math.random() * 3 - 1.5,
         onTime: Math.random() * 5 - 2.5,
       },
     },

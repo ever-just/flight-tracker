@@ -53,16 +53,19 @@ function generateAirportData(code: string) {
         flights: (Math.random() * 10 - 5).toFixed(1),
         delays: (Math.random() * 20 - 10).toFixed(1),
         onTime: (Math.random() * 8 - 4).toFixed(1),
+        cancellations: (Math.random() * 5 - 2.5).toFixed(1),
       },
       monthly: {
         flights: (Math.random() * 12 - 6).toFixed(1),
         delays: (Math.random() * 18 - 9).toFixed(1),
         onTime: (Math.random() * 6 - 3).toFixed(1),
+        cancellations: (Math.random() * 4 - 2).toFixed(1),
       },
       yearly: {
         flights: (Math.random() * 15 - 7.5).toFixed(1),
         delays: (Math.random() * 22 - 11).toFixed(1),
         onTime: (Math.random() * 10 - 5).toFixed(1),
+        cancellations: (Math.random() * 3 - 1.5).toFixed(1),
       },
     },
     trends: Array(7).fill(null).map((_, i) => {

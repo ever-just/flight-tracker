@@ -259,7 +259,7 @@ export default function FlightsPage() {
                         <p className="text-xs text-muted-foreground">Actual</p>
                         <p className="text-sm text-white">{flight.actualTime}</p>
                       </div>
-                      {flight.delay > 0 && (
+                      {flight.delay && flight.delay > 0 && (
                         <div className="flex items-center text-amber-500">
                           <Clock className="w-3 h-3 mr-1" />
                           <span className="text-xs">+{flight.delay}m</span>

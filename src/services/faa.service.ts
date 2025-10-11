@@ -1,6 +1,12 @@
 import axios from 'axios'
 import { prisma } from '@/lib/prisma'
-import { Status } from '@prisma/client'
+
+enum Status {
+  OPERATIONAL = 'OPERATIONAL',
+  MINOR_DELAYS = 'MINOR_DELAYS',
+  MAJOR_DELAYS = 'MAJOR_DELAYS',
+  CLOSED = 'CLOSED'
+}
 
 interface FAADelay {
   airport: string

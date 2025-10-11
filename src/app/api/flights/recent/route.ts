@@ -180,13 +180,37 @@ export async function GET(request: NextRequest) {
   try {
     const searchParams = request.nextUrl.searchParams
     const limit = searchParams.get('limit') ? parseInt(searchParams.get('limit')!) : 100
+    const airportCode = searchParams.get('airport')
     
-    // Generate fresh flight data
-    const flights = generateRecentFlights(Math.min(limit, 200))
+    // Fetch real flights from live endpoint
+    const liveResponse = await fetch(`${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/api/flights/live`, {
+      cache: 'no-store'
+    })
     
-    // Store for next incremental update
-    lastFlights = flights
-    lastUpdateTime = Date.now()
+    let flights = []
+    
+    if (liveResponse.ok) {
+      const liveData = await liveResponse.json()
+      flights = (liveData.flights || []).slice(0, limit)
+      
+      // If airport code specified, try to filter (though OpenSky doesn't provide origin/dest)
+      if (airportCode && flights.length > 0) {
+        // Can't accurately filter by airport from OpenSky position data alone
+        // Return general flights but note limitation
+        console.log(`[RECENT FLIGHTS] Airport-specific filtering not available from OpenSky data`)
+      }
+    }
+    
+    // If no real data, return empty with note
+    if (flights.length === 0) {
+      return NextResponse.json({
+        flights: [],
+        total: 0,
+        timestamp: new Date().toISOString(),
+        note: 'Recent flight data requires scheduled flight database. Showing live airborne flights instead.',
+        limitation: 'OpenSky provides position data only, not flight schedules or airport assignments'
+      })
+    }
     
     // Add headers to prevent caching for real-time data
     const headers = new Headers()
@@ -197,13 +221,18 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({
       flights,
       total: flights.length,
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
+      source: 'opensky-live-flights'
     }, { headers })
     
   } catch (error) {
     console.error('Error fetching recent flights:', error)
     return NextResponse.json(
-      { error: 'Failed to fetch recent flights' },
+      { 
+        flights: [],
+        error: 'Failed to fetch recent flights',
+        note: 'Flight data temporarily unavailable'
+      },
       { status: 500 }
     )
   }

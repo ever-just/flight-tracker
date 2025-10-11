@@ -83,24 +83,18 @@ function generateMockAirportData(code: string) {
 }
 
 async function fetchAirportData(code: string) {
-  try {
-    // Use relative URL for client-side fetching
-    const response = await fetch(`/api/airports/${code}`, {
-      cache: 'no-store',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-    if (!response.ok) {
-      console.error('API Error:', response.status)
-      return generateMockAirportData(code)
-    }
-    const data = await response.json()
-    return data
-  } catch (error) {
-    console.error('Fetch error:', error)
-    return generateMockAirportData(code)
+  const response = await fetch(`/api/airports/${code}`, {
+    cache: 'no-store',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+  
+  if (!response.ok) {
+    throw new Error(`Airport API returned ${response.status}`)
   }
+  
+  return response.json()
 }
 
 export default function AirportDetailPage({ params }: PageProps) {
@@ -111,6 +105,17 @@ export default function AirportDetailPage({ params }: PageProps) {
   const { data: airport, isLoading } = useQuery({
     queryKey: ['airport', code],
     queryFn: () => fetchAirportData(code.toUpperCase()),
+  })
+  
+  // Fetch real recent flights from API
+  const { data: recentFlightsData } = useQuery({
+    queryKey: ['recent-flights', code],
+    queryFn: async () => {
+      const response = await fetch(`/api/flights/recent?airport=${code.toUpperCase()}&limit=100`)
+      if (!response.ok) throw new Error('Failed to fetch flights')
+      return response.json()
+    },
+    refetchInterval: 30000, // Refresh every 30 seconds
   })
 
   if (isLoading) {
@@ -124,7 +129,7 @@ export default function AirportDetailPage({ params }: PageProps) {
     )
   }
 
-  const airportData = airport as ReturnType<typeof generateMockAirportData>
+  const airportData = airport
 
   if (!airportData) {
     return (
@@ -133,9 +138,13 @@ export default function AirportDetailPage({ params }: PageProps) {
       </div>
     )
   }
+  
+  // Get real flights from API (not from airportData which has mock)
+  const recentFlights = recentFlightsData?.flights || []
 
   const statusConfig = {
     operational: { color: 'bg-green-500', text: 'Operational' },
+    'OPERATIONAL': { color: 'bg-green-500', text: 'Operational' },
     'minor-delay': { color: 'bg-amber-500', text: 'Minor Delays' },
     'major-delay': { color: 'bg-orange-500', text: 'Major Delays' },
     closed: { color: 'bg-red-500', text: 'Closed' },
@@ -448,40 +457,54 @@ export default function AirportDetailPage({ params }: PageProps) {
                 </tr>
               </thead>
               <tbody>
-                {airportData.recentFlights.slice(0, 100).map((flight, index) => (
-                  <tr 
-                    key={index} 
-                    className="border-b border-white/5 hover:bg-white/5 transition-colors"
-                  >
-                    <td className="py-3 px-2">
-                      <div>
-                        <p className="font-medium text-sm">{flight.flightNumber}</p>
-                        <p className="text-xs text-muted-foreground">{flight.destination}</p>
-                      </div>
-                    </td>
-                    <td className="py-3 px-2">
-                      <span className={cn(
-                        "text-xs font-medium capitalize",
-                        flight.type === 'arrival' ? "text-blue-400" : "text-purple-400"
-                      )}>
-                        {flight.type}
-                      </span>
-                    </td>
-                    <td className="py-3 px-2 text-sm">{flight.scheduledTime}</td>
-                    <td className="py-3 px-2 text-sm">{flight.actualTime}</td>
-                    <td className="py-3 px-2 text-sm">{flight.gate}</td>
-                    <td className="py-3 px-2">
-                      <span className={cn(
-                        "px-2 py-1 rounded-full text-xs font-medium",
-                        flight.status === 'on-time' && "bg-green-500/20 text-green-400",
-                        flight.status === 'delayed' && "bg-amber-500/20 text-amber-400",
-                        flight.status === 'cancelled' && "bg-red-500/20 text-red-400"
-                      )}>
-                        {flight.status}
-                      </span>
+                {recentFlights.length === 0 ? (
+                  <tr>
+                    <td colSpan={6} className="py-12 text-center text-muted-foreground">
+                      <p>Loading recent flight data...</p>
+                      <p className="text-xs mt-2">Real-time flights from OpenSky Network</p>
                     </td>
                   </tr>
-                ))}
+                ) : (
+                  recentFlights.slice(0, 100).map((flight: any, index: number) => (
+                    <tr 
+                      key={flight.id || index} 
+                      className="border-b border-white/5 hover:bg-white/5 transition-colors"
+                    >
+                      <td className="py-3 px-2">
+                        <div>
+                          <p className="font-medium text-sm">{flight.callsign || flight.flightNumber || 'N/A'}</p>
+                          <p className="text-xs text-muted-foreground">
+                            {flight.origin || 'N/A'} → {flight.destination || flight.dest || 'N/A'}
+                          </p>
+                        </div>
+                      </td>
+                      <td className="py-3 px-2">
+                        <span className={cn(
+                          "text-xs font-medium capitalize",
+                          flight.type === 'arrival' ? "text-blue-400" : "text-purple-400"
+                        )}>
+                          {flight.type || 'in-flight'}
+                        </span>
+                      </td>
+                      <td className="py-3 px-2 text-sm">{flight.scheduledTime || '--:--'}</td>
+                      <td className="py-3 px-2 text-sm">
+                        {flight.actualTime || new Date(flight.lastUpdate).toLocaleTimeString() || '--:--'}
+                      </td>
+                      <td className="py-3 px-2 text-sm">{flight.gate || 'N/A'}</td>
+                      <td className="py-3 px-2">
+                        <span className={cn(
+                          "px-2 py-1 rounded-full text-xs font-medium",
+                          (flight.status === 'on-time' || !flight.onGround) && "bg-green-500/20 text-green-400",
+                          flight.status === 'delayed' && "bg-amber-500/20 text-amber-400",
+                          flight.status === 'cancelled' && "bg-red-500/20 text-red-400",
+                          flight.onGround && "bg-blue-500/20 text-blue-400"
+                        )}>
+                          {flight.status || (flight.onGround ? 'on-ground' : 'airborne')}
+                        </span>
+                      </td>
+                    </tr>
+                  ))
+                )}
               </tbody>
             </table>
           </div>

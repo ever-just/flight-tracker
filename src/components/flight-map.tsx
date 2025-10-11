@@ -80,7 +80,26 @@ export function FlightMap({
   const router = useRouter()
   const animationFrameRef = useRef<number>()
   const lastAnimationTime = useRef<number>(0)
+  const lastUpdateTime = useRef<number>(0)
   const [mapBounds, setMapBounds] = useState<L.LatLngBounds | null>(null)
+  const [currentZoom, setCurrentZoom] = useState<number>(5)
+  const updateTimeoutRef = useRef<NodeJS.Timeout>()
+  
+  // Get flight limit based on zoom level
+  const getFlightLimit = useCallback((zoom: number) => {
+    if (zoom <= 4) return 50      // Continental view: 50 flights
+    if (zoom <= 6) return 150     // Regional view: 150 flights
+    if (zoom <= 8) return 300     // State view: 300 flights
+    return 500                     // City view: 500 flights
+  }, [])
+  
+  // Get plane size based on zoom level
+  const getPlaneSize = useCallback((zoom: number) => {
+    if (zoom <= 4) return 16       // Very small
+    if (zoom <= 6) return 20       // Small
+    if (zoom <= 8) return 24       // Medium (default)
+    return 28                       // Large
+  }, [])
 
   useEffect(() => {
     if (!mapRef.current) {
@@ -127,16 +146,23 @@ export function FlightMap({
       markersRef.current = markersLayer
       airportMarkersRef.current = airportClusterGroup
       
-      // Track map bounds for filtering
-      map.on('moveend', () => {
-        setMapBounds(map.getBounds())
-      })
-      map.on('zoomend', () => {
-        setMapBounds(map.getBounds())
-      })
+      // Track map bounds and zoom for intelligent filtering (debounced)
+      const debouncedUpdate = () => {
+        if (updateTimeoutRef.current) {
+          clearTimeout(updateTimeoutRef.current)
+        }
+        updateTimeoutRef.current = setTimeout(() => {
+          setMapBounds(map.getBounds())
+          setCurrentZoom(map.getZoom())
+        }, 150) // 150ms debounce to prevent excessive updates
+      }
       
-      // Set initial bounds
+      map.on('moveend', debouncedUpdate)
+      map.on('zoomend', debouncedUpdate)
+      
+      // Set initial bounds and zoom
       setMapBounds(map.getBounds())
+      setCurrentZoom(map.getZoom())
     }
 
     // Update airport markers
@@ -216,31 +242,54 @@ export function FlightMap({
       }
     }
 
-    // Clear and update flight markers (with bounds filtering for performance)
+    // Clear and update flight markers (with aggressive filtering and throttling)
     if (markersRef.current) {
+      // Throttle updates: only update every 2 seconds max
+      const now = Date.now()
+      if (now - lastUpdateTime.current < 2000 && flightMarkersRef.current.size > 0) {
+        return // Skip this update
+      }
+      lastUpdateTime.current = now
+      
       // Clear existing flight markers
       flightMarkersRef.current.forEach(marker => {
         markersRef.current?.removeLayer(marker)
       })
       flightMarkersRef.current.clear()
 
-      // Filter flights to only show those in visible bounds (major performance boost)
-      const visibleFlights = mapBounds 
+      // Get zoom-based limit
+      const flightLimit = getFlightLimit(currentZoom)
+      
+      // Filter flights: bounds + zoom-based limit
+      let visibleFlights = mapBounds 
         ? flights.filter(flight => mapBounds.contains([flight.lat, flight.lng]))
-        : flights.slice(0, 500) // Fallback: limit to 500 if no bounds
+        : flights
+      
+      // Apply zoom-based limit
+      if (visibleFlights.length > flightLimit) {
+        // Prioritize flights: higher altitude = more visible
+        visibleFlights = visibleFlights
+          .sort((a, b) => b.altitude - a.altitude)
+          .slice(0, flightLimit)
+      }
+
+      // Get plane size for current zoom
+      const planeSize = getPlaneSize(currentZoom)
 
       visibleFlights.forEach((flight) => {
-        // Create airplane icon with rotation using SVG
+        // Create airplane icon with rotation and dynamic sizing
         const svgIcon = `
           <div class="flight-marker" id="flight-${flight.id}" style="transform: rotate(${flight.heading}deg)">
-            ${PLANE_SVG}
+            <svg width="${planeSize}" height="${planeSize}" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" fill="#60a5fa" stroke="#1e40af" stroke-width="0.5"/>
+            </svg>
           </div>`
         
         const planeIcon = L.divIcon({
           html: svgIcon,
           className: 'custom-flight-marker',
-          iconSize: [24, 24],
-          iconAnchor: [12, 12],
+          iconSize: [planeSize, planeSize],
+          iconAnchor: [planeSize / 2, planeSize / 2],
         })
 
         const marker = L.marker([flight.lat, flight.lng], { icon: planeIcon })
@@ -258,19 +307,27 @@ export function FlightMap({
       })
     }
 
-    // Animate flight movements (throttled to 10 FPS for performance)
+    // Animate flight movements (throttled to 5 FPS for better performance)
     const animateFlights = (currentTime: number) => {
-      // Throttle: only update every 100ms (10 FPS instead of 60 FPS)
-      if (currentTime - lastAnimationTime.current < 100) {
+      // More aggressive throttle: only update every 200ms (5 FPS)
+      if (currentTime - lastAnimationTime.current < 200) {
         animationFrameRef.current = requestAnimationFrame(animateFlights)
         return
       }
       lastAnimationTime.current = currentTime
       
+      // Get zoom-based animation limit (fewer animations when zoomed out)
+      const animationLimit = currentZoom <= 5 ? 50 : currentZoom <= 7 ? 100 : 200
+      
       // Only animate flights that are currently visible
-      const visibleFlights = mapBounds 
+      let visibleFlights = mapBounds 
         ? flights.filter(flight => mapBounds.contains([flight.lat, flight.lng]))
-        : flights.slice(0, 200) // Limit animation to 200 flights if no bounds
+        : flights.slice(0, animationLimit)
+      
+      // Limit animations based on zoom
+      if (visibleFlights.length > animationLimit) {
+        visibleFlights = visibleFlights.slice(0, animationLimit)
+      }
       
       visibleFlights.forEach((flight) => {
         const marker = flightMarkersRef.current.get(flight.id)
@@ -310,9 +367,12 @@ export function FlightMap({
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current)
       }
-      // Don't destroy map on every re-render, only on unmount
+      // Cleanup
+      if (updateTimeoutRef.current) {
+        clearTimeout(updateTimeoutRef.current)
+      }
     }
-  }, [flights, airports, center, zoom, router, mapBounds])
+  }, [flights, airports, center, zoom, router, mapBounds, currentZoom, getFlightLimit, getPlaneSize])
 
   return (
     <>
@@ -501,13 +561,54 @@ export function FlightMap({
         /* Optimize rendering performance */
         .leaflet-marker-icon {
           will-change: transform;
+          backface-visibility: hidden;
+          -webkit-font-smoothing: subpixel-antialiased;
         }
 
         .flight-marker {
           will-change: transform;
+          backface-visibility: hidden;
+        }
+
+        .flight-marker svg {
+          display: block;
+        }
+
+        /* Zoom indicator */
+        .zoom-indicator {
+          position: absolute;
+          bottom: 20px;
+          right: 20px;
+          background: rgba(0, 0, 0, 0.85);
+          padding: 8px 12px;
+          border-radius: 8px;
+          font-size: 11px;
+          color: #60a5fa;
+          border: 1px solid rgba(96, 165, 250, 0.3);
+          z-index: 1000;
+          pointer-events: none;
+          backdrop-filter: blur(10px);
+        }
+
+        .zoom-indicator .zoom-level {
+          font-weight: bold;
+          color: white;
         }
       `}</style>
-      <div id="flight-map" />
+      <div style={{ position: 'relative' }}>
+        <div id="flight-map" />
+        {currentZoom && (
+          <div className="zoom-indicator">
+            <div className="zoom-level">Zoom: {currentZoom}</div>
+            <div>
+              {currentZoom <= 4 && 'Continental View (50 flights max)'}
+              {currentZoom > 4 && currentZoom <= 6 && 'Regional View (150 flights max)'}
+              {currentZoom > 6 && currentZoom <= 8 && 'State View (300 flights max)'}
+              {currentZoom > 8 && 'City View (500 flights max)'}
+            </div>
+          </div>
+        )}
+      </div>
     </>
   )
 }

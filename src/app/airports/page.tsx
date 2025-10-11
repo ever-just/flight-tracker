@@ -9,32 +9,18 @@ import { AirportCardSkeleton } from '@/components/loading-skeleton'
 import { airportNames } from '@/lib/utils'
 import { cn } from '@/lib/utils'
 
-// Generate mock data for all 100 airports
-const generateMockAirports = () => {
-  const statuses = ['operational', 'minor-delay', 'major-delay', 'closed']
-  const statusWeights = [0.7, 0.2, 0.08, 0.02] // 70% operational, 20% minor delays, etc.
+// Fetch real airports from API
+async function fetchAirports() {
+  const response = await fetch('/api/airports?limit=100', {
+    cache: 'no-store'
+  })
   
-  const getRandomStatus = () => {
-    const random = Math.random()
-    let cumulative = 0
-    for (let i = 0; i < statusWeights.length; i++) {
-      cumulative += statusWeights[i]
-      if (random <= cumulative) return statuses[i]
-    }
-    return statuses[0]
+  if (!response.ok) {
+    throw new Error('Failed to fetch airports')
   }
-
-  return Object.entries(airportNames).map(([code, name]) => ({
-    code,
-    name,
-    status: getRandomStatus(),
-    flights: Math.floor(Math.random() * 2000) + 500,
-    delays: Math.floor(Math.random() * 100),
-    cancellations: Math.floor(Math.random() * 20),
-    averageDelay: Math.floor(Math.random() * 45),
-    region: getRegion(code),
-    state: getState(code),
-  }))
+  
+  const data = await response.json()
+  return data.airports || []
 }
 
 function getRegion(code: string) {

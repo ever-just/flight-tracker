@@ -91,8 +91,8 @@ export default function MapPage() {
     // Load data immediately
     fetchFlights()
     
-    // Refresh every 10 seconds for real-time updates
-    const interval = setInterval(fetchFlights, 10000)
+    // Refresh every 30 seconds (reduced from 10 for better performance)
+    const interval = setInterval(fetchFlights, 30000)
     return () => clearInterval(interval)
   }, [])
 
@@ -274,18 +274,18 @@ export default function MapPage() {
           </Card>
         </div>
 
-        {/* Flight List Sidebar with Virtual Scrolling */}
+        {/* Flight List Sidebar (limited to 100 for performance) */}
         <div>
           <Card className="h-[600px] overflow-hidden">
             <CardHeader>
               <CardTitle className="text-lg">Active Flights</CardTitle>
               <CardDescription>
-                {flightData.length.toLocaleString()} flights tracked
+                Showing {Math.min(flightData.length, 100)} of {flightData.length.toLocaleString()} flights
               </CardDescription>
             </CardHeader>
             <CardContent className="p-0">
               <div className="h-[500px] overflow-y-auto px-6">
-                {flightData.map((flight) => (
+                {flightData.slice(0, 100).map((flight) => (
                   <div
                     key={flight.id}
                     className="py-3 border-b border-white/10 cursor-pointer hover:bg-white/5 transition-colors"

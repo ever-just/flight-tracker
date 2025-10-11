@@ -1,9 +1,10 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import dynamic from 'next/dynamic'
+import { FixedSizeList as List } from 'react-window'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Plane, MapPin, Activity, Filter } from 'lucide-react'
+import { Plane, MapPin, Activity, Filter, Eye, EyeOff } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 // Dynamically import map component to avoid SSR issues
@@ -34,6 +35,7 @@ const mockFlights = [
 export default function MapPage() {
   const [selectedFilter, setSelectedFilter] = useState('all')
   const [flightData, setFlightData] = useState(mockFlights)
+  const [airportData, setAirportData] = useState<any[]>([])
   const [stats, setStats] = useState({
     totalFlights: 5,
     airborne: 5,
@@ -41,6 +43,8 @@ export default function MapPage() {
     activeAirports: 20
   })
   const [loading, setLoading] = useState(true)
+  const [showFlights, setShowFlights] = useState(true)
+  const [showAirports, setShowAirports] = useState(true)
 
   // Fetch real flight data
   useEffect(() => {
@@ -53,8 +57,8 @@ export default function MapPage() {
         console.log('Fetched data:', data) // Debug log
         
         if (data && data.flights && data.flights.length > 0) {
-          // Transform API data to map format
-          const transformedFlights = data.flights.slice(0, 100).map((flight: any) => ({
+          // Transform API data to map format (show all flights)
+          const transformedFlights = data.flights.map((flight: any) => ({
             id: flight.id,
             lat: flight.latitude,
             lng: flight.longitude,
@@ -92,6 +96,29 @@ export default function MapPage() {
     return () => clearInterval(interval)
   }, [])
 
+  // Fetch airport status data
+  useEffect(() => {
+    const fetchAirports = async () => {
+      try {
+        const response = await fetch('/api/airports')
+        const data = await response.json()
+        
+        if (data && data.airports && data.airports.length > 0) {
+          setAirportData(data.airports)
+        }
+      } catch (error) {
+        console.error('Failed to fetch airport data:', error)
+      }
+    }
+
+    // Load airport data immediately
+    fetchAirports()
+    
+    // Refresh every 5 minutes (airports don't change as frequently)
+    const interval = setInterval(fetchAirports, 300000)
+    return () => clearInterval(interval)
+  }, [])
+
   return (
     <div className="space-y-6 animate-fadeIn">
       {/* Page Header */}
@@ -110,6 +137,35 @@ export default function MapPage() {
             <span className="text-sm text-muted-foreground">
               Live tracking enabled
             </span>
+          </div>
+          
+          {/* View Toggle Buttons */}
+          <div className="flex items-center space-x-2">
+            <button
+              onClick={() => setShowFlights(!showFlights)}
+              className={cn(
+                "flex items-center space-x-2 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors",
+                showFlights
+                  ? "bg-aviation-blue text-white"
+                  : "bg-white/10 text-muted-foreground hover:text-white"
+              )}
+            >
+              {showFlights ? <Eye className="w-3 h-3" /> : <EyeOff className="w-3 h-3" />}
+              <span>Flights</span>
+            </button>
+            
+            <button
+              onClick={() => setShowAirports(!showAirports)}
+              className={cn(
+                "flex items-center space-x-2 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors",
+                showAirports
+                  ? "bg-aviation-blue text-white"
+                  : "bg-white/10 text-muted-foreground hover:text-white"
+              )}
+            >
+              {showAirports ? <Eye className="w-3 h-3" /> : <EyeOff className="w-3 h-3" />}
+              <span>Airports</span>
+            </button>
           </div>
         </div>
       </div>
@@ -210,42 +266,56 @@ export default function MapPage() {
               </div>
             </CardHeader>
             <CardContent className="p-0">
-              <FlightMap flights={flightData} />
+              <FlightMap 
+                flights={showFlights ? flightData : []} 
+                airports={showAirports ? airportData : []}
+              />
             </CardContent>
           </Card>
         </div>
 
-        {/* Flight List Sidebar */}
+        {/* Flight List Sidebar with Virtual Scrolling */}
         <div>
           <Card className="h-[600px] overflow-hidden">
             <CardHeader>
               <CardTitle className="text-lg">Active Flights</CardTitle>
-              <CardDescription>Click on a flight for details</CardDescription>
+              <CardDescription>
+                {flightData.length.toLocaleString()} flights tracked
+              </CardDescription>
             </CardHeader>
             <CardContent className="p-0">
-              <div className="overflow-y-auto h-[500px] px-6">
-                {flightData.map((flight) => (
-                  <div
-                    key={flight.id}
-                    className="py-3 border-b border-white/10 last:border-0 cursor-pointer hover:bg-white/5 -mx-6 px-6 transition-colors"
-                  >
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <p className="font-medium text-white">{flight.callsign}</p>
-                        <p className="text-xs text-muted-foreground">
-                          Alt: {flight.altitude.toLocaleString()} ft
-                        </p>
-                      </div>
-                      <div className="text-right">
-                        <p className="text-sm text-aviation-sky">{flight.speed} kts</p>
-                        <p className="text-xs text-muted-foreground">
-                          HDG {flight.heading}°
-                        </p>
+              <List
+                height={500}
+                itemCount={flightData.length}
+                itemSize={65}
+                width="100%"
+                className="px-6"
+              >
+                {({ index, style }) => {
+                  const flight = flightData[index]
+                  return (
+                    <div
+                      style={style}
+                      className="py-3 border-b border-white/10 cursor-pointer hover:bg-white/5 transition-colors"
+                    >
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <p className="font-medium text-white">{flight.callsign}</p>
+                          <p className="text-xs text-muted-foreground">
+                            Alt: {flight.altitude.toLocaleString()} ft
+                          </p>
+                        </div>
+                        <div className="text-right">
+                          <p className="text-sm text-aviation-sky">{flight.speed} kts</p>
+                          <p className="text-xs text-muted-foreground">
+                            HDG {flight.heading}°
+                          </p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
-              </div>
+                  )
+                }}
+              </List>
             </CardContent>
           </Card>
         </div>

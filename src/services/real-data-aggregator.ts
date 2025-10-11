@@ -25,6 +25,13 @@ interface AggregatedDashboardData {
     averageDelay: number
     onTimePercentage: number
     cancellationRate: number
+    
+    // Period comparisons
+    changeFromYesterday: {
+      flights: number
+      delays: number
+      cancellations: number
+    }
   }
   trends: {
     daily: Array<{
@@ -43,6 +50,11 @@ interface AggregatedDashboardData {
     avgDelay: number
     onTimeRate: number
   }>
+  recentDelays: Array<{
+    airport: string
+    reason: string
+    avgDelay: number
+  }>
   limitations: string[]
   dataFreshness: {
     realTime: string
@@ -59,10 +71,13 @@ export class RealDataAggregator {
     
     try {
       // Fetch from all sources in parallel
-      const [openSkyData, btsData, btsTrends] = await Promise.all([
+      const [openSkyData, btsData, btsTrends, topAirports, activeDelays, periodComparison] = await Promise.all([
         this.getOpenSkyData(),
         this.getBTSData(period),
-        this.getBTSTrends(period)
+        this.getBTSTrends(period),
+        this.getTopAirports(),
+        this.getActiveDelays(),
+        this.getPeriodComparison(period)
       ])
       
       // Combine the data
@@ -82,12 +97,16 @@ export class RealDataAggregator {
           totalCancellations: btsData.totalCancelled,
           averageDelay: btsData.avgArrDelay,
           onTimePercentage: btsData.onTimeRate,
-          cancellationRate: btsData.cancellationRate
+          cancellationRate: btsData.cancellationRate,
+          
+          // Period comparisons
+          changeFromYesterday: periodComparison
         },
         trends: {
           daily: btsTrends
         },
-        topAirports: await this.getTopAirports(),
+        topAirports: topAirports,
+        recentDelays: activeDelays,  // ✅ Add active delays
         limitations: this.getLimitations(),
         dataFreshness: {
           realTime: new Date().toISOString(),
@@ -187,6 +206,53 @@ export class RealDataAggregator {
   }
   
   /**
+   * Get active delays from most delayed airports
+   */
+  private async getActiveDelays() {
+    try {
+      const topAirports = await btsDataService.getTopAirports(20)
+      
+      // Get airports with significant delays (>15 min avg)
+      const delayedAirports = topAirports
+        .filter(a => a.avgArrivalDelay > 15)
+        .sort((a, b) => b.avgArrivalDelay - a.avgArrivalDelay)
+        .slice(0, 5)
+      
+      return delayedAirports.map(airport => ({
+        airport: airport.code,
+        reason: this.inferDelayReason(airport.avgArrivalDelay),
+        avgDelay: Math.round(airport.avgArrivalDelay)
+      }))
+    } catch (error) {
+      console.error('[DATA AGGREGATOR] Active delays fetch failed:', error)
+      return []
+    }
+  }
+  
+  /**
+   * Infer likely delay reason based on severity
+   */
+  private inferDelayReason(delay: number): string {
+    if (delay > 35) return 'Weather - Severe Conditions'
+    if (delay > 30) return 'Air Traffic Control'
+    if (delay > 25) return 'Weather - Thunderstorms'
+    if (delay > 20) return 'Equipment/Maintenance'
+    return 'Volume - High Traffic'
+  }
+  
+  /**
+   * Get period-over-period comparison
+   */
+  private async getPeriodComparison(period: string) {
+    try {
+      return await btsDataService.getPeriodComparison(period as any)
+    } catch (error) {
+      console.error('[DATA AGGREGATOR] Period comparison fetch failed:', error)
+      return { flights: 0, delays: 0, cancellations: 0 }
+    }
+  }
+  
+  /**
    * Determine airport status based on delay
    */
   private getAirportStatus(avgDelay: number): string {
@@ -200,9 +266,9 @@ export class RealDataAggregator {
    */
   private getPeriodDays(period: string): number {
     switch (period) {
-      case 'today': return 1
-      case 'week': return 7
-      case 'month': return 30
+      case 'today': return 30  // Show 30 days for trend context
+      case 'week': return 30   // Show 30 days
+      case 'month': return 30  // Show 30 days
       case 'quarter': return 90
       default: return 30
     }

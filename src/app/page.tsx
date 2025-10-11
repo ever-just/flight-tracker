@@ -440,29 +440,29 @@ export default function DashboardPageEnhanced() {
             <CardContent className="space-y-4">
               <PerformanceMetric 
                 label="Flight Volume"
-                percentage={dashboardData.summary.changeFromYesterday.flights}
-                value={dashboardData.summary.totalFlights}
-                previousValue={Math.floor(dashboardData.summary.totalFlights * 0.98)}
+                percentage={dashboardData.summary.changeFromYesterday?.flights || 0}
+                value={dashboardData.summary.historicalFlights || 0}
+                previousValue={Math.floor((dashboardData.summary.historicalFlights || 0) * 0.98)}
               />
               <PerformanceMetric 
                 label="Delays"
-                percentage={dashboardData.summary.changeFromYesterday.delays}
-                value={dashboardData.summary.totalDelays}
-                previousValue={Math.floor(dashboardData.summary.totalDelays * 1.05)}
+                percentage={dashboardData.summary.changeFromYesterday?.delays || 0}
+                value={dashboardData.summary.totalDelays || 0}
+                previousValue={Math.floor((dashboardData.summary.totalDelays || 0) * 1.05)}
                 inverse={true}
               />
               <PerformanceMetric 
                 label="On-Time Performance"
                 percentage={2.1}
-                value={dashboardData.summary.onTimePercentage}
-                previousValue={dashboardData.summary.onTimePercentage - 2.1}
+                value={dashboardData.summary.onTimePercentage || 0}
+                previousValue={(dashboardData.summary.onTimePercentage || 0) - 2.1}
                 suffix="%"
               />
               <PerformanceMetric 
                 label="Cancellation Rate"
                 percentage={-1.2}
-                value={(dashboardData.summary.totalCancellations / dashboardData.summary.totalFlights * 100).toFixed(1)}
-                previousValue={(dashboardData.summary.totalCancellations / dashboardData.summary.totalFlights * 100 * 1.012).toFixed(1)}
+                value={((dashboardData.summary.totalCancellations || 0) / (dashboardData.summary.historicalFlights || 1) * 100).toFixed(1)}
+                previousValue={((dashboardData.summary.totalCancellations || 0) / (dashboardData.summary.historicalFlights || 1) * 100 * 1.012).toFixed(1)}
                 suffix="%"
                 inverse={true}
               />
@@ -476,46 +476,67 @@ export default function DashboardPageEnhanced() {
 
 function RecentFlightsList() {
   const router = useRouter()
-  const flights = [
-    { id: 'UA1234', origin: 'LAX', dest: 'JFK', status: 'on-time', time: '5:32 PM' },
-    { id: 'AA5678', origin: 'ORD', dest: 'MIA', status: 'delayed', time: '5:28 PM', delay: '+15m' },
-    { id: 'DL9012', origin: 'ATL', dest: 'SEA', status: 'departed', time: '5:25 PM' },
-    { id: 'WN3456', origin: 'DEN', dest: 'PHX', status: 'boarding', time: '5:20 PM' },
-    { id: 'AS7890', origin: 'SFO', dest: 'BOS', status: 'on-time', time: '5:15 PM' },
-  ]
+  
+  // Fetch real recent flights from API
+  const { data: recentData } = useQuery({
+    queryKey: ['recent-flights'],
+    queryFn: async () => {
+      const response = await fetch('/api/flights/recent?limit=5')
+      if (!response.ok) throw new Error('Failed to fetch recent flights')
+      return response.json()
+    },
+    refetchInterval: 30000, // Refresh every 30 seconds
+    retry: 1
+  })
 
+  const flights = recentData?.flights || []
+  
   const statusColors = {
     'on-time': 'text-green-500',
     'delayed': 'text-amber-500',
     'departed': 'text-blue-500',
     'boarding': 'text-purple-500',
-    'cancelled': 'text-red-500'
+    'cancelled': 'text-red-500',
+    'arrived': 'text-green-500',
+    'in-flight': 'text-blue-500'
+  }
+
+  // Show message if no real data available
+  if (flights.length === 0) {
+    return (
+      <div className="text-center py-6 text-muted-foreground text-sm">
+        <p>Real-time flight activity data loading...</p>
+        <p className="text-xs mt-2">Recent flights will appear here once available</p>
+      </div>
+    )
   }
 
   return (
     <div className="space-y-2">
-      {flights.map((flight) => (
+      {flights.slice(0, 5).map((flight: any) => (
         <div
           key={flight.id}
           onClick={() => router.push(`/flights/${flight.id}`)}
           className="flex items-center justify-between p-2 hover:bg-white/5 rounded-lg cursor-pointer transition-colors"
         >
           <div className="flex items-center space-x-4">
-            <span className="font-semibold text-white">{flight.id}</span>
+            <span className="font-semibold text-white">{flight.callsign || flight.id}</span>
             <div className="flex items-center text-sm">
-              <span>{flight.origin}</span>
+              <span>{flight.origin || 'N/A'}</span>
               <Plane className="w-3 h-3 mx-2 text-muted-foreground" />
-              <span>{flight.dest}</span>
+              <span>{flight.destination || flight.dest || 'N/A'}</span>
             </div>
           </div>
           <div className="flex items-center space-x-3">
-            <span className={cn("text-sm", statusColors[flight.status as keyof typeof statusColors])}>
+            <span className={cn("text-sm", statusColors[flight.status as keyof typeof statusColors] || 'text-gray-500')}>
               {flight.status}
             </span>
             {flight.delay && (
               <span className="text-xs text-amber-500">{flight.delay}</span>
             )}
-            <span className="text-xs text-muted-foreground">{flight.time}</span>
+            <span className="text-xs text-muted-foreground">
+              {flight.time || new Date(flight.lastUpdate).toLocaleTimeString()}
+            </span>
             <ChevronRight className="w-4 h-4 text-muted-foreground" />
           </div>
         </div>

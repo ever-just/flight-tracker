@@ -35,9 +35,9 @@ async function fetchRealFlights() {
     }
 
     // Transform OpenSky data to our format
+    // Show all commercial flights - OpenSky returns ~1000-3000 flights over USA
     const flights = data.states
       .filter((state: any[]) => state[8] === false) // Only airborne flights
-      .slice(0, 100) // Limit to 100 flights for performance
       .map((state: any[], index: number) => ({
         id: `flight-${state[0]}`,
         icao24: state[0],

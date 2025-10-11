@@ -176,3 +176,4 @@ export function UpdateFlash({ children, trigger }: { children: React.ReactNode, 
     </div>
   )
 }
+

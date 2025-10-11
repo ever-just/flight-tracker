@@ -328,3 +328,4 @@ Just push to `main` branch - auto-deploys!
 
 **Built with ❤️ using Next.js, TypeScript, Tailwind CSS, and deployed via DigitalOcean2 MCP**
 
+

@@ -186,3 +186,4 @@ docker run -d -p 80:3000 --env-file .env.production --name flight-tracker flight
 Your app will be available at:
 - App Platform: `https://your-app-name.ondigitalocean.app`
 - Droplet: `http://YOUR_DROPLET_IP` or `https://your-domain.com`
+

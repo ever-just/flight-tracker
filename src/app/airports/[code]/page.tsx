@@ -84,9 +84,12 @@ function generateMockAirportData(code: string) {
 
 async function fetchAirportData(code: string) {
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'
-    const response = await fetch(`${baseUrl}/api/airports/${code}`, {
+    // Use relative URL for client-side fetching
+    const response = await fetch(`/api/airports/${code}`, {
       cache: 'no-store',
+      headers: {
+        'Content-Type': 'application/json',
+      },
     })
     if (!response.ok) {
       console.error('API Error:', response.status)

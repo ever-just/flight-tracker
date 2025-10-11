@@ -368,7 +368,7 @@ export default function DashboardPageEnhanced() {
 
         {/* Recent Flight Activity */}
         <div className="col-span-12 lg:col-span-8">
-          <Card className="glass-card">
+          <Card className="glass-card h-full flex flex-col">
             <CardHeader className="flex flex-row items-center justify-between">
               <div>
                 <CardTitle>Recent Flight Activity</CardTitle>
@@ -382,7 +382,7 @@ export default function DashboardPageEnhanced() {
                 <ArrowRight className="w-4 h-4 ml-1" />
               </Link>
             </CardHeader>
-            <CardContent>
+            <CardContent className="flex-1">
               <RecentFlightsList />
             </CardContent>
           </Card>
@@ -390,21 +390,12 @@ export default function DashboardPageEnhanced() {
 
         {/* Performance Stats */}
         <div className="col-span-12 lg:col-span-4">
-          <Card className="glass-card">
-            <CardHeader className="flex flex-row items-center justify-between">
-              <div>
-                <CardTitle>Performance Comparisons</CardTitle>
-                <CardDescription>Period-over-period changes</CardDescription>
-              </div>
-              <select 
-                className="px-2 py-1 bg-white/5 border border-white/10 rounded text-xs"
-              >
-                <option>Daily</option>
-                <option>Weekly</option>
-                <option>Monthly</option>
-              </select>
+          <Card className="glass-card h-full flex flex-col">
+            <CardHeader>
+              <CardTitle>Performance Comparisons</CardTitle>
+              <CardDescription>Month-over-month changes</CardDescription>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-4 flex-1">
               <PerformanceMetric 
                 label="Flight Volume"
                 percentage={dashboardData.summary.changeFromYesterday?.flights || 0}

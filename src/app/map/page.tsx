@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useMemo } from 'react'
 import dynamic from 'next/dynamic'
-import { FixedSizeList as List } from 'react-window'
+// Note: FixedSizeList import removed - not needed for basic flight list
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Plane, MapPin, Activity, Filter, Eye, EyeOff } from 'lucide-react'
 import { cn } from '@/lib/utils'
@@ -284,38 +284,29 @@ export default function MapPage() {
               </CardDescription>
             </CardHeader>
             <CardContent className="p-0">
-              <List
-                height={500}
-                itemCount={flightData.length}
-                itemSize={65}
-                width="100%"
-                className="px-6"
-              >
-                {({ index, style }) => {
-                  const flight = flightData[index]
-                  return (
-                    <div
-                      style={style}
-                      className="py-3 border-b border-white/10 cursor-pointer hover:bg-white/5 transition-colors"
-                    >
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <p className="font-medium text-white">{flight.callsign}</p>
-                          <p className="text-xs text-muted-foreground">
-                            Alt: {flight.altitude.toLocaleString()} ft
-                          </p>
-                        </div>
-                        <div className="text-right">
-                          <p className="text-sm text-aviation-sky">{flight.speed} kts</p>
-                          <p className="text-xs text-muted-foreground">
-                            HDG {flight.heading}°
-                          </p>
-                        </div>
+              <div className="h-[500px] overflow-y-auto px-6">
+                {flightData.map((flight) => (
+                  <div
+                    key={flight.id}
+                    className="py-3 border-b border-white/10 cursor-pointer hover:bg-white/5 transition-colors"
+                  >
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <p className="font-medium text-white">{flight.callsign}</p>
+                        <p className="text-xs text-muted-foreground">
+                          Alt: {flight.altitude.toLocaleString()} ft
+                        </p>
+                      </div>
+                      <div className="text-right">
+                        <p className="text-sm text-aviation-sky">{flight.speed} kts</p>
+                        <p className="text-xs text-muted-foreground">
+                          HDG {flight.heading}°
+                        </p>
                       </div>
                     </div>
-                  )
-                }}
-              </List>
+                  </div>
+                ))}
+              </div>
             </CardContent>
           </Card>
         </div>

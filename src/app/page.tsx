@@ -82,17 +82,29 @@ const mockDashboardData = {
 }
 
 async function fetchDashboardData(period: string = 'today') {
-  try {
-    // Use relative URL to work in both local and production
-    const response = await fetch(`/api/dashboard/summary?period=${period}`)
-    if (!response.ok) {
-      throw new Error('Network response was not ok')
+  console.log(`[FETCH] Requesting dashboard data for period: ${period}`)
+  
+  // Use relative URL to work in both local and production
+  const response = await fetch(`/api/dashboard/summary?period=${period}`, {
+    cache: 'no-store', // Don't use browser cache
+    headers: {
+      'Content-Type': 'application/json'
     }
-    return await response.json()
-  } catch (error) {
-    console.error('Fetch error:', error)
-    return mockDashboardData
+  })
+  
+  if (!response.ok) {
+    console.error(`[FETCH] API returned ${response.status}`)
+    throw new Error(`API returned ${response.status}`)
   }
+  
+  const data = await response.json()
+  console.log('[FETCH] Received real data:', {
+    source: data.source,
+    flights: data.summary?.historicalFlights || data.summary?.totalFlights,
+    delays: data.summary?.totalDelays
+  })
+  
+  return data
 }
 
 function PerformanceCard({ 
@@ -203,7 +215,27 @@ export default function DashboardPageEnhanced() {
     queryFn: () => fetchDashboardData(selectedPeriod),
     refetchInterval: getRefetchInterval(selectedPeriod),
     refetchIntervalInBackground: true,
+    retry: 3,
+    retryDelay: 1000,
   })
+
+  // Debug logging
+  if (typeof window !== 'undefined') {
+    console.log('[DASHBOARD] Query state:', { 
+      hasData: !!data, 
+      isLoading, 
+      error: error?.message,
+      period: selectedPeriod 
+    })
+    if (data) {
+      console.log('[DASHBOARD] Using REAL data:', {
+        flights: data.summary?.historicalFlights || data.summary?.totalFlights,
+        source: data.source
+      })
+    } else {
+      console.warn('[DASHBOARD] Falling back to MOCK data')
+    }
+  }
 
   const dashboardData = data || mockDashboardData
 
@@ -310,7 +342,7 @@ export default function DashboardPageEnhanced() {
             </CardHeader>
             <CardContent>
               <div className="space-y-3">
-                {dashboardData.recentDelays.map((delay: any, index: number) => (
+                {(dashboardData.recentDelays || []).map((delay: any, index: number) => (
                   <Link 
                     key={index} 
                     href={`/airports/${delay.airport}`}
@@ -350,7 +382,7 @@ export default function DashboardPageEnhanced() {
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
-                {dashboardData.topAirports.slice(0, 10).map((airport: any) => (
+                {(dashboardData.topAirports || []).slice(0, 10).map((airport: any) => (
                   <AirportCard
                     key={airport.code}
                     code={airport.code}

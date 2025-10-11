@@ -75,7 +75,7 @@ export default function MapPage() {
             totalFlights: data.stats?.total || transformedFlights.length,
             airborne: data.stats?.airborne || transformedFlights.length,
             onGround: data.stats?.onGround || 0,
-            activeAirports: 30 // We have 30 airports in our data
+            activeAirports: airportData.length || 100 // Number of airports loaded
           })
         } else {
           console.log('No flight data received or empty array') // Debug log
@@ -274,18 +274,18 @@ export default function MapPage() {
           </Card>
         </div>
 
-        {/* Flight List Sidebar (limited to 100 for performance) */}
+        {/* Flight List Sidebar (showing all flights) */}
         <div>
           <Card className="h-[600px] overflow-hidden">
             <CardHeader>
               <CardTitle className="text-lg">Active Flights</CardTitle>
               <CardDescription>
-                Showing {Math.min(flightData.length, 100)} of {flightData.length.toLocaleString()} flights
+                {flightData.length.toLocaleString()} flights tracked
               </CardDescription>
             </CardHeader>
             <CardContent className="p-0">
               <div className="h-[500px] overflow-y-auto px-6">
-                {flightData.slice(0, 100).map((flight) => (
+                {flightData.map((flight) => (
                   <div
                     key={flight.id}
                     className="py-3 border-b border-white/10 cursor-pointer hover:bg-white/5 transition-colors"

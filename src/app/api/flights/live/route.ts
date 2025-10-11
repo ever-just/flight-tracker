@@ -1,8 +1,19 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { airportCoordinates } from '@/lib/utils'
 
-// Real OpenSky API (simplified inline version)
+// Server-side cache to prevent OpenSky rate limiting (429 errors)
+let flightDataCache: any = null
+let cacheTimestamp: number = 0
+const CACHE_DURATION_MS = 30000 // 30 seconds
+
+// Real OpenSky API (simplified inline version with caching)
 async function fetchRealFlights() {
+  // Check if we have valid cached data
+  const now = Date.now()
+  if (flightDataCache && (now - cacheTimestamp < CACHE_DURATION_MS)) {
+    console.log(`Using cached flight data (${Math.round((now - cacheTimestamp) / 1000)}s old)`)
+    return flightDataCache
+  }
   try {
     // USA bounding box
     const USA_BOUNDS = {
@@ -54,7 +65,12 @@ async function fetchRealFlights() {
       }))
       .filter((f: any) => f.latitude && f.longitude) // Only flights with valid positions
 
-    console.log(`Fetched ${flights.length} real flights from OpenSky`)
+    console.log(`Fetched ${flights.length} real flights from OpenSky API`)
+    
+    // Cache the result
+    flightDataCache = flights
+    cacheTimestamp = Date.now()
+    
     return flights
   } catch (error) {
     console.error('Error fetching from OpenSky:', error)
@@ -62,9 +78,10 @@ async function fetchRealFlights() {
   }
 }
 
-// Generate enhanced mock live flight data (fallback)
-function generateMockFlights(count: number = 100) {
-  const airlines = ['AAL', 'DAL', 'UAL', 'SWA', 'ASA', 'JBU', 'NKS', 'FFT', 'SKW', 'ENY']
+// Generate enhanced mock live flight data (fallback) - simulates thousands of real flights
+function generateMockFlights(count: number = 4000) {
+  const airlines = ['AAL', 'DAL', 'UAL', 'SWA', 'ASA', 'JBU', 'NKS', 'FFT', 'SKW', 'ENY', 
+                    'FDX', 'UPS', 'SWQ', 'RPA', 'GJS', 'CPZ', 'EDV', 'JIA', 'QXE', 'ASH']
   const airports = Object.keys(airportCoordinates)
   
   return Array(count).fill(null).map((_, i) => {
@@ -123,7 +140,9 @@ export async function GET(request: NextRequest) {
     
     // Use mock data if real data fails or is disabled
     if (!flights) {
-      flights = generateMockFlights(airport ? 20 : 100)
+      // Generate realistic mock data with 4000+ flights to simulate real traffic
+      flights = generateMockFlights(airport ? 50 : 4000)
+      console.log(`Using mock data: ${flights.length} flights (OpenSky API unavailable)`)
     }
     
     // Filter by airport if specified
@@ -133,15 +152,10 @@ export async function GET(request: NextRequest) {
       )
     }
     
-    // Filter by bounds
-    flights = flights.filter((f: any) => 
-      f.latitude >= bounds.south && 
-      f.latitude <= bounds.north && 
-      f.longitude >= bounds.west && 
-      f.longitude <= bounds.east
-    )
+    // DON'T filter by bounds on server - let client do viewport filtering
+    // This allows us to show all 4000+ flights and optimize on the frontend
     
-    // Add statistics
+    // Add statistics (based on ALL flights, not filtered by bounds)
     const stats = {
       total: flights.length,
       airborne: flights.filter((f: any) => !f.onGround).length,

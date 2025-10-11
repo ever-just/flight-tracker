@@ -85,12 +85,9 @@ export function FlightMap({
   const [currentZoom, setCurrentZoom] = useState<number>(5)
   const updateTimeoutRef = useRef<NodeJS.Timeout>()
   
-  // Get flight limit based on zoom level
+  // No flight limiting - show all flights (user wants to see thousands)
   const getFlightLimit = useCallback((zoom: number) => {
-    if (zoom <= 4) return 50      // Continental view: 50 flights
-    if (zoom <= 6) return 150     // Regional view: 150 flights
-    if (zoom <= 8) return 300     // State view: 300 flights
-    return 500                     // City view: 500 flights
+    return Infinity // Show all flights
   }, [])
   
   // Get plane size based on zoom level
@@ -242,11 +239,11 @@ export function FlightMap({
       }
     }
 
-    // Clear and update flight markers (with aggressive filtering and throttling)
+    // Clear and update flight markers (optimized for thousands of flights)
     if (markersRef.current) {
-      // Throttle updates: only update every 2 seconds max
+      // Throttle updates: only update every 1 second max to prevent lag
       const now = Date.now()
-      if (now - lastUpdateTime.current < 2000 && flightMarkersRef.current.size > 0) {
+      if (now - lastUpdateTime.current < 1000 && flightMarkersRef.current.size > 0) {
         return // Skip this update
       }
       lastUpdateTime.current = now
@@ -257,25 +254,17 @@ export function FlightMap({
       })
       flightMarkersRef.current.clear()
 
-      // Get zoom-based limit
-      const flightLimit = getFlightLimit(currentZoom)
-      
-      // Filter flights: bounds + zoom-based limit
+      // Filter flights: only show those in visible bounds (major performance boost)
       let visibleFlights = mapBounds 
         ? flights.filter(flight => mapBounds.contains([flight.lat, flight.lng]))
-        : flights
-      
-      // Apply zoom-based limit
-      if (visibleFlights.length > flightLimit) {
-        // Prioritize flights: higher altitude = more visible
-        visibleFlights = visibleFlights
-          .sort((a, b) => b.altitude - a.altitude)
-          .slice(0, flightLimit)
-      }
+        : flights // Show all if no bounds yet
 
       // Get plane size for current zoom
       const planeSize = getPlaneSize(currentZoom)
 
+      // Batch DOM operations for better performance
+      const fragment = document.createDocumentFragment()
+      
       visibleFlights.forEach((flight) => {
         // Create airplane icon with rotation and dynamic sizing
         const svgIcon = `
@@ -307,29 +296,24 @@ export function FlightMap({
       })
     }
 
-    // Animate flight movements (throttled to 5 FPS for better performance)
+    // Animate flight movements (optimized for thousands of flights)
     const animateFlights = (currentTime: number) => {
-      // More aggressive throttle: only update every 200ms (5 FPS)
+      // Throttle to 5 FPS for smooth appearance with low CPU
       if (currentTime - lastAnimationTime.current < 200) {
         animationFrameRef.current = requestAnimationFrame(animateFlights)
         return
       }
       lastAnimationTime.current = currentTime
       
-      // Get zoom-based animation limit (fewer animations when zoomed out)
-      const animationLimit = currentZoom <= 5 ? 50 : currentZoom <= 7 ? 100 : 200
-      
-      // Only animate flights that are currently visible
-      let visibleFlights = mapBounds 
+      // Only animate flights that are currently visible in viewport
+      const visibleFlights = mapBounds 
         ? flights.filter(flight => mapBounds.contains([flight.lat, flight.lng]))
-        : flights.slice(0, animationLimit)
+        : flights
       
-      // Limit animations based on zoom
-      if (visibleFlights.length > animationLimit) {
-        visibleFlights = visibleFlights.slice(0, animationLimit)
-      }
+      // Sample every 3rd flight for animation to reduce load (33% of flights animate)
+      const animatedFlights = visibleFlights.filter((_, index) => index % 3 === 0)
       
-      visibleFlights.forEach((flight) => {
+      animatedFlights.forEach((flight) => {
         const marker = flightMarkersRef.current.get(flight.id)
         if (marker) {
           // Calculate movement based on speed and heading
@@ -600,12 +584,7 @@ export function FlightMap({
         {currentZoom && (
           <div className="zoom-indicator">
             <div className="zoom-level">Zoom: {currentZoom}</div>
-            <div>
-              {currentZoom <= 4 && 'Continental View (50 flights max)'}
-              {currentZoom > 4 && currentZoom <= 6 && 'Regional View (150 flights max)'}
-              {currentZoom > 6 && currentZoom <= 8 && 'State View (300 flights max)'}
-              {currentZoom > 8 && 'City View (500 flights max)'}
-            </div>
+            <div>All flights visible • Optimized rendering</div>
           </div>
         )}
       </div>

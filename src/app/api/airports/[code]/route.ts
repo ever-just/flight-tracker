@@ -71,9 +71,9 @@ async function getRealAirportData(code: string) {
     
     // For historical comparisons, use BTS data trends
     // If we don't have specific historical data, calculate reasonable estimates
-    const dailyChange = changeFromYesterday.flights || 0
-    const delaysChange = changeFromYesterday.delays || 0
-    const cancellationsChange = changeFromYesterday.cancellations || 0
+    const dailyChange = changeFromYesterday || 0
+    const delaysChange = 0 // Will be calculated when we have historical delay data
+    const cancellationsChange = 0 // Will be calculated when we have historical cancellation data
     
     // Monthly and yearly changes (estimated from historical patterns)
     // In production, these would come from actual historical data

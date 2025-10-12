@@ -46,3 +46,4 @@ github-deploy.sh
 *.tsbuildinfo
 next-env.d.ts
 data/*.csv
+data/flight-history.json

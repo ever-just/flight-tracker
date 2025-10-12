@@ -38,7 +38,7 @@ export function Navigation() {
               <Plane className="w-6 h-6 text-white" />
             </div>
             <span className="text-xl font-heading font-bold text-white">
-              Flight Tracker
+              AIRPORT WATCH
             </span>
           </Link>
 

@@ -1,0 +1,16 @@
+# Airport Watch - Robots.txt
+User-agent: *
+Allow: /
+Allow: /airports
+Allow: /airports/*
+Allow: /map
+Allow: /flights
+Allow: /analytics
+Allow: /delays
+
+# Disallow API routes from indexing
+Disallow: /api/*
+
+# Sitemap
+Sitemap: https://airportwatch.live/sitemap.xml
+

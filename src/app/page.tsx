@@ -259,7 +259,7 @@ export default function DashboardPageEnhanced() {
       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
         <div>
           <h1 className="text-3xl font-heading font-bold text-white">
-            Flight Tracker Dashboard
+            Airport Watch Dashboard
           </h1>
           <p className="text-muted-foreground mt-1">
             Real-time monitoring of US airports and flight operations

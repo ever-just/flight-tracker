@@ -1,0 +1,15 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <rect width="512" height="512" fill="#000000"/>
+  <g transform="translate(256, 256)">
+    <!-- Airplane icon in aviation sky blue -->
+    <path d="M0,-120 L80,-40 L80,20 L100,40 L100,60 L60,60 L40,80 L40,100 L20,100 L0,80 L-20,100 L-40,100 L-40,80 L-60,60 L-100,60 L-100,40 L-80,20 L-80,-40 Z" 
+          fill="#38bdf8" 
+          stroke="#0ea5e9" 
+          stroke-width="2"/>
+    <!-- Tail fin -->
+    <path d="M0,-120 L-20,-100 L0,-100 L20,-100 Z" 
+          fill="#0ea5e9"/>
+  </g>
+  <text x="256" y="450" font-family="Arial, sans-serif" font-size="48" font-weight="bold" text-anchor="middle" fill="#38bdf8">AW</text>
+</svg>
+

@@ -40,19 +40,8 @@ async function fetchRealFlights() {
 
     if (!response.ok) {
       console.error(`[LIVE FLIGHTS API] OpenSky API error: ${response.status}`)
-      
-      // Try using the flight tracker's cached data as backup
-      const tracker = getFlightTracker()
-      const trackerFlights = tracker.getCurrentFlights()
-      if (trackerFlights.size > 0) {
-        console.log(`[LIVE FLIGHTS API] Using tracker data: ${trackerFlights.size} flights`)
-        const flights = Array.from(trackerFlights.values())
-        flightDataCache = flights
-        cacheTimestamp = now
-        return flights
-      }
-      
-      return null
+      // Return cached data if available, otherwise null
+      return flightDataCache.length > 0 ? flightDataCache : null
     }
 
     const data = await response.json()
@@ -98,15 +87,8 @@ async function fetchRealFlights() {
   } catch (error) {
     console.error('[LIVE FLIGHTS API] Error fetching real flights:', error)
     
-    // Try tracker as last resort
-    const tracker = getFlightTracker()
-    const trackerFlights = tracker.getCurrentFlights()
-    if (trackerFlights.size > 0) {
-      console.log(`[LIVE FLIGHTS API] Using tracker backup: ${trackerFlights.size} flights`)
-      return Array.from(trackerFlights.values())
-    }
-    
-    return null
+    // Return cached data if available
+    return flightDataCache.length > 0 ? flightDataCache : null
   }
 }
 

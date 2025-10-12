@@ -32,8 +32,8 @@ interface Airport {
   name: string
   city: string
   state: string
-  latitude: number
-  longitude: number
+  lat: number
+  lon: number
   status?: string
 }
 
@@ -193,8 +193,8 @@ export function FlightMap({
       if (airports.length > 0) {
         airports.forEach((airport) => {
           // Skip airports without valid coordinates
-          const lat = airport.lat || airport.latitude
-          const lon = airport.lon || airport.longitude
+          const lat = airport.lat
+          const lon = airport.lon
           if (!lat || !lon) {
             console.warn(`Skipping airport ${airport.code}: missing coordinates`)
             return

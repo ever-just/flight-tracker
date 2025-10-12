@@ -19,7 +19,7 @@ async function getRealAirportStatus() {
       btsDataService.loadData().catch(() => null),
       faaService.getAirportStatuses().catch(() => []),
       Promise.resolve(getFlightTracker()),
-      weatherService.getWeatherSummary().catch(() => ({ affectedAirports: [] }))
+      weatherService.getWeatherSummary().catch(() => null)
     ])
     
     // Get current flight counts from tracker
@@ -32,7 +32,7 @@ async function getRealAirportStatus() {
       const btsAirport = btsData?.airports?.find((a: any) => a.code === airport.code)
       const faaStatus = faaStatuses.find((s: any) => s.code === airport.code)
       const trackerData = busyAirports.find((a: any) => a.code === airport.code)
-      const hasWeatherIssue = weatherData.affectedAirports?.includes(airport.code)
+      const hasWeatherIssue = false // Weather data integration pending
       
       // Use real flight counts from BTS or tracker
       let flights = 0
@@ -44,10 +44,10 @@ async function getRealAirportStatus() {
       if (btsAirport) {
         // Use historical data from BTS
         flights = btsAirport.totalFlights || 0
-        delays = btsAirport.totalDelays || 0
-        cancellations = Math.round(flights * ((btsAirport.cancellationRate || 0) / 100))
-        averageDelay = btsAirport.avgDelay || 0
         onTimePercentage = btsAirport.onTimeRate || 95
+        delays = Math.round(flights * (1 - onTimePercentage / 100))
+        cancellations = Math.round(flights * ((btsAirport.cancellationRate || 0) / 100))
+        averageDelay = btsAirport ? (btsAirport.avgDepartureDelay + btsAirport.avgArrivalDelay) / 2 : 0
       } else if (trackerData) {
         // Use real-time tracker data
         flights = trackerData.flights || 0
@@ -69,10 +69,12 @@ async function getRealAirportStatus() {
       
       if (faaStatus) {
         // Use FAA status if available (most authoritative)
-        if (faaStatus.status === 'Ground Stop' || faaStatus.status === 'Ground Delay') {
+        if (faaStatus.status === 'Severe' || faaStatus.status === 'Closed') {
           status = 'SEVERE'
-        } else if (faaStatus.status === 'Arrival/Departure Delay' || faaStatus.status === 'Moderate') {
+        } else if (faaStatus.status === 'Moderate') {
           status = 'BUSY'
+        } else {
+          status = 'NORMAL' // Normal status
         }
       } else if (hasWeatherIssue) {
         // Weather issues indicate problems

@@ -111,11 +111,10 @@ async function getRealFlights(airportCode?: string, limit: number = 100): Promis
       flights = openSkyFlights || []
       console.log(`[RECENT FLIGHTS API] Got ${flights.length} real flights from OpenSky for ${airportCode}`)
     } else {
-      // Get all US flights from tracker
-      const tracker = getFlightTracker()
-      const currentFlights = tracker.getCurrentFlights()
-      flights = Array.from(currentFlights.values())
-      console.log(`[RECENT FLIGHTS API] Got ${flights.length} real flights from tracker`)
+      // Get all US flights from OpenSky
+      const openSkyFlights = await openskyService.getFlights()
+      flights = openSkyFlights || []
+      console.log(`[RECENT FLIGHTS API] Got ${flights.length} real flights from OpenSky`)
     }
     
     // Process OpenSky data into our format

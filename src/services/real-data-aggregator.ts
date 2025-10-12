@@ -104,7 +104,7 @@ export class RealDataAggregator {
       if (period === 'today') {
         // Use real-time flight counts for today
         const result: AggregatedDashboardData = {
-          source: 'real-time-today',
+          source: 'hybrid-real-data',
           summary: {
             // REAL-TIME data from tracker (ACTUAL TODAY)
             totalFlights: openSkyData.totalFlights, // Unique flights tracked today
@@ -150,7 +150,7 @@ export class RealDataAggregator {
       
       // For week/month/quarter, use historical BTS data
       const result: AggregatedDashboardData = {
-        source: 'bts-historical',
+        source: 'hybrid-real-data',
         summary: {
           // For historical periods, use BTS data as primary source
           totalFlights: btsData.totalFlights, // Use BTS historical count
@@ -182,7 +182,7 @@ export class RealDataAggregator {
           'No real-time flight tracking for historical periods'
         ],
         dataFreshness: {
-          realTime: null,
+          realTime: 'Not applicable - historical data',
           historical: 'June 2025 (BTS Data)'
         }
       }

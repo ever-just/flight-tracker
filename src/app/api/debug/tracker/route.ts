@@ -4,17 +4,15 @@ import { getFlightTracker } from '@/services/realtime-flight-tracker'
 export async function GET() {
   try {
     const tracker = getFlightTracker()
-    const currentFlights = tracker.getCurrentFlights()
+    const todayStats = tracker.getTodayStats()
+    const busyAirports = tracker.getBusyAirports()
     
     return NextResponse.json({
-      totalFlights: currentFlights.length,
-      sampleFlights: currentFlights.slice(0, 5),
-      allFlights: currentFlights.map(f => ({
-        callsign: f.callsign,
-        altitude: f.altitude,
-        speed: f.speed,
-        onGround: f.onGround
-      })).slice(0, 20)
+      todayStats,
+      busyAirports: busyAirports.slice(0, 10),
+      changeFromYesterday: tracker.getChangeFromYesterday(),
+      delays: tracker.getDelays(),
+      cancellations: tracker.getCancellations()
     })
   } catch (error) {
     return NextResponse.json({ error: String(error) }, { status: 500 })

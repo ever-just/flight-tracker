@@ -21,13 +21,13 @@ export const metadata: Metadata = {
   description: 'Monitor real-time flight delays, cancellations, and airport conditions across the United States. Live tracking of 100+ US airports with historical data, interactive maps, and performance analytics.',
   keywords: 'airport watch, flight tracker, airport status, flight delays, flight cancellations, US airports, real-time flights, aviation dashboard, airport delays, flight monitoring, FAA data, live flight map',
   authors: [{ name: 'Airport Watch' }],
-  metadataBase: new URL('https://airportwatch.live'),
+  metadataBase: new URL('https://www.airportwatch.live'),
   openGraph: {
     title: 'Airport Watch - Real-Time Airport & Flight Status',
     description: 'Monitor live flight delays, cancellations, and airport conditions across the United States with real-time data from OpenSky Network, FAA, and BTS.',
     type: 'website',
     locale: 'en_US',
-    url: 'https://airportwatch.live',
+    url: 'https://www.airportwatch.live',
     siteName: 'Airport Watch',
     images: [
       {
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
   },
   manifest: '/manifest.json',
   alternates: {
-    canonical: 'https://airportwatch.live'
+    canonical: 'https://www.airportwatch.live'
   }
 }
 

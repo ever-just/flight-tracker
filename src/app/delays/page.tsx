@@ -10,20 +10,25 @@ import {
   MapPin,
   Calendar,
   ChevronRight,
-  Plane
+  Plane,
+  Loader2
 } from 'lucide-react'
 import Link from 'next/link'
 
 interface DelayInfo {
   flightNumber: string
   airline: string
-  origin: string
-  destination: string
-  scheduledTime: string
-  estimatedTime: string
+  iata: string
+  icao24: string
+  altitude: number
+  speed: number
   delayMinutes: number
   reason: string
-  gate?: string
+  onGround: boolean
+  position: {
+    latitude: number
+    longitude: number
+  }
 }
 
 export default function DelaysPage() {
@@ -35,126 +40,25 @@ export default function DelaysPage() {
     maxDelay: 0,
     weatherDelays: 0,
     atcDelays: 0,
-    maintenanceDelays: 0
+    groundDelays: 0
   })
 
   useEffect(() => {
     fetchDelayData()
+    // Refresh every 30 seconds
+    const interval = setInterval(fetchDelayData, 30000)
+    return () => clearInterval(interval)
   }, [])
 
   const fetchDelayData = async () => {
     setLoading(true)
     try {
-      // Mock delay data for demonstration
-      const mockDelays: DelayInfo[] = [
-        {
-          flightNumber: 'AA1234',
-          airline: 'American Airlines',
-          origin: 'JFK',
-          destination: 'LAX',
-          scheduledTime: '08:00',
-          estimatedTime: '09:15',
-          delayMinutes: 75,
-          reason: 'Weather',
-          gate: 'B23'
-        },
-        {
-          flightNumber: 'UA567',
-          airline: 'United Airlines',
-          origin: 'ORD',
-          destination: 'DEN',
-          scheduledTime: '09:30',
-          estimatedTime: '10:45',
-          delayMinutes: 75,
-          reason: 'ATC',
-          gate: 'C15'
-        },
-        {
-          flightNumber: 'DL890',
-          airline: 'Delta Airlines',
-          origin: 'ATL',
-          destination: 'BOS',
-          scheduledTime: '10:15',
-          estimatedTime: '11:00',
-          delayMinutes: 45,
-          reason: 'Maintenance',
-          gate: 'A7'
-        },
-        {
-          flightNumber: 'SW234',
-          airline: 'Southwest Airlines',
-          origin: 'LAS',
-          destination: 'PHX',
-          scheduledTime: '11:00',
-          estimatedTime: '11:30',
-          delayMinutes: 30,
-          reason: 'Late Aircraft',
-          gate: 'D12'
-        },
-        {
-          flightNumber: 'NK456',
-          airline: 'Spirit Airlines',
-          origin: 'FLL',
-          destination: 'DTW',
-          scheduledTime: '12:30',
-          estimatedTime: '14:00',
-          delayMinutes: 90,
-          reason: 'Weather',
-          gate: 'E4'
-        },
-        {
-          flightNumber: 'B6789',
-          airline: 'JetBlue',
-          origin: 'JFK',
-          destination: 'MCO',
-          scheduledTime: '13:45',
-          estimatedTime: '14:30',
-          delayMinutes: 45,
-          reason: 'Crew',
-          gate: 'B11'
-        },
-        {
-          flightNumber: 'AS123',
-          airline: 'Alaska Airlines',
-          origin: 'SEA',
-          destination: 'SFO',
-          scheduledTime: '14:20',
-          estimatedTime: '15:10',
-          delayMinutes: 50,
-          reason: 'ATC',
-          gate: 'N8'
-        },
-        {
-          flightNumber: 'F9456',
-          airline: 'Frontier Airlines',
-          origin: 'DEN',
-          destination: 'ORD',
-          scheduledTime: '15:00',
-          estimatedTime: '16:30',
-          delayMinutes: 90,
-          reason: 'Weather',
-          gate: 'A22'
-        }
-      ]
-
-      setDelays(mockDelays)
-
-      // Calculate statistics
-      const totalDelays = mockDelays.length
-      const avgDelay = mockDelays.reduce((sum, d) => sum + d.delayMinutes, 0) / totalDelays
-      const maxDelay = Math.max(...mockDelays.map(d => d.delayMinutes))
-      const weatherDelays = mockDelays.filter(d => d.reason === 'Weather').length
-      const atcDelays = mockDelays.filter(d => d.reason === 'ATC').length
-      const maintenanceDelays = mockDelays.filter(d => d.reason === 'Maintenance').length
-
-      setStats({
-        totalDelays,
-        avgDelay: Math.round(avgDelay),
-        maxDelay,
-        weatherDelays,
-        atcDelays,
-        maintenanceDelays
-      })
+      const response = await fetch('/api/delays')
+      if (!response.ok) throw new Error('Failed to fetch delays')
+      
+      const data = await response.json()
+      setDelays(data.delays || [])
+      setStats(data.stats || stats)
     } catch (error) {
       console.error('Error fetching delay data:', error)
     } finally {
@@ -169,20 +73,10 @@ export default function DelaysPage() {
   }
 
   const getReasonIcon = (reason: string) => {
-    switch (reason) {
-      case 'Weather':
-        return '🌧️'
-      case 'ATC':
-        return '🗼'
-      case 'Maintenance':
-        return '🔧'
-      case 'Crew':
-        return '👨‍✈️'
-      case 'Late Aircraft':
-        return '✈️'
-      default:
-        return '⚠️'
-    }
+    if (reason.includes('Weather')) return '🌧️'
+    if (reason.includes('ATC')) return '🗼'
+    if (reason.includes('Ground')) return '🛫'
+    return '⚠️'
   }
 
   return (
@@ -193,7 +87,7 @@ export default function DelaysPage() {
           <div>
             <h1 className="text-4xl font-bold text-white">Flight Delays</h1>
             <p className="text-muted-foreground mt-2">
-              Real-time tracking of delayed flights across US airports
+              Real-time tracking of delayed flights from OpenSky Network
             </p>
           </div>
           <Link 
@@ -267,11 +161,11 @@ export default function DelaysPage() {
           <Card className="glass-card">
             <CardHeader className="pb-3">
               <CardTitle className="text-sm">
-                🔧 Maintenance
+                🛫 Ground
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold text-cyan-400">{stats.maintenanceDelays}</div>
+              <div className="text-2xl font-bold text-cyan-400">{stats.groundDelays}</div>
             </CardContent>
           </Card>
         </div>
@@ -281,25 +175,34 @@ export default function DelaysPage() {
           <CardHeader>
             <CardTitle>Currently Delayed Flights</CardTitle>
             <CardDescription>
-              Flights with delays greater than 15 minutes
+              Real-time delays detected from OpenSky Network data (holding patterns, slow approaches, ground delays)
             </CardDescription>
           </CardHeader>
           <CardContent>
             {loading ? (
+              <div className="text-center py-12">
+                <Loader2 className="w-8 h-8 text-aviation-sky animate-spin mx-auto mb-4" />
+                <div className="text-muted-foreground">
+                  Loading real-time delay information from OpenSky Network...
+                </div>
+              </div>
+            ) : delays.length === 0 ? (
               <div className="text-center py-12 text-muted-foreground">
-                Loading delay information...
+                <CheckCircle className="w-12 h-12 text-green-400 mx-auto mb-4" />
+                <p className="text-lg">No significant delays detected!</p>
+                <p className="text-sm mt-2">All flights appear to be on schedule</p>
               </div>
             ) : (
               <div className="space-y-4">
                 {delays.map((delay) => (
                   <div
-                    key={delay.flightNumber}
+                    key={delay.icao24}
                     className="bg-white/5 rounded-lg p-4 hover:bg-white/10 transition-all"
                   >
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-6">
-                        <div className="text-center">
-                          <div className="text-3xl font-bold text-white">
+                        <div className="text-center min-w-[120px]">
+                          <div className="text-2xl font-bold text-white">
                             {delay.flightNumber}
                           </div>
                           <div className="text-sm text-muted-foreground mt-1">
@@ -307,26 +210,29 @@ export default function DelaysPage() {
                           </div>
                         </div>
 
-                        <div className="flex items-center gap-2">
+                        <div className="flex items-center gap-4">
                           <div className="text-center">
-                            <div className="text-2xl font-bold text-white">{delay.origin}</div>
-                            <div className="text-sm text-muted-foreground">
-                              <span className="line-through">{delay.scheduledTime}</span>
+                            <div className="text-sm text-muted-foreground">Altitude</div>
+                            <div className="text-white font-semibold">
+                              {delay.altitude.toLocaleString()} ft
                             </div>
                           </div>
-                          <Plane className="w-5 h-5 text-muted-foreground" />
                           <div className="text-center">
-                            <div className="text-2xl font-bold text-white">{delay.destination}</div>
-                            <div className="text-sm text-green-400">
-                              {delay.estimatedTime}
+                            <div className="text-sm text-muted-foreground">Speed</div>
+                            <div className="text-white font-semibold">{delay.speed} kts</div>
+                          </div>
+                          <div className="text-center">
+                            <div className="text-sm text-muted-foreground">Position</div>
+                            <div className="text-white font-mono text-xs">
+                              {delay.position.latitude.toFixed(2)}°, {delay.position.longitude.toFixed(2)}°
                             </div>
                           </div>
                         </div>
 
-                        {delay.gate && (
-                          <div className="flex items-center gap-2">
-                            <MapPin className="w-4 h-4 text-muted-foreground" />
-                            <span className="text-white">Gate {delay.gate}</span>
+                        {delay.onGround && (
+                          <div className="flex items-center gap-2 px-2 py-1 bg-orange-500/20 rounded-lg">
+                            <MapPin className="w-4 h-4 text-orange-400" />
+                            <span className="text-xs text-orange-400">On Ground</span>
                           </div>
                         )}
                       </div>
@@ -336,12 +242,12 @@ export default function DelaysPage() {
                           <div className="text-sm text-muted-foreground">Reason</div>
                           <div className="flex items-center gap-2 mt-1">
                             <span className="text-xl">{getReasonIcon(delay.reason)}</span>
-                            <span className="text-white">{delay.reason}</span>
+                            <span className="text-white text-sm">{delay.reason}</span>
                           </div>
                         </div>
 
-                        <div className="text-center">
-                          <div className="text-sm text-muted-foreground">Delay</div>
+                        <div className="text-center min-w-[80px]">
+                          <div className="text-sm text-muted-foreground">Est. Delay</div>
                           <div className={`text-2xl font-bold ${getDelayColor(delay.delayMinutes)}`}>
                             {delay.delayMinutes} min
                           </div>
@@ -362,59 +268,20 @@ export default function DelaysPage() {
           </CardContent>
         </Card>
 
-        {/* Additional Info */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <Card className="glass-card">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <TrendingUp className="w-5 h-5 text-green-400" />
-                Delay Trends
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-3">
-                <div className="flex justify-between items-center">
-                  <span className="text-muted-foreground">vs Yesterday</span>
-                  <span className="text-green-400">-12% ↓</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-muted-foreground">vs Last Week</span>
-                  <span className="text-red-400">+8% ↑</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-muted-foreground">vs Last Month</span>
-                  <span className="text-green-400">-5% ↓</span>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card className="glass-card">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Calendar className="w-5 h-5 text-blue-400" />
-                Peak Delay Times
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-3">
-                <div className="flex justify-between items-center">
-                  <span className="text-muted-foreground">Morning (6am-12pm)</span>
-                  <span className="text-yellow-400">28 min avg</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-muted-foreground">Afternoon (12pm-6pm)</span>
-                  <span className="text-orange-400">42 min avg</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-muted-foreground">Evening (6pm-12am)</span>
-                  <span className="text-red-400">55 min avg</span>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+        {/* Data Source Note */}
+        <div className="text-center py-4 text-muted-foreground text-sm">
+          <p>📡 Real-time delay detection based on OpenSky Network ADS-B data</p>
+          <p className="mt-1">Delays identified by holding patterns, slow approaches, and ground delays</p>
         </div>
       </div>
     </div>
+  )
+}
+
+function CheckCircle(props: any) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" {...props}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>
   )
 }

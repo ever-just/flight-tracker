@@ -360,6 +360,13 @@ class RealtimeFlightTracker {
   }
   
   /**
+   * Get current flight snapshot
+   */
+  public getCurrentFlights(): FlightSnapshot[] {
+    return this.currentSnapshot
+  }
+  
+  /**
    * Get busy airports based on flight concentration
    */
   public getBusyAirports(): { code: string; flights: number }[] {

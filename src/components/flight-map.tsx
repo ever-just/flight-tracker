@@ -192,6 +192,14 @@ export function FlightMap({
       // Add airports if provided
       if (airports.length > 0) {
         airports.forEach((airport) => {
+          // Skip airports without valid coordinates
+          const lat = airport.lat || airport.latitude
+          const lon = airport.lon || airport.longitude
+          if (!lat || !lon) {
+            console.warn(`Skipping airport ${airport.code}: missing coordinates`)
+            return
+          }
+          
           const colors = getAirportColor(airport.status)
           const isProblem = airport.status?.toUpperCase() === 'BUSY' || airport.status?.toUpperCase() === 'SEVERE'
           
@@ -207,7 +215,7 @@ export function FlightMap({
           })
 
           const statusText = airport.status || 'Normal'
-          const marker = L.marker([airport.latitude, airport.longitude], { icon: airportIcon })
+          const marker = L.marker([lat, lon], { icon: airportIcon })
             .bindPopup(`
               <div class="airport-popup">
                 <strong>${airport.code}</strong><br/>

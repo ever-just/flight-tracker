@@ -44,7 +44,7 @@ function parseCallsign(callsign: string): { airline: string, flightNumber: strin
   
   // Fallback: use first 2 chars as airline, rest as number
   const airline = callsign.substring(0, 2)
-  const flightNumber = callsign.substring(2) || Math.floor(Math.random() * 9000 + 1000).toString()
+  const flightNumber = callsign.substring(2) || '0000' // Use placeholder instead of random
   return { airline, flightNumber: `${airline}${flightNumber}` }
 }
 

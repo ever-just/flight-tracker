@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { prisma } from '@/lib/prisma'
+import { getAirportByCode } from '@/lib/airports-data'
 
 interface OpenSkyState {
   icao24: string
@@ -25,6 +25,9 @@ interface OpenSkyResponse {
   time: number
   states: OpenSkyState[]
 }
+
+// Simple in-memory cache
+const cache: Map<string, { data: any; timestamp: number }> = new Map()
 
 export class OpenSkyService {
   private baseUrl: string
@@ -79,7 +82,7 @@ export class OpenSkyService {
         `opensky_flights_${bounds.lamin}_${bounds.lomin}_${bounds.lamax}_${bounds.lomax}` : 
         'opensky_flights_all'
       
-      const cached = await this.getCachedData(cacheKey)
+      const cached = this.getCachedData(cacheKey)
       if (cached) return cached
 
       // Build URL with bounds if provided
@@ -101,86 +104,30 @@ export class OpenSkyService {
 
       const data = response.data
 
-      // Process and store live flights
-      if (data.states && data.states.length > 0) {
-        await this.storeLiveFlights(data.states, data.time)
-      }
-
       // Cache the response
-      await this.cacheData(cacheKey, data)
+      this.cacheData(cacheKey, data)
 
       // Log API call
-      await prisma.apiLog.create({
-        data: {
-          apiName: 'OpenSky',
-          endpoint: url,
-          statusCode: response.status,
-          rateLimitRemaining: this.dailyLimit - this.requestCount
-        }
-      })
+      console.log(`[OpenSky API] ${url} - Status: ${response.status}, Remaining: ${this.dailyLimit - this.requestCount}`)
 
       return data
     } catch (error: any) {
-      console.error('OpenSky API Error:', error)
+      console.error('OpenSky API Error:', error?.message || 'Unknown error')
       
-      await prisma.apiLog.create({
-        data: {
-          apiName: 'OpenSky',
-          endpoint: `${this.baseUrl}/states/all`,
-          statusCode: error?.response?.status || 0,
-          errorMessage: error?.message || 'Unknown error',
-          rateLimitRemaining: this.dailyLimit - this.requestCount
-        }
-      })
-
       // Return cached data if available
       const cacheKey = bounds ? 
         `opensky_flights_${bounds.lamin}_${bounds.lomin}_${bounds.lamax}_${bounds.lomax}` : 
         'opensky_flights_all'
-      const cached = await this.getCachedData(cacheKey)
+      const cached = this.getCachedData(cacheKey)
       if (cached) return cached
 
       throw error
     }
   }
 
-  private async storeLiveFlights(states: OpenSkyState[], timestamp: number) {
-    const flights = states.map(state => ({
-      icao24: state.icao24,
-      callsign: state.callsign?.trim() || null,
-      originCountry: state.origin_country,
-      longitude: state.longitude,
-      latitude: state.latitude,
-      altitude: state.baro_altitude,
-      velocity: state.velocity,
-      heading: state.true_track,
-      verticalRate: state.vertical_rate,
-      onGround: state.on_ground,
-      timestamp: new Date(timestamp * 1000),
-      lastUpdated: new Date()
-    }))
-
-    // Clear old flights and insert new ones
-    await prisma.$transaction([
-      prisma.liveFlight.deleteMany({
-        where: {
-          timestamp: {
-            lt: new Date(Date.now() - 5 * 60 * 1000) // Delete flights older than 5 minutes
-          }
-        }
-      }),
-      prisma.liveFlight.createMany({
-        data: flights,
-        skipDuplicates: true
-      })
-    ])
-  }
-
   async getFlightsByAirport(airportCode: string) {
     // For US airports, we need to get flights in a bounding box
-    const airport = await prisma.airport.findUnique({
-      where: { code: airportCode }
-    })
+    const airport = getAirportByCode(airportCode)
 
     if (!airport) {
       throw new Error(`Airport ${airportCode} not found`)
@@ -188,13 +135,15 @@ export class OpenSkyService {
 
     // Create bounding box (roughly 100km around airport)
     const bounds = {
-      lamin: airport.latitude - 1,
-      lamax: airport.latitude + 1,
-      lomin: airport.longitude - 1,
-      lomax: airport.longitude + 1
+      lamin: airport.lat - 1,
+      lamax: airport.lat + 1,
+      lomin: airport.lon - 1,
+      lomax: airport.lon + 1
     }
 
-    return this.getLiveFlights(bounds)
+    const response = await this.getLiveFlights(bounds)
+    // Return just the states for compatibility
+    return response?.states || []
   }
 
   async getUSFlights() {
@@ -209,63 +158,38 @@ export class OpenSkyService {
     return this.getLiveFlights(usBounds)
   }
 
-  private async getCachedData(key: string) {
-    try {
-      const cached = await prisma.cacheStatus.findUnique({
-        where: { key }
+  // Simple wrapper for compatibility
+  async getFlights(bounds?: any) {
+    if (bounds && bounds.north && bounds.south && bounds.east && bounds.west) {
+      const response = await this.getLiveFlights({
+        lamax: bounds.north,
+        lamin: bounds.south,
+        lomax: bounds.east,
+        lomin: bounds.west
       })
+      return response?.states || []
+    }
+    const response = await this.getUSFlights()
+    return response?.states || []
+  }
 
-      if (cached && cached.expiresAt > new Date()) {
-        return cached.value
-      }
-    } catch (error) {
-      console.error('Cache retrieval error:', error)
+  private getCachedData(key: string) {
+    const cached = cache.get(key)
+    if (cached && cached.timestamp > Date.now() - this.cacheTTL) {
+      console.log(`[OpenSky] Using cached data for ${key}`)
+      return cached.data
     }
     return null
   }
 
-  private async cacheData(key: string, data: any) {
-    try {
-      await prisma.cacheStatus.upsert({
-        where: { key },
-        create: {
-          key,
-          value: data,
-          expiresAt: new Date(Date.now() + this.cacheTTL)
-        },
-        update: {
-          value: data,
-          expiresAt: new Date(Date.now() + this.cacheTTL)
-        }
-      })
-    } catch (error) {
-      console.error('Cache storage error:', error)
-    }
-  }
-
-  // Get flight count statistics
-  async getFlightStatistics() {
-    const flights = await prisma.liveFlight.findMany({
-      where: {
-        timestamp: {
-          gte: new Date(Date.now() - 5 * 60 * 1000) // Last 5 minutes
-        }
-      }
+  private cacheData(key: string, data: any) {
+    cache.set(key, {
+      data,
+      timestamp: Date.now()
     })
-
-    return {
-      total: flights.length,
-      airborne: flights.filter((f: any) => !f.onGround).length,
-      onGround: flights.filter((f: any) => f.onGround).length,
-      byCountry: this.groupByCountry(flights)
-    }
-  }
-
-  private groupByCountry(flights: any[]) {
-    const groups: Record<string, number> = {}
-    flights.forEach(flight => {
-      groups[flight.originCountry] = (groups[flight.originCountry] || 0) + 1
-    })
-    return groups
   }
 }
+
+// Export singleton instance
+export const openskyService = new OpenSkyService()
+

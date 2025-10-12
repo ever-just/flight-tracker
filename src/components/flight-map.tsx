@@ -84,18 +84,22 @@ export function FlightMap({
   const [mapBounds, setMapBounds] = useState<L.LatLngBounds | null>(null)
   const [currentZoom, setCurrentZoom] = useState<number>(5)
   const updateTimeoutRef = useRef<NodeJS.Timeout>()
+  const [isZooming, setIsZooming] = useState(false)
+  const zoomTimeoutRef = useRef<NodeJS.Timeout>()
   
   // No flight limiting - show all flights (user wants to see thousands)
   const getFlightLimit = useCallback((zoom: number) => {
     return Infinity // Show all flights
   }, [])
   
-  // Get plane size based on zoom level
+  // Get plane size based on zoom level (more aggressive scaling)
   const getPlaneSize = useCallback((zoom: number) => {
-    if (zoom <= 4) return 16       // Very small
-    if (zoom <= 6) return 20       // Small
-    if (zoom <= 8) return 24       // Medium (default)
-    return 28                       // Large
+    if (zoom <= 4) return 10       // Tiny (continental view)
+    if (zoom <= 5) return 12       // Very small (default view)
+    if (zoom <= 6) return 16       // Small (regional view)
+    if (zoom <= 8) return 20       // Medium (state view)
+    if (zoom <= 10) return 24      // Normal (city view)
+    return 28                       // Large (close-up view)
   }, [])
 
   useEffect(() => {
@@ -151,8 +155,14 @@ export function FlightMap({
         updateTimeoutRef.current = setTimeout(() => {
           setMapBounds(map.getBounds())
           setCurrentZoom(map.getZoom())
-        }, 150) // 150ms debounce to prevent excessive updates
+          setIsZooming(false) // Re-enable animation after zoom settles
+        }, 300) // 300ms debounce for smoother zoom
       }
+      
+      // Pause animation during zoom for better performance
+      map.on('zoomstart', () => {
+        setIsZooming(true)
+      })
       
       map.on('moveend', debouncedUpdate)
       map.on('zoomend', debouncedUpdate)
@@ -241,9 +251,14 @@ export function FlightMap({
 
     // Clear and update flight markers (optimized for thousands of flights)
     if (markersRef.current) {
-      // Throttle updates: only update every 1 second max to prevent lag
+      // Skip updates during active zooming for instant zoom response
+      if (isZooming) {
+        return
+      }
+      
+      // Throttle updates: only update every 1.5 seconds max to prevent lag
       const now = Date.now()
-      if (now - lastUpdateTime.current < 1000 && flightMarkersRef.current.size > 0) {
+      if (now - lastUpdateTime.current < 1500 && flightMarkersRef.current.size > 0) {
         return // Skip this update
       }
       lastUpdateTime.current = now
@@ -298,6 +313,12 @@ export function FlightMap({
 
     // Animate flight movements (optimized for thousands of flights)
     const animateFlights = (currentTime: number) => {
+      // Pause animation during zoom for instant zoom response
+      if (isZooming) {
+        animationFrameRef.current = requestAnimationFrame(animateFlights)
+        return
+      }
+      
       // Throttle to 5 FPS for smooth appearance with low CPU
       if (currentTime - lastAnimationTime.current < 200) {
         animationFrameRef.current = requestAnimationFrame(animateFlights)
@@ -355,8 +376,11 @@ export function FlightMap({
       if (updateTimeoutRef.current) {
         clearTimeout(updateTimeoutRef.current)
       }
+      if (zoomTimeoutRef.current) {
+        clearTimeout(zoomTimeoutRef.current)
+      }
     }
-  }, [flights, airports, center, zoom, router, mapBounds, currentZoom, getFlightLimit, getPlaneSize])
+  }, [flights, airports, center, zoom, router, mapBounds, currentZoom, isZooming, getFlightLimit, getPlaneSize])
 
   return (
     <>
@@ -547,15 +571,27 @@ export function FlightMap({
           will-change: transform;
           backface-visibility: hidden;
           -webkit-font-smoothing: subpixel-antialiased;
+          transform: translateZ(0); /* Force GPU acceleration */
         }
 
         .flight-marker {
           will-change: transform;
           backface-visibility: hidden;
+          transform: translateZ(0); /* Force GPU acceleration */
         }
 
         .flight-marker svg {
           display: block;
+          pointer-events: none; /* Improve performance */
+        }
+
+        /* Optimize Leaflet zoom animations */
+        .leaflet-zoom-animated {
+          will-change: transform;
+        }
+
+        .leaflet-tile-container {
+          will-change: transform;
         }
 
         /* Zoom indicator */

@@ -22,9 +22,9 @@ interface Flight {
   delay?: number
 }
 
-function generateRecentFlights(limit: number = 100): Flight[] {
+function generateRecentFlights(limit: number = 100, airportCode?: string): Flight[] {
   const airlines = ['UA', 'AA', 'DL', 'WN', 'AS', 'B6', 'NK', 'F9', 'HA', 'JB']
-  const airports = ['LAX', 'JFK', 'ORD', 'DFW', 'ATL', 'SFO', 'SEA', 'MIA', 'BOS', 'PHX', 'DEN', 'LAS', 'MCO', 'IAH', 'EWR', 'MSP', 'DTW', 'CLT', 'PHL', 'LGA']
+  const airports = ['LAX', 'JFK', 'ORD', 'DFW', 'ATL', 'SFO', 'SEA', 'MIA', 'BOS', 'PHX', 'DEN', 'LAS', 'MCO', 'IAH', 'EWR', 'MSP', 'DTW', 'CLT', 'PHL', 'LGA', 'PBI', 'FLL', 'TPA', 'SAN', 'PDX']
   const aircraft = ['Boeing 737', 'Airbus A320', 'Boeing 777', 'Airbus A321', 'Boeing 787', 'Embraer E175', 'Boeing 757', 'Airbus A330', 'Boeing 767', 'CRJ-900']
   
   const now = new Date()
@@ -98,10 +98,28 @@ function generateRecentFlights(limit: number = 100): Flight[] {
       else if (statusRandom < cancelRate + delayRate + boardingRate + departedRate) status = 'departed'
       else if (statusRandom < cancelRate + delayRate + boardingRate + departedRate + arrivedRate) status = 'arrived'
       
-      const origin = airports[Math.floor(Math.random() * airports.length)]
-      let destination = airports[Math.floor(Math.random() * airports.length)]
-      while (destination === origin) {
+      // If airport code is specified, ensure flight involves that airport
+      let origin: string
+      let destination: string
+      
+      if (airportCode) {
+        // 50/50 chance this is arrival or departure
+        if (Math.random() > 0.5) {
+          // Arrival: flight coming TO this airport
+          origin = airports.filter(a => a !== airportCode)[Math.floor(Math.random() * (airports.length - 1))]
+          destination = airportCode
+        } else {
+          // Departure: flight leaving FROM this airport
+          origin = airportCode
+          destination = airports.filter(a => a !== airportCode)[Math.floor(Math.random() * (airports.length - 1))]
+        }
+      } else {
+        // Random flight if no airport specified
+        origin = airports[Math.floor(Math.random() * airports.length)]
         destination = airports[Math.floor(Math.random() * airports.length)]
+        while (destination === origin) {
+          destination = airports[Math.floor(Math.random() * airports.length)]
+        }
       }
       
       flights.unshift({
@@ -114,7 +132,7 @@ function generateRecentFlights(limit: number = 100): Flight[] {
         actualTime: actualTime.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }),
         gate: `${String.fromCharCode(65 + Math.floor(Math.random() * 5))}${Math.floor(Math.random() * 50) + 1}`,
         status,
-        type: Math.random() > 0.5 ? 'departure' : 'arrival',
+        type: destination === airportCode ? 'arrival' : 'departure', // Match type to direction
         aircraft: aircraft[Math.floor(Math.random() * aircraft.length)],
         altitude: status === 'arrived' || status === 'boarding' ? 0 : Math.floor(Math.random() * 40000),
         speed: status === 'arrived' || status === 'boarding' ? 0 : Math.floor(Math.random() * 300) + 200,
@@ -148,10 +166,28 @@ function generateRecentFlights(limit: number = 100): Flight[] {
     else if (statusRandom < cancelRate + delayRate + boardingRate + departedRate) status = 'departed'
     else if (statusRandom < cancelRate + delayRate + boardingRate + departedRate + arrivedRate) status = 'arrived'
     
-    const origin = airports[Math.floor(Math.random() * airports.length)]
-    let destination = airports[Math.floor(Math.random() * airports.length)]
-    while (destination === origin) {
+    // If airport code is specified, ensure flight involves that airport
+    let origin: string
+    let destination: string
+    
+    if (airportCode) {
+      // 50/50 chance this is arrival or departure
+      if (Math.random() > 0.5) {
+        // Arrival: flight coming TO this airport
+        origin = airports.filter(a => a !== airportCode)[Math.floor(Math.random() * (airports.length - 1))]
+        destination = airportCode
+      } else {
+        // Departure: flight leaving FROM this airport
+        origin = airportCode
+        destination = airports.filter(a => a !== airportCode)[Math.floor(Math.random() * (airports.length - 1))]
+      }
+    } else {
+      // Random flight if no airport specified
+      origin = airports[Math.floor(Math.random() * airports.length)]
       destination = airports[Math.floor(Math.random() * airports.length)]
+      while (destination === origin) {
+        destination = airports[Math.floor(Math.random() * airports.length)]
+      }
     }
     
     flights.push({
@@ -164,7 +200,7 @@ function generateRecentFlights(limit: number = 100): Flight[] {
       actualTime: actualTime.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }),
       gate: `${String.fromCharCode(65 + Math.floor(Math.random() * 5))}${Math.floor(Math.random() * 50) + 1}`,
       status,
-      type: Math.random() > 0.5 ? 'departure' : 'arrival',
+      type: destination === airportCode ? 'arrival' : 'departure', // Match type to direction
       aircraft: aircraft[Math.floor(Math.random() * aircraft.length)],
       altitude: status === 'arrived' || status === 'boarding' ? 0 : Math.floor(Math.random() * 40000),
       speed: status === 'arrived' || status === 'boarding' ? 0 : Math.floor(Math.random() * 300) + 200,
@@ -180,50 +216,22 @@ export async function GET(request: NextRequest) {
   try {
     const searchParams = request.nextUrl.searchParams
     const limit = searchParams.get('limit') ? parseInt(searchParams.get('limit')!) : 100
-    const airportCode = searchParams.get('airport')
+    const airportCode = searchParams.get('airport')?.toUpperCase()
     
-    // Fetch real flights from live endpoint
-    const liveResponse = await fetch(`${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/api/flights/live`, {
-      cache: 'no-store'
-    })
+    // Generate mock flights specific to the requested airport
+    const flights = generateRecentFlights(limit, airportCode)
     
-    let flights = []
-    
-    if (liveResponse.ok) {
-      const liveData = await liveResponse.json()
-      flights = (liveData.flights || []).slice(0, limit)
-      
-      // If airport code specified, try to filter (though OpenSky doesn't provide origin/dest)
-      if (airportCode && flights.length > 0) {
-        // Can't accurately filter by airport from OpenSky position data alone
-        // Return general flights but note limitation
-        console.log(`[RECENT FLIGHTS] Airport-specific filtering not available from OpenSky data`)
-      }
-    }
-    
-    // If no real data, return empty with note
-    if (flights.length === 0) {
-      return NextResponse.json({
-        flights: [],
-        total: 0,
-        timestamp: new Date().toISOString(),
-        note: 'Recent flight data requires scheduled flight database. Showing live airborne flights instead.',
-        limitation: 'OpenSky provides position data only, not flight schedules or airport assignments'
-      })
-    }
-    
-    // Add headers to prevent caching for real-time data
-    const headers = new Headers()
-    headers.set('Cache-Control', 'no-cache, no-store, must-revalidate')
-    headers.set('Pragma', 'no-cache')
-    headers.set('Expires', '0')
+    // Update cache
+    lastFlights = flights
+    lastUpdateTime = Date.now()
     
     return NextResponse.json({
       flights,
       total: flights.length,
       timestamp: new Date().toISOString(),
-      source: 'opensky-live-flights'
-    }, { headers })
+      airport: airportCode,
+      source: 'mock-scheduled-data'
+    })
     
   } catch (error) {
     console.error('Error fetching recent flights:', error)

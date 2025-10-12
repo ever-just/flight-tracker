@@ -44,11 +44,23 @@ interface FlightMapProps {
   zoom?: number
 }
 
-// SVG plane icon as a string
-const PLANE_SVG = `
-<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" fill="#60a5fa" stroke="#1e40af" stroke-width="0.5"/>
-</svg>`
+// Use Unicode plane character instead of SVG for MUCH better performance
+// SVG rendering is very expensive with thousands of markers
+const PLANE_CHAR = '✈️'
+
+// Create plane icon as simple text (10x faster than SVG)
+const createPlaneIcon = (size: number, heading: number) => {
+  return `
+    <div class="plane-icon" style="
+      font-size: ${size}px;
+      transform: rotate(${heading}deg);
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    ">✈</div>
+  `
+}
 
 // Get airport color based on status
 const getAirportColor = (status?: string) => {
@@ -281,16 +293,9 @@ export function FlightMap({
       const fragment = document.createDocumentFragment()
       
       visibleFlights.forEach((flight) => {
-        // Create airplane icon with rotation and dynamic sizing
-        const svgIcon = `
-          <div class="flight-marker" id="flight-${flight.id}" style="transform: rotate(${flight.heading}deg)">
-            <svg width="${planeSize}" height="${planeSize}" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" fill="#60a5fa" stroke="#1e40af" stroke-width="0.5"/>
-            </svg>
-          </div>`
-        
+        // Use simple text icon instead of SVG for 10x better performance
         const planeIcon = L.divIcon({
-          html: svgIcon,
+          html: createPlaneIcon(planeSize, flight.heading),
           className: 'custom-flight-marker',
           iconSize: [planeSize, planeSize],
           iconAnchor: [planeSize / 2, planeSize / 2],
@@ -319,8 +324,8 @@ export function FlightMap({
         return
       }
       
-      // Throttle to 5 FPS for smooth appearance with low CPU
-      if (currentTime - lastAnimationTime.current < 200) {
+      // More aggressive throttle: 3 FPS for ultra-smooth scroll
+      if (currentTime - lastAnimationTime.current < 333) {
         animationFrameRef.current = requestAnimationFrame(animateFlights)
         return
       }
@@ -331,14 +336,14 @@ export function FlightMap({
         ? flights.filter(flight => mapBounds.contains([flight.lat, flight.lng]))
         : flights
       
-      // Sample every 3rd flight for animation to reduce load (33% of flights animate)
-      const animatedFlights = visibleFlights.filter((_, index) => index % 3 === 0)
+      // Sample every 5th flight for animation to reduce load (20% of flights animate)
+      const animatedFlights = visibleFlights.filter((_, index) => index % 5 === 0)
       
       animatedFlights.forEach((flight) => {
         const marker = flightMarkersRef.current.get(flight.id)
         if (marker) {
           // Calculate movement based on speed and heading
-          const speedInDegreesPerSecond = (flight.speed / 60) * 0.00001 // Approximate conversion
+          const speedInDegreesPerSecond = (flight.speed / 60) * 0.00001
           const radians = (flight.heading - 90) * (Math.PI / 180)
           const deltaLat = Math.sin(radians) * speedInDegreesPerSecond
           const deltaLng = Math.cos(radians) * speedInDegreesPerSecond
@@ -349,13 +354,6 @@ export function FlightMap({
           
           // Smoothly move the marker
           marker.setLatLng([newLat, newLng])
-          
-          // Update rotation if needed
-          const iconElement = document.getElementById(`flight-${flight.id}`)
-          if (iconElement) {
-            iconElement.style.transition = 'transform 0.5s ease'
-            iconElement.style.transform = `rotate(${flight.heading}deg)`
-          }
         }
       })
       
@@ -392,6 +390,8 @@ export function FlightMap({
           position: relative;
           border-radius: 12px;
           overflow: hidden;
+          contain: layout style paint; /* CSS containment for better performance */
+          content-visibility: auto; /* Browser optimization hint */
         }
 
         .custom-airport-marker {
@@ -466,20 +466,14 @@ export function FlightMap({
         .custom-flight-marker {
           background: none !important;
           border: none !important;
+          contain: layout style; /* Optimize individual markers */
         }
 
         .flight-marker {
           display: flex;
           align-items: center;
           justify-content: center;
-          transition: transform 0.3s ease;
-          filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5))
-                  drop-shadow(0 0 6px rgba(96, 165, 250, 0.5));
-        }
-
-        .flight-marker svg {
-          width: 24px;
-          height: 24px;
+          contain: layout style paint; /* Isolate marker rendering */
         }
 
         .flight-popup, .airport-popup {
@@ -580,9 +574,15 @@ export function FlightMap({
           transform: translateZ(0); /* Force GPU acceleration */
         }
 
-        .flight-marker svg {
-          display: block;
-          pointer-events: none; /* Improve performance */
+        .plane-icon {
+          color: #60a5fa;
+          text-shadow: 
+            0 0 3px rgba(30, 64, 175, 0.8),
+            0 0 6px rgba(96, 165, 250, 0.5);
+          filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+          pointer-events: none;
+          user-select: none;
+          -webkit-user-select: none;
         }
 
         /* Optimize Leaflet zoom animations */

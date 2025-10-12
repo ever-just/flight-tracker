@@ -1,11 +1,47 @@
 'use client'
 
-import { useEffect, useState, useMemo } from 'react'
+import { useEffect, useState, useMemo, memo } from 'react'
 import dynamic from 'next/dynamic'
-// Note: FixedSizeList import removed - not needed for basic flight list
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Plane, MapPin, Activity, Filter, Eye, EyeOff } from 'lucide-react'
 import { cn } from '@/lib/utils'
+
+// Memoized flight item to prevent unnecessary re-renders
+const FlightItem = memo(({ flight }: { flight: any }) => (
+  <div className="py-3 border-b border-white/10 cursor-pointer hover:bg-white/5 transition-colors">
+    <div className="flex items-center justify-between">
+      <div>
+        <p className="font-medium text-white">{flight.callsign}</p>
+        <p className="text-xs text-muted-foreground">
+          Alt: {flight.altitude.toLocaleString()} ft
+        </p>
+      </div>
+      <div className="text-right">
+        <p className="text-sm text-aviation-sky">{flight.speed} kts</p>
+        <p className="text-xs text-muted-foreground">
+          HDG {flight.heading}°
+        </p>
+      </div>
+    </div>
+  </div>
+))
+FlightItem.displayName = 'FlightItem'
+
+// Memoized stat card to prevent unnecessary re-renders
+const StatCard = memo(({ label, value, icon: Icon, iconColor }: any) => (
+  <Card className="glass-card">
+    <CardContent className="p-4">
+      <div className="flex items-center justify-between">
+        <div>
+          <p className="text-xs text-muted-foreground">{label}</p>
+          <p className="text-xl font-bold">{value}</p>
+        </div>
+        <Icon className={`w-5 h-5 ${iconColor}`} />
+      </div>
+    </CardContent>
+  </Card>
+))
+StatCard.displayName = 'StatCard'
 
 // Dynamically import map component to avoid SSR issues
 const FlightMap = dynamic(
@@ -45,6 +81,14 @@ export default function MapPage() {
   const [loading, setLoading] = useState(true)
   const [showFlights, setShowFlights] = useState(true)
   const [showAirports, setShowAirports] = useState(true)
+  const [isScrolling, setIsScrolling] = useState(false)
+  
+  // Memoize visible flights for list (only show top 150 by altitude for smooth scrolling)
+  const visibleFlightsList = useMemo(() => {
+    return flightData
+      .sort((a, b) => b.altitude - a.altitude) // Prioritize high-altitude flights
+      .slice(0, 150) // Limit to 150 for smooth scrolling
+  }, [flightData])
 
   // Fetch real flight data
   useEffect(() => {
@@ -119,8 +163,34 @@ export default function MapPage() {
     return () => clearInterval(interval)
   }, [])
 
+  // Detect scrolling for performance optimization
+  useEffect(() => {
+    let scrollTimeout: NodeJS.Timeout
+    
+    const handleScroll = () => {
+      setIsScrolling(true)
+      clearTimeout(scrollTimeout)
+      scrollTimeout = setTimeout(() => {
+        setIsScrolling(false)
+      }, 150)
+    }
+    
+    // Use passive listener for better scroll performance
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      clearTimeout(scrollTimeout)
+    }
+  }, [])
+
   return (
-    <div className="space-y-6 animate-fadeIn">
+    <div 
+      className="space-y-6 animate-fadeIn"
+      style={{
+        contain: 'layout style',
+        willChange: isScrolling ? 'scroll-position' : 'auto'
+      }}
+    >
       {/* Page Header */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between">
         <div>
@@ -170,55 +240,32 @@ export default function MapPage() {
         </div>
       </div>
 
-      {/* Stats Bar */}
+      {/* Stats Bar - Memoized for performance */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <Card className="glass-card">
-          <CardContent className="p-4">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-xs text-muted-foreground">Total Flights</p>
-                <p className="text-xl font-bold">{stats.totalFlights}</p>
-              </div>
-              <Plane className="w-5 h-5 text-aviation-sky" />
-            </div>
-          </CardContent>
-        </Card>
-        
-        <Card className="glass-card">
-          <CardContent className="p-4">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-xs text-muted-foreground">Airborne</p>
-                <p className="text-xl font-bold">{stats.airborne}</p>
-              </div>
-              <Plane className="w-5 h-5 text-green-500" />
-            </div>
-          </CardContent>
-        </Card>
-        
-        <Card className="glass-card">
-          <CardContent className="p-4">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-xs text-muted-foreground">On Ground</p>
-                <p className="text-xl font-bold">{stats.onGround}</p>
-              </div>
-              <MapPin className="w-5 h-5 text-amber-500" />
-            </div>
-          </CardContent>
-        </Card>
-        
-        <Card className="glass-card">
-          <CardContent className="p-4">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-xs text-muted-foreground">Active Airports</p>
-                <p className="text-xl font-bold">{stats.activeAirports}</p>
-              </div>
-              <MapPin className="w-5 h-5 text-aviation-blue" />
-            </div>
-          </CardContent>
-        </Card>
+        <StatCard 
+          label="Total Flights" 
+          value={stats.totalFlights} 
+          icon={Plane} 
+          iconColor="text-aviation-sky"
+        />
+        <StatCard 
+          label="Airborne" 
+          value={stats.airborne} 
+          icon={Plane} 
+          iconColor="text-green-500"
+        />
+        <StatCard 
+          label="On Ground" 
+          value={stats.onGround} 
+          icon={MapPin} 
+          iconColor="text-amber-500"
+        />
+        <StatCard 
+          label="Active Airports" 
+          value={stats.activeAirports} 
+          icon={MapPin} 
+          iconColor="text-aviation-blue"
+        />
       </div>
 
       {/* Main Map */}
@@ -266,45 +313,35 @@ export default function MapPage() {
               </div>
             </CardHeader>
             <CardContent className="p-0">
-              <FlightMap 
-                flights={showFlights ? flightData : []} 
-                airports={showAirports ? airportData : []}
-              />
+              <div style={{ contain: 'layout style paint' }}>
+                <FlightMap 
+                  flights={showFlights ? flightData : []} 
+                  airports={showAirports ? airportData : []}
+                />
+              </div>
             </CardContent>
           </Card>
         </div>
 
-        {/* Flight List Sidebar (showing all flights) */}
+        {/* Flight List Sidebar (optimized for smooth scrolling) */}
         <div>
           <Card className="h-[600px] overflow-hidden">
             <CardHeader>
-              <CardTitle className="text-lg">Active Flights</CardTitle>
+              <CardTitle className="text-lg">Top Flights</CardTitle>
               <CardDescription>
-                {flightData.length.toLocaleString()} flights tracked
+                Showing {visibleFlightsList.length} of {flightData.length.toLocaleString()} flights (highest altitude)
               </CardDescription>
             </CardHeader>
             <CardContent className="p-0">
-              <div className="h-[500px] overflow-y-auto px-6">
-                {flightData.map((flight) => (
-                  <div
-                    key={flight.id}
-                    className="py-3 border-b border-white/10 cursor-pointer hover:bg-white/5 transition-colors"
-                  >
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <p className="font-medium text-white">{flight.callsign}</p>
-                        <p className="text-xs text-muted-foreground">
-                          Alt: {flight.altitude.toLocaleString()} ft
-                        </p>
-                      </div>
-                      <div className="text-right">
-                        <p className="text-sm text-aviation-sky">{flight.speed} kts</p>
-                        <p className="text-xs text-muted-foreground">
-                          HDG {flight.heading}°
-                        </p>
-                      </div>
-                    </div>
-                  </div>
+              <div 
+                className="h-[500px] overflow-y-auto px-6"
+                style={{ 
+                  contain: 'layout style paint',
+                  willChange: 'scroll-position'
+                }}
+              >
+                {visibleFlightsList.map((flight) => (
+                  <FlightItem key={flight.id} flight={flight} />
                 ))}
               </div>
             </CardContent>

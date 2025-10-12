@@ -1,0 +1,1522 @@
+
+> flight-tracker@0.1.0 dev
+> next dev
+
+   ▲ Next.js 14.1.0
+   - Local:        http://localhost:3000
+   - Environments: .env.local, .env
+
+ ✓ Ready in 1224ms
+ ✓ Compiled /api/dashboard/summary in 499ms (51 modules)
+[DASHBOARD API] Fetching HYBRID REAL data for period: today
+[REAL DATA] Fetching from OpenSky Network API...
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[FLIGHT TRACKER] Loaded persisted data from file
+[DASHBOARD API] Updated tracker with 2119 flights
+[FAA] Fetching fresh data from API
+[WEATHER] Generating weather delay data
+[AVIATIONSTACK] Generating cancellation data
+[DASHBOARD API] Combined delays: 2188 delays (FAA: 2157, Weather: 31)
+[DASHBOARD API] Combined cancellations: 385 (FAA: 198, Weather: 0, AviationStack: 187)
+[DATA AGGREGATOR] Fetching hybrid data for period: today
+[REAL DATA] Fetching from OpenSky Network API...
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[DATA AGGREGATOR] Using REAL-TIME data for today
+[DASHBOARD API] Fetching HYBRID REAL data for period: week
+[DATA AGGREGATOR] Fetching hybrid data for period: week
+[REAL DATA] Fetching from OpenSky Network API...
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[DATA AGGREGATOR] Successfully aggregated data from all sources
+ ✓ Compiled in 879ms (51 modules)
+[DASHBOARD API] Fetching HYBRID REAL data for period: week
+[DATA AGGREGATOR] Fetching hybrid data for period: week
+[REAL DATA] Fetching from OpenSky Network API...
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[FLIGHT TRACKER] Loaded persisted data from file
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[DATA AGGREGATOR] Successfully aggregated data from all sources
+[DASHBOARD API] Fetching HYBRID REAL data for period: month
+[DATA AGGREGATOR] Fetching hybrid data for period: month
+[REAL DATA] Fetching from OpenSky Network API...
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[DATA AGGREGATOR] Successfully aggregated data from all sources
+ ○ Compiling / ...
+(node:64127) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+ ✓ Compiled / in 2.5s (733 modules)
+
+ ⚠ metadata.metadataBase is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+ ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ✓ Compiled in 446ms (347 modules)
+ ○ Compiling /api/flights/recent ...
+ ✓ Compiled /api/flights/recent in 816ms (412 modules)
+ ✓ Compiled (414 modules)
+[DASHBOARD API] Fetching HYBRID REAL data for period: today
+[REAL DATA] Fetching from OpenSky Network API...
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[FLIGHT TRACKER] Loaded persisted data from file
+[DASHBOARD API] Updated tracker with 2119 flights
+[FAA] Fetching fresh data from API
+[WEATHER] Generating weather delay data
+[AVIATIONSTACK] Generating cancellation data
+[DASHBOARD API] Combined delays: 2188 delays (FAA: 2157, Weather: 31)
+[DASHBOARD API] Combined cancellations: 374 (FAA: 198, Weather: 0, AviationStack: 176)
+[DATA AGGREGATOR] Fetching hybrid data for period: today
+[REAL DATA] Fetching from OpenSky Network API...
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[DATA AGGREGATOR] Using REAL-TIME data for today
+[DASHBOARD API] Fetching HYBRID REAL data for period: today
+[REAL DATA] Fetching from OpenSky Network API...
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[DASHBOARD API] Updated tracker with 2119 flights
+[FAA] Returning cached data
+[WEATHER] Returning cached data
+[AVIATIONSTACK] Returning cached cancellation data
+[DASHBOARD API] Combined delays: 2188 delays (FAA: 2157, Weather: 31)
+[DASHBOARD API] Combined cancellations: 374 (FAA: 198, Weather: 0, AviationStack: 176)
+[DASHBOARD API] Returning cached hybrid data
+ ✓ Compiled in 2.3s (761 modules)
+[DASHBOARD API] Fetching HYBRID REAL data for period: today
+[REAL DATA] Fetching from OpenSky Network API...
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[FLIGHT TRACKER] Loaded persisted data from file
+[DASHBOARD API] Updated tracker with 2119 flights
+[FAA] Fetching fresh data from API
+[WEATHER] Generating weather delay data
+[AVIATIONSTACK] Generating cancellation data
+[DASHBOARD API] Combined delays: 2188 delays (FAA: 2157, Weather: 31)
+[DASHBOARD API] Combined cancellations: 371 (FAA: 198, Weather: 0, AviationStack: 173)
+[DATA AGGREGATOR] Fetching hybrid data for period: today
+[REAL DATA] Fetching from OpenSky Network API...
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[DATA AGGREGATOR] Using REAL-TIME data for today
+
+ ⚠ metadata.metadataBase is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+ ⚠ Unsupported metadata viewport is configured in metadata export in /?_rsc=1xuj0. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /?_rsc=1xuj0. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+[DASHBOARD API] Fetching HYBRID REAL data for period: today
+[REAL DATA] Fetching from OpenSky Network API...
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[DASHBOARD API] Updated tracker with 2119 flights
+[FAA] Returning cached data
+[WEATHER] Returning cached data
+[AVIATIONSTACK] Returning cached cancellation data
+[DASHBOARD API] Combined delays: 2188 delays (FAA: 2157, Weather: 31)
+[DASHBOARD API] Combined cancellations: 371 (FAA: 198, Weather: 0, AviationStack: 173)
+[DASHBOARD API] Returning cached hybrid data
+ ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ○ Compiling /not-found ...
+[DASHBOARD API] Fetching HYBRID REAL data for period: today
+[REAL DATA] Fetching from OpenSky Network API...
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[DASHBOARD API] Updated tracker with 2119 flights
+[FAA] Returning cached data
+[WEATHER] Returning cached data
+[AVIATIONSTACK] Returning cached cancellation data
+[DASHBOARD API] Combined delays: 2188 delays (FAA: 2157, Weather: 31)
+[DASHBOARD API] Combined cancellations: 371 (FAA: 198, Weather: 0, AviationStack: 173)
+[DASHBOARD API] Returning cached hybrid data
+ ✓ Compiled /not-found in 4s (766 modules)
+
+ ⚠ metadata.metadataBase is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+ ⚠ Unsupported metadata viewport is configured in metadata export in /.well-known/appspecific/com.chrome.devtools.json. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /.well-known/appspecific/com.chrome.devtools.json. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata viewport is configured in metadata export in /.well-known/appspecific/com.chrome.devtools.json. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /.well-known/appspecific/com.chrome.devtools.json. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata viewport is configured in metadata export in /?_rsc=1xuj0. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /?_rsc=1xuj0. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata viewport is configured in metadata export in /icon-192.png. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /icon-192.png. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata viewport is configured in metadata export in /icon-192.png. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /icon-192.png. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+[DASHBOARD API] Fetching HYBRID REAL data for period: today
+[REAL DATA] Fetching from OpenSky Network API...
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[FLIGHT TRACKER] Loaded persisted data from file
+[DASHBOARD API] Updated tracker with 2119 flights
+[FAA] Fetching fresh data from API
+[WEATHER] Generating weather delay data
+[AVIATIONSTACK] Generating cancellation data
+[DASHBOARD API] Combined delays: 2188 delays (FAA: 2157, Weather: 31)
+[DASHBOARD API] Combined cancellations: 389 (FAA: 198, Weather: 0, AviationStack: 191)
+[DATA AGGREGATOR] Fetching hybrid data for period: today
+[REAL DATA] Fetching from OpenSky Network API...
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[DATA AGGREGATOR] Using REAL-TIME data for today
+[DASHBOARD API] Fetching HYBRID REAL data for period: today
+[REAL DATA] Fetching from OpenSky Network API...
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[DASHBOARD API] Updated tracker with 2119 flights
+[FAA] Returning cached data
+[WEATHER] Returning cached data
+[AVIATIONSTACK] Returning cached cancellation data
+[DASHBOARD API] Combined delays: 2188 delays (FAA: 2157, Weather: 31)
+[DASHBOARD API] Combined cancellations: 389 (FAA: 198, Weather: 0, AviationStack: 191)
+[DASHBOARD API] Returning cached hybrid data
+[DASHBOARD API] Fetching HYBRID REAL data for period: today
+[REAL DATA] Fetching from OpenSky Network API...
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[DASHBOARD API] Updated tracker with 2119 flights
+[FAA] Returning cached data
+[WEATHER] Returning cached data
+[AVIATIONSTACK] Returning cached cancellation data
+[DASHBOARD API] Combined delays: 2188 delays (FAA: 2157, Weather: 31)
+[DASHBOARD API] Combined cancellations: 389 (FAA: 198, Weather: 0, AviationStack: 191)
+[DASHBOARD API] Returning cached hybrid data
+[DASHBOARD API] Fetching HYBRID REAL data for period: today
+[REAL DATA] Fetching from OpenSky Network API...
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[DASHBOARD API] Updated tracker with 2119 flights
+[FAA] Returning cached data
+[WEATHER] Returning cached data
+[AVIATIONSTACK] Returning cached cancellation data
+[DASHBOARD API] Combined delays: 2188 delays (FAA: 2157, Weather: 31)
+[DASHBOARD API] Combined cancellations: 389 (FAA: 198, Weather: 0, AviationStack: 191)
+[DATA AGGREGATOR] Fetching hybrid data for period: today
+[REAL DATA] Fetching from OpenSky Network API...
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[DATA AGGREGATOR] Using REAL-TIME data for today
+[DASHBOARD API] Fetching HYBRID REAL data for period: today
+[REAL DATA] Fetching from OpenSky Network API...
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[DASHBOARD API] Updated tracker with 2119 flights
+[FAA] Returning cached data
+[WEATHER] Returning cached data
+[AVIATIONSTACK] Returning cached cancellation data
+[DASHBOARD API] Combined delays: 2188 delays (FAA: 2157, Weather: 31)
+[DASHBOARD API] Combined cancellations: 389 (FAA: 198, Weather: 0, AviationStack: 191)
+[DASHBOARD API] Returning cached hybrid data
+[DASHBOARD API] Fetching HYBRID REAL data for period: today
+[REAL DATA] Fetching from OpenSky Network API...
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[DASHBOARD API] Updated tracker with 2119 flights
+[FAA] Returning cached data
+[WEATHER] Returning cached data
+[AVIATIONSTACK] Returning cached cancellation data
+[DASHBOARD API] Combined delays: 2188 delays (FAA: 2157, Weather: 31)
+[DASHBOARD API] Combined cancellations: 389 (FAA: 198, Weather: 0, AviationStack: 191)
+[DASHBOARD API] Returning cached hybrid data
+[DASHBOARD API] Fetching HYBRID REAL data for period: today
+[REAL DATA] Fetching from OpenSky Network API...
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[DASHBOARD API] Updated tracker with 2119 flights
+[FAA] Returning cached data
+[WEATHER] Returning cached data
+[AVIATIONSTACK] Returning cached cancellation data
+[DASHBOARD API] Combined delays: 2188 delays (FAA: 2157, Weather: 31)
+[DASHBOARD API] Combined cancellations: 389 (FAA: 198, Weather: 0, AviationStack: 191)
+[DATA AGGREGATOR] Fetching hybrid data for period: today
+[REAL DATA] Fetching from OpenSky Network API...
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[DATA AGGREGATOR] Using REAL-TIME data for today
+[DASHBOARD API] Fetching HYBRID REAL data for period: today
+[REAL DATA] Fetching from OpenSky Network API...
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[DASHBOARD API] Updated tracker with 2119 flights
+[FAA] Returning cached data
+[WEATHER] Returning cached data
+[AVIATIONSTACK] Returning cached cancellation data
+[DASHBOARD API] Combined delays: 2188 delays (FAA: 2157, Weather: 31)
+[DASHBOARD API] Combined cancellations: 389 (FAA: 198, Weather: 0, AviationStack: 191)
+[DASHBOARD API] Returning cached hybrid data
+[DASHBOARD API] Fetching HYBRID REAL data for period: today
+[REAL DATA] Fetching from OpenSky Network API...
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[DASHBOARD API] Updated tracker with 2119 flights
+[FAA] Returning cached data
+[WEATHER] Returning cached data
+[AVIATIONSTACK] Returning cached cancellation data
+[DASHBOARD API] Combined delays: 2188 delays (FAA: 2157, Weather: 31)
+[DASHBOARD API] Combined cancellations: 389 (FAA: 198, Weather: 0, AviationStack: 191)
+[DASHBOARD API] Returning cached hybrid data
+[DASHBOARD API] Fetching HYBRID REAL data for period: today
+[REAL DATA] Fetching from OpenSky Network API...
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[DASHBOARD API] Updated tracker with 2119 flights
+[FAA] Returning cached data
+[WEATHER] Returning cached data
+[AVIATIONSTACK] Returning cached cancellation data
+[DASHBOARD API] Combined delays: 2188 delays (FAA: 2157, Weather: 31)
+[DASHBOARD API] Combined cancellations: 389 (FAA: 198, Weather: 0, AviationStack: 191)
+[DATA AGGREGATOR] Fetching hybrid data for period: today
+[REAL DATA] Fetching from OpenSky Network API...
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[DATA AGGREGATOR] Using REAL-TIME data for today
+[DASHBOARD API] Fetching HYBRID REAL data for period: today
+[REAL DATA] Fetching from OpenSky Network API...
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[DASHBOARD API] Updated tracker with 2119 flights
+[FAA] Returning cached data
+[WEATHER] Returning cached data
+[AVIATIONSTACK] Returning cached cancellation data
+[DASHBOARD API] Combined delays: 2188 delays (FAA: 2157, Weather: 31)
+[DASHBOARD API] Combined cancellations: 389 (FAA: 198, Weather: 0, AviationStack: 191)
+[DASHBOARD API] Returning cached hybrid data
+[DASHBOARD API] Fetching HYBRID REAL data for period: today
+[REAL DATA] Fetching from OpenSky Network API...
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[DASHBOARD API] Updated tracker with 2119 flights
+[FAA] Returning cached data
+[WEATHER] Returning cached data
+[AVIATIONSTACK] Returning cached cancellation data
+[DASHBOARD API] Combined delays: 2188 delays (FAA: 2157, Weather: 31)
+[DASHBOARD API] Combined cancellations: 389 (FAA: 198, Weather: 0, AviationStack: 191)
+[DASHBOARD API] Returning cached hybrid data
+[DASHBOARD API] Fetching HYBRID REAL data for period: today
+[REAL DATA] Fetching from OpenSky Network API...
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[DASHBOARD API] Updated tracker with 2119 flights
+[FAA] Returning cached data
+[WEATHER] Returning cached data
+[AVIATIONSTACK] Returning cached cancellation data
+[DASHBOARD API] Combined delays: 2188 delays (FAA: 2157, Weather: 31)
+[DASHBOARD API] Combined cancellations: 389 (FAA: 198, Weather: 0, AviationStack: 191)
+[DATA AGGREGATOR] Fetching hybrid data for period: today
+[REAL DATA] Fetching from OpenSky Network API...
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[DATA AGGREGATOR] Using REAL-TIME data for today
+[DASHBOARD API] Fetching HYBRID REAL data for period: today
+[REAL DATA] Fetching from OpenSky Network API...
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[DASHBOARD API] Updated tracker with 2119 flights
+[FAA] Returning cached data
+[WEATHER] Returning cached data
+[AVIATIONSTACK] Returning cached cancellation data
+[DASHBOARD API] Combined delays: 2188 delays (FAA: 2157, Weather: 31)
+[DASHBOARD API] Combined cancellations: 389 (FAA: 198, Weather: 0, AviationStack: 191)
+[DASHBOARD API] Returning cached hybrid data
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 9.4s (914 modules)
+
+ ⚠ metadata.metadataBase is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+ ⚠ Unsupported metadata viewport is configured in metadata export in /_next/static/webpack/86c718e8dcb18b2b.webpack.hot-update.json. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /_next/static/webpack/86c718e8dcb18b2b.webpack.hot-update.json. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata viewport is configured in metadata export in /?_rsc=1xuj0. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /?_rsc=1xuj0. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata viewport is configured in metadata export in /?_rsc=1xuj0. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /?_rsc=1xuj0. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata viewport is configured in metadata export in /_next/static/webpack/86c718e8dcb18b2b.webpack.hot-update.json. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /_next/static/webpack/86c718e8dcb18b2b.webpack.hot-update.json. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ⚠ Unsupported metadata viewport is configured in metadata export in /?_rsc=1xuj0. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /?_rsc=1xuj0. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata viewport is configured in metadata export in /?_rsc=1xuj0. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /?_rsc=1xuj0. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata viewport is configured in metadata export in /_next/static/css/app/layout.css?v=1760259300405. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /_next/static/css/app/layout.css?v=1760259300405. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata viewport is configured in metadata export in /_next/static/css/app/layout.css?v=1760259300405. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /_next/static/css/app/layout.css?v=1760259300405. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata viewport is configured in metadata export in /api/dashboard/summary?period=today. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /api/dashboard/summary?period=today. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata viewport is configured in metadata export in /api/dashboard/summary?period=today. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /api/dashboard/summary?period=today. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata viewport is configured in metadata export in /_next/static/css/app/layout.css?v=1760259303115. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /_next/static/css/app/layout.css?v=1760259303115. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata viewport is configured in metadata export in /_next/static/chunks/main-app.js?v=1760259303115. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /_next/static/chunks/main-app.js?v=1760259303115. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata viewport is configured in metadata export in /_next/static/css/app/layout.css?v=1760259303115. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /_next/static/css/app/layout.css?v=1760259303115. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata viewport is configured in metadata export in /_next/static/chunks/main-app.js?v=1760259303115. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /_next/static/chunks/main-app.js?v=1760259303115. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata viewport is configured in metadata export in /_next/static/chunks/app-pages-internals.js. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /_next/static/chunks/app-pages-internals.js. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata viewport is configured in metadata export in /.well-known/appspecific/com.chrome.devtools.json. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /.well-known/appspecific/com.chrome.devtools.json. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata viewport is configured in metadata export in /_next/static/chunks/app-pages-internals.js. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /_next/static/chunks/app-pages-internals.js. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata viewport is configured in metadata export in /.well-known/appspecific/com.chrome.devtools.json. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /.well-known/appspecific/com.chrome.devtools.json. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata viewport is configured in metadata export in /_next/static/chunks/app/page.js. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /_next/static/chunks/app/page.js. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata viewport is configured in metadata export in /_next/static/chunks/app/page.js. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /_next/static/chunks/app/page.js. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata viewport is configured in metadata export in /_next/static/chunks/app/layout.js. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /_next/static/chunks/app/layout.js. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata viewport is configured in metadata export in /_next/static/chunks/app/layout.js. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /_next/static/chunks/app/layout.js. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata viewport is configured in metadata export in /api/dashboard/summary?period=today. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /api/dashboard/summary?period=today. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata viewport is configured in metadata export in /api/dashboard/summary?period=today. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /api/dashboard/summary?period=today. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata viewport is configured in metadata export in /api/flights/recent?limit=5. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /api/flights/recent?limit=5. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata viewport is configured in metadata export in /api/flights/recent?limit=5. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /api/flights/recent?limit=5. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata viewport is configured in metadata export in /api/dashboard/summary?period=today. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /api/dashboard/summary?period=today. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata viewport is configured in metadata export in /api/dashboard/summary?period=today. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /api/dashboard/summary?period=today. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata viewport is configured in metadata export in /api/flights/recent?airport=LAX&limit=3. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /api/flights/recent?airport=LAX&limit=3. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata viewport is configured in metadata export in /api/flights/recent?airport=LAX&limit=3. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /api/flights/recent?airport=LAX&limit=3. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata viewport is configured in metadata export in /icon-192.png. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /icon-192.png. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata viewport is configured in metadata export in /icon-192.png. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /icon-192.png. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata viewport is configured in metadata export in /api/flights/recent?limit=5. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /api/flights/recent?limit=5. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata viewport is configured in metadata export in /api/flights/recent?limit=5. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /api/flights/recent?limit=5. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata viewport is configured in metadata export in /api/dashboard/summary?period=today. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /api/dashboard/summary?period=today. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata viewport is configured in metadata export in /api/dashboard/summary?period=today. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /api/dashboard/summary?period=today. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata viewport is configured in metadata export in /api/dashboard/summary?period=today. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /api/dashboard/summary?period=today. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata viewport is configured in metadata export in /api/dashboard/summary?period=today. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /api/dashboard/summary?period=today. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata viewport is configured in metadata export in /api/dashboard/summary?period=today. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /api/dashboard/summary?period=today. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata viewport is configured in metadata export in /api/dashboard/summary?period=today. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /api/dashboard/summary?period=today. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata viewport is configured in metadata export in /api/dashboard/summary?period=today. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /api/dashboard/summary?period=today. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata viewport is configured in metadata export in /api/dashboard/summary?period=today. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /api/dashboard/summary?period=today. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ✓ Compiled in 6.8s (456 modules)
+ ✓ Compiled in 4ms (456 modules)
+ ✓ Compiled in 1ms (456 modules)
+ ✓ Compiled in 0ms (456 modules)
+[DASHBOARD API] Fetching HYBRID REAL data for period: today
+[REAL DATA] Fetching from OpenSky Network API...
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[FLIGHT TRACKER] Loaded persisted data from file
+[DASHBOARD API] Updated tracker with 2119 flights
+[FAA] Fetching fresh data from API
+[WEATHER] Generating weather delay data
+[AVIATIONSTACK] Generating cancellation data
+[DASHBOARD API] Combined delays: 2188 delays (FAA: 2157, Weather: 31)
+[DASHBOARD API] Combined cancellations: 391 (FAA: 198, Weather: 0, AviationStack: 193)
+[DATA AGGREGATOR] Fetching hybrid data for period: today
+[REAL DATA] Fetching from OpenSky Network API...
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[DATA AGGREGATOR] Using REAL-TIME data for today
+ ✓ Compiled in 6ms (456 modules)
+
+ ⚠ metadata.metadataBase is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+ ⚠ Unsupported metadata viewport is configured in metadata export in /?_rsc=1xuj0. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /?_rsc=1xuj0. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ✓ Compiled in 447ms (914 modules)
+
+ ⚠ metadata.metadataBase is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+ ⚠ Unsupported metadata viewport is configured in metadata export in /_next/static/css/app/layout.css?v=1760259338782. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /_next/static/css/app/layout.css?v=1760259338782. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata viewport is configured in metadata export in /_next/static/css/app/layout.css?v=1760259338782. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /_next/static/css/app/layout.css?v=1760259338782. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata viewport is configured in metadata export in /api/flights/recent?airport=LAX&limit=3. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /api/flights/recent?airport=LAX&limit=3. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata viewport is configured in metadata export in /api/flights/recent?limit=5. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /api/flights/recent?limit=5. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata viewport is configured in metadata export in /api/flights/recent?airport=LAX&limit=3. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /api/flights/recent?airport=LAX&limit=3. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata viewport is configured in metadata export in /api/flights/recent?limit=5. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /api/flights/recent?limit=5. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, lstat '/Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/.next/server/vendor-chunks/clsx.js'
+<w> [webpack.cache.PackFileCacheStrategy/webpack.FileSystemInfo] Resolving './vendor-chunks/clsx' in /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/.next/server for build dependencies doesn't lead to expected result '/Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/.next/server/vendor-chunks/clsx.js', but to 'Error: Can't resolve './vendor-chunks/clsx' in '/Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/.next/server'' instead. Resolving dependencies are ignored for this path.
+<w>  at resolve commonjs file ./vendor-chunks/clsx (expected /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/.next/server/vendor-chunks/clsx.js)
+<w>  at file dependencies /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/.next/server/webpack-runtime.js
+<w>  at file /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/.next/server/webpack-runtime.js
+<w>  at file dependencies /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/.next/server/app/not-found.js
+<w>  at file /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/.next/server/app/not-found.js
+<w>  at file dependencies /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/server/require.js
+<w>  at file /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/server/require.js
+<w>  at file dependencies /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/export/worker.js
+<w>  at file /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/export/worker.js
+<w>  at file dependencies /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/build/worker.js
+<w>  at file /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/build/worker.js
+<w>  at file dependencies /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js
+<w>  at file /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js
+<w>  at resolve commonjs /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js
+<w> [webpack.cache.PackFileCacheStrategy/webpack.FileSystemInfo] Resolving './vendor-chunks/next-themes' in /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/.next/server for build dependencies doesn't lead to expected result '/Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/.next/server/vendor-chunks/next-themes.js', but to 'Error: Can't resolve './vendor-chunks/next-themes' in '/Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/.next/server'' instead. Resolving dependencies are ignored for this path.
+<w>  at resolve commonjs file ./vendor-chunks/next-themes (expected /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/.next/server/vendor-chunks/next-themes.js)
+<w>  at file dependencies /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/.next/server/webpack-runtime.js
+<w>  at file /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/.next/server/webpack-runtime.js
+<w>  at file dependencies /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/.next/server/app/not-found.js
+<w>  at file /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/.next/server/app/not-found.js
+<w>  at file dependencies /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/server/require.js
+<w>  at file /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/server/require.js
+<w>  at file dependencies /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/export/worker.js
+<w>  at file /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/export/worker.js
+<w>  at file dependencies /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/build/worker.js
+<w>  at file /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/build/worker.js
+<w>  at file dependencies /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js
+<w>  at file /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js
+<w>  at resolve commonjs /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js
+<w> [webpack.cache.PackFileCacheStrategy/webpack.FileSystemInfo] Resolving './vendor-chunks/lucide-react' in /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/.next/server for build dependencies doesn't lead to expected result '/Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/.next/server/vendor-chunks/lucide-react.js', but to 'Error: Can't resolve './vendor-chunks/lucide-react' in '/Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/.next/server'' instead. Resolving dependencies are ignored for this path.
+<w>  at resolve commonjs file ./vendor-chunks/lucide-react (expected /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/.next/server/vendor-chunks/lucide-react.js)
+<w>  at file dependencies /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/.next/server/webpack-runtime.js
+<w>  at file /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/.next/server/webpack-runtime.js
+<w>  at file dependencies /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/.next/server/app/not-found.js
+<w>  at file /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/.next/server/app/not-found.js
+<w>  at file dependencies /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/server/require.js
+<w>  at file /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/server/require.js
+<w>  at file dependencies /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/export/worker.js
+<w>  at file /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/export/worker.js
+<w>  at file dependencies /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/build/worker.js
+<w>  at file /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/build/worker.js
+<w>  at file dependencies /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js
+<w>  at file /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js
+<w>  at resolve commonjs /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js
+<w> [webpack.cache.PackFileCacheStrategy/webpack.FileSystemInfo] Resolving './vendor-chunks/tailwind-merge' in /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/.next/server for build dependencies doesn't lead to expected result '/Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/.next/server/vendor-chunks/tailwind-merge.js', but to 'Error: Can't resolve './vendor-chunks/tailwind-merge' in '/Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/.next/server'' instead. Resolving dependencies are ignored for this path.
+<w>  at resolve commonjs file ./vendor-chunks/tailwind-merge (expected /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/.next/server/vendor-chunks/tailwind-merge.js)
+<w>  at file dependencies /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/.next/server/webpack-runtime.js
+<w>  at file /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/.next/server/webpack-runtime.js
+<w>  at file dependencies /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/.next/server/app/not-found.js
+<w>  at file /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/.next/server/app/not-found.js
+<w>  at file dependencies /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/server/require.js
+<w>  at file /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/server/require.js
+<w>  at file dependencies /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/export/worker.js
+<w>  at file /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/export/worker.js
+<w>  at file dependencies /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/build/worker.js
+<w>  at file /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/build/worker.js
+<w>  at file dependencies /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js
+<w>  at file /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js
+<w>  at resolve commonjs /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js
+ ⚠ Unsupported metadata viewport is configured in metadata export in /api/flights/recent?limit=5. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /api/flights/recent?limit=5. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata viewport is configured in metadata export in /api/flights/recent?limit=5. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /api/flights/recent?limit=5. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ✓ Compiled in 3.3s (456 modules)
+
+ ⚠ metadata.metadataBase is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+ ⚠ Unsupported metadata viewport is configured in metadata export in /?_rsc=1xuj0. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /?_rsc=1xuj0. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata viewport is configured in metadata export in /_next/static/css/app/layout.css?v=1760259359326. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /_next/static/css/app/layout.css?v=1760259359326. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata viewport is configured in metadata export in /_next/static/css/app/layout.css?v=1760259359326. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /_next/static/css/app/layout.css?v=1760259359326. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+[DASHBOARD API] Fetching HYBRID REAL data for period: today
+[REAL DATA] Fetching from OpenSky Network API...
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[FLIGHT TRACKER] Loaded persisted data from file
+[DASHBOARD API] Updated tracker with 2119 flights
+[FAA] Fetching fresh data from API
+[WEATHER] Generating weather delay data
+[AVIATIONSTACK] Generating cancellation data
+[DASHBOARD API] Combined delays: 2188 delays (FAA: 2157, Weather: 31)
+[DASHBOARD API] Combined cancellations: 375 (FAA: 198, Weather: 0, AviationStack: 177)
+[DATA AGGREGATOR] Fetching hybrid data for period: today
+[REAL DATA] Fetching from OpenSky Network API...
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[DATA AGGREGATOR] Using REAL-TIME data for today
+[DASHBOARD API] Fetching HYBRID REAL data for period: today
+[REAL DATA] Fetching from OpenSky Network API...
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[DASHBOARD API] Updated tracker with 2119 flights
+[FAA] Returning cached data
+[WEATHER] Returning cached data
+[AVIATIONSTACK] Returning cached cancellation data
+[DASHBOARD API] Combined delays: 2188 delays (FAA: 2157, Weather: 31)
+[DASHBOARD API] Combined cancellations: 375 (FAA: 198, Weather: 0, AviationStack: 177)
+[DATA AGGREGATOR] Fetching hybrid data for period: today
+[REAL DATA] Fetching from OpenSky Network API...
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[DATA AGGREGATOR] Using REAL-TIME data for today
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, lstat '/Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/.next/server/vendor-chunks/next-themes.js'
+<w> [webpack.cache.PackFileCacheStrategy/webpack.FileSystemInfo] Resolving './vendor-chunks/next-themes' in /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/.next/server for build dependencies doesn't lead to expected result '/Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/.next/server/vendor-chunks/next-themes.js', but to 'Error: Can't resolve './vendor-chunks/next-themes' in '/Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/.next/server'' instead. Resolving dependencies are ignored for this path.
+<w>  at resolve commonjs file ./vendor-chunks/next-themes (expected /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/.next/server/vendor-chunks/next-themes.js)
+<w>  at file dependencies /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/.next/server/webpack-runtime.js
+<w>  at file /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/.next/server/webpack-runtime.js
+<w>  at file dependencies /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/.next/server/app/api/flights/recent/route.js
+<w>  at file /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/.next/server/app/api/flights/recent/route.js
+<w>  at file dependencies /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/server/require.js
+<w>  at file /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/server/require.js
+<w>  at file dependencies /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/server/load-components.js
+<w>  at file /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/server/load-components.js
+<w>  at file dependencies /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/build/utils.js
+<w>  at file /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/build/utils.js
+<w>  at file dependencies /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/build/worker.js
+<w>  at file /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/build/worker.js
+<w>  at file dependencies /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js
+<w>  at file /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js
+<w>  at resolve commonjs /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js
+<w> [webpack.cache.PackFileCacheStrategy/webpack.FileSystemInfo] Resolving './vendor-chunks/lucide-react' in /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/.next/server for build dependencies doesn't lead to expected result '/Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/.next/server/vendor-chunks/lucide-react.js', but to 'Error: Can't resolve './vendor-chunks/lucide-react' in '/Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/.next/server'' instead. Resolving dependencies are ignored for this path.
+<w>  at resolve commonjs file ./vendor-chunks/lucide-react (expected /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/.next/server/vendor-chunks/lucide-react.js)
+<w>  at file dependencies /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/.next/server/webpack-runtime.js
+<w>  at file /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/.next/server/webpack-runtime.js
+<w>  at file dependencies /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/.next/server/app/api/flights/recent/route.js
+<w>  at file /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/.next/server/app/api/flights/recent/route.js
+<w>  at file dependencies /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/server/require.js
+<w>  at file /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/server/require.js
+<w>  at file dependencies /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/server/load-components.js
+<w>  at file /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/server/load-components.js
+<w>  at file dependencies /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/build/utils.js
+<w>  at file /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/build/utils.js
+<w>  at file dependencies /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/build/worker.js
+<w>  at file /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/build/worker.js
+<w>  at file dependencies /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js
+<w>  at file /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js
+<w>  at resolve commonjs /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js
+<w> [webpack.cache.PackFileCacheStrategy/webpack.FileSystemInfo] Resolving './vendor-chunks/@tanstack' in /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/.next/server for build dependencies doesn't lead to expected result '/Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/.next/server/vendor-chunks/@tanstack.js', but to 'Error: Can't resolve './vendor-chunks/@tanstack' in '/Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/.next/server'' instead. Resolving dependencies are ignored for this path.
+<w>  at resolve commonjs file ./vendor-chunks/@tanstack (expected /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/.next/server/vendor-chunks/@tanstack.js)
+<w>  at file dependencies /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/.next/server/webpack-runtime.js
+<w>  at file /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/.next/server/webpack-runtime.js
+<w>  at file dependencies /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/.next/server/app/api/flights/recent/route.js
+<w>  at file /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/.next/server/app/api/flights/recent/route.js
+<w>  at file dependencies /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/server/require.js
+<w>  at file /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/server/require.js
+<w>  at file dependencies /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/server/load-components.js
+<w>  at file /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/server/load-components.js
+<w>  at file dependencies /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/build/utils.js
+<w>  at file /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/build/utils.js
+<w>  at file dependencies /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/build/worker.js
+<w>  at file /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/build/worker.js
+<w>  at file dependencies /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js
+<w>  at file /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js
+<w>  at resolve commonjs /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js
+ ✓ Compiled in 24.3s (888 modules)
+[DASHBOARD API] Fetching HYBRID REAL data for period: today
+[REAL DATA] Fetching from OpenSky Network API...
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[FLIGHT TRACKER] Loaded persisted data from file
+[DASHBOARD API] Updated tracker with 2119 flights
+[FAA] Fetching fresh data from API
+[WEATHER] Generating weather delay data
+[AVIATIONSTACK] Generating cancellation data
+[DASHBOARD API] Combined delays: 2188 delays (FAA: 2157, Weather: 31)
+[DASHBOARD API] Combined cancellations: 392 (FAA: 198, Weather: 0, AviationStack: 194)
+[DATA AGGREGATOR] Fetching hybrid data for period: today
+[REAL DATA] Fetching from OpenSky Network API...
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[DATA AGGREGATOR] Using REAL-TIME data for today
+
+ ⚠ metadata.metadataBase is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+ ⨯ SyntaxError: Unexpected end of JSON input
+    at JSON.parse (<anonymous>)
+    at loadManifest (/Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/server/load-manifest.js:35:27)
+    at getMaybePagePath (/Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/server/require.js:57:59)
+    at getPagePath (/Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/server/require.js:92:22)
+    at requirePage (/Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/server/require.js:99:22)
+    at /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/server/load-components.js:74:84
+    at async loadComponentsImpl (/Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/server/load-components.js:74:26)
+    at async DevServer.findPageComponentsImpl (/Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/server/next-server.js:675:36) {
+  page: '/api/dashboard/summary'
+}
+[DASHBOARD API] Fetching HYBRID REAL data for period: today
+[REAL DATA] Fetching from OpenSky Network API...
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[DASHBOARD API] Updated tracker with 2119 flights
+[FAA] Returning cached data
+[WEATHER] Returning cached data
+[AVIATIONSTACK] Returning cached cancellation data
+[DASHBOARD API] Combined delays: 2188 delays (FAA: 2157, Weather: 31)
+[DASHBOARD API] Combined cancellations: 392 (FAA: 198, Weather: 0, AviationStack: 194)
+[DASHBOARD API] Returning cached hybrid data
+ ✓ Compiled in 9.1s (430 modules)
+ ✓ Compiled in 10ms (430 modules)
+ ✓ Compiled in 6ms (430 modules)
+ ✓ Compiled in 0ms (430 modules)
+[DASHBOARD API] Fetching HYBRID REAL data for period: today
+[REAL DATA] Fetching from OpenSky Network API...
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[FLIGHT TRACKER] Loaded persisted data from file
+[DASHBOARD API] Updated tracker with 2119 flights
+[FAA] Fetching fresh data from API
+[WEATHER] Generating weather delay data
+[AVIATIONSTACK] Generating cancellation data
+[DASHBOARD API] Combined delays: 2188 delays (FAA: 2157, Weather: 31)
+[DASHBOARD API] Combined cancellations: 395 (FAA: 198, Weather: 0, AviationStack: 197)
+[DATA AGGREGATOR] Fetching hybrid data for period: today
+[REAL DATA] Fetching from OpenSky Network API...
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[DATA AGGREGATOR] Using REAL-TIME data for today
+ ✓ Compiled in 5ms (430 modules)
+
+ ⚠ metadata.metadataBase is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[DASHBOARD API] Fetching HYBRID REAL data for period: today
+[REAL DATA] Fetching from OpenSky Network API...
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[FLIGHT TRACKER] Loaded persisted data from file
+[DASHBOARD API] Updated tracker with 2119 flights
+[FAA] Fetching fresh data from API
+[WEATHER] Generating weather delay data
+[AVIATIONSTACK] Generating cancellation data
+[DASHBOARD API] Combined delays: 2188 delays (FAA: 2157, Weather: 31)
+[DASHBOARD API] Combined cancellations: 354 (FAA: 198, Weather: 0, AviationStack: 156)
+[DATA AGGREGATOR] Fetching hybrid data for period: today
+[REAL DATA] Fetching from OpenSky Network API...
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[DATA AGGREGATOR] Using REAL-TIME data for today
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, rename '/Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/.next/cache/webpack/client-development/4.pack.gz_' -> '/Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/.next/cache/webpack/client-development/4.pack.gz'
+ ✓ Compiled in 11.7s (429 modules)
+ ✓ Compiled in 7ms (429 modules)
+ ✓ Compiled in 2ms (429 modules)
+ ✓ Compiled in 1ms (429 modules)
+[DASHBOARD API] Fetching HYBRID REAL data for period: today
+[REAL DATA] Fetching from OpenSky Network API...
+[DASHBOARD API] Fetching HYBRID REAL data for period: today
+[REAL DATA] Fetching from OpenSky Network API...
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[FLIGHT TRACKER] Error loading data: SyntaxError: Unterminated string in JSON at position 10567680 (line 424057 column 18)
+    at JSON.parse (<anonymous>)
+    at RealtimeFlightTracker.loadFromFile (webpack-internal:///(rsc)/./src/services/realtime-flight-tracker.ts:131:35)
+    at new RealtimeFlightTracker (webpack-internal:///(rsc)/./src/services/realtime-flight-tracker.ts:34:14)
+    at getFlightTracker (webpack-internal:///(rsc)/./src/services/realtime-flight-tracker.ts:375:19)
+    at GET (webpack-internal:///(rsc)/./src/app/api/dashboard/summary/route.ts:37:120)
+    at async /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:63809
+    at async eU.execute (/Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:53964)
+    at async eU.handle (/Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:65062)
+    at async doRender (/Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/server/base-server.js:1333:42)
+    at async cacheEntry.responseCache.get.routeKind (/Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/server/base-server.js:1555:28)
+    at async DevServer.renderToResponseWithComponentsImpl (/Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/server/base-server.js:1463:28)
+    at async DevServer.renderPageComponent (/Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/server/base-server.js:1856:24)
+    at async DevServer.renderToResponseImpl (/Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/server/base-server.js:1894:32)
+    at async DevServer.pipeImpl (/Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/server/base-server.js:911:25)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/server/next-server.js:271:17)
+    at async DevServer.handleRequestImpl (/Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/server/base-server.js:807:17)
+    at async /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/server/dev/next-dev-server.js:331:20
+    at async Span.traceAsyncFn (/Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/trace/trace.js:151:20)
+    at async DevServer.handleRequest (/Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/server/dev/next-dev-server.js:328:24)
+    at async invokeRender (/Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/server/lib/router-server.js:163:21)
+    at async handleRequest (/Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/server/lib/router-server.js:342:24)
+    at async requestHandlerImpl (/Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/server/lib/router-server.js:366:13)
+    at async Server.requestListener (/Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/server/lib/start-server.js:140:13)
+[DASHBOARD API] Updated tracker with 2119 flights
+[FAA] Fetching fresh data from API
+[WEATHER] Generating weather delay data
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[DASHBOARD API] Updated tracker with 2119 flights
+[FAA] Returning cached data
+[AVIATIONSTACK] Generating cancellation data
+[WEATHER] Returning cached data
+[DASHBOARD API] Combined delays: 2188 delays (FAA: 2157, Weather: 31)
+[DASHBOARD API] Combined cancellations: 367 (FAA: 198, Weather: 0, AviationStack: 169)
+[DATA AGGREGATOR] Fetching hybrid data for period: today
+[REAL DATA] Fetching from OpenSky Network API...
+[AVIATIONSTACK] Returning cached cancellation data
+[DASHBOARD API] Combined delays: 2188 delays (FAA: 2157, Weather: 31)
+[DASHBOARD API] Combined cancellations: 367 (FAA: 198, Weather: 0, AviationStack: 169)
+[DATA AGGREGATOR] Fetching hybrid data for period: today
+[REAL DATA] Fetching from OpenSky Network API...
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[DATA AGGREGATOR] Using REAL-TIME data for today
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[DATA AGGREGATOR] Using REAL-TIME data for today
+[DASHBOARD API] Fetching HYBRID REAL data for period: week
+[DATA AGGREGATOR] Fetching hybrid data for period: week
+[REAL DATA] Fetching from OpenSky Network API...
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[FLIGHT TRACKER] Error loading data: SyntaxError: Expected property name or '}' in JSON at position 16793600 (line 674000 column 5)
+    at JSON.parse (<anonymous>)
+    at RealtimeFlightTracker.loadFromFile (webpack-internal:///(rsc)/./src/services/realtime-flight-tracker.ts:131:35)
+    at new RealtimeFlightTracker (webpack-internal:///(rsc)/./src/services/realtime-flight-tracker.ts:34:14)
+    at getFlightTracker (webpack-internal:///(rsc)/./src/services/realtime-flight-tracker.ts:375:19)
+    at RealDataAggregator.getOpenSkyData (webpack-internal:///(rsc)/./src/services/real-data-aggregator.ts:130:112)
+    at async Promise.all (index 0)
+    at async RealDataAggregator.getDashboardData (webpack-internal:///(rsc)/./src/services/real-data-aggregator.ts:24:100)
+    at async GET (webpack-internal:///(rsc)/./src/app/api/dashboard/summary/route.ts:76:32)
+    at async /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:63809
+    at async eU.execute (/Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:53964)
+    at async eU.handle (/Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:65062)
+    at async doRender (/Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/server/base-server.js:1333:42)
+    at async cacheEntry.responseCache.get.routeKind (/Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/server/base-server.js:1555:28)
+    at async DevServer.renderToResponseWithComponentsImpl (/Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/server/base-server.js:1463:28)
+    at async DevServer.renderPageComponent (/Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/server/base-server.js:1856:24)
+    at async DevServer.renderToResponseImpl (/Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/server/base-server.js:1894:32)
+    at async DevServer.pipeImpl (/Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/server/base-server.js:911:25)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/server/next-server.js:271:17)
+    at async DevServer.handleRequestImpl (/Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/server/base-server.js:807:17)
+    at async /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/server/dev/next-dev-server.js:331:20
+    at async Span.traceAsyncFn (/Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/trace/trace.js:151:20)
+    at async DevServer.handleRequest (/Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/server/dev/next-dev-server.js:328:24)
+    at async invokeRender (/Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/server/lib/router-server.js:163:21)
+    at async handleRequest (/Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/server/lib/router-server.js:342:24)
+    at async requestHandlerImpl (/Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/server/lib/router-server.js:366:13)
+    at async Server.requestListener (/Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/node_modules/next/dist/server/lib/start-server.js:140:13)
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[DATA AGGREGATOR] Successfully aggregated data from all sources
+[DASHBOARD API] Fetching HYBRID REAL data for period: month
+[DATA AGGREGATOR] Fetching hybrid data for period: month
+[REAL DATA] Fetching from OpenSky Network API...
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[DATA AGGREGATOR] Successfully aggregated data from all sources
+[DASHBOARD API] Fetching HYBRID REAL data for period: quarter
+[DATA AGGREGATOR] Fetching hybrid data for period: quarter
+[REAL DATA] Fetching from OpenSky Network API...
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[DATA AGGREGATOR] Successfully aggregated data from all sources
+[DASHBOARD API] Fetching HYBRID REAL data for period: today
+[REAL DATA] Fetching from OpenSky Network API...
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[DASHBOARD API] Updated tracker with 2119 flights
+[FAA] Fetching fresh data from API
+[WEATHER] Generating weather delay data
+[AVIATIONSTACK] Generating cancellation data
+[DASHBOARD API] Combined delays: 2188 delays (FAA: 2157, Weather: 31)
+[DASHBOARD API] Combined cancellations: 385 (FAA: 198, Weather: 0, AviationStack: 187)
+[DATA AGGREGATOR] Fetching hybrid data for period: today
+[REAL DATA] Fetching from OpenSky Network API...
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[DATA AGGREGATOR] Using REAL-TIME data for today
+[DASHBOARD API] Fetching HYBRID REAL data for period: today
+[REAL DATA] Fetching from OpenSky Network API...
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[DASHBOARD API] Updated tracker with 2119 flights
+[FAA] Returning cached data
+[WEATHER] Returning cached data
+[AVIATIONSTACK] Returning cached cancellation data
+[DASHBOARD API] Combined delays: 2188 delays (FAA: 2157, Weather: 31)
+[DASHBOARD API] Combined cancellations: 385 (FAA: 198, Weather: 0, AviationStack: 187)
+[DASHBOARD API] Returning cached hybrid data
+[DASHBOARD API] Fetching HYBRID REAL data for period: today
+[REAL DATA] Fetching from OpenSky Network API...
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[DASHBOARD API] Updated tracker with 2119 flights
+[FAA] Returning cached data
+[WEATHER] Returning cached data
+[AVIATIONSTACK] Returning cached cancellation data
+[DASHBOARD API] Combined delays: 2188 delays (FAA: 2157, Weather: 31)
+[DASHBOARD API] Combined cancellations: 385 (FAA: 198, Weather: 0, AviationStack: 187)
+[DASHBOARD API] Returning cached hybrid data
+[DASHBOARD API] Fetching HYBRID REAL data for period: today
+[REAL DATA] Fetching from OpenSky Network API...
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[DASHBOARD API] Updated tracker with 2119 flights
+[FAA] Returning cached data
+[WEATHER] Returning cached data
+[AVIATIONSTACK] Returning cached cancellation data
+[DASHBOARD API] Combined delays: 2188 delays (FAA: 2157, Weather: 31)
+[DASHBOARD API] Combined cancellations: 385 (FAA: 198, Weather: 0, AviationStack: 187)
+[DATA AGGREGATOR] Fetching hybrid data for period: today
+[REAL DATA] Fetching from OpenSky Network API...
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[DATA AGGREGATOR] Using REAL-TIME data for today
+[DASHBOARD API] Fetching HYBRID REAL data for period: today
+[REAL DATA] Fetching from OpenSky Network API...
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[DASHBOARD API] Updated tracker with 2119 flights
+[FAA] Returning cached data
+[WEATHER] Returning cached data
+[AVIATIONSTACK] Returning cached cancellation data
+[DASHBOARD API] Combined delays: 2188 delays (FAA: 2157, Weather: 31)
+[DASHBOARD API] Combined cancellations: 385 (FAA: 198, Weather: 0, AviationStack: 187)
+[DASHBOARD API] Returning cached hybrid data
+
+ ⚠ metadata.metadataBase is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[DASHBOARD API] Fetching HYBRID REAL data for period: today
+[REAL DATA] Fetching from OpenSky Network API...
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[DASHBOARD API] Updated tracker with 2119 flights
+[FAA] Returning cached data
+[WEATHER] Returning cached data
+[AVIATIONSTACK] Returning cached cancellation data
+[DASHBOARD API] Combined delays: 2188 delays (FAA: 2157, Weather: 31)
+[DASHBOARD API] Combined cancellations: 385 (FAA: 198, Weather: 0, AviationStack: 187)
+[DASHBOARD API] Returning cached hybrid data
+ ✓ Compiled in 14.4s (886 modules)
+[DASHBOARD API] Fetching HYBRID REAL data for period: today
+[REAL DATA] Fetching from OpenSky Network API...
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[FLIGHT TRACKER] Loaded persisted data from file
+[DASHBOARD API] Updated tracker with 2119 flights
+[FAA] Fetching fresh data from API
+[WEATHER] Generating weather delay data
+[AVIATIONSTACK] Generating cancellation data
+[DASHBOARD API] Combined delays: 2188 delays (FAA: 2157, Weather: 31)
+[DASHBOARD API] Combined cancellations: 396 (FAA: 198, Weather: 0, AviationStack: 198)
+[DATA AGGREGATOR] Fetching hybrid data for period: today
+[REAL DATA] Fetching from OpenSky Network API...
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[DATA AGGREGATOR] Using REAL-TIME data for today
+
+ ⚠ metadata.metadataBase is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[DASHBOARD API] Fetching HYBRID REAL data for period: today
+[REAL DATA] Fetching from OpenSky Network API...
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[DASHBOARD API] Updated tracker with 2119 flights
+[FAA] Returning cached data
+[WEATHER] Returning cached data
+[AVIATIONSTACK] Returning cached cancellation data
+[DASHBOARD API] Combined delays: 2188 delays (FAA: 2157, Weather: 31)
+[DASHBOARD API] Combined cancellations: 396 (FAA: 198, Weather: 0, AviationStack: 198)
+[DASHBOARD API] Returning cached hybrid data
+[DASHBOARD API] Fetching HYBRID REAL data for period: today
+[REAL DATA] Fetching from OpenSky Network API...
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[DASHBOARD API] Updated tracker with 2119 flights
+[FAA] Returning cached data
+[WEATHER] Returning cached data
+[AVIATIONSTACK] Returning cached cancellation data
+[DASHBOARD API] Combined delays: 2188 delays (FAA: 2157, Weather: 31)
+[DASHBOARD API] Combined cancellations: 396 (FAA: 198, Weather: 0, AviationStack: 198)
+[DASHBOARD API] Returning cached hybrid data
+[DASHBOARD API] Fetching HYBRID REAL data for period: today
+[REAL DATA] Fetching from OpenSky Network API...
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[DASHBOARD API] Updated tracker with 2119 flights
+[FAA] Returning cached data
+[WEATHER] Returning cached data
+[AVIATIONSTACK] Returning cached cancellation data
+[DASHBOARD API] Combined delays: 2188 delays (FAA: 2157, Weather: 31)
+[DASHBOARD API] Combined cancellations: 396 (FAA: 198, Weather: 0, AviationStack: 198)
+[DATA AGGREGATOR] Fetching hybrid data for period: today
+[REAL DATA] Fetching from OpenSky Network API...
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[DATA AGGREGATOR] Using REAL-TIME data for today
+[DASHBOARD API] Fetching HYBRID REAL data for period: today
+[REAL DATA] Fetching from OpenSky Network API...
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[DASHBOARD API] Updated tracker with 2119 flights
+[FAA] Returning cached data
+[WEATHER] Returning cached data
+[AVIATIONSTACK] Returning cached cancellation data
+[DASHBOARD API] Combined delays: 2188 delays (FAA: 2157, Weather: 31)
+[DASHBOARD API] Combined cancellations: 396 (FAA: 198, Weather: 0, AviationStack: 198)
+[DASHBOARD API] Returning cached hybrid data
+[DASHBOARD API] Fetching HYBRID REAL data for period: today
+[REAL DATA] Fetching from OpenSky Network API...
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[DASHBOARD API] Updated tracker with 2119 flights
+[FAA] Returning cached data
+[WEATHER] Returning cached data
+[AVIATIONSTACK] Returning cached cancellation data
+[DASHBOARD API] Combined delays: 2188 delays (FAA: 2157, Weather: 31)
+[DASHBOARD API] Combined cancellations: 396 (FAA: 198, Weather: 0, AviationStack: 198)
+[DASHBOARD API] Returning cached hybrid data
+[DASHBOARD API] Fetching HYBRID REAL data for period: today
+[REAL DATA] Fetching from OpenSky Network API...
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[DASHBOARD API] Updated tracker with 2119 flights
+[FAA] Returning cached data
+[WEATHER] Returning cached data
+[AVIATIONSTACK] Returning cached cancellation data
+[DASHBOARD API] Combined delays: 2188 delays (FAA: 2157, Weather: 31)
+[DASHBOARD API] Combined cancellations: 396 (FAA: 198, Weather: 0, AviationStack: 198)
+[DATA AGGREGATOR] Fetching hybrid data for period: today
+[REAL DATA] Fetching from OpenSky Network API...
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[DATA AGGREGATOR] Using REAL-TIME data for today
+[DASHBOARD API] Fetching HYBRID REAL data for period: week
+[DATA AGGREGATOR] Fetching hybrid data for period: week
+[REAL DATA] Fetching from OpenSky Network API...
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[DATA AGGREGATOR] Successfully aggregated data from all sources
+[DASHBOARD API] Fetching HYBRID REAL data for period: month
+[DATA AGGREGATOR] Fetching hybrid data for period: month
+[REAL DATA] Fetching from OpenSky Network API...
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[DATA AGGREGATOR] Successfully aggregated data from all sources
+[DASHBOARD API] Fetching HYBRID REAL data for period: quarter
+[DATA AGGREGATOR] Fetching hybrid data for period: quarter
+[REAL DATA] Fetching from OpenSky Network API...
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[DATA AGGREGATOR] Successfully aggregated data from all sources
+ ○ Compiling /favicon.ico ...
+ ✓ Compiled /favicon.ico in 511ms (455 modules)
+
+ ⚠ metadata.metadataBase is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, rename '/Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/.next/cache/webpack/client-development/0.pack.gz_' -> '/Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/.next/cache/webpack/client-development/0.pack.gz'
+ ✓ Compiled in 63.1s (895 modules)
+ ✓ Compiled in 17.6s (864 modules)
+
+ ⚠ metadata.metadataBase is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+ ○ Compiling /not-found ...
+ ✓ Compiled /not-found in 1924ms (867 modules)
+
+ ⚠ metadata.metadataBase is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+ ✓ Compiled /favicon.ico in 488ms (424 modules)
+ ✓ Compiled in 7.7s (848 modules)
+
+ ⚠ metadata.metadataBase is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+ ○ Compiling /not-found ...
+ ✓ Compiled /not-found in 658ms (853 modules)
+
+ ⚠ metadata.metadataBase is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+ ○ Compiling /favicon.ico ...
+ ✓ Compiled /favicon.ico in 691ms (424 modules)
+ ○ Compiling /api/dashboard/summary ...
+ ✓ Compiled /api/dashboard/summary in 8.5s (453 modules)
+[DASHBOARD API] Fetching HYBRID REAL data for period: today
+[REAL DATA] Fetching from OpenSky Network API...
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[FLIGHT TRACKER] Loaded persisted data from file
+[DASHBOARD API] Updated tracker with 2119 flights
+[FAA] Fetching fresh data from API
+[WEATHER] Generating weather delay data
+[AVIATIONSTACK] Generating cancellation data
+[DASHBOARD API] Combined delays: 2188 delays (FAA: 2157, Weather: 31)
+[DASHBOARD API] Combined cancellations: 390 (FAA: 198, Weather: 0, AviationStack: 192)
+[DATA AGGREGATOR] Fetching hybrid data for period: today
+[REAL DATA] Fetching from OpenSky Network API...
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[BTS] Loading from server filesystem: /Users/cloudaistudio/Documents/EVERJUST PROJECTS/FLIGHTTRACKER/flight-tracker/public/data/bts-summary.json
+[REAL DATA] Fetched 2119 real flights (1906 airborne, 213 on ground)
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[BTS] Loaded historical data: {
+  airports: 200,
+  totalFlights: 674179,
+  dateRange: { start: '2025-06', end: '2025-06' }
+}
+[DATA AGGREGATOR] Using REAL-TIME data for today
+[?25h

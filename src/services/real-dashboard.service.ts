@@ -101,6 +101,20 @@ export async function fetchRealDashboardData() {
     
     console.log(`[REAL DATA] Fetched ${totalFlights} real flights (${airborneFlights} airborne, ${groundedFlights} on ground)`)
     
+    // Convert states to flight objects for tracker
+    const flights = states.map((state, idx) => ({
+      id: `flight-${idx}`,
+      callsign: (state[1] || '').trim() || `UNKNOWN-${idx}`,
+      lat: state[6] || 0,
+      lng: state[5] || 0,
+      altitude: state[13] ? Math.round(state[13] * 3.28084) : 0, // Convert meters to feet
+      speed: state[9] ? Math.round(state[9] * 1.94384) : 0, // Convert m/s to knots
+      heading: state[10] || 0,
+      onGround: state[8] || false,
+      country: state[2] || 'Unknown',
+      timestamp: state[3] || data.time
+    }))
+    
     // Return ONLY real data - NO DELAYS/CANCELLATIONS (we don't have that data from OpenSky)
     return {
       timestamp: new Date().toISOString(),
@@ -117,6 +131,7 @@ export async function fetchRealDashboardData() {
         totalCancellations: null, // Cannot calculate without scheduled flight data
         onTimePercentage: null, // Cannot calculate without scheduled times
       },
+      flights, // Include actual flight data for tracker
       topCountries,
       lastUpdated: new Date().toISOString(),
       dataQuality: {

@@ -32,10 +32,15 @@ export const metadata: Metadata = {
     title: 'Flight Tracker Dashboard',
     description: 'Real-time US airport and flight status monitoring',
   },
-  viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
-  themeColor: '#000000',
   robots: 'index, follow',
   manifest: '/manifest.json',
+}
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  themeColor: '#000000',
 }
 
 export default function RootLayout({

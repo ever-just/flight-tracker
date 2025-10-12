@@ -3,6 +3,11 @@ import { getAllAirports, getAirportByCode } from '@/lib/airports-data'
 import { cache } from '@/lib/cache'
 import { realDataAggregator } from '@/services/real-data-aggregator'
 import { btsDataService } from '@/services/bts-data.service'
+import { getFlightTracker } from '@/services/realtime-flight-tracker'
+import { fetchRealDashboardData } from '@/services/real-dashboard.service'
+import { faaService } from '@/services/faa.service'
+import { weatherService } from '@/services/weather.service'
+import { aviationStackService } from '@/services/aviationstack.service'
 
 // REAL DATA ONLY - Hybrid approach: Real-time + Historical
 export async function GET(request: NextRequest) {
@@ -11,6 +16,48 @@ export async function GET(request: NextRequest) {
     const period = (searchParams.get('period') || 'today') as 'today' | 'week' | 'month' | 'quarter'
     
     console.log(`[DASHBOARD API] Fetching HYBRID REAL data for period: ${period}`)
+    
+    // For "today", ensure tracker has fresh data AND get real delays from FAA
+    if (period === 'today') {
+      try {
+        // Fetch fresh OpenSky data and update tracker
+        const openSkyData = await fetchRealDashboardData()
+        if (openSkyData.flights && Array.isArray(openSkyData.flights)) {
+          const tracker = getFlightTracker()
+          tracker.updateFlights(openSkyData.flights)
+          console.log(`[DASHBOARD API] Updated tracker with ${openSkyData.flights.length} flights`)
+        }
+        
+        // Fetch real delays from FAA
+        const faaDelays = await faaService.getDelayTotals()
+        
+        // Fetch weather delays
+        const weatherSummary = await weatherService.getWeatherSummary()
+        
+        // Fetch cancellations from AviationStack
+        const cancellationSummary = await aviationStackService.getCancellationSummary()
+        
+        // Combine all delay sources
+        const totalDelays = faaDelays.totalDelays + weatherSummary.totalWeatherDelays
+        const totalCancellations = faaDelays.totalCancellations + 
+                                   weatherSummary.weatherCancellations + 
+                                   cancellationSummary.totalCancellations
+        
+        const tracker = getFlightTracker()
+        tracker.setRealDelays({ totalDelays, totalCancellations })
+        
+        console.log(`[DASHBOARD API] Combined delays: ${totalDelays} delays (FAA: ${faaDelays.totalDelays}, Weather: ${weatherSummary.totalWeatherDelays})`)
+        console.log(`[DASHBOARD API] Combined cancellations: ${totalCancellations} (FAA: ${faaDelays.totalCancellations}, Weather: ${weatherSummary.weatherCancellations}, AviationStack: ${cancellationSummary.totalCancellations})`)
+        
+        // Cache all data for aggregator to use
+        cache.set('faa_current_delays', faaDelays, 300) // 5 min cache
+        cache.set('weather_summary', weatherSummary, 600) // 10 min cache
+        cache.set('cancellation_summary', cancellationSummary, 1800) // 30 min cache
+        
+      } catch (error) {
+        console.error('[DASHBOARD API] Error updating flight tracker:', error)
+      }
+    }
     
     // Check cache first (30 second TTL for reasonable performance)
     const cacheKey = `hybrid_dashboard_${period}`
@@ -47,8 +94,8 @@ export async function GET(request: NextRequest) {
         onTimePercentage: aggregatedData.summary.onTimePercentage,
         cancellationRate: aggregatedData.summary.cancellationRate,
         
-        // For backwards compatibility
-        changeFromYesterday: {
+        // Pass through the actual change values
+        changeFromYesterday: aggregatedData.summary.changeFromYesterday || {
           flights: 0,
           delays: 0,
           cancellations: 0

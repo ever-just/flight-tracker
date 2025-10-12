@@ -10,7 +10,7 @@ import { btsDataService } from './bts-data.service'
 import { getFlightTracker } from '@/services/realtime-flight-tracker'
 
 interface AggregatedDashboardData {
-  source: 'hybrid-real-data' | 'real-time-today' | 'bts-historical'
+  source: 'hybrid-real-data'
   summary: {
     // Real-time from OpenSky
     totalFlights: number
@@ -71,7 +71,7 @@ interface AggregatedDashboardData {
   }
   limitations: string[]
   dataFreshness: {
-    realTime: string | null
+    realTime: string
     historical: string
   }
 }
@@ -97,7 +97,6 @@ export class RealDataAggregator {
       // Get flight tracker for additional real-time metrics
       const tracker = getFlightTracker()
       const changeFromYesterday = tracker.getChangeFromYesterday()
-      const todayTotalFlights = tracker.getTodayTotalFlights() // Get accumulated/projected total
       const currentDelays = tracker.getDelays()
       const currentCancellations = tracker.getCancellations()
       
@@ -108,23 +107,26 @@ export class RealDataAggregator {
           source: 'real-time-today',
           summary: {
             // REAL-TIME data from tracker (ACTUAL TODAY)
-            totalFlights: todayTotalFlights, // Accumulated/projected daily total
+            totalFlights: openSkyData.totalFlights, // Unique flights tracked today
             totalActive: openSkyData.totalActive,   // Currently flying
             averageAltitude: openSkyData.averageAltitude,
             averageSpeed: openSkyData.averageSpeed,
             topCountries: openSkyData.topCountries,
             
             // Use today's actual numbers for display
-            historicalFlights: todayTotalFlights, // Accumulated today flights
-            // Apply realistic percentages: 35.7% delayed, 1.8% cancelled
-            totalDelays: Math.round(todayTotalFlights * 0.357),  // 35.7% delayed (industry average)
-            totalCancellations: Math.round(todayTotalFlights * 0.018), // 1.8% cancelled
-            averageDelay: 23, // Industry average delay in minutes
-            onTimePercentage: 62.5, // Today's on-time rate
-            cancellationRate: 1.8,
+            historicalFlights: openSkyData.totalFlights, // TODAY'S flights, not June!
+            totalDelays: currentDelays,  // Real or estimated delays
+            totalCancellations: currentCancellations || Math.round(currentDelays * 0.1), // Real or estimated
+            averageDelay: currentDelays > 0 ? Math.round(currentDelays / openSkyData.totalActive * 60) : 0,
+            onTimePercentage: 100 - (currentDelays / openSkyData.totalFlights * 100),
+            cancellationRate: (currentCancellations / openSkyData.totalFlights * 100),
             
-            // Real change from yesterday - now an object
-            changeFromYesterday: changeFromYesterday // Already an object with flights, delays, cancellations
+            // Real change from yesterday
+            changeFromYesterday: {
+              flights: changeFromYesterday,
+              delays: 0, // Will be calculated when we have history
+              cancellations: 0
+            }
           },
           trends: {
             daily: btsTrends // Keep historical trends for context

@@ -37,11 +37,6 @@ class RealtimeFlightTracker {
   private currentDelays: number = 0
   private currentCancellations: number = 0
   
-  // Today's accumulated flight tracking
-  private todaySeenFlights: Set<string> = new Set()
-  private todayStartTime: number = new Date().setHours(0, 0, 0, 0)
-  private todayFlightCount: number = 0
-  
   // Constants
   private readonly HISTORY_DURATION = 24 * 60 * 60 * 1000 // 24 hours in ms
   private readonly CLEANUP_INTERVAL = 5 * 60 * 1000 // Cleanup every 5 minutes
@@ -71,17 +66,6 @@ class RealtimeFlightTracker {
   public updateFlights(flights: any[]): void {
     const now = Date.now()
     
-    // Reset at midnight
-    const currentDay = new Date().setHours(0, 0, 0, 0)
-    if (currentDay > this.todayStartTime) {
-      this.todaySeenFlights.clear()
-      this.todayFlightCount = 0
-      this.todayStartTime = currentDay
-      
-      // Save yesterday's stats
-      this.yesterdayStats = this.getTodayStats()
-    }
-    
     // Convert to snapshot format
     this.currentSnapshot = flights.map(f => ({
       callsign: f.callsign || f.id,
@@ -100,21 +84,12 @@ class RealtimeFlightTracker {
       this.peakTime = new Date().toISOString()
     }
     
-    // Accumulate unique flights seen today
+    // Add to history
     this.currentSnapshot.forEach(flight => {
-      const callsign = flight.callsign
-      
-      // Add to today's seen flights
-      if (!this.todaySeenFlights.has(callsign)) {
-        this.todaySeenFlights.add(callsign)
-        this.todayFlightCount++
+      if (!this.flightHistory.has(flight.callsign)) {
+        this.flightHistory.set(flight.callsign, [])
       }
-      
-      // Add to history
-      if (!this.flightHistory.has(callsign)) {
-        this.flightHistory.set(callsign, [])
-      }
-      this.flightHistory.get(callsign)!.push(flight)
+      this.flightHistory.get(flight.callsign)!.push(flight)
     })
     
     // Cleanup old data periodically
@@ -253,49 +228,20 @@ class RealtimeFlightTracker {
   }
   
   /**
-   * Get accumulated flight count for today with projection
+   * Calculate change from yesterday
    */
-  public getTodayTotalFlights(): number {
-    const now = Date.now()
-    const hoursPassed = Math.max(1, (now - this.todayStartTime) / (1000 * 60 * 60))
-    
-    // If we have less than 2 hours of data, use industry average
-    if (hoursPassed < 2) {
-      return 30000 // Average US daily flights
-    }
-    
-    // Project full day based on current accumulation rate
-    const projectedDaily = Math.round((this.todayFlightCount / hoursPassed) * 24)
-    
-    // Return the higher of actual count or projection, capped at reasonable max
-    return Math.min(45000, Math.max(this.todayFlightCount, projectedDaily))
-  }
-  
-  /**
-   * Calculate change from yesterday - returns object with percentages
-   */
-  public getChangeFromYesterday(): { flights: number; delays: number; cancellations: number } {
+  public getChangeFromYesterday(): number {
     if (!this.yesterdayStats) {
       // Save current as "yesterday" for next time
       this.yesterdayStats = this.getTodayStats()
-      return { flights: 0, delays: 0, cancellations: 0 }
+      return 0
     }
     
     const todayStats = this.getTodayStats()
-    const flightChange = ((todayStats.totalUniqueFlights - this.yesterdayStats.totalUniqueFlights) / 
-                         this.yesterdayStats.totalUniqueFlights) * 100
+    const change = ((todayStats.totalUniqueFlights - this.yesterdayStats.totalUniqueFlights) / 
+                   this.yesterdayStats.totalUniqueFlights) * 100
     
-    // Delays typically vary more than flight counts
-    const delayChange = flightChange * 1.5 * (Math.random() > 0.5 ? 1 : -1)
-    
-    // Cancellations vary less
-    const cancellationChange = flightChange * 0.3
-    
-    return {
-      flights: Math.round(flightChange * 10) / 10,
-      delays: Math.round(delayChange * 10) / 10,
-      cancellations: Math.round(cancellationChange * 10) / 10
-    }
+    return Math.round(change * 10) / 10 // Round to 1 decimal
   }
   
   /**
@@ -357,13 +303,6 @@ class RealtimeFlightTracker {
     }
     
     return Math.round(groundedAtAirports * 0.05) // Normal operations, 5% delays
-  }
-  
-  /**
-   * Get current flight snapshot
-   */
-  public getCurrentFlights(): FlightSnapshot[] {
-    return this.currentSnapshot
   }
   
   /**

@@ -104,3 +104,4 @@ const maxPossibleDelays = Math.min(delayCount, totalFlights - cancellations)
 - Cancellations: ~38 (1.8%)
 - On-Time: 62.5%
 ```
+

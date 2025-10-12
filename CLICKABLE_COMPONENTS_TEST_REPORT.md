@@ -176,3 +176,4 @@ All components follow the existing design system:
 - Consistent navigation and footer
 - Responsive grid layouts
 - Smooth hover transitions
+

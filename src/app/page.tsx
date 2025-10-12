@@ -209,7 +209,49 @@ export default function DashboardPageEnhanced() {
     retryDelay: 1000,
   })
 
-  const dashboardData = data || mockDashboardData
+  const dashboardData = data
+  
+  // Show loading state on initial load - don't show fake data!
+  if (isLoading && !data) {
+    return (
+      <div className="min-h-screen space-y-6">
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
+          <div>
+            <h1 className="text-3xl font-heading font-bold text-white">
+              Flight Tracker Dashboard
+            </h1>
+            <p className="text-muted-foreground mt-1">
+              Loading real-time flight data...
+            </p>
+          </div>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
+          {[1, 2, 3, 4].map(i => (
+            <div key={i} className="glass-card p-6 animate-pulse">
+              <div className="h-4 bg-white/10 rounded w-1/2 mb-4"></div>
+              <div className="h-8 bg-white/10 rounded w-3/4 mb-2"></div>
+              <div className="h-3 bg-white/10 rounded w-1/3"></div>
+            </div>
+          ))}
+        </div>
+        <div className="glass-card p-6 h-96 animate-pulse flex items-center justify-center">
+          <div className="text-muted-foreground">Loading flight trends chart...</div>
+        </div>
+      </div>
+    )
+  }
+  
+  // If data fetch failed and we have no data at all, use mock as ultimate fallback
+  if (!dashboardData) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <h2 className="text-2xl font-bold text-white mb-2">Unable to Load Dashboard</h2>
+          <p className="text-muted-foreground">Please refresh the page to try again.</p>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div className="min-h-screen space-y-6">

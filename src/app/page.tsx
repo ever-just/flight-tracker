@@ -82,8 +82,6 @@ const mockDashboardData = {
 }
 
 async function fetchDashboardData(period: string = 'today') {
-  console.log(`[FETCH] Requesting dashboard data for period: ${period}`)
-  
   // Use relative URL to work in both local and production
   const response = await fetch(`/api/dashboard/summary?period=${period}`, {
     cache: 'no-store', // Don't use browser cache
@@ -93,18 +91,10 @@ async function fetchDashboardData(period: string = 'today') {
   })
   
   if (!response.ok) {
-    console.error(`[FETCH] API returned ${response.status}`)
     throw new Error(`API returned ${response.status}`)
   }
   
-  const data = await response.json()
-  console.log('[FETCH] Received real data:', {
-    source: data.source,
-    flights: data.summary?.historicalFlights || data.summary?.totalFlights,
-    delays: data.summary?.totalDelays
-  })
-  
-  return data
+  return await response.json()
 }
 
 function PerformanceCard({ 
@@ -218,24 +208,6 @@ export default function DashboardPageEnhanced() {
     retry: 3,
     retryDelay: 1000,
   })
-
-  // Debug logging
-  if (typeof window !== 'undefined') {
-    console.log('[DASHBOARD] Query state:', { 
-      hasData: !!data, 
-      isLoading, 
-      error: error?.message,
-      period: selectedPeriod 
-    })
-    if (data) {
-      console.log('[DASHBOARD] Using REAL data:', {
-        flights: data.summary?.historicalFlights || data.summary?.totalFlights,
-        source: data.source
-      })
-    } else {
-      console.warn('[DASHBOARD] Falling back to MOCK data')
-    }
-  }
 
   const dashboardData = data || mockDashboardData
 

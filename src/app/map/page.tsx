@@ -98,8 +98,6 @@ export default function MapPage() {
         const response = await fetch('/api/flights/live')
         const data = await response.json()
         
-        console.log('Fetched data:', data) // Debug log
-        
         if (data && data.flights && data.flights.length > 0) {
           // Transform API data to map format (show all flights)
           const transformedFlights = data.flights.map((flight: any) => ({
@@ -112,8 +110,6 @@ export default function MapPage() {
             heading: flight.heading || 0
           }))
           
-          console.log('Transformed flights:', transformedFlights.length, transformedFlights[0]) // Debug log
-          
           setFlightData(transformedFlights)
           setStats({
             totalFlights: data.stats?.total || transformedFlights.length,
@@ -121,8 +117,6 @@ export default function MapPage() {
             onGround: data.stats?.onGround || 0,
             activeAirports: airportData.length || 100 // Number of airports loaded
           })
-        } else {
-          console.log('No flight data received or empty array') // Debug log
         }
       } catch (error) {
         console.error('Failed to fetch flight data:', error)

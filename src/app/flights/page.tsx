@@ -223,8 +223,8 @@ export default function FlightsPage() {
                     <div>
                       <div className="flex items-center space-x-2 mb-1">
                         <span className="text-lg font-bold text-white">{flight.flightNumber}</span>
-                        <span className={`px-2 py-1 rounded-full text-xs ${statusConfig[flight.status].bg} ${statusConfig[flight.status].color}`}>
-                          {statusConfig[flight.status].label}
+                        <span className={`px-2 py-1 rounded-full text-xs ${(statusConfig[flight.status as keyof typeof statusConfig] || statusConfig['on-time']).bg} ${(statusConfig[flight.status as keyof typeof statusConfig] || statusConfig['on-time']).color}`}>
+                          {(statusConfig[flight.status as keyof typeof statusConfig] || statusConfig['on-time']).label}
                         </span>
                         {flight.type === 'departure' ? (
                           <ArrowUpRight className="w-4 h-4 text-blue-500" />

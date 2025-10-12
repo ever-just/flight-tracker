@@ -45,9 +45,9 @@ async function getRealAirportData(code: string) {
     const departures = totalFlights - arrivals
     
     // Use real delay data from BTS
-    const totalDelays = btsStats?.totalDelays || 0
-    const averageDelay = btsStats?.avgDelay || 0
+    const averageDelay = btsStats ? (btsStats.avgDepartureDelay + btsStats.avgArrivalDelay) / 2 : 0
     const onTimeRate = btsStats?.onTimeRate || 95
+    const totalDelays = totalFlights > 0 ? Math.round(totalFlights * (1 - onTimeRate / 100)) : 0
     
     // Calculate cancellations from BTS data
     const cancellationRate = btsStats?.cancellationRate || 0

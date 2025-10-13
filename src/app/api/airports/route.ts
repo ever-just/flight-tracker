@@ -6,6 +6,9 @@ import { faaService } from '@/services/faa.service'
 import { getFlightTracker } from '@/services/realtime-flight-tracker'
 import { weatherService } from '@/services/weather.service'
 
+// Force dynamic rendering for search params
+export const dynamic = 'force-dynamic'
+
 // Get REAL airport status from actual data sources
 async function getRealAirportStatus() {
   try {

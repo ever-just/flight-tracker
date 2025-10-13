@@ -9,6 +9,9 @@ import { faaService } from '@/services/faa.service'
 import { weatherService } from '@/services/weather.service'
 import { aviationStackService } from '@/services/aviationstack.service'
 
+// Force dynamic rendering for search params
+export const dynamic = 'force-dynamic'
+
 // REAL DATA ONLY - Hybrid approach: Real-time + Historical
 export async function GET(request: NextRequest) {
   try {

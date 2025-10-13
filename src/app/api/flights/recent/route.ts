@@ -2,6 +2,9 @@ import { NextRequest, NextResponse } from 'next/server'
 import { openskyService } from '@/services/opensky.service'
 import { getFlightTracker } from '@/services/realtime-flight-tracker'
 
+// Force dynamic rendering for search params
+export const dynamic = 'force-dynamic'
+
 // Cache for recent flights per airport (to avoid hammering the API)
 let flightsCachePerAirport: Map<string, { flights: any[], timestamp: number }> = new Map()
 const CACHE_TTL = 30000 // 30 seconds

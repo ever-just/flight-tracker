@@ -1,7 +1,10 @@
 'use client'
 
 import { useSearchParams, useRouter } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, Suspense } from 'react'
+
+// Force dynamic rendering to avoid static generation errors with useSearchParams
+export const dynamic = 'force-dynamic'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { 
   AlertCircle, 
@@ -40,7 +43,7 @@ interface DashboardData {
   topAirports: AirportStats[]
 }
 
-export default function AnalyticsPage() {
+function AnalyticsContent() {
   const searchParams = useSearchParams()
   const router = useRouter()
   const view = searchParams.get('view') || 'delays'
@@ -484,5 +487,19 @@ export default function AnalyticsPage() {
         </div>
       </div>
     </div>
+  )
+}
+
+export default function AnalyticsPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-aviation-dark flex items-center justify-center">
+        <div className="text-center">
+          <div className="text-aviation-sky text-lg">Loading analytics...</div>
+        </div>
+      </div>
+    }>
+      <AnalyticsContent />
+    </Suspense>
   )
 }

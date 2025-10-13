@@ -2,6 +2,9 @@ import { NextRequest, NextResponse } from 'next/server'
 import { getFlightTracker } from '@/services/realtime-flight-tracker'
 import { openskyService } from '@/services/opensky.service'
 
+// Force dynamic rendering for search params
+export const dynamic = 'force-dynamic'
+
 // Server-side cache to prevent OpenSky rate limiting (429 errors)
 let flightDataCache: any = null
 let cacheTimestamp: number = 0

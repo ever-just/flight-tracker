@@ -39,7 +39,7 @@ model AirportStatus {
   id                String   @id @default(cuid())
   airportId         String   @unique
   airport           Airport  @relation(fields: [airportId], references: [id])
-  status            Status   @default(OPERATIONAL)
+  status            String   @default("OPERATIONAL")
   averageDelay      Int      @default(0) // in minutes
   delayedFlights    Int      @default(0)
   cancelledFlights  Int      @default(0)
@@ -51,13 +51,14 @@ model AirportStatus {
   @@map("airport_status")
 }
 
-enum Status {
-  OPERATIONAL
-  MINOR_DELAYS
-  MAJOR_DELAYS
-  CLOSED
-  UNKNOWN
-}
+// SQLite doesn't support enums - using String instead
+// enum Status {
+//   OPERATIONAL
+//   MINOR_DELAYS
+//   MAJOR_DELAYS
+//   CLOSED
+//   UNKNOWN
+// }
 
 // Historical flight statistics (daily aggregates)
 model FlightStats {
@@ -168,7 +169,7 @@ model ApiLog {
 model CacheStatus {
   id               String   @id @default(cuid())
   key              String   @unique
-  value            Json
+  value            String  // Store JSON as string for SQLite
   expiresAt        DateTime
   createdAt        DateTime @default(now())
   updatedAt        DateTime @updatedAt
@@ -183,7 +184,7 @@ model DataImport {
   fileName         String
   importType       String   // BTS_T100, FAA_STATUS, etc.
   recordsProcessed Int      @default(0)
-  status           ImportStatus @default(PENDING)
+  status           String   @default("PENDING")
   startedAt        DateTime?
   completedAt      DateTime?
   errorMessage     String?
@@ -193,9 +194,10 @@ model DataImport {
   @@map("data_imports")
 }
 
-enum ImportStatus {
-  PENDING
-  PROCESSING
-  COMPLETED
-  FAILED
-}
+// SQLite doesn't support enums - using String instead
+// enum ImportStatus {
+//   PENDING
+//   PROCESSING
+//   COMPLETED
+//   FAILED
+// }

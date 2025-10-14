@@ -1,43 +1,29 @@
-# Build stage
-FROM node:18-alpine AS builder
+# Single stage simpler Dockerfile
+FROM node:18-alpine
 
 # Set working directory
 WORKDIR /app
 
 # Copy package files
 COPY package*.json ./
-COPY prisma ./prisma/
 
-# Install dependencies
-RUN npm ci
+# Install dependencies (including dev dependencies for build)
+RUN npm install
 
-# Copy all files
+# Copy all source files
 COPY . .
 
 # Generate Prisma client
 RUN npx prisma generate
 
-# Build the Next.js application
+# Build the application
 RUN npm run build
 
-# Production stage
-FROM node:18-alpine AS runner
-
-WORKDIR /app
-
-# Copy built application from builder stage
-COPY --from=builder /app/package*.json ./
-COPY --from=builder /app/.next ./.next
-COPY --from=builder /app/public ./public
-COPY --from=builder /app/prisma ./prisma
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/next.config.mjs ./
-
-# Set environment to production
+# Set production environment
 ENV NODE_ENV=production
 ENV PORT=3000
 
-# Expose the port
+# Expose port
 EXPOSE 3000
 
 # Start the application

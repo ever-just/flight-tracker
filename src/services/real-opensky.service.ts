@@ -37,20 +37,51 @@ interface OpenSkyResponse {
 }
 
 export class RealOpenSkyService {
-  private username: string
-  private password: string
+  private clientId: string
+  private clientSecret: string
   private accessToken: string | null = null
   private tokenExpiry: Date | null = null
 
   constructor() {
-    // OpenSky uses username/password for Basic Auth
-    // Credentials from auth.opensky-network.org
-    this.username = process.env.OPENSKY_USERNAME || 'everjust'
-    this.password = process.env.OPENSKY_PASSWORD || 'Weldon@80K'
+    // OpenSky OAuth2 credentials (4000 requests/day)
+    this.clientId = process.env.OPENSKY_CLIENT_ID || 'everjust-api-client'
+    this.clientSecret = process.env.OPENSKY_CLIENT_SECRET || 'VhRMAyCzTbHb8KpZrHEQcEKWQZsrYY0g'
   }
 
   private async getAccessToken() {
-    // For now, use basic auth (OAuth2 implementation can be added later)
+    try {
+      // Check if we have a valid token
+      if (this.accessToken && this.tokenExpiry && new Date() < this.tokenExpiry) {
+        return this.accessToken
+      }
+
+      // Get new OAuth2 token
+      const tokenUrl = 'https://auth.opensky-network.org/auth/realms/opensky-network/protocol/openid-connect/token'
+      
+      const params = new URLSearchParams({
+        grant_type: 'client_credentials',
+        client_id: this.clientId,
+        client_secret: this.clientSecret
+      })
+
+      const response = await axios.post(tokenUrl, params.toString(), {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        timeout: 10000
+      })
+
+      if (response.data && response.data.access_token) {
+        this.accessToken = response.data.access_token
+        // Set expiry to 5 minutes before actual expiry for safety
+        const expiresIn = response.data.expires_in || 3600
+        this.tokenExpiry = new Date(Date.now() + (expiresIn - 300) * 1000)
+        console.log('[OpenSky] OAuth2 token obtained successfully (4000 requests/day)')
+        return this.accessToken
+      }
+    } catch (error) {
+      console.error('[OpenSky] OAuth2 token error:', error)
+    }
     return null
   }
 
@@ -59,18 +90,20 @@ export class RealOpenSkyService {
       // Fetch flights over USA
       const url = `${OPENSKY_BASE_URL}/states/all?lamin=${USA_BOUNDS.minLat}&lomin=${USA_BOUNDS.minLon}&lamax=${USA_BOUNDS.maxLat}&lomax=${USA_BOUNDS.maxLon}`
       
-      // Add authentication headers if credentials are available
+      // Add authentication headers
       const headers: any = {
         'Accept': 'application/json'
       }
       
-      // Use Basic Authentication with username and password
-      if (this.username && this.password) {
-        // OpenSky uses standard HTTP Basic Auth with username:password
-        const auth = Buffer.from(`${this.username}:${this.password}`).toString('base64')
-        headers['Authorization'] = `Basic ${auth}`
-        console.log('[OpenSky] Using authenticated access with username:', this.username)
+      // Try to get OAuth2 token
+      const token = await this.getAccessToken()
+      
+      if (token) {
+        // Use OAuth2 Bearer token (4000 requests/day)
+        headers['Authorization'] = `Bearer ${token}`
+        console.log('[OpenSky] Using OAuth2 authenticated access (4000 requests/day)')
       } else {
+        // Fallback to anonymous access
         console.log('[OpenSky] Using anonymous access (limited to 400 requests/day)')
       }
       

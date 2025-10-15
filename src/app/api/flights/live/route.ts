@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getFlightTracker } from '@/services/realtime-flight-tracker'
 import { openskyService } from '@/services/opensky.service'
+import { RealOpenSkyService } from '@/services/real-opensky.service'
 
 // Force dynamic rendering for search params
 export const dynamic = 'force-dynamic'
@@ -9,6 +10,9 @@ export const dynamic = 'force-dynamic'
 let flightDataCache: any = null
 let cacheTimestamp: number = 0
 const CACHE_DURATION_MS = 30000 // 30 seconds
+
+// Initialize OpenSky service with OAuth2
+const realOpenSkyService = new RealOpenSkyService()
 
 // REAL FLIGHTS ONLY - No fake data!
 async function fetchRealFlights() {
@@ -20,67 +24,35 @@ async function fetchRealFlights() {
   }
   
   try {
-    // USA bounding box
-    const USA_BOUNDS = {
-      minLat: 24.396308,
-      maxLat: 49.384358,
-      minLon: -125.000000,
-      maxLon: -66.934570
-    }
+    console.log('[LIVE FLIGHTS API] Fetching REAL flights from OpenSky Network with OAuth2...')
     
-    console.log('[LIVE FLIGHTS API] Fetching REAL flights from OpenSky Network...')
+    // Use the RealOpenSkyService with OAuth2 authentication
+    const formattedFlights = await realOpenSkyService.fetchLiveFlights()
     
-    // OpenSky Network API - Free tier, no auth needed for basic queries
-    const url = `https://opensky-network.org/api/states/all?lamin=${USA_BOUNDS.minLat}&lomin=${USA_BOUNDS.minLon}&lamax=${USA_BOUNDS.maxLat}&lomax=${USA_BOUNDS.maxLon}`
-    
-    const response = await fetch(url, {
-      next: { revalidate: 30 }, // Cache for 30 seconds
-      headers: {
-        'Accept': 'application/json',
-        'User-Agent': 'FlightTracker/1.0'
-      }
-    })
-
-    if (!response.ok) {
-      console.error(`[LIVE FLIGHTS API] OpenSky API error: ${response.status}`)
-      // Return cached data if available, otherwise null
-      return flightDataCache.length > 0 ? flightDataCache : null
+    if (!formattedFlights || formattedFlights.length === 0) {
+      console.log('[LIVE FLIGHTS API] No flights returned from OpenSky')
+      return flightDataCache || []
     }
 
-    const data = await response.json()
-    
-    if (!data || !data.states || data.states.length === 0) {
-      console.log('[LIVE FLIGHTS API] No flight data from OpenSky')
-      return null
-    }
+    console.log(`[LIVE FLIGHTS API] Got ${formattedFlights.length} REAL flights from OpenSky with OAuth2`)
 
-    console.log(`[LIVE FLIGHTS API] Got ${data.states.length} REAL flights from OpenSky`)
-
-    // Transform OpenSky data to our format
-    const flights = data.states
-      .filter((state: any[]) => {
-        // Filter out incomplete data
-        const hasPosition = state[5] !== null && state[6] !== null
-        const hasCallsign = state[1] && state[1].trim() !== ''
-        return hasPosition && hasCallsign
-      })
-      .map((state: any[]) => ({
-        id: `flight-${state[0]}`,
-        icao24: state[0],
-        callsign: state[1]?.trim() || '',
-        latitude: state[6],
-        longitude: state[5],
-        altitude: state[13] || state[7], // Use barometric altitude, fall back to geometric
-        velocity: state[9], // Ground speed in m/s
-        heading: state[10], // True track in degrees
-        verticalRate: state[11], // Vertical rate in m/s
-        origin: state[2] || 'UNK',
-        onGround: state[8],
-        timestamp: new Date(state[4] * 1000).toISOString(),
-        category: state[16] || 0,
-        // Calculate estimated destination (simplified)
-        destination: 'UNK', // Would need flight plan data for real destination
-      }))
+    // Flights are already formatted by the service, just ensure they have all fields
+    const flights = formattedFlights.map((flight: any) => ({
+      id: flight.id || `flight-${flight.icao24}`,
+      icao24: flight.icao24,
+      callsign: flight.callsign,
+      latitude: flight.latitude,
+      longitude: flight.longitude,
+      altitude: flight.altitude,
+      velocity: flight.velocity,
+      heading: flight.heading,
+      verticalRate: flight.verticalRate,
+      origin: flight.origin || 'UNK',
+      onGround: flight.onGround,
+      timestamp: flight.timestamp,
+      category: flight.category || 0,
+      destination: flight.destination || 'UNK'
+    }))
 
     // Update cache
     flightDataCache = flights
@@ -91,7 +63,7 @@ async function fetchRealFlights() {
     console.error('[LIVE FLIGHTS API] Error fetching real flights:', error)
     
     // Return cached data if available
-    return flightDataCache.length > 0 ? flightDataCache : null
+    return flightDataCache && flightDataCache.length > 0 ? flightDataCache : null
   }
 }
 

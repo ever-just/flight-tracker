@@ -2,13 +2,11 @@
 
 ## Required Updates for v1.1.1 Deployment
 
-### OpenSky Authentication Issues
-**Status:** The provided credentials (username: everjust, password: Weldon@80K) are returning 401 Unauthorized.
-
-**Actions Required:**
-1. Verify OpenSky account is active at https://opensky-network.org
-2. Check if the account was created after March 2025 (may require OAuth2)
-3. For now, the app will use anonymous access (400 requests/day limit)
+### OpenSky Authentication - RESOLVED ✅
+**Status:** OAuth2 credentials obtained successfully!
+**Client ID:** `everjust-api-client`
+**Client Secret:** `VhRMAyCzTbHb8KpZrHEQcEKWQZsrYY0g`
+**Access Level:** OPENSKY_API_DEFAULT (4000 Credits/day)
 
 ### New/Updated Environment Variables
 

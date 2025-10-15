@@ -6,15 +6,15 @@
  * - Increment minor version (x.X.0) for new features
  * - Increment major version (X.0.0) for breaking changes
  * 
- * Last updated: 2025-10-14
+ * Last updated: 2025-10-15
  */
 
 export const VERSION = {
   major: 1,
   minor: 0,
-  patch: 4,
-  full: '1.0.4',
-  buildDate: '2025-10-14',
+  patch: 5,
+  full: '1.0.5',
+  buildDate: '2025-10-15',
   environment: process.env.NODE_ENV || 'development'
 } as const
 

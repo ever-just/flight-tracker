@@ -113,6 +113,9 @@ async function getRealFlights(airportCode?: string, limit: number = 100): Promis
       const openSkyFlights = await openskyService.getFlightsByAirport(airportCode)
       flights = openSkyFlights || []
       console.log(`[RECENT FLIGHTS API] Got ${flights.length} real flights from OpenSky for ${airportCode}`)
+      if (flights.length > 0) {
+        console.log(`[RECENT FLIGHTS API] Sample flight data:`, JSON.stringify(flights[0]).substring(0, 200))
+      }
     } else {
       // Get all US flights from OpenSky
       const openSkyFlights = await openskyService.getFlights()
@@ -133,37 +136,49 @@ async function getRealFlights(airportCode?: string, limit: number = 100): Promis
       let destination = 'UNK'
       let type: 'arrival' | 'departure' = 'departure'
       
-      // If we have position data, try to determine airports
+      // If we have position data, determine flight type and airports
       if (flight.longitude && flight.latitude) {
         const nearAirport = getAirportFromCoords(flight.latitude, flight.longitude)
         
-        // Simple logic: if altitude is low near an airport, it's likely landing/departing
+        // Simple logic: if altitude is low, it's landing/departing
         if (flight.baro_altitude) {
           const altitudeFt = flight.baro_altitude * 3.28084 // Convert meters to feet
-          if (altitudeFt < 10000) {
-            // Low altitude - likely near an airport
-            if (flight.vertical_rate && flight.vertical_rate < -500) {
-              // Descending - arrival
-              destination = airportCode || nearAirport
-              origin = 'UNK'
-              type = 'arrival'
+          
+          // If querying for specific airport, these flights are in its vicinity
+          if (airportCode) {
+            if (altitudeFt < 10000) {
+              // Low altitude near airport
+              if (flight.vertical_rate && flight.vertical_rate < -300) {
+                // Descending - arrival
+                destination = airportCode
+                origin = nearAirport !== airportCode && nearAirport !== 'UNK' ? nearAirport : 'UNK'
+                type = 'arrival'
+              } else {
+                // Ascending or level - departure
+                origin = airportCode
+                destination = nearAirport !== airportCode && nearAirport !== 'UNK' ? nearAirport : 'UNK'
+                type = 'departure'
+              }
             } else {
-              // Taking off or level - departure
-              origin = airportCode || nearAirport
-              destination = 'UNK'
-              type = 'departure'
-            }
-          } else {
-            // High altitude - in flight
-            if (airportCode) {
-              // Randomly assign as arrival or departure for the specified airport
+              // High altitude - assign to airport (in flight to/from)
               if (Math.random() > 0.5) {
                 destination = airportCode
-                origin = nearAirport !== airportCode ? nearAirport : 'UNK'
+                origin = nearAirport !== airportCode && nearAirport !== 'UNK' ? nearAirport : 'UNK'
                 type = 'arrival'
               } else {
                 origin = airportCode
-                destination = nearAirport !== airportCode ? nearAirport : 'UNK'
+                destination = nearAirport !== airportCode && nearAirport !== 'UNK' ? nearAirport : 'UNK'
+                type = 'departure'
+              }
+            }
+          } else {
+            // No specific airport - use detected nearest
+            if (altitudeFt < 10000 && nearAirport !== 'UNK') {
+              if (flight.vertical_rate && flight.vertical_rate < -300) {
+                destination = nearAirport
+                type = 'arrival'
+              } else {
+                origin = nearAirport
                 type = 'departure'
               }
             }
@@ -171,8 +186,8 @@ async function getRealFlights(airportCode?: string, limit: number = 100): Promis
         }
       }
       
-      // If airport filter is specified, only include flights to/from that airport
-      if (airportCode && origin !== airportCode && destination !== airportCode) {
+      // Skip flights with no airport association (only if not querying specific airport)
+      if (!airportCode && origin === 'UNK' && destination === 'UNK') {
         continue
       }
       

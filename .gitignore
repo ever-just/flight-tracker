@@ -38,6 +38,7 @@ data/credentials.json
 deploy-now.sh
 quick-deploy.sh
 github-deploy.sh
+.godaddy-config.json
 
 # vercel
 .vercel

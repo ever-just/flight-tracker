@@ -5,6 +5,8 @@
 
 import fs from 'fs'
 import path from 'path'
+import zlib from 'zlib'
+import { pipeline } from 'stream/promises'
 
 interface FlightSnapshot {
   callsign: string
@@ -41,6 +43,9 @@ class RealtimeFlightTracker {
   private readonly HISTORY_DURATION = 24 * 60 * 60 * 1000 // 24 hours in ms
   private readonly CLEANUP_INTERVAL = 5 * 60 * 1000 // Cleanup every 5 minutes
   private readonly DATA_FILE = path.join(process.cwd(), 'data', 'flight-history.json')
+  private readonly MAX_FILE_SIZE = 10 * 1024 * 1024 // 10MB limit
+  private readonly MAX_HISTORY_DAYS = 7 // Keep 7 days of data
+  private readonly ARCHIVE_DIR = path.join(process.cwd(), 'data', 'archives')
   
   constructor() {
     this.loadFromFile()
@@ -58,6 +63,15 @@ class RealtimeFlightTracker {
         dataPoints: 50000
       }
     }
+    
+    // Schedule hourly cleanup to rotate file if needed
+    setInterval(async () => {
+      try {
+        await this.rotateDataFile()
+      } catch (error) {
+        console.error('[FLIGHT TRACKER] Error rotating data file:', error)
+      }
+    }, 60 * 60 * 1000) // Every hour
   }
   
   /**
@@ -105,13 +119,16 @@ class RealtimeFlightTracker {
   /**
    * Save data to file for persistence
    */
-  private saveToFile(): void {
+  private async saveToFile(): Promise<void> {
     try {
       // Ensure data directory exists
       const dataDir = path.dirname(this.DATA_FILE)
       if (!fs.existsSync(dataDir)) {
         fs.mkdirSync(dataDir, { recursive: true })
       }
+      
+      // Prune old data before saving to keep file size manageable
+      this.pruneOldData()
       
       // Convert Map to array for JSON serialization
       const data = {
@@ -125,8 +142,90 @@ class RealtimeFlightTracker {
       }
       
       fs.writeFileSync(this.DATA_FILE, JSON.stringify(data, null, 2))
+      
+      // Check file size after saving
+      await this.checkAndRotateIfNeeded()
     } catch (error) {
       console.error('[FLIGHT TRACKER] Error saving data:', error)
+    }
+  }
+  
+  /**
+   * Rotate data file if it exceeds size limit
+   */
+  private async rotateDataFile(): Promise<void> {
+    try {
+      if (!fs.existsSync(this.DATA_FILE)) {
+        return
+      }
+      
+      const stats = await fs.promises.stat(this.DATA_FILE)
+      
+      if (stats.size > this.MAX_FILE_SIZE) {
+        console.log(`[FLIGHT TRACKER] File size ${Math.round(stats.size / 1024 / 1024)}MB exceeds limit, rotating...`)
+        
+        // Ensure archive directory exists
+        if (!fs.existsSync(this.ARCHIVE_DIR)) {
+          await fs.promises.mkdir(this.ARCHIVE_DIR, { recursive: true })
+        }
+        
+        // Archive current file
+        const timestamp = new Date().toISOString().split('T')[0]
+        const archivePath = path.join(this.ARCHIVE_DIR, `flight-history-${timestamp}.json.gz`)
+        
+        // Compress and move
+        const gzip = zlib.createGzip()
+        const source = fs.createReadStream(this.DATA_FILE)
+        const destination = fs.createWriteStream(archivePath)
+        
+        await pipeline(source, gzip, destination)
+        console.log(`[FLIGHT TRACKER] Archived to ${archivePath}`)
+        
+        // Start fresh with last 24 hours only
+        this.pruneOldData()
+        await this.saveToFile()
+      }
+    } catch (error) {
+      console.error('[FLIGHT TRACKER] Error rotating data file:', error)
+    }
+  }
+  
+  /**
+   * Check file size and rotate if needed
+   */
+  private async checkAndRotateIfNeeded(): Promise<void> {
+    try {
+      if (fs.existsSync(this.DATA_FILE)) {
+        const stats = await fs.promises.stat(this.DATA_FILE)
+        if (stats.size > this.MAX_FILE_SIZE) {
+          await this.rotateDataFile()
+        }
+      }
+    } catch (error) {
+      console.error('[FLIGHT TRACKER] Error checking file size:', error)
+    }
+  }
+  
+  /**
+   * Prune data older than MAX_HISTORY_DAYS
+   */
+  private pruneOldData(): void {
+    const cutoffTime = Date.now() - (this.MAX_HISTORY_DAYS * 24 * 60 * 60 * 1000)
+    let prunedCount = 0
+    
+    for (const [callsign, history] of this.flightHistory.entries()) {
+      const recentHistory = history.filter(h => h.timestamp > cutoffTime)
+      
+      if (recentHistory.length === 0) {
+        this.flightHistory.delete(callsign)
+        prunedCount++
+      } else if (recentHistory.length < history.length) {
+        this.flightHistory.set(callsign, recentHistory)
+      }
+    }
+    
+    if (prunedCount > 0) {
+      console.log(`[FLIGHT TRACKER] Pruned ${prunedCount} old flight records`)
     }
   }
   

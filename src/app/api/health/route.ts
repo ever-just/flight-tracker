@@ -138,15 +138,16 @@ export async function GET() {
   const degradedCount = services.filter(s => s.status === 'degraded').length
   const unhealthyCount = services.filter(s => s.status === 'unhealthy').length
   
-  let overallStatus: 'healthy' | 'degraded' | 'unhealthy' = 'healthy'
+  // Map health status to expected 'ok', 'degraded', or 'error' format
+  let overallStatus: 'ok' | 'degraded' | 'error' = 'ok'
   if (unhealthyCount > 2) {
-    overallStatus = 'unhealthy'
+    overallStatus = 'error'
   } else if (degradedCount > 2 || unhealthyCount > 0) {
     overallStatus = 'degraded'
   }
   
   const response = {
-    status: overallStatus,
+    status: overallStatus, // Changed from 'healthy' to 'ok'
     timestamp: new Date().toISOString(),
     services,
     summary: {
@@ -164,7 +165,7 @@ export async function GET() {
   }
   
   // Set appropriate status code
-  const statusCode = overallStatus === 'healthy' ? 200 : 
+  const statusCode = overallStatus === 'ok' ? 200 : 
                      overallStatus === 'degraded' ? 206 : 500
   
   return NextResponse.json(response, { status: statusCode })

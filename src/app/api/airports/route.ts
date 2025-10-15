@@ -173,18 +173,8 @@ export async function GET(request: NextRequest) {
       filteredAirports = filteredAirports.filter((a: any) => a.flights >= minFlights)
     }
     
-    return NextResponse.json({
-      airports: filteredAirports,
-      total: filteredAirports.length,
-      timestamp: new Date().toISOString(),
-      dataQuality: 'REAL - BTS/FAA/Flight Tracker Data',
-      sources: {
-        flightCounts: 'BTS Historical Data',
-        status: 'FAA Real-time + Calculated',
-        weather: 'Weather Service API',
-        tracker: 'Real-time Flight Tracker'
-      }
-    })
+    // Return array directly as expected by frontend
+    return NextResponse.json(filteredAirports)
     
   } catch (error) {
     console.error('[AIRPORTS API ERROR]', error)

@@ -57,11 +57,25 @@ export class RealOpenSkyService {
       // Fetch flights over USA
       const url = `${OPENSKY_BASE_URL}/states/all?lamin=${USA_BOUNDS.minLat}&lomin=${USA_BOUNDS.minLon}&lamax=${USA_BOUNDS.maxLat}&lomax=${USA_BOUNDS.maxLon}`
       
+      // Add authentication headers if credentials are available
+      const headers: any = {
+        'Accept': 'application/json'
+      }
+      
+      // Try Basic Authentication with provided credentials
+      if (this.clientId && this.clientSecret) {
+        // OpenSky uses username:password format for Basic Auth
+        // CLIENT_ID is used as username, CLIENT_SECRET as password
+        const auth = Buffer.from(`${this.clientId}:${this.clientSecret}`).toString('base64')
+        headers['Authorization'] = `Basic ${auth}`
+        console.log('[OpenSky] Using authenticated access')
+      } else {
+        console.log('[OpenSky] Using anonymous access (limited to 400 requests/day)')
+      }
+      
       const response = await axios.get<OpenSkyResponse>(url, {
         timeout: 10000,
-        headers: {
-          'Accept': 'application/json'
-        }
+        headers
       })
 
       if (!response.data || !response.data.states) {

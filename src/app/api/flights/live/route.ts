@@ -171,12 +171,21 @@ export async function GET(request: NextRequest) {
     const headers = new Headers()
     headers.set('Cache-Control', 'public, s-maxage=30, stale-while-revalidate=60')
     
+    // Return with proper structure including metadata
     return NextResponse.json({
       flights: filteredFlights,
-      stats,
-      timestamp: new Date().toISOString(),
-      bounds,
       source: 'opensky-real',
+      count: filteredFlights.length,
+      timestamp: new Date().toISOString(),
+      metadata: {
+        totalFlights: filteredFlights.length,
+        airborne: filteredFlights.filter((f: any) => !f.onGround).length,
+        onGround: filteredFlights.filter((f: any) => f.onGround).length,
+        averageAltitude: stats.averageAltitude,
+        averageSpeed: stats.averageSpeed
+      },
+      stats,
+      bounds,
       dataQuality: 'REAL - OpenSky Network ADS-B Data'
     }, { headers })
     

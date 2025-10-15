@@ -31,11 +31,14 @@ interface AirportStatus {
 
 export class FAAService {
   private baseUrl: string
+  private noaaBaseUrl: string
   private cache: Map<string, { data: any; expires: number }> = new Map()
   private cacheTTL: number
 
   constructor() {
-    this.baseUrl = process.env.FAA_API_URL || 'https://nasstatus.faa.gov/api/airport-status-information'
+    // Use FAA ASWS (Airport Status Web Service) API instead of the HTML endpoint
+    this.baseUrl = process.env.FAA_API_URL || 'https://soa.smext.faa.gov/asws/api/airport/status/'
+    this.noaaBaseUrl = process.env.NOAA_API_URL || 'https://api.weather.gov/stations/'
     this.cacheTTL = 5 * 60 * 1000 // 5 minutes cache
   }
 
@@ -48,21 +51,148 @@ export class FAAService {
         return cached
       }
 
-      console.log('[FAA] Fetching fresh data from API')
+      console.log('[FAA] Fetching fresh data from FAA ASWS API')
       
-      // For now, return simulated FAA data since the actual API requires authentication
-      // In production, you would make the actual API call here
-      const statuses = this.getSimulatedFAAData()
+      // Try to get real FAA data for major airports
+      const majorAirports = ['ATL', 'ORD', 'LAX', 'DFW', 'DEN', 'JFK', 'SFO', 'SEA', 
+                           'LAS', 'PHX', 'MCO', 'MIA', 'BOS', 'MSP', 'DTW', 
+                           'PHL', 'EWR', 'IAH', 'BWI', 'CLT']
+      
+      const statuses: AirportStatus[] = []
+      const fetchPromises = majorAirports.map(async (code) => {
+        try {
+          // Try FAA ASWS API first
+          const response = await fetch(`${this.baseUrl}${code}`, {
+            headers: {
+              'Accept': 'application/json',
+              'User-Agent': 'FlightTracker/1.0'
+            },
+            signal: AbortSignal.timeout(5000) // 5 second timeout
+          })
+          
+          if (response.ok) {
+            const data = await response.json()
+            return this.parseFAAResponse(code, data)
+          } else {
+            // Try NOAA as fallback for weather-related delays
+            return this.getNOAADelayData(code)
+          }
+        } catch (error) {
+          console.error(`[FAA] Error fetching status for ${code}:`, error)
+          return null
+        }
+      })
+      
+      const results = await Promise.all(fetchPromises)
+      const validResults = results.filter(r => r !== null) as AirportStatus[]
+      
+      // If we got some real data, use it; otherwise fall back to simulated
+      const finalStatuses = validResults.length > 0 ? validResults : this.getSimulatedFAAData()
       
       // Cache the data
-      this.setCachedData('airport_statuses', statuses)
+      this.setCachedData('airport_statuses', finalStatuses)
       
-      return statuses
+      return finalStatuses
     } catch (error) {
       console.error('[FAA] Error fetching airport statuses:', error)
       // Return simulated data as fallback
       return this.getSimulatedFAAData()
     }
+  }
+
+  private async getNOAADelayData(airportCode: string): Promise<AirportStatus | null> {
+    try {
+      // NOAA weather stations typically use K + airport code
+      const response = await fetch(`${this.noaaBaseUrl}K${airportCode}/observations/latest`, {
+        headers: {
+          'Accept': 'application/geo+json',
+          'User-Agent': 'FlightTracker/1.0'
+        },
+        signal: AbortSignal.timeout(3000)
+      })
+      
+      if (!response.ok) {
+        return null
+      }
+      
+      const data = await response.json()
+      return this.parseNOAAResponse(airportCode, data)
+    } catch (error) {
+      console.error(`[FAA] NOAA fallback failed for ${airportCode}:`, error)
+      return null
+    }
+  }
+
+  private parseFAAResponse(code: string, data: any): AirportStatus {
+    // Parse actual FAA ASWS response format
+    const delays = data.delays || 0
+    const cancellations = data.cancellations || 0
+    const avgDelay = data.averageDelay || 0
+    const status = data.status || 'Normal'
+    
+    return {
+      code,
+      status: this.mapFAAStatus(status),
+      delays,
+      cancellations,
+      avgDelay,
+      reason: data.reason || 'Normal Operations'
+    }
+  }
+
+  private parseNOAAResponse(code: string, data: any): AirportStatus {
+    // Parse NOAA weather data to estimate delays
+    const properties = data?.properties || {}
+    const visibility = properties.visibility?.value || 10000
+    const windSpeed = properties.windSpeed?.value || 0
+    
+    // Simple weather-based delay estimation
+    let delays = 0
+    let avgDelay = 0
+    let status: 'Normal' | 'Moderate' | 'Severe' = 'Normal'
+    let reason = 'Normal Operations'
+    
+    if (visibility < 1000) {
+      // Low visibility
+      delays = 50
+      avgDelay = 30
+      status = 'Severe'
+      reason = 'Weather - Low Visibility'
+    } else if (windSpeed > 15) {
+      // High winds (m/s)
+      delays = 30
+      avgDelay = 20
+      status = 'Moderate'
+      reason = 'Weather - High Winds'
+    } else if (visibility < 5000) {
+      delays = 15
+      avgDelay = 10
+      status = 'Moderate'
+      reason = 'Weather - Reduced Visibility'
+    }
+    
+    return {
+      code,
+      status,
+      delays,
+      cancellations: Math.round(delays * 0.1), // Estimate 10% cancellation rate for weather
+      avgDelay,
+      reason
+    }
+  }
+
+  private mapFAAStatus(faaStatus: string): 'Normal' | 'Moderate' | 'Severe' | 'Closed' {
+    const statusMap: Record<string, 'Normal' | 'Moderate' | 'Severe' | 'Closed'> = {
+      'No Delay': 'Normal',
+      'Normal': 'Normal',
+      'Minor': 'Moderate',
+      'Moderate': 'Moderate',
+      'Major': 'Severe',
+      'Severe': 'Severe',
+      'Ground Stop': 'Severe',
+      'Closed': 'Closed'
+    }
+    return statusMap[faaStatus] || 'Normal'
   }
 
   async getDelayTotals(): Promise<{ totalDelays: number; totalCancellations: number }> {

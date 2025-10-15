@@ -245,8 +245,34 @@ export async function GET(request: NextRequest) {
     // Get REAL flights from OpenSky/tracker
     const flights = await getRealFlights(airportCode, limit)
     
+    // Add summary object as required by frontend
+    const summary = {
+      total: flights.length,
+      airports: [...new Set(flights.flatMap(f => [f.origin, f.destination]).filter(a => a && a !== 'UNK'))].length,
+      timeRange: flights.length > 0 ? {
+        start: flights[0]?.scheduledTime || new Date().toISOString(),
+        end: flights[flights.length - 1]?.scheduledTime || new Date().toISOString()
+      } : {
+        start: new Date().toISOString(),
+        end: new Date().toISOString()
+      },
+      byStatus: {
+        onTime: flights.filter(f => f.status === 'on-time').length,
+        delayed: flights.filter(f => f.status === 'delayed').length,
+        cancelled: flights.filter(f => f.status === 'cancelled').length,
+        boarding: flights.filter(f => f.status === 'boarding').length,
+        departed: flights.filter(f => f.status === 'departed').length,
+        arrived: flights.filter(f => f.status === 'arrived').length
+      },
+      byType: {
+        arrivals: flights.filter(f => f.type === 'arrival').length,
+        departures: flights.filter(f => f.type === 'departure').length
+      }
+    }
+    
     return NextResponse.json({
       flights,
+      summary,
       totalFlights: flights.length,
       airport: airportCode || 'all',
       timestamp: new Date().toISOString(),

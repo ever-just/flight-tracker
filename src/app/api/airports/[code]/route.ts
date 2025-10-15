@@ -141,14 +141,25 @@ async function getRealAirportData(code: string) {
       city: airport.city,
       state: airport.state,
       coordinates: [airport.lat, airport.lon],
-      status,
-      currentStats: {
+      status,  // Current status from FAA
+      historicalStats: {  // Renamed from currentStats to be clear it's historical
         totalFlights,
         arrivals,
         departures,
         delays: totalDelays,
         cancellations: totalCancellations,
         averageDelay: Math.round(averageDelay * 10) / 10, // Round to 1 decimal
+        onTimePercentage: Math.round(onTimeRate),
+        dataDate: 'June 2025',  // Make it clear this is historical data
+        warning: '⚠️ Historical reference data from 4 months ago'
+      },
+      currentStats: {  // Keep for backwards compatibility
+        totalFlights,
+        arrivals,
+        departures,
+        delays: totalDelays,
+        cancellations: totalCancellations,
+        averageDelay: Math.round(averageDelay * 10) / 10,
         onTimePercentage: Math.round(onTimeRate)
       },
       comparisons: {
@@ -175,10 +186,11 @@ async function getRealAirportData(code: string) {
       flightTypes,
       lastUpdated: new Date().toISOString(),
       dataSource: {
-        flights: 'BTS + Flight Tracker',
-        delays: 'BTS Historical',
-        status: faaStatus ? 'FAA Real-time' : 'Calculated',
-        comparisons: 'Flight Tracker'
+        flights: '⚠️ BTS Historical (June 2025) - 4 months old',
+        delays: '⚠️ BTS Historical (June 2025) - 4 months old',
+        status: faaStatus ? '✅ FAA Real-time (Current)' : 'Calculated from historical',
+        comparisons: 'Flight Tracker estimates',
+        warning: '⚠️ IMPORTANT: Performance statistics are from June 2025, not current month'
       }
     }
   } catch (error) {

@@ -43,7 +43,7 @@ class RealtimeFlightTracker {
   private readonly HISTORY_DURATION = 24 * 60 * 60 * 1000 // 24 hours in ms
   private readonly CLEANUP_INTERVAL = 5 * 60 * 1000 // Cleanup every 5 minutes
   private readonly DATA_FILE = path.join(process.cwd(), 'data', 'flight-history.json')
-  private readonly MAX_FILE_SIZE = 10 * 1024 * 1024 // 10MB limit
+  private readonly MAX_FILE_SIZE = 60 * 1024 * 1024 // 60MB limit (increased to prevent constant rotation)
   private readonly MAX_HISTORY_DAYS = 7 // Keep 7 days of data
   private readonly ARCHIVE_DIR = path.join(process.cwd(), 'data', 'archives')
   

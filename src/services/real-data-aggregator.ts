@@ -100,7 +100,7 @@ export class RealDataAggregator {
       const currentDelays = tracker.getDelays()
       const currentCancellations = tracker.getCancellations()
       
-      // For "today" period, use REAL-TIME data
+      // For "today" period, use REAL-TIME data (week uses hybrid approach)
       if (period === 'today') {
         // Use real-time flight counts for today
         const result: AggregatedDashboardData = {
@@ -176,14 +176,14 @@ export class RealDataAggregator {
         topAirports: topAirports,
         recentDelays: activeDelays,  // ✅ Add active delays
         limitations: [
-          'Historical data from BTS (Bureau of Transportation Statistics)',
-          `${period === 'week' ? 'Weekly' : period === 'month' ? 'Monthly' : 'Quarterly'} statistics from June 2025`,
-          'Real delays and cancellations from actual airline reports',
-          'No real-time flight tracking for historical periods'
+          '⚠️ HISTORICAL REFERENCE DATA - June 2025 (4 months old)',
+          `${period === 'week' ? 'Weekly' : period === 'month' ? 'Monthly' : 'Quarterly'} statistics are from June 2025, NOT current`,
+          'This is historical baseline data from BTS (Bureau of Transportation Statistics)',
+          'For current live data, please use "Today" view which shows real-time flights'
         ],
         dataFreshness: {
-          realTime: 'Not applicable - historical data',
-          historical: 'June 2025 (BTS Data)'
+          realTime: 'Not applicable - viewing historical reference data',
+          historical: '⚠️ June 2025 (BTS Data) - 4 MONTHS OLD'
         }
       }
       

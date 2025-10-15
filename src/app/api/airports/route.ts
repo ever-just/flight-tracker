@@ -106,9 +106,10 @@ async function getRealAirportStatus() {
         averageDelay: Math.round(averageDelay),
         onTimePercentage: Math.round(onTimePercentage),
         dataSource: {
-          flights: btsAirport ? 'BTS Historical' : trackerData ? 'Flight Tracker' : 'Estimated',
-          status: faaStatus ? 'FAA Real-time' : 'Calculated',
-          weather: hasWeatherIssue ? 'Active Weather Issues' : 'Clear'
+          flights: btsAirport ? '⚠️ BTS Historical (June 2025)' : trackerData ? 'Flight Tracker' : 'Estimated',
+          status: faaStatus ? '✅ FAA Real-time (Current)' : 'Calculated from historical',
+          weather: hasWeatherIssue ? 'Active Weather Issues' : 'Clear',
+          warning: '⚠️ Flight counts are from June 2025 historical data'
         }
       }
     })

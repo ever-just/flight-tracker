@@ -131,64 +131,57 @@ async function getRealFlights(airportCode?: string, limit: number = 100): Promis
       const callsign = flight.callsign?.trim() || `UNK${Math.floor(Math.random() * 9999)}`
       const { airline, flightNumber } = parseCallsign(callsign)
       
-      // Determine origin and destination from flight data
+      // If querying specific airport, FORCE all flights to be associated with it
       let origin = 'UNK'
       let destination = 'UNK'
       let type: 'arrival' | 'departure' = 'departure'
       
-      // If we have position data, determine flight type and airports
-      if (flight.longitude && flight.latitude) {
-        const nearAirport = getAirportFromCoords(flight.latitude, flight.longitude)
+      if (airportCode) {
+        // These flights are in the airport's bounding box, so they MUST involve this airport
+        const altitudeFt = (flight.baro_altitude || 0) * 3.28084 // Convert meters to feet
+        const verticalRate = flight.vertical_rate || 0
         
-        // Simple logic: if altitude is low, it's landing/departing
-        if (flight.baro_altitude) {
-          const altitudeFt = flight.baro_altitude * 3.28084 // Convert meters to feet
+        // Determine if arrival or departure based on altitude and vertical rate
+        if (verticalRate < -500 || altitudeFt < 5000) {
+          // Descending or low altitude = arrival to this airport
+          destination = airportCode
+          type = 'arrival'
+          // Try to find origin from nearby airports
+          if (flight.latitude && flight.longitude) {
+            const nearAirport = getAirportFromCoords(flight.latitude, flight.longitude)
+            origin = nearAirport !== airportCode ? nearAirport : 'UNK'
+          }
+        } else {
+          // Climbing or cruising = departure from this airport
+          origin = airportCode
+          type = 'departure'
+          // Try to find destination from nearby airports
+          if (flight.latitude && flight.longitude) {
+            const nearAirport = getAirportFromCoords(flight.latitude, flight.longitude)
+            destination = nearAirport !== airportCode ? nearAirport : 'UNK'
+          }
+        }
+      } else {
+        // No specific airport query - try to detect from position
+        if (flight.longitude && flight.latitude) {
+          const nearAirport = getAirportFromCoords(flight.latitude, flight.longitude)
+          const altitudeFt = (flight.baro_altitude || 0) * 3.28084
           
-          // If querying for specific airport, these flights are in its vicinity
-          if (airportCode) {
-            if (altitudeFt < 10000) {
-              // Low altitude near airport
-              if (flight.vertical_rate && flight.vertical_rate < -300) {
-                // Descending - arrival
-                destination = airportCode
-                origin = nearAirport !== airportCode && nearAirport !== 'UNK' ? nearAirport : 'UNK'
-                type = 'arrival'
-              } else {
-                // Ascending or level - departure
-                origin = airportCode
-                destination = nearAirport !== airportCode && nearAirport !== 'UNK' ? nearAirport : 'UNK'
-                type = 'departure'
-              }
+          if (altitudeFt < 10000 && nearAirport !== 'UNK') {
+            if (flight.vertical_rate && flight.vertical_rate < -300) {
+              destination = nearAirport
+              type = 'arrival'
             } else {
-              // High altitude - assign to airport (in flight to/from)
-              if (Math.random() > 0.5) {
-                destination = airportCode
-                origin = nearAirport !== airportCode && nearAirport !== 'UNK' ? nearAirport : 'UNK'
-                type = 'arrival'
-              } else {
-                origin = airportCode
-                destination = nearAirport !== airportCode && nearAirport !== 'UNK' ? nearAirport : 'UNK'
-                type = 'departure'
-              }
-            }
-          } else {
-            // No specific airport - use detected nearest
-            if (altitudeFt < 10000 && nearAirport !== 'UNK') {
-              if (flight.vertical_rate && flight.vertical_rate < -300) {
-                destination = nearAirport
-                type = 'arrival'
-              } else {
-                origin = nearAirport
-                type = 'departure'
-              }
+              origin = nearAirport
+              type = 'departure'
             }
           }
         }
-      }
-      
-      // Skip flights with no airport association (only if not querying specific airport)
-      if (!airportCode && origin === 'UNK' && destination === 'UNK') {
-        continue
+        
+        // Skip if no airport association
+        if (origin === 'UNK' && destination === 'UNK') {
+          continue
+        }
       }
       
       // Determine status based on altitude and speed

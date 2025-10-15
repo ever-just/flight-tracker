@@ -42,8 +42,8 @@ export class FAAService {
     // Approved for Airport Watch application
     this.baseUrl = process.env.FAA_API_URL || 'https://external-api.faa.gov/asws/v1/airport/status/'
     this.noaaBaseUrl = process.env.NOAA_API_URL || 'https://api.weather.gov/stations/'
-    this.faaClientId = process.env.FAA_CLIENT_ID || 'e5f0914cd27d4e1083ac87b1668e116d'
-    this.faaClientSecret = process.env.FAA_CLIENT_SECRET || '5880f72C66924020a27E0101caB08f22'
+    this.faaClientId = process.env.FAA_CLIENT_ID || ''
+    this.faaClientSecret = process.env.FAA_CLIENT_SECRET || ''
     this.cacheTTL = 5 * 60 * 1000 // 5 minutes cache
   }
 

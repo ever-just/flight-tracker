@@ -44,8 +44,8 @@ export class RealOpenSkyService {
 
   constructor() {
     // OpenSky OAuth2 credentials (4000 requests/day)
-    this.clientId = process.env.OPENSKY_CLIENT_ID || 'everjust-api-client'
-    this.clientSecret = process.env.OPENSKY_CLIENT_SECRET || 'VhRMAyCzTbHb8KpZrHEQcEKWQZsrYY0g'
+    this.clientId = process.env.OPENSKY_CLIENT_ID || ''
+    this.clientSecret = process.env.OPENSKY_CLIENT_SECRET || ''
   }
 
   private async getAccessToken() {

@@ -8,6 +8,7 @@
 import { fetchRealDashboardData } from './real-dashboard.service'
 import { btsDataService } from './bts-data.service'
 import { getFlightTracker } from '@/services/realtime-flight-tracker'
+import { getAllCachedFlights, getCacheStatus } from './flight-data-cache.service'
 
 interface AggregatedDashboardData {
   source: 'hybrid-real-data'
@@ -197,38 +198,50 @@ export class RealDataAggregator {
   }
   
   /**
-   * Get real-time data from OpenSky Network
+   * Get real-time data from OpenSky Network (via cache)
    */
   private async getOpenSkyData() {
     try {
-      // First, fetch fresh data from OpenSky to update tracker
-      const data = await fetchRealDashboardData()
+      // Get flights from centralized cache (no direct API calls!)
+      const cachedFlights = getAllCachedFlights()
+      const cacheStatus = getCacheStatus()
       
-      // Update the flight tracker with latest data
+      console.log(`[DATA AGGREGATOR] Using cached flights: ${cachedFlights.length} flights (age: ${cacheStatus.ageSeconds}s)`)
+      
+      // Update the flight tracker with cached data
       const tracker = getFlightTracker()
-      if (data.flights && Array.isArray(data.flights)) {
-        tracker.updateFlights(data.flights)
+      if (cachedFlights && Array.isArray(cachedFlights) && cachedFlights.length > 0) {
+        tracker.updateFlights(cachedFlights)
       }
       
       // Get today's real statistics from the tracker
       const todayStats = tracker.getTodayStats()
       const busyAirports = tracker.getBusyAirports()
       
+      // Calculate stats from cached flights
+      const activeFlights = cachedFlights.filter(f => !f.onGround && !f.on_ground)
+      const avgAlt = activeFlights.length > 0 ?
+        activeFlights.reduce((sum, f) => sum + ((f.altitude || f.baro_altitude || 0) * 3.28084), 0) / activeFlights.length : 0
+      const avgSpeed = activeFlights.length > 0 ?
+        activeFlights.reduce((sum, f) => sum + ((f.velocity || 0) * 1.94384), 0) / activeFlights.length : 0
+      
       // Return REAL numbers from tracked flights
       return {
-        totalFlights: todayStats.totalUniqueFlights || data.summary.totalFlights,
-        totalActive: todayStats.currentlyFlying || data.summary.totalActive,
-        averageAltitude: todayStats.avgAltitude || data.summary.averageAltitude,
-        averageSpeed: todayStats.avgSpeed || data.summary.averageSpeed,
-        topCountries: data.topCountries || [], // Keep original countries for now
+        totalFlights: todayStats.totalUniqueFlights || cachedFlights.length,
+        totalActive: todayStats.currentlyFlying || activeFlights.length,
+        averageAltitude: todayStats.avgAltitude || Math.round(avgAlt),
+        averageSpeed: todayStats.avgSpeed || Math.round(avgSpeed),
+        topCountries: [], // Not available from OpenSky state vectors
         // Additional real-time metrics
         peakFlights: todayStats.peakFlights,
         peakTime: todayStats.peakTime,
-        busyAirports: busyAirports
+        busyAirports: busyAirports,
+        cacheAge: cacheStatus.ageSeconds,
+        cacheHealthy: cacheStatus.isHealthy
       }
     } catch (error) {
-      console.error('[DATA AGGREGATOR] OpenSky fetch failed:', error)
-      // Return default values if API fails
+      console.error('[DATA AGGREGATOR] Cache read failed:', error)
+      // Return default values if cache fails
       return {
         totalFlights: 0,
         totalActive: 0,
@@ -237,7 +250,9 @@ export class RealDataAggregator {
         topCountries: [],
         peakFlights: 0,
         peakTime: '',
-        busyAirports: []
+        busyAirports: [],
+        cacheAge: 0,
+        cacheHealthy: false
       }
     }
   }

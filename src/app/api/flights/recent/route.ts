@@ -1,13 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { openskyService } from '@/services/opensky.service'
 import { getFlightTracker } from '@/services/realtime-flight-tracker'
+import { getAirportCachedFlights, getAllCachedFlights, getCacheStatus } from '@/services/flight-data-cache.service'
 
 // Force dynamic rendering for search params
 export const dynamic = 'force-dynamic'
 
-// Cache for recent flights per airport (to avoid hammering the API)
-let flightsCachePerAirport: Map<string, { flights: any[], timestamp: number }> = new Map()
-const CACHE_TTL = 30000 // 30 seconds
+// Note: Flight data is now served from centralized cache service
+// No direct API calls to OpenSky - all data fetched by background job
 
 interface ProcessedFlight {
   id: string
@@ -95,32 +95,25 @@ function getAirportFromCoords(lat: number, lon: number): string {
 
 async function getRealFlights(airportCode?: string, limit: number = 100): Promise<ProcessedFlight[]> {
   try {
-    console.log(`[RECENT FLIGHTS API] Fetching REAL flights for ${airportCode || 'all airports'}`)
+    console.log(`[RECENT FLIGHTS API] Fetching flights for ${airportCode || 'all airports'} from CACHE`)
     
-    // Check cache first
-    const cacheKey = airportCode || 'all'
-    const cached = flightsCachePerAirport.get(cacheKey)
-    if (cached && (Date.now() - cached.timestamp) < CACHE_TTL) {
-      console.log(`[RECENT FLIGHTS API] Using cached data (${cached.flights.length} flights)`)
-      return cached.flights.slice(0, limit)
-    }
-    
-    // Get real flight data
+    // Get flight data from centralized cache (no direct API calls!)
     let flights: any[] = []
     
     if (airportCode) {
-      // Get flights for specific airport using OpenSky API
-      const openSkyFlights = await openskyService.getFlightsByAirport(airportCode)
-      flights = openSkyFlights || []
-      console.log(`[RECENT FLIGHTS API] Got ${flights.length} real flights from OpenSky for ${airportCode}`)
-      if (flights.length > 0) {
-        console.log(`[RECENT FLIGHTS API] Sample flight data:`, JSON.stringify(flights[0]).substring(0, 200))
-      }
+      // Get flights for specific airport from cache
+      flights = getAirportCachedFlights(airportCode)
+      console.log(`[RECENT FLIGHTS API] Got ${flights.length} cached flights for ${airportCode}`)
     } else {
-      // Get all US flights from OpenSky
-      const openSkyFlights = await openskyService.getFlights()
-      flights = openSkyFlights || []
-      console.log(`[RECENT FLIGHTS API] Got ${flights.length} real flights from OpenSky`)
+      // Get all cached flights
+      flights = getAllCachedFlights()
+      console.log(`[RECENT FLIGHTS API] Got ${flights.length} cached flights (all airports)`)
+    }
+    
+    // Check cache health
+    const cacheStatus = getCacheStatus()
+    if (!cacheStatus.isHealthy || !cacheStatus.isFresh) {
+      console.warn(`[RECENT FLIGHTS API] Cache is ${!cacheStatus.isHealthy ? 'unhealthy' : 'stale'} (age: ${cacheStatus.ageSeconds}s)`)
     }
     
     // Process OpenSky data into our format
@@ -223,16 +216,12 @@ async function getRealFlights(airportCode?: string, limit: number = 100): Promis
       })
     }
     
-    // If we don't have enough real flights, we're in trouble but at least show what we have
+    // If we don't have enough flights, log it
     if (processedFlights.length === 0) {
-      console.warn(`[RECENT FLIGHTS API] No real flights found for ${airportCode || 'all'}`)
+      console.warn(`[RECENT FLIGHTS API] No flights found for ${airportCode || 'all'} (cache may be warming up)`)
+    } else {
+      console.log(`[RECENT FLIGHTS API] Processed ${processedFlights.length} flights for ${airportCode || 'all'}`)
     }
-    
-    // Cache the results
-    flightsCachePerAirport.set(cacheKey, {
-      flights: processedFlights,
-      timestamp: Date.now()
-    })
     
     return processedFlights.slice(0, limit)
     
@@ -278,16 +267,23 @@ export async function GET(request: NextRequest) {
       }
     }
     
+    // Get cache status for response
+    const cacheStatus = getCacheStatus()
+    
     return NextResponse.json({
       flights,
       summary,
       totalFlights: flights.length,
       airport: airportCode || 'all',
       timestamp: new Date().toISOString(),
-      dataSource: 'OpenSky Network (REAL)',
+      dataSource: 'OpenSky Network (Cached - Background Fetch)',
       cacheInfo: {
-        ttl: CACHE_TTL / 1000,
-        message: 'Real flight data from OpenSky Network API'
+        lastUpdate: cacheStatus.lastUpdate,
+        nextUpdate: cacheStatus.nextUpdate,
+        ageSeconds: cacheStatus.ageSeconds,
+        isFresh: cacheStatus.isFresh,
+        isHealthy: cacheStatus.isHealthy,
+        message: 'Data refreshed every 60 seconds by background service'
       }
     })
     

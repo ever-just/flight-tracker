@@ -1,71 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getFlightTracker } from '@/services/realtime-flight-tracker'
 import { openskyService } from '@/services/opensky.service'
-import { RealOpenSkyService } from '@/services/real-opensky.service'
+import { getAllCachedFlights, getCacheStatus } from '@/services/flight-data-cache.service'
 
 // Force dynamic rendering for search params
 export const dynamic = 'force-dynamic'
 
-// Server-side cache to prevent OpenSky rate limiting (429 errors)
-let flightDataCache: any = null
-let cacheTimestamp: number = 0
-const CACHE_DURATION_MS = 30000 // 30 seconds
-
-// Initialize OpenSky service with OAuth2
-const realOpenSkyService = new RealOpenSkyService()
-
-// REAL FLIGHTS ONLY - No fake data!
-async function fetchRealFlights() {
-  // Check if we have valid cached data
-  const now = Date.now()
-  if (flightDataCache && (now - cacheTimestamp < CACHE_DURATION_MS)) {
-    console.log(`[LIVE FLIGHTS API] Using cached flight data (${Math.round((now - cacheTimestamp) / 1000)}s old)`)
-    return flightDataCache
-  }
-  
-  try {
-    console.log('[LIVE FLIGHTS API] Fetching REAL flights from OpenSky Network with OAuth2...')
-    
-    // Use the RealOpenSkyService with OAuth2 authentication
-    const formattedFlights = await realOpenSkyService.fetchLiveFlights()
-    
-    if (!formattedFlights || formattedFlights.length === 0) {
-      console.log('[LIVE FLIGHTS API] No flights returned from OpenSky')
-      return flightDataCache || []
-    }
-
-    console.log(`[LIVE FLIGHTS API] Got ${formattedFlights.length} REAL flights from OpenSky with OAuth2`)
-
-    // Flights are already formatted by the service, just ensure they have all fields
-    const flights = formattedFlights.map((flight: any) => ({
-      id: flight.id || `flight-${flight.icao24}`,
-      icao24: flight.icao24,
-      callsign: flight.callsign,
-      latitude: flight.latitude,
-      longitude: flight.longitude,
-      altitude: flight.altitude,
-      velocity: flight.velocity,
-      heading: flight.heading,
-      verticalRate: flight.verticalRate,
-      origin: flight.origin || 'UNK',
-      onGround: flight.onGround,
-      timestamp: flight.timestamp,
-      category: flight.category || 0,
-      destination: flight.destination || 'UNK'
-    }))
-
-    // Update cache
-    flightDataCache = flights
-    cacheTimestamp = now
-
-    return flights
-  } catch (error) {
-    console.error('[LIVE FLIGHTS API] Error fetching real flights:', error)
-    
-    // Return cached data if available
-    return flightDataCache && flightDataCache.length > 0 ? flightDataCache : null
-  }
-}
+// Note: Flight data is now served from centralized cache service
+// No direct API calls to OpenSky - all data fetched by background job every 60 seconds
 
 export async function GET(request: NextRequest) {
   try {
@@ -78,12 +20,14 @@ export async function GET(request: NextRequest) {
     }
     const airport = searchParams.get('airport')
     
-    // ALWAYS use real data - no fake fallback!
-    const flights = await fetchRealFlights()
+    // Get flights from centralized cache (no direct API calls!)
+    const flights = getAllCachedFlights()
+    const cacheStatus = getCacheStatus()
+    
+    console.log(`[LIVE FLIGHTS API] Serving ${flights.length} flights from cache (age: ${cacheStatus.ageSeconds}s)`)
     
     if (!flights || flights.length === 0) {
-      // NO FAKE DATA - Return empty if no real data available
-      console.log('[LIVE FLIGHTS API] No real flight data available')
+      console.log('[LIVE FLIGHTS API] Cache is empty (may be warming up)')
       return NextResponse.json({
         flights: [],
         stats: {
@@ -92,12 +36,13 @@ export async function GET(request: NextRequest) {
           onGround: 0,
           averageAltitude: 0,
           averageSpeed: 0,
-          message: 'Real-time flight data temporarily unavailable'
+          message: 'Flight cache is warming up... data available in ~60 seconds'
         },
         timestamp: new Date().toISOString(),
         bounds,
-        source: 'no-data',
-        dataQuality: 'No real-time data available'
+        source: 'cache-empty',
+        dataQuality: 'Cache warming up',
+        cacheStatus
       })
     }
     
@@ -137,16 +82,16 @@ export async function GET(request: NextRequest) {
       ) : 0,
     }
     
-    console.log(`[LIVE FLIGHTS API] Returning ${filteredFlights.length} REAL flights`)
+    console.log(`[LIVE FLIGHTS API] Returning ${filteredFlights.length} flights from cache`)
     
     // Add cache headers for real-time data (short cache)
     const headers = new Headers()
-    headers.set('Cache-Control', 'public, s-maxage=30, stale-while-revalidate=60')
+    headers.set('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=30')
     
-    // Return with proper structure including metadata
+    // Return with proper structure including metadata and cache status
     return NextResponse.json({
       flights: filteredFlights,
-      source: 'opensky-real',
+      source: 'opensky-cached',
       count: filteredFlights.length,
       timestamp: new Date().toISOString(),
       metadata: {
@@ -158,7 +103,14 @@ export async function GET(request: NextRequest) {
       },
       stats,
       bounds,
-      dataQuality: 'REAL - OpenSky Network ADS-B Data'
+      dataQuality: 'REAL - OpenSky Network (Cached)',
+      cacheStatus: {
+        lastUpdate: cacheStatus.lastUpdate,
+        nextUpdate: cacheStatus.nextUpdate,
+        ageSeconds: cacheStatus.ageSeconds,
+        isFresh: cacheStatus.isFresh,
+        message: 'Background service fetches every 60 seconds'
+      }
     }, { headers })
     
   } catch (error) {

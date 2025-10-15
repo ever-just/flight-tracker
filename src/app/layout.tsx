@@ -5,6 +5,7 @@ import { Providers } from '@/components/providers'
 import { Navigation } from '@/components/navigation'
 import { ErrorBoundary } from '@/components/error-boundary'
 import { cn } from '@/lib/utils'
+import { getVersionString } from '@/lib/version'
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -91,9 +92,14 @@ export default function RootLayout({
               </main>
               <footer className="border-t border-aviation-navy-light/20 mt-auto">
                 <div className="container mx-auto px-4 py-4 md:px-6 lg:px-8">
-                  <p className="text-center text-sm text-muted-foreground">
-                    © 2025 Airport Watch. Data provided by FAA, OpenSky Network, and BTS.
-                  </p>
+                  <div className="flex flex-col items-center gap-2">
+                    <p className="text-center text-sm text-muted-foreground">
+                      © 2025 Airport Watch. Data provided by FAA, OpenSky Network, and BTS.
+                    </p>
+                    <p className="text-center text-xs text-muted-foreground/70">
+                      {getVersionString()}
+                    </p>
+                  </div>
                 </div>
               </footer>
             </div>

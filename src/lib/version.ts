@@ -12,8 +12,8 @@
 export const VERSION = {
   major: 1,
   minor: 0,
-  patch: 3,
-  full: '1.0.3',
+  patch: 4,
+  full: '1.0.4',
   buildDate: '2025-10-14',
   environment: process.env.NODE_ENV || 'development'
 } as const

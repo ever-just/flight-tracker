@@ -77,14 +77,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <StructuredData />
-      </head>
       <body className={cn(
         inter.variable, 
         spaceGrotesk.variable,
         'font-sans antialiased min-h-screen'
       )}>
+        <StructuredData />
         <Providers>
           <ErrorBoundary>
             <div className="flex flex-col min-h-screen">

@@ -1,0 +1,1360 @@
+{
+  "timestamp": "2025-10-15T01:26:56.988Z",
+  "services": {
+    "real-data-aggregator.ts": {
+      "fileName": "real-data-aggregator.ts",
+      "exists": true,
+      "mockDataUsage": {
+        "found": false,
+        "patterns": [],
+        "lines": []
+      },
+      "realDataSources": {
+        "found": true,
+        "apis": [
+          "btsDataService } from './bts-data",
+          "btsData",
+          "BTSData",
+          "BTS data",
+          "BTS data",
+          "BTS data",
+          "btsData",
+          "BTS data",
+          "BTS data",
+          "btsData",
+          "btsData",
+          "btsData",
+          "btsData",
+          "btsData",
+          "btsData",
+          "BTS Data",
+          "BTSData",
+          "btsData",
+          "btsData",
+          "btsData",
+          "btsData",
+          "btsData",
+          "BTS (June 2025 data"
+        ],
+        "lines": [
+          {
+            "lineNum": 9,
+            "content": "import { btsDataService } from './bts-data.service'"
+          },
+          {
+            "lineNum": 88,
+            "content": "const [openSkyData, btsData, btsTrends, topAirports, activeDelays, periodComparison] = await Promise.all(["
+          },
+          {
+            "lineNum": 90,
+            "content": "this.getBTSData(period),"
+          },
+          {
+            "lineNum": 139,
+            "content": "'Historical trends from June 2025 BTS data'"
+          },
+          {
+            "lineNum": 151,
+            "content": "// For week/month/quarter, use historical BTS data"
+          },
+          {
+            "lineNum": 155,
+            "content": "// For historical periods, use BTS data as primary source"
+          },
+          {
+            "lineNum": 156,
+            "content": "totalFlights: btsData.totalFlights, // Use BTS historical count"
+          },
+          {
+            "lineNum": 160,
+            "content": "topCountries: [], // Not available in BTS data"
+          },
+          {
+            "lineNum": 162,
+            "content": "// Historical BTS data"
+          },
+          {
+            "lineNum": 163,
+            "content": "historicalFlights: btsData.totalFlights,"
+          },
+          {
+            "lineNum": 164,
+            "content": "totalDelays: btsData.totalDelayed,"
+          },
+          {
+            "lineNum": 165,
+            "content": "totalCancellations: btsData.totalCancelled,"
+          },
+          {
+            "lineNum": 166,
+            "content": "averageDelay: btsData.avgArrDelay,"
+          },
+          {
+            "lineNum": 167,
+            "content": "onTimePercentage: btsData.onTimeRate,"
+          },
+          {
+            "lineNum": 168,
+            "content": "cancellationRate: btsData.cancellationRate,"
+          },
+          {
+            "lineNum": 186,
+            "content": "historical: 'June 2025 (BTS Data)'"
+          },
+          {
+            "lineNum": 248,
+            "content": "private async getBTSData(period: string) {"
+          },
+          {
+            "lineNum": 250,
+            "content": "const stats = await btsDataService.getOverallStats(period as any)"
+          },
+          {
+            "lineNum": 272,
+            "content": "const trends = await btsDataService.getDailyTrends(days)"
+          },
+          {
+            "lineNum": 285,
+            "content": "const topAirports = await btsDataService.getTopAirports(10)"
+          },
+          {
+            "lineNum": 306,
+            "content": "const allAirports = await btsDataService.getTopAirports(100)"
+          },
+          {
+            "lineNum": 374,
+            "content": "return await btsDataService.getPeriodComparison(period as any)"
+          },
+          {
+            "lineNum": 409,
+            "content": "'Historical delays/cancellations from BTS (June 2025 data)',"
+          }
+        ]
+      },
+      "caching": {
+        "found": false,
+        "ttlValues": [],
+        "lines": []
+      },
+      "fallbackMechanisms": [],
+      "dataTransformations": [
+        {
+          "lineNum": 287,
+          "type": "map"
+        },
+        {
+          "lineNum": 312,
+          "type": "map"
+        },
+        {
+          "lineNum": 325,
+          "type": "map"
+        }
+      ],
+      "errorHandling": [
+        {
+          "lineNum": 86,
+          "type": "try"
+        },
+        {
+          "lineNum": 193,
+          "type": "catch"
+        },
+        {
+          "lineNum": 203,
+          "type": "try"
+        },
+        {
+          "lineNum": 229,
+          "type": "catch"
+        },
+        {
+          "lineNum": 249,
+          "type": "try"
+        },
+        {
+          "lineNum": 252,
+          "type": "catch"
+        },
+        {
+          "lineNum": 270,
+          "type": "try"
+        },
+        {
+          "lineNum": 274,
+          "type": "catch"
+        },
+        {
+          "lineNum": 284,
+          "type": "try"
+        },
+        {
+          "lineNum": 295,
+          "type": "catch"
+        },
+        {
+          "lineNum": 305,
+          "type": "try"
+        },
+        {
+          "lineNum": 338,
+          "type": "catch"
+        },
+        {
+          "lineNum": 373,
+          "type": "try"
+        },
+        {
+          "lineNum": 375,
+          "type": "catch"
+        }
+      ],
+      "environmentVariables": [],
+      "imports": [
+        "./real-dashboard.service",
+        "./bts-data.service",
+        "@/services/realtime-flight-tracker"
+      ],
+      "exports": [
+        "RealDataAggregator",
+        "realDataAggregator"
+      ],
+      "primaryDataSource": "REAL_ONLY"
+    },
+    "realtime-flight-tracker.ts": {
+      "fileName": "realtime-flight-tracker.ts",
+      "exists": true,
+      "mockDataUsage": {
+        "found": false,
+        "patterns": [],
+        "lines": []
+      },
+      "realDataSources": {
+        "found": false,
+        "apis": [],
+        "lines": []
+      },
+      "caching": {
+        "found": false,
+        "ttlValues": [],
+        "lines": []
+      },
+      "fallbackMechanisms": [
+        {
+          "lineNum": 284,
+          "content": "* Get estimated delays based on ground traffic (fallback when no FAA data)"
+        }
+      ],
+      "dataTransformations": [
+        {
+          "lineNum": 31,
+          "type": "Map"
+        },
+        {
+          "lineNum": 69,
+          "type": "Convert"
+        },
+        {
+          "lineNum": 70,
+          "type": "map"
+        },
+        {
+          "lineNum": 81,
+          "type": "filter"
+        },
+        {
+          "lineNum": 116,
+          "type": "Convert"
+        },
+        {
+          "lineNum": 139,
+          "type": "parse"
+        },
+        {
+          "lineNum": 143,
+          "type": "Map"
+        },
+        {
+          "lineNum": 145,
+          "type": "map"
+        },
+        {
+          "lineNum": 147,
+          "type": "filter"
+        },
+        {
+          "lineNum": 149,
+          "type": "filter"
+        },
+        {
+          "lineNum": 173,
+          "type": "filter"
+        },
+        {
+          "lineNum": 198,
+          "type": "filter"
+        },
+        {
+          "lineNum": 216,
+          "type": "filter"
+        },
+        {
+          "lineNum": 289,
+          "type": "filter"
+        },
+        {
+          "lineNum": 327,
+          "type": "map"
+        },
+        {
+          "lineNum": 328,
+          "type": "filter"
+        }
+      ],
+      "errorHandling": [
+        {
+          "lineNum": 109,
+          "type": "try"
+        },
+        {
+          "lineNum": 128,
+          "type": "catch"
+        },
+        {
+          "lineNum": 137,
+          "type": "try"
+        },
+        {
+          "lineNum": 160,
+          "type": "catch"
+        }
+      ],
+      "environmentVariables": [],
+      "imports": [
+        "fs",
+        "path"
+      ],
+      "exports": [
+        "getFlightTracker"
+      ],
+      "primaryDataSource": "UNKNOWN"
+    },
+    "real-dashboard.service.ts": {
+      "fileName": "real-dashboard.service.ts",
+      "exists": true,
+      "mockDataUsage": {
+        "found": true,
+        "patterns": [
+          "Math.random() *"
+        ],
+        "lines": [
+          {
+            "lineNum": 178,
+            "content": "airportCounts[code] = Math.floor(Math.random() * 50) // Placeholder - need actual airport assignment",
+            "pattern": "Math.random() *"
+          }
+        ]
+      },
+      "realDataSources": {
+        "found": true,
+        "apis": [
+          "Real flight data aggregation from OpenSky Network API",
+          "OpenSky Network API",
+          "REAL DATA] Fetching from OpenSky Network API",
+          "OpenSky Network API",
+          "opensky-network.org/api",
+          "fetch(",
+          "OpenSky API",
+          "opensky-network.org/api",
+          "fetch(",
+          "OpenSky API"
+        ],
+        "lines": [
+          {
+            "lineNum": 1,
+            "content": "// Real flight data aggregation from OpenSky Network API"
+          },
+          {
+            "lineNum": 1,
+            "content": "// Real flight data aggregation from OpenSky Network API"
+          },
+          {
+            "lineNum": 45,
+            "content": "console.log('[REAL DATA] Fetching from OpenSky Network API...')"
+          },
+          {
+            "lineNum": 45,
+            "content": "console.log('[REAL DATA] Fetching from OpenSky Network API...')"
+          },
+          {
+            "lineNum": 48,
+            "content": "const url = `https://opensky-network.org/api/states/all?lamin=${USA_BOUNDS.minLat}&lomin=${USA_BOUNDS.minLon}&lamax=${USA_BOUNDS.maxLat}&lomax=${USA_BOUNDS.maxLon}`"
+          },
+          {
+            "lineNum": 50,
+            "content": "const response = await fetch(url, {"
+          },
+          {
+            "lineNum": 59,
+            "content": "throw new Error(`OpenSky API returned ${response.status}`)"
+          },
+          {
+            "lineNum": 153,
+            "content": "const url = `https://opensky-network.org/api/states/all?lamin=${USA_BOUNDS.minLat}&lomin=${USA_BOUNDS.minLon}&lamax=${USA_BOUNDS.maxLat}&lomax=${USA_BOUNDS.maxLon}`"
+          },
+          {
+            "lineNum": 155,
+            "content": "const response = await fetch(url, {"
+          },
+          {
+            "lineNum": 164,
+            "content": "throw new Error(`OpenSky API returned ${response.status}`)"
+          }
+        ]
+      },
+      "caching": {
+        "found": false,
+        "ttlValues": [],
+        "lines": []
+      },
+      "fallbackMechanisms": [],
+      "dataTransformations": [
+        {
+          "lineNum": 72,
+          "type": "filter"
+        },
+        {
+          "lineNum": 73,
+          "type": "filter"
+        },
+        {
+          "lineNum": 76,
+          "type": "filter"
+        },
+        {
+          "lineNum": 78,
+          "type": "reduce"
+        },
+        {
+          "lineNum": 83,
+          "type": "filter"
+        },
+        {
+          "lineNum": 85,
+          "type": "reduce"
+        },
+        {
+          "lineNum": 90,
+          "type": "reduce"
+        },
+        {
+          "lineNum": 100,
+          "type": "map"
+        },
+        {
+          "lineNum": 104,
+          "type": "Convert"
+        },
+        {
+          "lineNum": 105,
+          "type": "map"
+        },
+        {
+          "lineNum": 110,
+          "type": "Convert"
+        },
+        {
+          "lineNum": 111,
+          "type": "Convert"
+        },
+        {
+          "lineNum": 138,
+          "type": "filter"
+        },
+        {
+          "lineNum": 181,
+          "type": "map"
+        }
+      ],
+      "errorHandling": [
+        {
+          "lineNum": 44,
+          "type": "try"
+        },
+        {
+          "lineNum": 144,
+          "type": "catch"
+        },
+        {
+          "lineNum": 152,
+          "type": "try"
+        },
+        {
+          "lineNum": 185,
+          "type": "catch"
+        }
+      ],
+      "environmentVariables": [],
+      "imports": [],
+      "exports": [],
+      "primaryDataSource": "REAL_WITH_FALLBACK"
+    },
+    "real-opensky.service.ts": {
+      "fileName": "real-opensky.service.ts",
+      "exists": true,
+      "mockDataUsage": {
+        "found": true,
+        "patterns": [
+          "getMockFlights",
+          "getMockFlights",
+          "getMockFlights",
+          "Math.random() *",
+          "Math.random() *",
+          "Math.random() *",
+          "Math.random() *",
+          "Math.random() *",
+          "Math.random() *",
+          "Math.random() *"
+        ],
+        "lines": [
+          {
+            "lineNum": 69,
+            "content": "return this.getMockFlights()",
+            "pattern": "getMockFlights"
+          },
+          {
+            "lineNum": 98,
+            "content": "return this.getMockFlights()",
+            "pattern": "getMockFlights"
+          },
+          {
+            "lineNum": 103,
+            "content": "private getMockFlights() {",
+            "pattern": "getMockFlights"
+          },
+          {
+            "lineNum": 109,
+            "content": "const airline = airlines[Math.floor(Math.random() * airlines.length)]",
+            "pattern": "Math.random() *"
+          },
+          {
+            "lineNum": 110,
+            "content": "const flightNum = Math.floor(Math.random() * 9000) + 1000",
+            "pattern": "Math.random() *"
+          },
+          {
+            "lineNum": 116,
+            "content": "latitude: USA_BOUNDS.minLat + Math.random() * (USA_BOUNDS.maxLat - USA_BOUNDS.minLat),",
+            "pattern": "Math.random() *"
+          },
+          {
+            "lineNum": 117,
+            "content": "longitude: USA_BOUNDS.minLon + Math.random() * (USA_BOUNDS.maxLon - USA_BOUNDS.minLon),",
+            "pattern": "Math.random() *"
+          },
+          {
+            "lineNum": 118,
+            "content": "altitude: Math.floor(Math.random() * 35000) + 10000,",
+            "pattern": "Math.random() *"
+          },
+          {
+            "lineNum": 119,
+            "content": "speed: Math.floor(Math.random() * 200) + 350,",
+            "pattern": "Math.random() *"
+          },
+          {
+            "lineNum": 120,
+            "content": "heading: Math.floor(Math.random() * 360),",
+            "pattern": "Math.random() *"
+          }
+        ]
+      },
+      "realDataSources": {
+        "found": true,
+        "apis": [
+          "Real OpenSky Network API",
+          "OpenSky Network API",
+          "axios",
+          "OPENSKY_BASE_URL = 'https://opensky-network.org/api",
+          "axios",
+          "OpenSky API"
+        ],
+        "lines": [
+          {
+            "lineNum": 1,
+            "content": "// Real OpenSky Network API Service"
+          },
+          {
+            "lineNum": 1,
+            "content": "// Real OpenSky Network API Service"
+          },
+          {
+            "lineNum": 2,
+            "content": "import axios from 'axios'"
+          },
+          {
+            "lineNum": 4,
+            "content": "const OPENSKY_BASE_URL = 'https://opensky-network.org/api'"
+          },
+          {
+            "lineNum": 60,
+            "content": "const response = await axios.get<OpenSkyResponse>(url, {"
+          },
+          {
+            "lineNum": 96,
+            "content": "console.error('OpenSky API Error:', error.message)"
+          }
+        ]
+      },
+      "caching": {
+        "found": false,
+        "ttlValues": [],
+        "lines": []
+      },
+      "fallbackMechanisms": [],
+      "dataTransformations": [
+        {
+          "lineNum": 72,
+          "type": "map"
+        },
+        {
+          "lineNum": 78,
+          "type": "Convert"
+        },
+        {
+          "lineNum": 79,
+          "type": "Convert"
+        },
+        {
+          "lineNum": 86,
+          "type": "filter"
+        },
+        {
+          "lineNum": 136,
+          "type": "filter"
+        }
+      ],
+      "errorHandling": [
+        {
+          "lineNum": 56,
+          "type": "try"
+        },
+        {
+          "lineNum": 95,
+          "type": "catch"
+        },
+        {
+          "lineNum": 130,
+          "type": "try"
+        },
+        {
+          "lineNum": 148,
+          "type": "catch"
+        }
+      ],
+      "environmentVariables": [
+        "OPENSKY_CLIENT_ID",
+        "OPENSKY_CLIENT_SECRET"
+      ],
+      "imports": [
+        "axios"
+      ],
+      "exports": [
+        "RealOpenSkyService"
+      ],
+      "primaryDataSource": "REAL_WITH_FALLBACK"
+    },
+    "bts-data.service.ts": {
+      "fileName": "bts-data.service.ts",
+      "exists": true,
+      "mockDataUsage": {
+        "found": true,
+        "patterns": [
+          "Math.random() *"
+        ],
+        "lines": [
+          {
+            "lineNum": 227,
+            "content": "const variation = 0.8 + Math.random() * 0.4 // ±20% daily variation",
+            "pattern": "Math.random() *"
+          }
+        ]
+      },
+      "realDataSources": {
+        "found": true,
+        "apis": [
+          "BTS Data",
+          "BTSData",
+          "BTS data",
+          "BTS] Fetching from client:', this.data",
+          "fetch(",
+          "BTS data",
+          "BTS] Loaded historical data",
+          "BTS] Failed to load data",
+          "btsDataService = new BTSData"
+        ],
+        "lines": [
+          {
+            "lineNum": 2,
+            "content": "* BTS Data Service - Real historical flight statistics"
+          },
+          {
+            "lineNum": 61,
+            "content": "class BTSDataService {"
+          },
+          {
+            "lineNum": 66,
+            "content": "* Load BTS data from JSON cache"
+          },
+          {
+            "lineNum": 85,
+            "content": "console.log('[BTS] Fetching from client:', this.dataPath)"
+          },
+          {
+            "lineNum": 86,
+            "content": "const response = await fetch(this.dataPath)"
+          },
+          {
+            "lineNum": 88,
+            "content": "throw new Error(`Failed to load BTS data: ${response.statusText}`)"
+          },
+          {
+            "lineNum": 93,
+            "content": "console.log('[BTS] Loaded historical data:', {"
+          },
+          {
+            "lineNum": 101,
+            "content": "console.error('[BTS] Failed to load data:', error)"
+          },
+          {
+            "lineNum": 336,
+            "content": "export const btsDataService = new BTSDataService()"
+          }
+        ]
+      },
+      "caching": {
+        "found": false,
+        "ttlValues": [],
+        "lines": []
+      },
+      "fallbackMechanisms": [
+        {
+          "lineNum": 299,
+          "content": "* Get default stats when no data available"
+        }
+      ],
+      "dataTransformations": [
+        {
+          "lineNum": 82,
+          "type": "parse"
+        }
+      ],
+      "errorHandling": [
+        {
+          "lineNum": 73,
+          "type": "try"
+        },
+        {
+          "lineNum": 100,
+          "type": "catch"
+        },
+        {
+          "lineNum": 248,
+          "type": "try"
+        },
+        {
+          "lineNum": 264,
+          "type": "catch"
+        }
+      ],
+      "environmentVariables": [],
+      "imports": [],
+      "exports": [
+        "btsDataService"
+      ],
+      "primaryDataSource": "REAL_WITH_FALLBACK"
+    },
+    "faa.service.ts": {
+      "fileName": "faa.service.ts",
+      "exists": true,
+      "mockDataUsage": {
+        "found": false,
+        "patterns": [],
+        "lines": []
+      },
+      "realDataSources": {
+        "found": true,
+        "apis": [
+          "FAA API",
+          "FAA_API_URL || 'https://nasstatus.faa.gov/api",
+          "FAA] Fetching fresh data from API",
+          "FAA data since the actual API"
+        ],
+        "lines": [
+          {
+            "lineNum": 3,
+            "content": "* Fetches airport delays and status from FAA API"
+          },
+          {
+            "lineNum": 38,
+            "content": "this.baseUrl = process.env.FAA_API_URL || 'https://nasstatus.faa.gov/api/airport-status-information'"
+          },
+          {
+            "lineNum": 51,
+            "content": "console.log('[FAA] Fetching fresh data from API')"
+          },
+          {
+            "lineNum": 53,
+            "content": "// For now, return simulated FAA data since the actual API requires authentication"
+          }
+        ]
+      },
+      "caching": {
+        "found": true,
+        "ttlValues": [],
+        "lines": [
+          {
+            "lineNum": 34,
+            "content": "private cache: Map<string, { data: any; expires: number }> = new Map()"
+          },
+          {
+            "lineNum": 35,
+            "content": "private cacheTTL: number"
+          },
+          {
+            "lineNum": 35,
+            "content": "private cacheTTL: number"
+          },
+          {
+            "lineNum": 39,
+            "content": "this.cacheTTL = 5 * 60 * 1000 // 5 minutes cache"
+          },
+          {
+            "lineNum": 39,
+            "content": "this.cacheTTL = 5 * 60 * 1000 // 5 minutes cache"
+          },
+          {
+            "lineNum": 78,
+            "content": "const cached = this.cache.get(key)"
+          },
+          {
+            "lineNum": 79,
+            "content": "if (cached && cached.expires > Date.now()) {"
+          },
+          {
+            "lineNum": 86,
+            "content": "this.cache.set(key, {"
+          },
+          {
+            "lineNum": 88,
+            "content": "expires: Date.now() + this.cacheTTL"
+          },
+          {
+            "lineNum": 88,
+            "content": "expires: Date.now() + this.cacheTTL"
+          }
+        ]
+      },
+      "fallbackMechanisms": [
+        {
+          "lineNum": 63,
+          "content": "// Return simulated data as fallback"
+        }
+      ],
+      "dataTransformations": [
+        {
+          "lineNum": 34,
+          "type": "Map"
+        },
+        {
+          "lineNum": 71,
+          "type": "reduce"
+        },
+        {
+          "lineNum": 72,
+          "type": "reduce"
+        },
+        {
+          "lineNum": 118,
+          "type": "map"
+        }
+      ],
+      "errorHandling": [
+        {
+          "lineNum": 43,
+          "type": "try"
+        },
+        {
+          "lineNum": 61,
+          "type": "catch"
+        }
+      ],
+      "environmentVariables": [
+        "FAA_API_URL"
+      ],
+      "imports": [],
+      "exports": [
+        "FAAService",
+        "faaService"
+      ],
+      "primaryDataSource": "REAL_ONLY"
+    },
+    "aviationstack.service.ts": {
+      "fileName": "aviationstack.service.ts",
+      "exists": true,
+      "mockDataUsage": {
+        "found": true,
+        "patterns": [
+          "Math.random() *",
+          "Math.random() *",
+          "Math.random() *",
+          "Math.random() *",
+          "Math.random() *",
+          "Math.random() *",
+          "Math.random() *",
+          "Math.random() *",
+          "Math.random() *"
+        ],
+        "lines": [
+          {
+            "lineNum": 134,
+            "content": "const numCancellations = Math.floor(Math.random() * 50) + 150 // 150-200 cancellations",
+            "pattern": "Math.random() *"
+          },
+          {
+            "lineNum": 137,
+            "content": "const airline = airlines[Math.floor(Math.random() * airlines.length)]",
+            "pattern": "Math.random() *"
+          },
+          {
+            "lineNum": 138,
+            "content": "const flightNum = Math.floor(Math.random() * 9000) + 1000",
+            "pattern": "Math.random() *"
+          },
+          {
+            "lineNum": 139,
+            "content": "const origin = airports[Math.floor(Math.random() * airports.length)]",
+            "pattern": "Math.random() *"
+          },
+          {
+            "lineNum": 140,
+            "content": "let destination = airports[Math.floor(Math.random() * airports.length)]",
+            "pattern": "Math.random() *"
+          },
+          {
+            "lineNum": 142,
+            "content": "destination = airports[Math.floor(Math.random() * airports.length)]",
+            "pattern": "Math.random() *"
+          },
+          {
+            "lineNum": 145,
+            "content": "const hour = Math.floor(Math.random() * 24)",
+            "pattern": "Math.random() *"
+          },
+          {
+            "lineNum": 146,
+            "content": "const minute = Math.floor(Math.random() * 60)",
+            "pattern": "Math.random() *"
+          },
+          {
+            "lineNum": 164,
+            "content": "let random = Math.random() * totalWeight",
+            "pattern": "Math.random() *"
+          }
+        ]
+      },
+      "realDataSources": {
+        "found": true,
+        "apis": [
+          "AviationStack",
+          "real flight cancellation data from AviationStack API",
+          "AviationStack",
+          "AviationStack",
+          "aviationstack",
+          "AVIATIONSTACK",
+          "AVIATIONSTACK",
+          "AVIATIONSTACK",
+          "AVIATIONSTACK",
+          "AviationStack",
+          "fetch(",
+          "AviationStack",
+          "aviationStack"
+        ],
+        "lines": [
+          {
+            "lineNum": 2,
+            "content": "* AviationStack Service"
+          },
+          {
+            "lineNum": 3,
+            "content": "* Fetches real flight cancellation data from AviationStack API"
+          },
+          {
+            "lineNum": 3,
+            "content": "* Fetches real flight cancellation data from AviationStack API"
+          },
+          {
+            "lineNum": 22,
+            "content": "export class AviationStackService {"
+          },
+          {
+            "lineNum": 24,
+            "content": "private baseUrl: string = 'http://api.aviationstack.com/v1'"
+          },
+          {
+            "lineNum": 29,
+            "content": "this.apiKey = process.env.AVIATIONSTACK_API_KEY || ''"
+          },
+          {
+            "lineNum": 38,
+            "content": "console.log('[AVIATIONSTACK] Returning cached cancellation data')"
+          },
+          {
+            "lineNum": 42,
+            "content": "console.log('[AVIATIONSTACK] Generating cancellation data')"
+          },
+          {
+            "lineNum": 53,
+            "content": "console.error('[AVIATIONSTACK] Error fetching cancellations:', error)"
+          },
+          {
+            "lineNum": 193,
+            "content": "throw new Error('AviationStack API key not configured')"
+          },
+          {
+            "lineNum": 206,
+            "content": "const response = await fetch(`${this.baseUrl}/flights?${params}`)"
+          },
+          {
+            "lineNum": 209,
+            "content": "throw new Error(`AviationStack API error: ${response.status}`)"
+          },
+          {
+            "lineNum": 218,
+            "content": "export const aviationStackService = new AviationStackService()"
+          }
+        ]
+      },
+      "caching": {
+        "found": true,
+        "ttlValues": [],
+        "lines": [
+          {
+            "lineNum": 25,
+            "content": "private cache: Map<string, { data: any; expires: number }> = new Map()"
+          },
+          {
+            "lineNum": 26,
+            "content": "private cacheTTL: number = 30 * 60 * 1000 // 30 minutes (to respect rate limits)"
+          },
+          {
+            "lineNum": 26,
+            "content": "private cacheTTL: number = 30 * 60 * 1000 // 30 minutes (to respect rate limits)"
+          },
+          {
+            "lineNum": 98,
+            "content": "const cached = this.cache.get(key)"
+          },
+          {
+            "lineNum": 99,
+            "content": "if (cached && cached.expires > Date.now()) {"
+          },
+          {
+            "lineNum": 106,
+            "content": "this.cache.set(key, {"
+          },
+          {
+            "lineNum": 108,
+            "content": "expires: Date.now() + this.cacheTTL"
+          },
+          {
+            "lineNum": 108,
+            "content": "expires: Date.now() + this.cacheTTL"
+          }
+        ]
+      },
+      "fallbackMechanisms": [],
+      "dataTransformations": [
+        {
+          "lineNum": 25,
+          "type": "Map"
+        },
+        {
+          "lineNum": 65,
+          "type": "reduce"
+        },
+        {
+          "lineNum": 71,
+          "type": "reduce"
+        },
+        {
+          "lineNum": 78,
+          "type": "map"
+        },
+        {
+          "lineNum": 79,
+          "type": "reduce"
+        },
+        {
+          "lineNum": 87,
+          "type": "map"
+        },
+        {
+          "lineNum": 163,
+          "type": "reduce"
+        }
+      ],
+      "errorHandling": [
+        {
+          "lineNum": 33,
+          "type": "try"
+        },
+        {
+          "lineNum": 52,
+          "type": "catch"
+        }
+      ],
+      "environmentVariables": [
+        "AVIATIONSTACK_API_KEY"
+      ],
+      "imports": [],
+      "exports": [
+        "AviationStackService",
+        "aviationStackService"
+      ],
+      "primaryDataSource": "REAL_WITH_FALLBACK"
+    },
+    "weather.service.ts": {
+      "fileName": "weather.service.ts",
+      "exists": true,
+      "mockDataUsage": {
+        "found": false,
+        "patterns": [],
+        "lines": []
+      },
+      "realDataSources": {
+        "found": false,
+        "apis": [],
+        "lines": []
+      },
+      "caching": {
+        "found": true,
+        "ttlValues": [],
+        "lines": [
+          {
+            "lineNum": 25,
+            "content": "private cache: Map<string, { data: any; expires: number }> = new Map()"
+          },
+          {
+            "lineNum": 26,
+            "content": "private cacheTTL: number = 10 * 60 * 1000 // 10 minutes"
+          },
+          {
+            "lineNum": 26,
+            "content": "private cacheTTL: number = 10 * 60 * 1000 // 10 minutes"
+          },
+          {
+            "lineNum": 78,
+            "content": "const cached = this.cache.get(key)"
+          },
+          {
+            "lineNum": 79,
+            "content": "if (cached && cached.expires > Date.now()) {"
+          },
+          {
+            "lineNum": 86,
+            "content": "this.cache.set(key, {"
+          },
+          {
+            "lineNum": 88,
+            "content": "expires: Date.now() + this.cacheTTL"
+          },
+          {
+            "lineNum": 88,
+            "content": "expires: Date.now() + this.cacheTTL"
+          }
+        ]
+      },
+      "fallbackMechanisms": [],
+      "dataTransformations": [
+        {
+          "lineNum": 25,
+          "type": "Map"
+        },
+        {
+          "lineNum": 56,
+          "type": "reduce"
+        },
+        {
+          "lineNum": 59,
+          "type": "filter"
+        },
+        {
+          "lineNum": 62,
+          "type": "filter"
+        },
+        {
+          "lineNum": 66,
+          "type": "map"
+        },
+        {
+          "lineNum": 235,
+          "type": "reduce"
+        }
+      ],
+      "errorHandling": [
+        {
+          "lineNum": 29,
+          "type": "try"
+        },
+        {
+          "lineNum": 46,
+          "type": "catch"
+        }
+      ],
+      "environmentVariables": [],
+      "imports": [],
+      "exports": [
+        "WeatherService",
+        "weatherService"
+      ],
+      "primaryDataSource": "UNKNOWN"
+    },
+    "opensky.service.ts": {
+      "fileName": "opensky.service.ts",
+      "exists": true,
+      "mockDataUsage": {
+        "found": false,
+        "patterns": [],
+        "lines": []
+      },
+      "realDataSources": {
+        "found": true,
+        "apis": [
+          "axios",
+          "OPENSKY_API_URL || 'https://opensky-network.org/api",
+          "OpenSky API",
+          "axios",
+          "OpenSky API",
+          "OpenSky API"
+        ],
+        "lines": [
+          {
+            "lineNum": 1,
+            "content": "import axios from 'axios'"
+          },
+          {
+            "lineNum": 42,
+            "content": "this.baseUrl = process.env.OPENSKY_API_URL || 'https://opensky-network.org/api'"
+          },
+          {
+            "lineNum": 59,
+            "content": "throw new Error('OpenSky API daily limit reached')"
+          },
+          {
+            "lineNum": 94,
+            "content": "const response = await axios.get<OpenSkyResponse>(url, {"
+          },
+          {
+            "lineNum": 111,
+            "content": "console.log(`[OpenSky API] ${url} - Status: ${response.status}, Remaining: ${this.dailyLimit - this.requestCount}`)"
+          },
+          {
+            "lineNum": 115,
+            "content": "console.error('OpenSky API Error:', error?.message || 'Unknown error')"
+          }
+        ]
+      },
+      "caching": {
+        "found": true,
+        "ttlValues": [],
+        "lines": [
+          {
+            "lineNum": 39,
+            "content": "private cacheTTL: number"
+          },
+          {
+            "lineNum": 39,
+            "content": "private cacheTTL: number"
+          },
+          {
+            "lineNum": 46,
+            "content": "this.cacheTTL = parseInt(process.env.FLIGHT_DATA_CACHE_TTL || '60') * 1000"
+          },
+          {
+            "lineNum": 46,
+            "content": "this.cacheTTL = parseInt(process.env.FLIGHT_DATA_CACHE_TTL || '60') * 1000"
+          },
+          {
+            "lineNum": 177,
+            "content": "const cached = cache.get(key)"
+          },
+          {
+            "lineNum": 178,
+            "content": "if (cached && cached.timestamp > Date.now() - this.cacheTTL) {"
+          },
+          {
+            "lineNum": 178,
+            "content": "if (cached && cached.timestamp > Date.now() - this.cacheTTL) {"
+          },
+          {
+            "lineNum": 186,
+            "content": "cache.set(key, {"
+          }
+        ]
+      },
+      "fallbackMechanisms": [],
+      "dataTransformations": [
+        {
+          "lineNum": 30,
+          "type": "Map"
+        },
+        {
+          "lineNum": 45,
+          "type": "parse"
+        },
+        {
+          "lineNum": 46,
+          "type": "parse"
+        }
+      ],
+      "errorHandling": [
+        {
+          "lineNum": 77,
+          "type": "try"
+        },
+        {
+          "lineNum": 114,
+          "type": "catch"
+        }
+      ],
+      "environmentVariables": [
+        "OPENSKY_API_URL",
+        "OPENSKY_USERNAME",
+        "OPENSKY_PASSWORD",
+        "OPENSKY_DAILY_LIMIT",
+        "FLIGHT_DATA_CACHE_TTL"
+      ],
+      "imports": [
+        "axios",
+        "@/lib/airports-data"
+      ],
+      "exports": [
+        "OpenSkyService",
+        "openskyService"
+      ],
+      "primaryDataSource": "REAL_ONLY"
+    }
+  },
+  "summary": {
+    "totalServices": 9,
+    "withMockData": 4,
+    "withRealData": 7,
+    "withCaching": 4,
+    "mockFunctions": [
+      "Math.random() *",
+      "getMockFlights"
+    ],
+    "criticalIssues": []
+  }
+}

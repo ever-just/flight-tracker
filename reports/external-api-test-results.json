@@ -1,0 +1,193 @@
+{
+  "timestamp": "2025-10-15T01:26:33.951Z",
+  "apis": {
+    "opensky": [
+      {
+        "name": "OpenSky Anonymous",
+        "endpoint": "/states/all",
+        "status": "success",
+        "responseTime": 1107,
+        "dataQuality": {
+          "hasTime": true,
+          "hasStates": true,
+          "stateCount": 4185,
+          "dataFreshness": "2025-10-15T01:26:33.000Z"
+        },
+        "statusCode": 200,
+        "headers": {
+          "date": "Wed, 15 Oct 2025 01:26:34 GMT",
+          "content-type": "application/json;charset=UTF-8",
+          "transfer-encoding": "chunked",
+          "connection": "keep-alive",
+          "set-cookie": [
+            "XSRF-TOKEN=0921588e-fa1a-4867-81c0-c866f10f8547; Path=/; Secure"
+          ],
+          "x-rate-limit-remaining": "384",
+          "x-content-type-options": "nosniff",
+          "x-xss-protection": "1; mode=block",
+          "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+          "pragma": "no-cache",
+          "expires": "0",
+          "x-frame-options": "DENY",
+          "strict-transport-security": "max-age=15724800; includeSubDomains"
+        }
+      },
+      {
+        "name": "OpenSky Authenticated",
+        "endpoint": "/states/all",
+        "status": "failed",
+        "responseTime": 619,
+        "dataQuality": {},
+        "statusCode": 401,
+        "rateLimit": {},
+        "error": "HTTP 401"
+      }
+    ],
+    "faa": [
+      {
+        "name": "FAA Status - ATL",
+        "endpoint": "/airport-status-information",
+        "airport": "ATL",
+        "status": "failed",
+        "responseTime": 204,
+        "dataQuality": {},
+        "statusCode": 200,
+        "error": "Unexpected token '<', \"<AIRPORT_S\"... is not valid JSON"
+      },
+      {
+        "name": "FAA Status - DFW",
+        "endpoint": "/airport-status-information",
+        "airport": "DFW",
+        "status": "failed",
+        "responseTime": 200,
+        "dataQuality": {},
+        "statusCode": 200,
+        "error": "Unexpected token '<', \"<AIRPORT_S\"... is not valid JSON"
+      },
+      {
+        "name": "FAA Status - DEN",
+        "endpoint": "/airport-status-information",
+        "airport": "DEN",
+        "status": "failed",
+        "responseTime": 198,
+        "dataQuality": {},
+        "statusCode": 200,
+        "error": "Unexpected token '<', \"<AIRPORT_S\"... is not valid JSON"
+      },
+      {
+        "name": "FAA Status - ORD",
+        "endpoint": "/airport-status-information",
+        "airport": "ORD",
+        "status": "failed",
+        "responseTime": 199,
+        "dataQuality": {},
+        "statusCode": 200,
+        "error": "Unexpected token '<', \"<AIRPORT_S\"... is not valid JSON"
+      },
+      {
+        "name": "FAA Status - LAX",
+        "endpoint": "/airport-status-information",
+        "airport": "LAX",
+        "status": "failed",
+        "responseTime": 199,
+        "dataQuality": {},
+        "statusCode": 200,
+        "error": "Unexpected token '<', \"<AIRPORT_S\"... is not valid JSON"
+      },
+      {
+        "name": "FAA Status - CLT",
+        "endpoint": "/airport-status-information",
+        "airport": "CLT",
+        "status": "failed",
+        "responseTime": 198,
+        "dataQuality": {},
+        "statusCode": 200,
+        "error": "Unexpected token '<', \"<AIRPORT_S\"... is not valid JSON"
+      },
+      {
+        "name": "FAA Status - MCO",
+        "endpoint": "/airport-status-information",
+        "airport": "MCO",
+        "status": "failed",
+        "responseTime": 198,
+        "dataQuality": {},
+        "statusCode": 200,
+        "error": "Unexpected token '<', \"<AIRPORT_S\"... is not valid JSON"
+      },
+      {
+        "name": "FAA Status - LAS",
+        "endpoint": "/airport-status-information",
+        "airport": "LAS",
+        "status": "failed",
+        "responseTime": 195,
+        "dataQuality": {},
+        "statusCode": 200,
+        "error": "Unexpected token '<', \"<AIRPORT_S\"... is not valid JSON"
+      },
+      {
+        "name": "FAA Status - PHX",
+        "endpoint": "/airport-status-information",
+        "airport": "PHX",
+        "status": "failed",
+        "responseTime": 197,
+        "dataQuality": {},
+        "statusCode": 200,
+        "error": "Unexpected token '<', \"<AIRPORT_S\"... is not valid JSON"
+      },
+      {
+        "name": "FAA Status - MIA",
+        "endpoint": "/airport-status-information",
+        "airport": "MIA",
+        "status": "failed",
+        "responseTime": 197,
+        "dataQuality": {},
+        "statusCode": 200,
+        "error": "Unexpected token '<', \"<AIRPORT_S\"... is not valid JSON"
+      }
+    ],
+    "aviationstack": [
+      {
+        "name": "AviationStack Flights",
+        "endpoint": "/flights",
+        "status": "success",
+        "responseTime": 3305,
+        "dataQuality": {
+          "hasData": true,
+          "flightCount": 10,
+          "hasPagination": true,
+          "totalResults": 102307
+        },
+        "statusCode": 200,
+        "rateLimit": {
+          "count": 10,
+          "total": 102307
+        }
+      },
+      {
+        "name": "AviationStack Cancellations",
+        "endpoint": "/flights",
+        "status": "success",
+        "responseTime": 3300,
+        "dataQuality": {
+          "hasData": true,
+          "cancellationCount": 10,
+          "totalCancellations": 102307
+        },
+        "statusCode": 200
+      }
+    ]
+  },
+  "summary": {
+    "totalTests": 14,
+    "passed": 3,
+    "failed": 11,
+    "warnings": 0
+  },
+  "performance": {
+    "avgResponseTime": 736.8571428571429,
+    "maxResponseTime": 3305,
+    "minResponseTime": 195,
+    "under2Seconds": 12,
+    "totalTests": 14
+  }
+}

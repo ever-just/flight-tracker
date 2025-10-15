@@ -1,0 +1,484 @@
+{
+  "timestamp": "2025-10-15T01:29:51.409Z",
+  "endpoints": {
+    "/api/dashboard/summary?period=today": {
+      "name": "Dashboard Today",
+      "path": "/api/dashboard/summary?period=today",
+      "status": "success",
+      "responseTime": 2086,
+      "statusCode": 200,
+      "dataSource": "real",
+      "validation": {
+        "issues": [],
+        "warnings": [],
+        "isRealData": true
+      },
+      "headers": {
+        "access-control-allow-credentials": "true",
+        "access-control-allow-origin": "*",
+        "access-control-allow-methods": "GET,POST,PUT,DELETE,OPTIONS",
+        "access-control-allow-headers": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version",
+        "vary": "RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url",
+        "cache-control": "no-cache, no-store, must-revalidate",
+        "content-type": "application/json",
+        "expires": "0",
+        "pragma": "no-cache",
+        "date": "Wed, 15 Oct 2025 01:29:54 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=5",
+        "transfer-encoding": "chunked"
+      },
+      "cacheControl": "no-cache, no-store, must-revalidate",
+      "sampleData": {
+        "totalFlights": 4146,
+        "source": "hybrid-real-data",
+        "period": "today"
+      }
+    },
+    "/api/dashboard/summary?period=week": {
+      "name": "Dashboard Week",
+      "path": "/api/dashboard/summary?period=week",
+      "status": "warning",
+      "responseTime": 34,
+      "statusCode": 200,
+      "dataSource": "real",
+      "validation": {
+        "issues": [],
+        "warnings": [
+          "Unusually high flight count"
+        ],
+        "isRealData": true
+      },
+      "headers": {
+        "access-control-allow-credentials": "true",
+        "access-control-allow-origin": "*",
+        "access-control-allow-methods": "GET,POST,PUT,DELETE,OPTIONS",
+        "access-control-allow-headers": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version",
+        "vary": "RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url",
+        "cache-control": "no-cache, no-store, must-revalidate",
+        "content-type": "application/json",
+        "expires": "0",
+        "pragma": "no-cache",
+        "date": "Wed, 15 Oct 2025 01:29:54 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=5",
+        "transfer-encoding": "chunked"
+      },
+      "cacheControl": "no-cache, no-store, must-revalidate",
+      "sampleData": {
+        "totalFlights": 157308,
+        "source": "hybrid-real-data",
+        "period": "week"
+      }
+    },
+    "/api/dashboard/summary?period=month": {
+      "name": "Dashboard Month",
+      "path": "/api/dashboard/summary?period=month",
+      "status": "warning",
+      "responseTime": 51,
+      "statusCode": 200,
+      "dataSource": "real",
+      "validation": {
+        "issues": [],
+        "warnings": [
+          "Unusually high flight count"
+        ],
+        "isRealData": true
+      },
+      "headers": {
+        "access-control-allow-credentials": "true",
+        "access-control-allow-origin": "*",
+        "access-control-allow-methods": "GET,POST,PUT,DELETE,OPTIONS",
+        "access-control-allow-headers": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version",
+        "vary": "RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url",
+        "cache-control": "no-cache, no-store, must-revalidate",
+        "content-type": "application/json",
+        "expires": "0",
+        "pragma": "no-cache",
+        "date": "Wed, 15 Oct 2025 01:29:54 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=5",
+        "transfer-encoding": "chunked"
+      },
+      "cacheControl": "no-cache, no-store, must-revalidate",
+      "sampleData": {
+        "totalFlights": 674179,
+        "source": "hybrid-real-data",
+        "period": "month"
+      }
+    },
+    "/api/dashboard/summary?period=quarter": {
+      "name": "Dashboard Quarter",
+      "path": "/api/dashboard/summary?period=quarter",
+      "status": "warning",
+      "responseTime": 30,
+      "statusCode": 200,
+      "dataSource": "real",
+      "validation": {
+        "issues": [],
+        "warnings": [
+          "Unusually high flight count"
+        ],
+        "isRealData": true
+      },
+      "headers": {
+        "access-control-allow-credentials": "true",
+        "access-control-allow-origin": "*",
+        "access-control-allow-methods": "GET,POST,PUT,DELETE,OPTIONS",
+        "access-control-allow-headers": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version",
+        "vary": "RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url",
+        "cache-control": "no-cache, no-store, must-revalidate",
+        "content-type": "application/json",
+        "expires": "0",
+        "pragma": "no-cache",
+        "date": "Wed, 15 Oct 2025 01:29:54 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=5",
+        "transfer-encoding": "chunked"
+      },
+      "cacheControl": "no-cache, no-store, must-revalidate",
+      "sampleData": {
+        "totalFlights": 2022537,
+        "source": "hybrid-real-data",
+        "period": "quarter"
+      }
+    },
+    "/api/flights/live": {
+      "name": "Live Flights",
+      "path": "/api/flights/live",
+      "status": "failed",
+      "responseTime": 63,
+      "statusCode": 200,
+      "dataSource": "mock",
+      "validation": {
+        "issues": [
+          "Missing summary object"
+        ],
+        "warnings": [
+          "Missing lastUpdated timestamp"
+        ],
+        "isRealData": false
+      },
+      "headers": {
+        "access-control-allow-credentials": "true",
+        "access-control-allow-origin": "*",
+        "access-control-allow-methods": "GET,POST,PUT,DELETE,OPTIONS",
+        "access-control-allow-headers": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version",
+        "vary": "RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url",
+        "cache-control": "public, s-maxage=30, stale-while-revalidate=60",
+        "content-type": "application/json",
+        "date": "Wed, 15 Oct 2025 01:29:54 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=5",
+        "transfer-encoding": "chunked"
+      },
+      "cacheControl": "public, s-maxage=30, stale-while-revalidate=60"
+    },
+    "/api/flights/recent": {
+      "name": "Recent Flights",
+      "path": "/api/flights/recent",
+      "status": "failed",
+      "responseTime": 1527,
+      "statusCode": 200,
+      "dataSource": "mock",
+      "validation": {
+        "issues": [
+          "Missing summary object"
+        ],
+        "warnings": [
+          "Missing lastUpdated timestamp"
+        ],
+        "isRealData": false
+      },
+      "headers": {
+        "access-control-allow-credentials": "true",
+        "access-control-allow-origin": "*",
+        "access-control-allow-methods": "GET,POST,PUT,DELETE,OPTIONS",
+        "access-control-allow-headers": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version",
+        "vary": "RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url",
+        "content-type": "application/json",
+        "date": "Wed, 15 Oct 2025 01:29:56 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=5",
+        "transfer-encoding": "chunked"
+      }
+    },
+    "/api/airports": {
+      "name": "All Airports",
+      "path": "/api/airports",
+      "status": "failed",
+      "responseTime": 187,
+      "statusCode": 200,
+      "dataSource": "mock",
+      "validation": {
+        "issues": [
+          "Response is not an array of flights"
+        ],
+        "warnings": [],
+        "isRealData": false
+      },
+      "headers": {
+        "access-control-allow-credentials": "true",
+        "access-control-allow-origin": "*",
+        "access-control-allow-methods": "GET,POST,PUT,DELETE,OPTIONS",
+        "access-control-allow-headers": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version",
+        "vary": "RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url",
+        "content-type": "application/json",
+        "date": "Wed, 15 Oct 2025 01:29:56 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=5",
+        "transfer-encoding": "chunked"
+      }
+    },
+    "/api/airports/ATL": {
+      "name": "Airport Detail (ATL)",
+      "path": "/api/airports/ATL",
+      "status": "warning",
+      "responseTime": 906,
+      "statusCode": 200,
+      "dataSource": "real",
+      "validation": {
+        "issues": [],
+        "warnings": [
+          "Missing airport statistics"
+        ],
+        "isRealData": true
+      },
+      "headers": {
+        "access-control-allow-credentials": "true",
+        "access-control-allow-origin": "*",
+        "access-control-allow-methods": "GET,POST,PUT,DELETE,OPTIONS",
+        "access-control-allow-headers": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version",
+        "vary": "RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url",
+        "content-type": "application/json",
+        "date": "Wed, 15 Oct 2025 01:29:57 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=5",
+        "transfer-encoding": "chunked"
+      }
+    },
+    "/api/airports/DFW": {
+      "name": "Airport Detail (DFW)",
+      "path": "/api/airports/DFW",
+      "status": "warning",
+      "responseTime": 22,
+      "statusCode": 200,
+      "dataSource": "real",
+      "validation": {
+        "issues": [],
+        "warnings": [
+          "Missing airport statistics"
+        ],
+        "isRealData": true
+      },
+      "headers": {
+        "access-control-allow-credentials": "true",
+        "access-control-allow-origin": "*",
+        "access-control-allow-methods": "GET,POST,PUT,DELETE,OPTIONS",
+        "access-control-allow-headers": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version",
+        "vary": "RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url",
+        "content-type": "application/json",
+        "date": "Wed, 15 Oct 2025 01:29:57 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=5",
+        "transfer-encoding": "chunked"
+      }
+    },
+    "/api/airports/ORD": {
+      "name": "Airport Detail (ORD)",
+      "path": "/api/airports/ORD",
+      "status": "warning",
+      "responseTime": 33,
+      "statusCode": 200,
+      "dataSource": "real",
+      "validation": {
+        "issues": [],
+        "warnings": [
+          "Missing airport statistics"
+        ],
+        "isRealData": true
+      },
+      "headers": {
+        "access-control-allow-credentials": "true",
+        "access-control-allow-origin": "*",
+        "access-control-allow-methods": "GET,POST,PUT,DELETE,OPTIONS",
+        "access-control-allow-headers": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version",
+        "vary": "RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url",
+        "content-type": "application/json",
+        "date": "Wed, 15 Oct 2025 01:29:57 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=5",
+        "transfer-encoding": "chunked"
+      }
+    },
+    "/api/delays": {
+      "name": "Delays",
+      "path": "/api/delays",
+      "status": "success",
+      "responseTime": 155,
+      "statusCode": 200,
+      "dataSource": "mock",
+      "validation": {
+        "issues": [],
+        "warnings": [],
+        "isRealData": false
+      },
+      "headers": {
+        "access-control-allow-credentials": "true",
+        "access-control-allow-origin": "*",
+        "access-control-allow-methods": "GET,POST,PUT,DELETE,OPTIONS",
+        "access-control-allow-headers": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version",
+        "vary": "RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url",
+        "content-type": "application/json",
+        "date": "Wed, 15 Oct 2025 01:29:57 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=5",
+        "transfer-encoding": "chunked"
+      }
+    },
+    "/api/health": {
+      "name": "Health Check",
+      "path": "/api/health",
+      "status": "failed",
+      "responseTime": 32,
+      "statusCode": 200,
+      "dataSource": "real",
+      "validation": {
+        "issues": [
+          "Health check not OK"
+        ],
+        "warnings": [],
+        "isRealData": true
+      },
+      "headers": {
+        "access-control-allow-credentials": "true",
+        "access-control-allow-origin": "*",
+        "access-control-allow-methods": "GET,POST,PUT,DELETE,OPTIONS",
+        "access-control-allow-headers": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version",
+        "vary": "RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url",
+        "content-type": "application/json",
+        "date": "Wed, 15 Oct 2025 01:29:57 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=5",
+        "transfer-encoding": "chunked"
+      }
+    },
+    "/api/debug/tracker": {
+      "name": "Debug Tracker",
+      "path": "/api/debug/tracker",
+      "status": "success",
+      "responseTime": 162,
+      "statusCode": 200,
+      "dataSource": "mock",
+      "validation": {
+        "issues": [],
+        "warnings": [],
+        "isRealData": false
+      },
+      "headers": {
+        "access-control-allow-credentials": "true",
+        "access-control-allow-origin": "*",
+        "access-control-allow-methods": "GET,POST,PUT,DELETE,OPTIONS",
+        "access-control-allow-headers": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version",
+        "vary": "RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url",
+        "content-type": "application/json",
+        "date": "Wed, 15 Oct 2025 01:29:57 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=5",
+        "transfer-encoding": "chunked"
+      }
+    }
+  },
+  "summary": {
+    "total": 13,
+    "passed": 3,
+    "failed": 4,
+    "realData": 8,
+    "mockData": 5
+  },
+  "dataIntegrity": {
+    "issues": [
+      {
+        "endpoint": "Live Flights",
+        "issues": [
+          "Missing summary object"
+        ]
+      },
+      {
+        "endpoint": "Recent Flights",
+        "issues": [
+          "Missing summary object"
+        ]
+      },
+      {
+        "endpoint": "All Airports",
+        "issues": [
+          "Response is not an array of flights"
+        ]
+      },
+      {
+        "endpoint": "Health Check",
+        "issues": [
+          "Health check not OK"
+        ]
+      }
+    ],
+    "warnings": [
+      {
+        "endpoint": "Dashboard Week",
+        "warnings": [
+          "Unusually high flight count"
+        ]
+      },
+      {
+        "endpoint": "Dashboard Month",
+        "warnings": [
+          "Unusually high flight count"
+        ]
+      },
+      {
+        "endpoint": "Dashboard Quarter",
+        "warnings": [
+          "Unusually high flight count"
+        ]
+      },
+      {
+        "endpoint": "Live Flights",
+        "warnings": [
+          "Missing lastUpdated timestamp"
+        ]
+      },
+      {
+        "endpoint": "Recent Flights",
+        "warnings": [
+          "Missing lastUpdated timestamp"
+        ]
+      },
+      {
+        "endpoint": "Airport Detail (ATL)",
+        "warnings": [
+          "Missing airport statistics"
+        ]
+      },
+      {
+        "endpoint": "Airport Detail (DFW)",
+        "warnings": [
+          "Missing airport statistics"
+        ]
+      },
+      {
+        "endpoint": "Airport Detail (ORD)",
+        "warnings": [
+          "Missing airport statistics"
+        ]
+      }
+    ]
+  },
+  "metrics": {
+    "apiCoverage": 23.076923076923077,
+    "dataConsistency": 0,
+    "realDataPercentage": 61.53846153846154,
+    "avgResponseTime": 406.7692307692308,
+    "errorRate": 30.76923076923077
+  }
+}

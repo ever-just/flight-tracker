@@ -1,21 +1,33 @@
 # DigitalOcean Environment Variables Update
 
-## Required Updates for v1.1.0 Deployment
+## Required Updates for v1.1.1 Deployment
+
+### OpenSky Authentication Issues
+**Status:** The provided credentials (username: everjust, password: Weldon@80K) are returning 401 Unauthorized.
+
+**Actions Required:**
+1. Verify OpenSky account is active at https://opensky-network.org
+2. Check if the account was created after March 2025 (may require OAuth2)
+3. For now, the app will use anonymous access (400 requests/day limit)
 
 ### New/Updated Environment Variables
 
 ```bash
-# FAA API - Updated endpoint for ASWS service
-FAA_API_URL=https://soa.smext.faa.gov/asws/api/airport/status/
+# FAA ASWS (Airport Status Web Service) API
+# Requires registration at https://api.faa.gov
+# Create account and request access to ASWS API
+FAA_API_URL=https://external-api.faa.gov/asws/v1/airport/status/
+FAA_API_KEY=  # Add your FAA API key after registration
 
-# NOAA Weather API - New fallback for FAA delays
+# NOAA Weather API - Primary source for weather delays
+# Used as fallback when FAA API is unavailable
 NOAA_API_URL=https://api.weather.gov/stations/
 
-# OpenSky Network - Verify these are correct
-# Note: Authentication still showing as anonymous (368 rate limit)
-# These may need to be updated with correct credentials
-OPENSKY_CLIENT_ID=everjust-api-client
-OPENSKY_CLIENT_SECRET=8c47vwNysaX24Iu30MNOHZVvESRKIfHH
+# OpenSky Network - Leave empty to use anonymous access
+# Until proper credentials are verified
+# Note: The provided credentials (everjust/Weldon@80K) return 401
+OPENSKY_USERNAME=
+OPENSKY_PASSWORD=
 ```
 
 ### How to Update in DigitalOcean

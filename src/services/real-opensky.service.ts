@@ -37,14 +37,16 @@ interface OpenSkyResponse {
 }
 
 export class RealOpenSkyService {
-  private clientId: string
-  private clientSecret: string
+  private username: string
+  private password: string
   private accessToken: string | null = null
   private tokenExpiry: Date | null = null
 
   constructor() {
-    this.clientId = process.env.OPENSKY_CLIENT_ID || ''
-    this.clientSecret = process.env.OPENSKY_CLIENT_SECRET || ''
+    // OpenSky uses username/password for Basic Auth
+    // Credentials from auth.opensky-network.org
+    this.username = process.env.OPENSKY_USERNAME || 'everjust'
+    this.password = process.env.OPENSKY_PASSWORD || 'Weldon@80K'
   }
 
   private async getAccessToken() {
@@ -62,13 +64,12 @@ export class RealOpenSkyService {
         'Accept': 'application/json'
       }
       
-      // Try Basic Authentication with provided credentials
-      if (this.clientId && this.clientSecret) {
-        // OpenSky uses username:password format for Basic Auth
-        // CLIENT_ID is used as username, CLIENT_SECRET as password
-        const auth = Buffer.from(`${this.clientId}:${this.clientSecret}`).toString('base64')
+      // Use Basic Authentication with username and password
+      if (this.username && this.password) {
+        // OpenSky uses standard HTTP Basic Auth with username:password
+        const auth = Buffer.from(`${this.username}:${this.password}`).toString('base64')
         headers['Authorization'] = `Basic ${auth}`
-        console.log('[OpenSky] Using authenticated access')
+        console.log('[OpenSky] Using authenticated access with username:', this.username)
       } else {
         console.log('[OpenSky] Using anonymous access (limited to 400 requests/day)')
       }

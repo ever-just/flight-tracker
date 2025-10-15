@@ -32,16 +32,18 @@ interface AirportStatus {
 export class FAAService {
   private baseUrl: string
   private noaaBaseUrl: string
-  private faaApiKey: string
+  private faaClientId: string
+  private faaClientSecret: string
   private cache: Map<string, { data: any; expires: number }> = new Map()
   private cacheTTL: number
 
   constructor() {
     // FAA ASWS (Airport Status Web Service) API
-    // This requires registration at api.faa.gov
+    // Approved for Airport Watch application
     this.baseUrl = process.env.FAA_API_URL || 'https://external-api.faa.gov/asws/v1/airport/status/'
     this.noaaBaseUrl = process.env.NOAA_API_URL || 'https://api.weather.gov/stations/'
-    this.faaApiKey = process.env.FAA_API_KEY || ''
+    this.faaClientId = process.env.FAA_CLIENT_ID || 'e5f0914cd27d4e1083ac87b1668e116d'
+    this.faaClientSecret = process.env.FAA_CLIENT_SECRET || '5880f72C66924020a27E0101caB08f22'
     this.cacheTTL = 5 * 60 * 1000 // 5 minutes cache
   }
 
@@ -70,32 +72,34 @@ export class FAAService {
             return noaaData
           }
           
-          // If NOAA fails, try FAA endpoint (requires API key)
-          if (this.faaApiKey) {
+          // If NOAA fails, try FAA endpoint with client credentials
+          if (this.faaClientId && this.faaClientSecret) {
             try {
               const headers: any = {
                 'Accept': 'application/json',
-                'User-Agent': 'FlightTracker/1.0'
+                'User-Agent': 'FlightTracker/1.0',
+                // FAA ASWS API authentication
+                'client_id': this.faaClientId,
+                'client_secret': this.faaClientSecret
               }
-              
-              // Add API key header if available
-              // FAA ASWS API typically uses API key in header
-              headers['X-API-Key'] = this.faaApiKey
               
               const response = await fetch(`${this.baseUrl}${code}`, {
                 headers,
-                signal: AbortSignal.timeout(3000) // 3 second timeout
+                signal: AbortSignal.timeout(5000) // 5 second timeout
               })
               
               if (response.ok && response.headers.get('content-type')?.includes('json')) {
                 const data = await response.json()
+                console.log(`[FAA] Successfully fetched data for ${code}`)
                 return this.parseFAAResponse(code, data)
+              } else if (response.status === 401) {
+                console.error(`[FAA] Authentication failed for ${code}`)
               }
             } catch (faaError) {
               console.debug(`[FAA] ASWS API error for ${code}: ${faaError}`)
             }
           } else {
-            console.debug(`[FAA] No API key configured for ASWS API`)
+            console.debug(`[FAA] No credentials configured for ASWS API`)
           }
           
           return null

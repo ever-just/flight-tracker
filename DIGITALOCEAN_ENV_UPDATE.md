@@ -4,8 +4,8 @@
 
 ### OpenSky Authentication - RESOLVED ✅
 **Status:** OAuth2 credentials obtained successfully!
-**Client ID:** `everjust-api-client`
-**Client Secret:** `VhRMAyCzTbHb8KpZrHEQcEKWQZsrYY0g`
+**Client ID:** `[REDACTED - stored in .env.local]`
+**Client Secret:** `[REDACTED - stored in .env.local]`
 **Access Level:** OPENSKY_API_DEFAULT (4000 Credits/day)
 
 ### New/Updated Environment Variables

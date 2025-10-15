@@ -2,8 +2,8 @@
 
 ## ✅ OpenSky Network (OAuth2)
 **Status:** WORKING - 4000 requests/day  
-**Client ID:** `everjust-api-client`  
-**Client Secret:** `VhRMAyCzTbHb8KpZrHEQcEKWQZsrYY0g`  
+**Client ID:** `[REDACTED - stored in .env.local]`  
+**Client Secret:** `[REDACTED - stored in .env.local]`  
 **Auth Type:** OAuth2 Bearer Token  
 **Endpoint:** `https://opensky-network.org/api/states/all`  
 **Token URL:** `https://auth.opensky-network.org/auth/realms/opensky-network/protocol/openid-connect/token`  
@@ -26,8 +26,8 @@
 
 ```bash
 # OpenSky OAuth2 Credentials
-OPENSKY_CLIENT_ID=everjust-api-client
-OPENSKY_CLIENT_SECRET=VhRMAyCzTbHb8KpZrHEQcEKWQZsrYY0g
+OPENSKY_CLIENT_ID=[your-client-id]
+OPENSKY_CLIENT_SECRET=[your-client-secret]
 
 # FAA ASWS API Credentials
 FAA_CLIENT_ID=e5f0914cd27d4e1083ac87b1668e116d
@@ -45,7 +45,7 @@ NOAA_API_URL=https://api.weather.gov/stations/
 # Get token
 curl -X POST "https://auth.opensky-network.org/auth/realms/opensky-network/protocol/openid-connect/token" \
   -H "Content-Type: application/x-www-form-urlencoded" \
-  -d "grant_type=client_credentials&client_id=everjust-api-client&client_secret=VhRMAyCzTbHb8KpZrHEQcEKWQZsrYY0g"
+  -d "grant_type=client_credentials&client_id=YOUR_CLIENT_ID&client_secret=YOUR_CLIENT_SECRET"
 
 # Use token
 curl -H "Authorization: Bearer <TOKEN>" "https://opensky-network.org/api/states/all?lamin=40&lomin=-74&lamax=41&lomax=-73"

@@ -4,7 +4,7 @@
 
 | # | Issue (Priority) | Original Plan | Implementation | Test Result | Status |
 |---|-----------------|---------------|----------------|-------------|---------|
-| **1** | **OpenSky Auth Failure (P0)** | Fix 401 error, implement Basic/OAuth2, achieve 4000/day | ✅ OAuth2 implemented with everjust-api-client credentials | ✅ Token generation working, 4000/day confirmed | ✅ **COMPLETE** |
+| **1** | **OpenSky Auth Failure (P0)** | Fix 401 error, implement Basic/OAuth2, achieve 4000/day | ✅ OAuth2 implemented with registered client credentials | ✅ Token generation working, 4000/day confirmed | ✅ **COMPLETE** |
 | **2** | **FAA API Returns HTML (P0)** | Update to ASWS endpoint, add auth, implement NOAA fallback | ✅ ASWS endpoint configured, credentials added, NOAA fallback active | ✅ FAA approved, NOAA working | ✅ **COMPLETE** |
 | **3** | **Flight History 200MB+ (P0)** | Implement 10MB rotation, 7-day retention, compression | ✅ Rotation at 10MB, 7-day retention, gzip compression, migration script | ✅ File reduced to 4.61MB (98% reduction) | ✅ **COMPLETE** |
 | **4** | **Live Flights Mock Data (P0)** | Return real OpenSky data, fix structure | ✅ Real data with OAuth2, proper metadata structure | ✅ 50+ real flights returned | ✅ **COMPLETE** |
@@ -63,7 +63,7 @@
 
 | API | Status | Credentials | Daily Limit |
 |-----|---------|------------|-------------|
-| **OpenSky** | ✅ OAuth2 Working | Client ID: everjust-api-client | 4,000 |
+| **OpenSky** | ✅ OAuth2 Working | Client ID: [stored in .env] | 4,000 |
 | **FAA ASWS** | ✅ Approved | Client ID: e5f0914cd27d4e1083ac87b1668e116d | Per SLA |
 | **NOAA** | ✅ Working | No auth required | Unlimited |
 

@@ -46,7 +46,7 @@ Add these in App Settings → Environment Variables:
 NODE_ENV=production
 FAA_API_URL=https://nasstatus.faa.gov/api/airport-status-information
 OPENSKY_API_URL=https://opensky-network.org/api
-OPENSKY_CLIENT_ID=everjust-api-client
+OPENSKY_CLIENT_ID=[your-client-id]
 OPENSKY_CLIENT_SECRET=8c47vwNysaX24Iu30MNOHZVvESRKIfHH
 AVIATIONSTACK_API_KEY=cdd54a7b9bd4dcfb3db0230208f54ee6
 DATABASE_URL=file:./dev.db
@@ -90,7 +90,7 @@ cat > .env.production << EOF
 NODE_ENV=production
 FAA_API_URL=https://nasstatus.faa.gov/api/airport-status-information
 OPENSKY_API_URL=https://opensky-network.org/api
-OPENSKY_CLIENT_ID=everjust-api-client
+OPENSKY_CLIENT_ID=[your-client-id]
 OPENSKY_CLIENT_SECRET=8c47vwNysaX24Iu30MNOHZVvESRKIfHH
 AVIATIONSTACK_API_KEY=cdd54a7b9bd4dcfb3db0230208f54ee6
 DATABASE_URL=file:./dev.db

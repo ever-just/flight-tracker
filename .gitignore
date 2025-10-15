@@ -35,6 +35,7 @@ app-spec.yaml
 app.yaml
 docker-compose.yml
 data/credentials.json
+credentials*.json
 deploy-now.sh
 quick-deploy.sh
 github-deploy.sh

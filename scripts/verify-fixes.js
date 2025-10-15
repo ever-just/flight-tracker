@@ -72,7 +72,7 @@ async function testOpenSkyAuth() {
   
   try {
     // Test with provided credentials
-    const auth = Buffer.from('everjust-api-client:8c47vwNysaX24Iu30MNOHZVvESRKIfHH').toString('base64');
+    const auth = Buffer.from(`${process.env.OPENSKY_CLIENT_ID}:${process.env.OPENSKY_CLIENT_SECRET}`).toString('base64');
     const response = await makeRequest('https://opensky-network.org/api/states/all?lamin=24&lomin=-125&lamax=49&lomax=-66');
     
     if (response.headers['x-rate-limit-remaining']) {

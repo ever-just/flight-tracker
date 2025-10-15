@@ -173,8 +173,8 @@ export async function GET(request: NextRequest) {
       filteredAirports = filteredAirports.filter((a: any) => a.flights >= minFlights)
     }
     
-    // Return array directly as expected by frontend
-    return NextResponse.json(filteredAirports)
+    // Return object with airports array as expected by frontend
+    return NextResponse.json({ airports: filteredAirports })
     
   } catch (error) {
     console.error('[AIRPORTS API ERROR]', error)

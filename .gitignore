@@ -46,5 +46,20 @@ github-deploy.sh
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# data files
 data/*.csv
 data/flight-history.json
+
+# test files
+test-*.js
+*-test.js
+
+# log files
+*.log
+server.log
+
+# backup files
+*.backup
+*.bak
+*~

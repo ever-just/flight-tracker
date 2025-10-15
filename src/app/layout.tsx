@@ -6,6 +6,7 @@ import { Navigation } from '@/components/navigation'
 import { ErrorBoundary } from '@/components/error-boundary'
 import { cn } from '@/lib/utils'
 import { getVersionString } from '@/lib/version'
+import { StructuredData } from '@/components/structured-data'
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -18,18 +19,18 @@ const spaceGrotesk = Space_Grotesk({
 })
 
 export const metadata: Metadata = {
-  title: 'Airport Watch - Real-Time US Airport & Flight Status Tracking',
-  description: 'Monitor real-time flight delays, cancellations, and airport conditions across the United States. Live tracking of 100+ US airports with historical data, interactive maps, and performance analytics.',
-  keywords: 'airport watch, flight tracker, airport status, flight delays, flight cancellations, US airports, real-time flights, aviation dashboard, airport delays, flight monitoring, FAA data, live flight map',
-  authors: [{ name: 'Airport Watch' }],
+  title: 'Airport Watch Live - Real-Time US Airport & Flight Status Tracking',
+  description: 'Airport Watch Live: Monitor real-time flight delays, cancellations, and airport conditions across the United States. Live tracking of 100+ US airports with historical data, interactive maps, and performance analytics.',
+  keywords: 'airport watch live, airport watch, flight tracker, airport status, flight delays, flight cancellations, US airports, real-time flights, aviation dashboard, airport delays, flight monitoring, FAA data, live flight map, airportwatch, airport tracker',
+  authors: [{ name: 'Airport Watch Live' }],
   metadataBase: new URL('https://www.airportwatch.live'),
   openGraph: {
-    title: 'Airport Watch - Real-Time Airport & Flight Status',
-    description: 'Monitor live flight delays, cancellations, and airport conditions across the United States with real-time data from OpenSky Network, FAA, and BTS.',
+    title: 'Airport Watch Live - Real-Time Airport & Flight Status',
+    description: 'Airport Watch Live: Monitor live flight delays, cancellations, and airport conditions across the United States with real-time data from OpenSky Network, FAA, and BTS.',
     type: 'website',
     locale: 'en_US',
     url: 'https://www.airportwatch.live',
-    siteName: 'Airport Watch',
+    siteName: 'Airport Watch Live',
     images: [
       {
         url: '/og-image.png',
@@ -41,8 +42,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Airport Watch - Real-Time Flight Tracking',
-    description: 'Monitor delays, cancellations, and airport conditions across 100+ US airports',
+    title: 'Airport Watch Live - Real-Time Flight Tracking',
+    description: 'Airport Watch Live: Monitor delays, cancellations, and airport conditions across 100+ US airports',
     images: ['/og-image.png']
   },
   robots: {
@@ -76,6 +77,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <StructuredData />
+      </head>
       <body className={cn(
         inter.variable, 
         spaceGrotesk.variable,

@@ -1,6 +1,10 @@
-# ✈️ Flight Tracker Dashboard
+# ✈️ Airport Watch Live
 
-A modern, real-time flight tracking dashboard for monitoring US airports and flight operations. Built with Next.js 14, TypeScript, and Tailwind CSS.
+A modern, real-time flight tracking and airport monitoring dashboard for tracking US airports and flight operations. Monitor live delays, cancellations, and airport conditions across 100+ US airports.
+
+**Live Site:** [https://www.airportwatch.live](https://www.airportwatch.live)
+
+Built with Next.js 14, TypeScript, and Tailwind CSS.
 
 ![Flight Tracker Dashboard](https://img.shields.io/badge/Next.js-14.1.0-black?style=flat-square&logo=next.js)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.3.3-blue?style=flat-square&logo=typescript)
@@ -41,7 +45,7 @@ A modern, real-time flight tracking dashboard for monitoring US airports and fli
 ### Backend & Database
 - **Next.js API Routes** - RESTful API endpoints
 - **Prisma ORM** - Type-safe database access
-- **PostgreSQL** - Relational database
+- **SQLite** - Lightweight relational database (development)
 - **Zod** - Schema validation
 
 ### External APIs
@@ -52,15 +56,15 @@ A modern, real-time flight tracking dashboard for monitoring US airports and fli
 ## 📦 Installation
 
 ### Prerequisites
-- Node.js 20.11.0 or higher
-- PostgreSQL 16.1 or higher
+- Node.js 18.17.0 or higher
+- Docker (for production builds)
 - npm or yarn
 
 ### Setup Instructions
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/yourusername/flight-tracker.git
+git clone https://github.com/ever-just/flight-tracker.git
 cd flight-tracker
 ```
 
@@ -72,23 +76,28 @@ npm install
 3. **Set up environment variables**
 Create a `.env.local` file in the root directory:
 ```env
-# Database
-DATABASE_URL="postgresql://user:password@localhost:5432/flight_tracker?schema=public"
+# Database (SQLite for development)
+DATABASE_URL="file:./dev.db"
 
 # External APIs
 FAA_API_URL="https://nasstatus.faa.gov/api/airport-status-information"
 OPENSKY_API_URL="https://opensky-network.org/api"
-OPENSKY_USERNAME=""
-OPENSKY_PASSWORD=""
+OPENSKY_CLIENT_ID="your_opensky_username"
+OPENSKY_CLIENT_SECRET="your_opensky_password"
+AVIATIONSTACK_API_KEY="your_aviationstack_key"
 
 # Application
-NEXT_PUBLIC_APP_URL="http://localhost:3000"
+NEXT_PUBLIC_SITE_URL="http://localhost:3000"
 NODE_ENV="development"
 
 # Cache settings (in seconds)
 AIRPORT_STATUS_CACHE_TTL=300
 FLIGHT_DATA_CACHE_TTL=60
 HISTORICAL_DATA_CACHE_TTL=3600
+
+# API Rate Limits
+OPENSKY_DAILY_LIMIT=4000
+AVIATIONSTACK_MONTHLY_LIMIT=100
 ```
 
 4. **Set up the database**
@@ -96,11 +105,8 @@ HISTORICAL_DATA_CACHE_TTL=3600
 # Generate Prisma client
 npx prisma generate
 
-# Run database migrations
-npx prisma migrate dev
-
-# Seed the database (optional)
-npx prisma db seed
+# Initialize SQLite database
+npx prisma db push
 ```
 
 5. **Start the development server**
@@ -167,24 +173,26 @@ flight-tracker/
 
 ## 🚀 Deployment
 
-### DigitalOcean App Platform
+### Docker Hub + DigitalOcean App Platform
 
-1. **Connect GitHub Repository**
-   - Link your repository to DigitalOcean
+This project uses a Docker-based deployment for better reliability and consistency.
 
-2. **Configure Build Settings**
-   - Build Command: `npm run build`
-   - Output Directory: `.next`
+1. **Build Docker Image (locally)**
+```bash
+# Build for AMD64 (DigitalOcean compatible)
+docker buildx build --platform linux/amd64 --push \
+  -t yourusername/airportwatch:amd64 \
+  -t yourusername/airportwatch:latest .
+```
 
-3. **Set Environment Variables**
-   - Add all variables from `.env.local`
+2. **Deploy to DigitalOcean**
+   - Create a new App Platform app
+   - Use Docker Hub as the source
+   - Point to your Docker image
+   - Configure environment variables
+   - Deploy!
 
-4. **Database Setup**
-   - Create a DigitalOcean Managed PostgreSQL database
-   - Update DATABASE_URL in environment variables
-
-5. **Deploy**
-   - Click Deploy and wait for the build to complete
+For detailed deployment instructions, see [DEPLOYMENT_GUIDE.md](./DEPLOYMENT_GUIDE.md)
 
 ## 📈 Performance Optimization
 
@@ -234,7 +242,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## 📞 Support
 
-For support, email support@flighttracker.com or open an issue on GitHub.
+For issues or questions, please open an issue on GitHub.
 
 ## 🙏 Acknowledgments
 
@@ -246,9 +254,6 @@ For support, email support@flighttracker.com or open an issue on GitHub.
 
 ---
 
-Built with ❤️ by the Flight Tracker Team# Force rebuild - Sat Oct 11 14:53:06 CDT 2025
-# Force rebuild - Sat Oct 11 16:03:20 CDT 2025
-# Deployment trigger - Sat Oct 11 19:00:20 CDT 2025
-# Force rebuild - Sun Oct 12 06:17:43 CDT 2025
-# Force DigitalOcean cache refresh - Sun Oct 12 08:30:59 CDT 2025
-# Force rebuild with fixed code - Mon Oct 13 13:41:27 CDT 2025
+**Live Site:** [www.airportwatch.live](https://www.airportwatch.live)
+
+Built with ❤️ for aviation enthusiasts and travelers

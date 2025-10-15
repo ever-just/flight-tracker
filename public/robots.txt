@@ -12,5 +12,5 @@ Allow: /delays
 Disallow: /api/*
 
 # Sitemap
-Sitemap: https://airportwatch.live/sitemap.xml
+Sitemap: https://www.airportwatch.live/sitemap.xml
 
